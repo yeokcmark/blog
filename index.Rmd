@@ -1,0 +1,7 @@
+---
+title: "maRk's blog blah blah"
+site: distill::distill_website
+
+---
+
+<br><br><br><br><br><br> Welcome! And thank you for stopping by. This blog was created using [Distill for R Markdown](https://rstudio.github.io/distill/) and written entirely in R Studio. Hopefully, it will be a growing showcase of all projects related to R which I embark on.

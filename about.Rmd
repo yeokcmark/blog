@@ -1,0 +1,13 @@
+---
+title: "maRk's make this disappear blog"
+description: |
+  Some additional details about the blog
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+Content is being generated as we speak... pls check back again... and you might be able to read more about me
+
+
+title and discription has not disappeared with visibiltiy = hidden
