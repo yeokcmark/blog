@@ -9,10 +9,15 @@ navbar:
   right:
     - text: "Home"
       href: index.html
+    - text: "Nikkei225"
+      href: nikkei225.html
     - text: "About"
       href: about.html
     - icon: fab fa-github
       href: https://github.com/yeokcmark
 output:
   distill::distill_article
+toc: true
+toc_depth: 6
+toc_float: true
 

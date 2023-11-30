@@ -2,18 +2,26 @@
   "articles": [
     {
       "path": "about.html",
-      "title": "About maRk's blog",
+      "title": "maRk's make this disappear blog",
       "description": "Some additional details about the blog",
       "author": [],
-      "contents": "\r\nContent is being generated as we speak… pls check back again…\r\n\r\n\r\n\r\n",
-      "last_modified": "2023-11-30T11:19:48+08:00"
+      "contents": "\r\nContent is being generated as we speak… pls check back again… and you might be able to read more about me\r\ntitle and discription has not disappeared with visibiltiy = hidden\r\n\r\n\r\n\r\n",
+      "last_modified": "2023-11-30T17:49:13+08:00"
     },
     {
       "path": "index.html",
-      "title": "maRk's blog",
+      "title": "maRk's blog blah blah",
       "author": [],
       "contents": "\r\n Welcome! And thank you for stopping by. This blog was created using Distill for R Markdown and written entirely in R Studio. Hopefully, it will be a growing showcase of all projects related to R which I embark on.\r\n\r\n\r\n\r\n",
-      "last_modified": "2023-11-30T11:19:44+08:00"
+      "last_modified": "2023-11-30T17:49:00+08:00"
+    },
+    {
+      "path": "nikkei225.html",
+      "title": "Nikkei225",
+      "description": "Gamma Exposure Profile\n",
+      "author": [],
+      "contents": "\r\n\r\n\r\n\r\n",
+      "last_modified": "2023-11-30T17:47:23+08:00"
     }
   ],
   "collections": ["posts/posts.json"]

@@ -1,19 +1,21 @@
 [
   {
-    "path": "posts/welcome/",
-    "title": "Welcome to &quot;maRk's blog&quot;",
-    "description": "Welcome to our new blog, &quot;maRk's blog&quot;. We hope you enjoy \nreading what we have to say!",
+    "path": "posts/2023-11-29-nikkei-225-option-report-2023-11-29/",
+    "title": "Nikkei 225 Option Report 2023-11-29",
+    "description": {},
     "author": [
       {
-        "name": "Nora Jones",
-        "url": "https://example.com/norajones"
+        "name": "Mark Y",
+        "url": {}
       }
     ],
-    "date": "2023-11-30",
+    "date": "2023-11-29",
     "categories": [],
-    "contents": "\r\n\r\n\r\n\r\n",
-    "preview": {},
-    "last_modified": "2023-11-30T10:00:34+08:00",
-    "input_file": {}
+    "contents": "\r\nTraded Volume:\r\n\r\nDate: 2023-11-29\r\nContract: Dec 2023\r\n\r\n\r\n\r\nContract: Jan & Feb 2024\r\n\r\n\r\n\r\nOpen Interest:\r\n\r\nDate: 2023-11-29\r\nContract: Dec 2023\r\n\r\n\r\n\r\nContract: Jan and Feb 2024\r\n\r\n\r\n\r\nChange in Open Interest:\r\n\r\nDate: 2023-11-29\r\nContract: Dec 2023\r\n\r\n\r\n\r\nContract: Jan and Feb 2024\r\n\r\n\r\n\r\nSpot Gamma Exposure:\r\n\r\nDate: 2023-11-29\r\nNikkei 225 Closing Price: 3.3321^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile\r\n\r\nDate: 2023-11-29\r\nNikkei 225 Closing Price: 3.3321^{4}\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+    "preview": "posts/2023-11-29-nikkei-225-option-report-2023-11-29/nikkei-225-option-report-2023-11-29_files/figure-html5/unnamed-chunk-9-1.png",
+    "last_modified": "2023-11-30T17:47:23+08:00",
+    "input_file": {},
+    "preview_width": 1248,
+    "preview_height": 768
   }
 ]
