@@ -88,14 +88,14 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>maRk's blog: maRk's make this disappear blog</title>
+  <title>maRk's blog</title>
 
   <meta property="description" itemprop="description" content="Some additional details about the blog"/>
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="maRk&#39;s blog: maRk&#39;s make this disappear blog"/>
+  <meta property="og:title" content="maRk&#39;s blog"/>
   <meta property="og:type" content="article"/>
   <meta property="og:description" content="Some additional details about the blog"/>
   <meta property="og:locale" content="en_US"/>
@@ -103,14 +103,14 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="maRk&#39;s blog: maRk&#39;s make this disappear blog"/>
+  <meta property="twitter:title" content="maRk&#39;s blog"/>
   <meta property="twitter:description" content="Some additional details about the blog"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description"]}},"value":[{"type":"character","attributes":{},"value":["maRk's make this disappear blog"]},{"type":"character","attributes":{},"value":["Some additional details about the blog"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description"]}},"value":[{"type":"character","attributes":{},"value":["maRk's blog"]},{"type":"character","attributes":{},"value":["Some additional details about the blog"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2194,7 +2194,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   html {
     /*-- Main font sizes --*/
     --title-size:      28px;
-    --body-size:       1.06rem;
+    --body-size:       1.16rem;
     --code-size:       14px;
     --aside-size:      12px;
     --fig-cap-size:    13px;
@@ -2261,6 +2261,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   description {
     visibility: hidden;
   }
+
   body {
     background: #fefef9; /*tufte off-white*/
   }</style>
@@ -2439,7 +2440,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"maRk's make this disappear blog","description":"Some additional details about the blog","authors":[]}
+{"title":"maRk's blog","description":"Some additional details about the blog","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2466,7 +2467,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>maRk’s make this disappear blog</h1>
+<h1>maRk’s blog</h1>
 
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
@@ -2475,8 +2476,27 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
 <div class="d-article">
-<p>Content is being generated as we speak… pls check back again… and you might be able to read more about me</p>
-<p>title and discription has not disappeared with visibiltiy = hidden</p>
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#why-this-blog" id="toc-why-this-blog">Why this blog?</a></li>
+<li><a href="#how-i-got-started-with-r" id="toc-how-i-got-started-with-r">How I got started with R?</a></li>
+<li><a href="#a-little-about-me" id="toc-a-little-about-me">A little about me</a></li>
+</ul>
+</nav>
+</div>
+<h3 id="why-this-blog">Why this blog?</h3>
+<p>I always wanted to start one…if fact, I’ve started close to 10, but gave up on all of them. blogger, wordpress, tumblr… I’ve tried them all. Will I give up on this one? Only time will tell…</p>
+<p>But in the short time that I’ve been learning R, I’ve grown to love the ecosystem, and creating a post within Distill is quite easy. When I first considered blogging within the R ecosystem, I gave blogdown/Hugo a try. But I found it difficult to set up.</p>
+<p>This blog is hosted on <a href="https://www.netlify.com/">Netlify</a> (for FREE), and configured to deploy from Github. There were some teething pains, and it took me a while to figure out Github. Maybe one day, I shall write a dummy’s dummy-guide. But in the meantime, <a href="https://themockup.blog/posts/2020-08-01-building-a-blog-with-distill/">themockup</a> and <a href="https://distillery.rbind.io/">The Distillery</a> provided sufficient resources to get me started. Finally, I modified the site theme from <a href="https://www.infreq.com/">Infrequently Frequentist</a> so thanks a bunch!</p>
+<h3 id="how-i-got-started-with-r">How I got started with R?</h3>
+<p>I started learning R in September 2023, so as of writing this blog, my experience with R spans barely 3 months. With all the talk about “big data” and “machine learning”, I was curious about the field of data science. In addition to that, I had <a href="https://www.skillsfuture.gov.sg/">skillsfuture</a> credits that were expiring. A bit of googling later, I signed up for the Certified Data Analytics (R) Specialist offered by <a href="https://academy.smu.edu.sg/certified-data-analytics-r-specialist-1911">SMU Academy</a>.</p>
+<p>Why R? Everyone seemed to be talking about python, so I decided to go “against the herd” and do something different. Why this particular class? Firstly, it was open enrollment, meaning it didn’t have much/any pre-requisites to meet. Secondly, I read the instructor’s bio and realized that we both graduated from the same University. It was a done deal!</p>
+<h3 id="a-little-about-me">A little about me</h3>
+<p><img src="images/HANDSTAND.png" style="width:15.0%" /></p>
+<p>I’m approaching 50, so if I can learn R, it’s proof that you can teach an old dog new tricks! Wooof! I graduated from an Ivy-League university some 30 years ago, and have a bit of programming background in Java and HTML. My work experience has been in tourism, hotel development, and finance.</p>
+<p>I’m married with 2 grown-up children, love swimming and have supported Arsenal FC since George Graham was a manager. My favorite Arsenal player is the “non-flying dutchman”.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

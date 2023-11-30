@@ -1,13 +1,27 @@
 ---
-title: "maRk's make this disappear blog"
+title: "maRk's blog"
 description: |
   Some additional details about the blog
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
-Content is being generated as we speak... pls check back again... and you might be able to read more about me
+### Why this blog?
 
+I always wanted to start one...if fact, I've started close to 10, but gave up on all of them. blogger, wordpress, tumblr... I've tried them all. Will I give up on this one? Only time will tell...
 
-title and discription has not disappeared with visibiltiy = hidden
+But in the short time that I've been learning R, I've grown to love the ecosystem, and creating a post within Distill is quite easy. When I first considered blogging within the R ecosystem, I gave blogdown/Hugo a try. But I found it difficult to set up.
+
+This blog is hosted on [Netlify](https://www.netlify.com/) (for FREE), and configured to deploy from Github. There were some teething pains, and it took me a while to figure out Github. Maybe one day, I shall write a dummy's dummy-guide. But in the meantime, [themockup](https://themockup.blog/posts/2020-08-01-building-a-blog-with-distill/) and [The Distillery](https://distillery.rbind.io/) provided sufficient resources to get me started. Finally, I modified the site theme from [Infrequently Frequentist](https://www.infreq.com/) so thanks a bunch!
+
+### How I got started with R?
+
+I started learning R in September 2023, so as of writing this blog, my experience with R spans barely 3 months. With all the talk about "big data" and "machine learning", I was curious about the field of data science. In addition to that, I had [skillsfuture](https://www.skillsfuture.gov.sg/) credits that were expiring. A bit of googling later, I signed up for the Certified Data Analytics (R) Specialist offered by [SMU Academy](https://academy.smu.edu.sg/certified-data-analytics-r-specialist-1911).
+
+Why R? Everyone seemed to be talking about python, so I decided to go "against the herd" and do something different. Why this particular class? Firstly, it was open enrollment, meaning it didn't have much/any pre-requisites to meet. Secondly, I read the instructor's bio and realized that we both graduated from the same University. It was a done deal!
+
+### A little about me
+
+![](images/HANDSTAND.png){width="15%"}
+
+I'm approaching 50, so if I can learn R, it's proof that you can teach an old dog new tricks! Wooof! I graduated from an Ivy-League university some 30 years ago, and have a bit of programming background in Java and HTML. My work experience has been in tourism, hotel development, and finance.
+
+I'm married with 2 grown-up children, love swimming and have supported Arsenal FC since George Graham was a manager. My favorite Arsenal player is the "non-flying dutchman".

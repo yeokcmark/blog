@@ -2,18 +2,18 @@
   "articles": [
     {
       "path": "about.html",
-      "title": "maRk's make this disappear blog",
+      "title": "maRk's blog",
       "description": "Some additional details about the blog",
       "author": [],
-      "contents": "\r\nContent is being generated as we speak… pls check back again… and you might be able to read more about me\r\ntitle and discription has not disappeared with visibiltiy = hidden\r\n\r\n\r\n\r\n",
-      "last_modified": "2023-11-30T17:49:13+08:00"
+      "contents": "\r\n\r\nContents\r\nWhy this blog?\r\nHow I got started with R?\r\nA little about me\r\n\r\nWhy this blog?\r\nI always wanted to start one…if fact, I’ve started close to 10, but gave up on all of them. blogger, wordpress, tumblr… I’ve tried them all. Will I give up on this one? Only time will tell…\r\nBut in the short time that I’ve been learning R, I’ve grown to love the ecosystem, and creating a post within Distill is quite easy. When I first considered blogging within the R ecosystem, I gave blogdown/Hugo a try. But I found it difficult to set up.\r\nThis blog is hosted on Netlify (for FREE), and configured to deploy from Github. There were some teething pains, and it took me a while to figure out Github. Maybe one day, I shall write a dummy’s dummy-guide. But in the meantime, themockup and The Distillery provided sufficient resources to get me started. Finally, I modified the site theme from Infrequently Frequentist so thanks a bunch!\r\nHow I got started with R?\r\nI started learning R in September 2023, so as of writing this blog, my experience with R spans barely 3 months. With all the talk about “big data” and “machine learning”, I was curious about the field of data science. In addition to that, I had skillsfuture credits that were expiring. A bit of googling later, I signed up for the Certified Data Analytics (R) Specialist offered by SMU Academy.\r\nWhy R? Everyone seemed to be talking about python, so I decided to go “against the herd” and do something different. Why this particular class? Firstly, it was open enrollment, meaning it didn’t have much/any pre-requisites to meet. Secondly, I read the instructor’s bio and realized that we both graduated from the same University. It was a done deal!\r\nA little about me\r\n\r\nI’m approaching 50, so if I can learn R, it’s proof that you can teach an old dog new tricks! Wooof! I graduated from an Ivy-League university some 30 years ago, and have a bit of programming background in Java and HTML. My work experience has been in tourism, hotel development, and finance.\r\nI’m married with 2 grown-up children, love swimming and have supported Arsenal FC since George Graham was a manager. My favorite Arsenal player is the “non-flying dutchman”.\r\n\r\n\r\n\r\n",
+      "last_modified": "2023-12-01T00:45:30+08:00"
     },
     {
       "path": "index.html",
-      "title": "maRk's blog blah blah",
+      "title": "maRk's blog",
       "author": [],
-      "contents": "\r\n Welcome! And thank you for stopping by. This blog was created using Distill for R Markdown and written entirely in R Studio. Hopefully, it will be a growing showcase of all projects related to R which I embark on.\r\n\r\n\r\n\r\n",
-      "last_modified": "2023-11-30T23:50:04+08:00"
+      "contents": "\r\nWelcome! And thank you for stopping by. This blog was created using Distill for R Markdown and written entirely in R Studio. Hopefully, it will be a growing showcase of all projects related to R which I embark on.\r\n\r\n\r\n\r\n",
+      "last_modified": "2023-12-01T00:45:12+08:00"
     },
     {
       "path": "nikkei225.html",
@@ -21,7 +21,7 @@
       "description": "Gamma Exposure Profile\n",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2023-11-30T23:50:10+08:00"
+      "last_modified": "2023-12-01T00:45:38+08:00"
     }
   ],
   "collections": ["posts/posts.json"]
