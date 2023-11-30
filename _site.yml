@@ -1,7 +1,9 @@
-name: "blog"
-title: "&quot;maRk's blog&quot;"
+name: "maRk's blog"
+title: "maRk's blog"
+theme: theme.css
 description: |
-  &quot;maRk's blog&quot;
+  hey there, thanks for dropping by...
+base_url: https://yeokcmark.netlify.app/
 output_dir: "docs"
 navbar:
   right:
@@ -9,6 +11,8 @@ navbar:
       href: index.html
     - text: "About"
       href: about.html
+    - icon: fab fa-github
+      href: https://github.com/yeokcmark
 output:
   distill::distill_article
-theme: theme.css
+

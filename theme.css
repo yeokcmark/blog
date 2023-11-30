@@ -15,7 +15,7 @@
 
 html {
   /*-- Main font sizes --*/
-  --title-size:      50px;
+  --title-size:      30px;
   --body-size:       1.06rem;
   --code-size:       14px;
   --aside-size:      12px;
@@ -59,17 +59,17 @@ d-appendix {
 /* These properties only apply to Distill sites and blogs  */
 
 .distill-site-header {
-  --title-size:       32px;
+  --title-size:       28px;
   --text-color:       #fefef9; /*tufte off-white*/
-  --text-size:        18px;
+  --text-size:        16px;
   --hover-color:      #0F2E3D; /*distill blue*/
-  --bkgd-color:       #F84B30; /*burnt orange*/
+  --bkgd-color:       #ad0a2b; /*some kinda red*/
 }
 
 .distill-site-footer {
   --text-color:       rgba(255, 255, 255, 0.8);
-  --text-size:        24px;
-  --hover-color:      #F84B30; /*burnt orange*/
+  --text-size:        18px;
+  --hover-color:      #ad0a2b; /*some kinda red*/
   --bkgd-color:       #0F2E3D; /*distill blue*/
 }
 

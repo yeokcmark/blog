@@ -88,22 +88,22 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>&amp;quot;maRk's blog&amp;quot;: About this blog</title>
+  <title>maRk's blog: About this blog</title>
 
   <meta property="description" itemprop="description" content="Some additional details about the blog"/>
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="&amp;quot;maRk&#39;s blog&amp;quot;: About this blog"/>
+  <meta property="og:title" content="maRk&#39;s blog: About this blog"/>
   <meta property="og:type" content="article"/>
   <meta property="og:description" content="Some additional details about the blog"/>
   <meta property="og:locale" content="en_US"/>
-  <meta property="og:site_name" content="&amp;quot;maRk&#39;s blog&amp;quot;"/>
+  <meta property="og:site_name" content="maRk&#39;s blog"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="&amp;quot;maRk&#39;s blog&amp;quot;: About this blog"/>
+  <meta property="twitter:title" content="maRk&#39;s blog: About this blog"/>
   <meta property="twitter:description" content="Some additional details about the blog"/>
 
   <!--/radix_placeholder_meta_tags-->
@@ -2193,13 +2193,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   html {
     /*-- Main font sizes --*/
-    --title-size:      50px;
+    --title-size:      30px;
     --body-size:       1.06rem;
     --code-size:       14px;
     --aside-size:      12px;
     --fig-cap-size:    13px;
     /*-- Main font colors --*/
-    --title-color:     #000000;
+    --title-color:     rgba(0, 0, 0, 0.8);
     --header-color:    rgba(0, 0, 0, 0.8);
     --body-color:      rgba(0, 0, 0, 0.8);
     --aside-color:     rgba(0, 0, 0, 0.6);
@@ -2237,23 +2237,25 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   /* These properties only apply to Distill sites and blogs  */
 
   .distill-site-header {
-    --title-size:       18px;
-    --text-color:       rgba(255, 255, 255, 0.8);
-    --text-size:        15px;
-    --hover-color:      white;
-    --bkgd-color:       #0F2E3D;
+    --title-size:       28px;
+    --text-color:       #fefef9; /*tufte off-white*/
+    --text-size:        16px;
+    --hover-color:      #0F2E3D; /*distill blue*/
+    --bkgd-color:       #ad0a2b; /*some kinda red*/
   }
 
   .distill-site-footer {
     --text-color:       rgba(255, 255, 255, 0.8);
-    --text-size:        15px;
-    --hover-color:      white;
-    --bkgd-color:       #0F2E3D;
+    --text-size:        18px;
+    --hover-color:      #ad0a2b; /*some kinda red*/
+    --bkgd-color:       #0F2E3D; /*distill blue*/
   }
 
   /*-- Additional custom styles --*/
   /* Add any additional CSS rules below                      */
-  </style>
+  body {
+    background: #fefef9; /*tufte off-white*/
+  }</style>
   <style type="text/css">
   /* base style */
 
@@ -2437,12 +2439,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <header class="header header--fixed" role="banner">
 <nav class="distill-site-nav distill-site-header">
 <div class="nav-left">
-<a href="index.html" class="title">&amp;quot;maRk's blog&amp;quot;</a>
+<a href="index.html" class="title">maRk's blog</a>
 <input id="distill-search" class="nav-search hidden" type="text" placeholder="Search..."/>
 </div>
 <div class="nav-right">
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
+<a href="https://github.com/yeokcmark">
+<i class="fab fa-github" aria-hidden="true"></i>
+</a>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
 </div>
 </nav>
@@ -2462,7 +2467,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <div class="d-article">
 <p>lets make some changes and see if this is reflected. this is the about page</p>
-<p>now lets apply a global theme</p>
+<p>now lets apply a global theme.</p>
+<p>now we will apply an orange footer</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
