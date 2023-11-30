@@ -2,18 +2,18 @@
   "articles": [
     {
       "path": "about.html",
-      "title": "About this blog",
+      "title": "About maRk's blog",
       "description": "Some additional details about the blog",
       "author": [],
-      "contents": "\r\nlets make some changes and see if this is reflected. this is the about page\r\nnow lets apply a global theme.\r\nnow we will apply an orange footer\r\n\r\n\r\n\r\n",
-      "last_modified": "2023-11-30T11:07:33+08:00"
+      "contents": "\r\nContent is being generated as we speak… pls check back again…\r\n\r\n\r\n\r\n",
+      "last_modified": "2023-11-30T11:19:48+08:00"
     },
     {
       "path": "index.html",
-      "title": "&quot;maRk's blog&quot;",
+      "title": "maRk's blog",
       "author": [],
-      "contents": "\r\n\r\nthis is the index page, why isnt anything showing up\r\nnow lets apply a theme…. an orange footer\r\n\r\n\r\n\r\n",
-      "last_modified": "2023-11-30T11:07:29+08:00"
+      "contents": "\r\n Welcome! And thank you for stopping by. This blog was created using Distill for R Markdown and written entirely in R Studio. Hopefully, it will be a growing showcase of all projects related to R which I embark on.\r\n\r\n\r\n\r\n",
+      "last_modified": "2023-11-30T11:19:44+08:00"
     }
   ],
   "collections": ["posts/posts.json"]
