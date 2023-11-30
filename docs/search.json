@@ -5,15 +5,15 @@
       "title": "About this blog",
       "description": "Some additional details about the blog",
       "author": [],
-      "contents": "\r\nlets make some changes and see if this is reflected. this is the about page\r\n\r\n\r\n\r\n",
-      "last_modified": "2023-11-30T10:03:34+08:00"
+      "contents": "\r\nlets make some changes and see if this is reflected. this is the about page\r\nnow lets apply a global theme\r\n\r\n\r\n\r\n",
+      "last_modified": "2023-11-30T10:53:14+08:00"
     },
     {
       "path": "index.html",
       "title": "&quot;maRk's blog&quot;",
       "author": [],
-      "contents": "\r\nthis is the index page, why isnt anything showing up\r\n\r\n\r\n\r\n",
-      "last_modified": "2023-11-30T10:03:45+08:00"
+      "contents": "\r\nthis is the index page, why isnt anything showing up\r\nnow lets apply a theme….\r\n\r\n\r\n\r\n",
+      "last_modified": "2023-11-30T10:52:57+08:00"
     }
   ],
   "collections": ["posts/posts.json"]
