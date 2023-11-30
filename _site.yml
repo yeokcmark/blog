@@ -3,6 +3,7 @@ title: "maRk's blog"
 theme: theme.css
 description: |
   hey there, thanks for dropping by...
+citations: false
 base_url: https://yeokcmark.netlify.app/
 output_dir: "docs"
 navbar:
@@ -16,8 +17,8 @@ navbar:
     - icon: fab fa-github
       href: https://github.com/yeokcmark
 output:
-  distill::distill_article
-toc: true
-toc_depth: 6
-toc_float: true
+  distill::distill_article:
+    toc: true
+    toc_depth: 6
+    toc_float: true
 
