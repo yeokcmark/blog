@@ -25,3 +25,7 @@ Why R? Everyone seemed to be talking about python, so I decided to go "against t
 I'm approaching 50, so if I can learn R, it's proof that you can teach an old dog new tricks! Wooof! I graduated from an Ivy-League university some 30 years ago, and have a bit of programming background in Java and HTML. My work experience has been in tourism, hotel development, and finance.
 
 I'm married with 2 grown-up children, love swimming and have supported Arsenal FC since George Graham was a manager. My favorite Arsenal player is the "non-flying dutchman".
+
+### Thank you
+
+Thank you to [Prof Roh](https://www.talktoroh.com/) for being such an inspiration in this jouRney. Your enthusiasm and energy is infectious! Thank you to my wife and family for supporting me as I struggled with R.

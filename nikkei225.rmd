@@ -3,5 +3,12 @@ title: "Nikkei225"
 description: |
   Gamma Exposure Profile
 site: distill::distill_website
+toc: false
 listing: posts
 ---
+
+### Gamma Exposure
+
+What's Gamma Exposure? Also known as "dollar gamma", Gamma Exposure measures the price sensitivity of a portfolio of options (in this case, we are trying to estimate the dealer's book of Nikkei 225 options) to changes in the price of the underlying security (Nikkei 225 futures).
+
+A "how-to" or "step by step" article might be written soon, but meanwhile, credit goes to [Sergei Perfiliev](https://perfiliev.co.uk/market-commentary/how-to-calculate-gamma-exposure-and-zero-gamma-level/) and [Squeeze Metrics](https://squeezemetrics.com/monitor/dix#gex), where I first learnt of this concept. There's a lot of research out there on Gamma Exposure for S&P500, but not much about Asian indices. Hence, when I started learning R, I decided to put my skills to the test and developed a similar Gamma Exposure for the Nikkei 225 index.
