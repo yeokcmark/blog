@@ -21,4 +21,9 @@ output:
     toc: true
     toc_depth: 6
     toc_float: true
+collections:
+  posts:
+    categories: true
+    categories_metadata: false
+    authors_metadata: false
 

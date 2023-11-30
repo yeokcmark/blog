@@ -13,7 +13,7 @@
       "title": "maRk's blog blah blah",
       "author": [],
       "contents": "\r\n Welcome! And thank you for stopping by. This blog was created using Distill for R Markdown and written entirely in R Studio. Hopefully, it will be a growing showcase of all projects related to R which I embark on.\r\n\r\n\r\n\r\n",
-      "last_modified": "2023-11-30T17:49:00+08:00"
+      "last_modified": "2023-11-30T23:50:04+08:00"
     },
     {
       "path": "nikkei225.html",
@@ -21,7 +21,7 @@
       "description": "Gamma Exposure Profile\n",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2023-11-30T17:47:23+08:00"
+      "last_modified": "2023-11-30T23:50:10+08:00"
     }
   ],
   "collections": ["posts/posts.json"]

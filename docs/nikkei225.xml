@@ -7,14 +7,25 @@
     <description>hey there, thanks for dropping by...
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Tue, 28 Nov 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 30 Nov 2023 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Nikkei 225 Option Report 2023-11-30</title>
+      <dc:creator>Mark Y</dc:creator>
+      <link>https://yeokcmark.netlify.app/posts/2023-11-30-nikkei-225-option-report-2023-11-30</link>
+      <description>Nikkei 225 Option Report 2023-11-30</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-11-30-nikkei-225-option-report-2023-11-30</guid>
+      <pubDate>Thu, 30 Nov 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-11-30-nikkei-225-option-report-2023-11-30/nikkei-225-option-report-2023-11-30_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
     <item>
       <title>Nikkei 225 Option Report 2023-11-29</title>
       <dc:creator>Mark Y</dc:creator>
       <link>https://yeokcmark.netlify.app/posts/2023-11-29-nikkei-225-option-report-2023-11-29</link>
       <description>Nikkei 225 Option Report 2023-11-29</description>
       <guid>https://yeokcmark.netlify.app/posts/2023-11-29-nikkei-225-option-report-2023-11-29</guid>
-      <pubDate>Tue, 28 Nov 2023 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 29 Nov 2023 00:00:00 +0000</pubDate>
       <media:content url="https://yeokcmark.netlify.app/posts/2023-11-29-nikkei-225-option-report-2023-11-29/nikkei-225-option-report-2023-11-29_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
   </channel>
