@@ -12,8 +12,8 @@
       "path": "index.html",
       "title": "&quot;maRk's blog&quot;",
       "author": [],
-      "contents": "\r\nthis is the index page, why isnt anything showing up\r\nnow lets apply a theme….\r\n\r\n\r\n\r\n",
-      "last_modified": "2023-11-30T10:52:57+08:00"
+      "contents": "\r\n\r\nthis is the index page, why isnt anything showing up\r\nnow lets apply a theme…. an orange footer\r\n\r\n\r\n\r\n",
+      "last_modified": "2023-11-30T10:57:56+08:00"
     }
   ],
   "collections": ["posts/posts.json"]

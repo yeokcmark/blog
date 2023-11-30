@@ -2196,7 +2196,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     --aside-size:      12px;
     --fig-cap-size:    13px;
     /*-- Main font colors --*/
-    --title-color:     #000000;
+    --title-color:     rgba(0, 0, 0, 0.8);
     --header-color:    rgba(0, 0, 0, 0.8);
     --body-color:      rgba(0, 0, 0, 0.8);
     --aside-color:     rgba(0, 0, 0, 0.6);
@@ -2234,23 +2234,25 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   /* These properties only apply to Distill sites and blogs  */
 
   .distill-site-header {
-    --title-size:       18px;
-    --text-color:       rgba(255, 255, 255, 0.8);
-    --text-size:        15px;
-    --hover-color:      white;
-    --bkgd-color:       #0F2E3D;
+    --title-size:       32px;
+    --text-color:       #fefef9; /*tufte off-white*/
+    --text-size:        18px;
+    --hover-color:      #0F2E3D; /*distill blue*/
+    --bkgd-color:       #F84B30; /*burnt orange*/
   }
 
   .distill-site-footer {
     --text-color:       rgba(255, 255, 255, 0.8);
-    --text-size:        15px;
-    --hover-color:      white;
-    --bkgd-color:       #0F2E3D;
+    --text-size:        24px;
+    --hover-color:      #F84B30; /*burnt orange*/
+    --bkgd-color:       #0F2E3D; /*distill blue*/
   }
 
   /*-- Additional custom styles --*/
   /* Add any additional CSS rules below                      */
-  </style>
+  body {
+    background: #fefef9; /*tufte off-white*/
+  }</style>
   <style type="text/css">
   /* base style */
 
@@ -2618,8 +2620,9 @@ reading what we have to say!</p>
 
 
 <div class="d-article">
-<p>this is the index page, why isnt anything showing up
-now lets apply a theme….</p>
+<p><br><br><br><br><br><br>
+this is the index page, why isnt anything showing up
+now lets apply a theme…. an orange footer</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
