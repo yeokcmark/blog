@@ -34,7 +34,7 @@ rm(list = ls())
 pacman::p_load(tidyverse, lubridate,glue, forcats, knitr, rmarkdown,
                scales, gridExtra, ggthemes, ggrepel, cowplot, magick, plotrix, 
                patchwork, hexbin,
-               data.table, styler, DT,
+               data.table, styler, DT, blogdown,
                quantmod, bizdays, roptions, #plotly,
                gtrendsR,rvest, Rcrawler, RCurl, httr2, crul, jsonlite, RSelenium, httr,
                mapdata, maps, ggmap,
@@ -51,8 +51,8 @@ sessionInfo()
 
 # Import Data ----
 # download daily open interest ----
-download_date <- #"20231129"
-  format(today(), "%Y%m%d")
+download_date <- "20231130"
+#  format(today(), "%Y%m%d")
 URL <- glue("https://www.jpx.co.jp/english/markets/derivatives/trading-volume/tvdivq00000014nn-att/{download_date}open_interest_e.xlsx")
 file_name <- glue("{download_date}open_interest_e.xlsx")
 GET(URL, write_disk(file_name, overwrite=TRUE))
@@ -268,6 +268,7 @@ d %>%
 
 p_call_put_gamma <-
   d %>% 
+  filter(CallGEX !=0 | PutGEX !=0) %>% 
   ggplot()+
   geom_col(aes(x = strike,
                y = CallGEX),
@@ -281,8 +282,8 @@ p_call_put_gamma <-
              linetype = "longdash",
              color = "darkgreen")+
   scale_x_continuous(name = "Price",
-                     limits = c(spot_price-3500, spot_price+2500),
-                     breaks = c(30000+500*1:20),
+                     limits = c(min(d$strike), max(d$strike)),
+                     breaks = c(min(d$strike)+500*1:floor((max(d$strike)-min(d$strike))/500)),
                      labels = label_number(suffix = "K",
                                            scale = 1e-3)
   )+
@@ -296,8 +297,15 @@ p_call_put_gamma <-
 
 ### Create plots for daily traded option volume----
 # near month
+
+d_near_volume <-
+  d_near %>% 
+  select(strike, volume.x, volume.y) %>% 
+  filter(volume.x >100 | volume.y >100) # arbitary set at 100 for dynamic x axis
+
 p_opt_volume_near <-
-  ggplot(data = d_near) + 
+  d_near_volume %>% 
+  ggplot() + 
   geom_col(aes(x = strike, # plotting for calls (x)
                y = volume.x),
            fill = "blue",
@@ -311,8 +319,8 @@ p_opt_volume_near <-
              linetype = "longdash",
              color = "darkgreen")+
   scale_x_continuous(name = "strike",
-                     limits = c(20000, 38000),
-                     breaks = c(20000+1000*1:20),
+                     limits = c(min(d_near_volume$strike), max(d_near_volume$strike)),
+                     breaks = c(min(d_near_volume$strike)+500*1:floor((max(d_near_volume$strike)-min(d_near_volume$strike))/500)),
                      labels = label_number(suffix = "K",
                                            scale = 1e-3))+
   scale_y_continuous(name = "volume")+
@@ -329,8 +337,15 @@ p_opt_volume_near <-
               x = 28000,
               y = -2000)
 # far month
+
+d_far_volume <-
+  d_far %>% 
+  select(strike, volume.x, volume.y) %>% 
+  filter(volume.x >50 | volume.y >50)
+
 p_opt_volume_far <-
-  ggplot(data = d_far) + 
+  d_far_volume %>% 
+  ggplot() + 
   geom_col(aes(x = strike, # plotting for calls (x)
                y = volume.x),
            fill = "blue",
@@ -344,8 +359,8 @@ p_opt_volume_far <-
              linetype = "longdash",
              color = "darkgreen")+
   scale_x_continuous(name = "strike",
-                     limits = c(20000, 38000),
-                     breaks = c(20000+1000*1:20),
+                     limits = c(min(d_far_volume$strike), max(d_far_volume$strike)),
+                     breaks = c(min(d_far_volume$strike)+500*1:floor((max(d_far_volume$strike)-min(d_far_volume$strike))/500)),
                      labels = label_number(suffix = "K",
                                            scale = 1e-3))+
   scale_y_continuous(name = "volume")+
@@ -356,7 +371,7 @@ p_opt_volume_far <-
   geom_label(label = "Calls", #label calls
              color = "blue",
              x = 37000,
-             y = 1000)+
+             y = 500)+
   geom_label (label = "Puts",
               color = "red",
               x = 28000,
@@ -365,8 +380,15 @@ p_opt_volume_far <-
 
 ### Create plots for daily change in open interest----
 # near month
+
+d_near_oic <-
+  d_near %>% 
+  select(strike, OI_change.x, OI_change.y) %>% 
+  filter(OI_change.x !=0 | OI_change.y !=0) 
+
 p_opt_change_OI_near <-
-  ggplot(data = d_near) + 
+  d_near_oic %>% 
+  ggplot() + 
   geom_col(aes(x = strike, # plotting for calls (x)
                y = OI_change.x),
            fill = "blue",
@@ -380,8 +402,8 @@ p_opt_change_OI_near <-
              linetype = "longdash",
              color = "darkgreen")+
   scale_x_continuous(name = "strike",
-                     limits = c(20000, 38000),
-                     breaks = c(20000+1000*1:20),
+                     limits = c(min(d_near_oic$strike), max(d_near_oic$strike)),
+                     breaks = c(min(d_near_oic$strike)+1000*1:floor((max(d_near_oic$strike)-min(d_near_oic$strike))/1000)),
                      labels = label_number(suffix = "K",
                                            scale = 1e-3))+
   scale_y_continuous(name = "volume")+
@@ -397,8 +419,15 @@ p_opt_change_OI_near <-
               x = 28000,
               y = 200)
 # far month
+
+d_far_oic <-
+  d_far %>% 
+  select(strike, OI_change.x, OI_change.y) %>% 
+  filter(OI_change.x !=0 | OI_change.y !=0) 
+
 p_opt_change_OI_far <-
-  ggplot(data = d_far) + 
+  d_far_oic %>% 
+  ggplot() + 
   geom_col(aes(x = strike, # plotting for calls (x)
                y = OI_change.x),
            fill = "blue",
@@ -412,8 +441,8 @@ p_opt_change_OI_far <-
              linetype = "longdash",
              color = "darkgreen")+
   scale_x_continuous(name = "strike",
-                     limits = c(20000, 38000),
-                     breaks = c(20000+1000*1:20),
+                     limits = c(min(d_far_oic$strike), max(d_far_oic$strike)),
+                     breaks = c(min(d_far_oic$strike)+1000*1:floor((max(d_far_oic$strike)-min(d_far_oic$strike))/1000)),
                      labels = label_number(suffix = "K",
                                            scale = 1e-3))+
   scale_y_continuous(name = "volume")+
@@ -431,8 +460,16 @@ p_opt_change_OI_far <-
 
 ### Create plots for daily total open interest----
 # near month
+
+d_near_toi <-
+  d_near %>% 
+  select(strike, OI_current.x, OI_current.y) %>% 
+  filter(OI_current.x >500 | OI_current.y >500) # arbitary set at 500 for dynamic x axis
+
+
 p_opt_OI_current_near <-
-  ggplot(data = d_near) + 
+  d_near_toi %>% 
+  ggplot() + 
   geom_col(aes(x = strike, # plotting for calls (x)
                y = OI_current.x),
            fill = "blue",
@@ -446,8 +483,8 @@ p_opt_OI_current_near <-
              linetype = "longdash",
              color = "darkgreen")+
   scale_x_continuous(name = "strike",
-                     limits = c(20000, 38000),
-                     breaks = c(20000+1000*1:20),
+                     limits = c(min(d_near_toi$strike), max(d_near_toi$strike)),
+                     breaks = c(min(d_near_toi$strike)+1000*1:floor((max(d_near_toi$strike)-min(d_near_toi$strike))/1000)),
                      labels = label_number(suffix = "K",
                                            scale = 1e-3))+
   scale_y_continuous(name = "volume")+
@@ -464,8 +501,16 @@ p_opt_OI_current_near <-
               x = 28000,
               y = -10000)
 # far month
+
+d_far_toi <-
+  d_far %>% 
+  select(strike, OI_current.x, OI_current.y) %>% 
+  filter(OI_current.x >500 | OI_current.y >500) # arbitary set at 500 for dynamic x axis
+
+
 p_opt_OI_current_far <-
-  ggplot(data = d_far) + 
+  d_far_toi %>% 
+  ggplot() + 
   geom_col(aes(x = strike, # plotting for calls (x)
                y = OI_current.x),
            fill = "blue",
@@ -479,8 +524,8 @@ p_opt_OI_current_far <-
              linetype = "longdash",
              color = "darkgreen")+
   scale_x_continuous(name = "strike",
-                     limits = c(20000, 38000),
-                     breaks = c(20000+1000*1:20),
+                     limits = c(24000, max(d_far_toi$strike)),
+                     breaks = c(23000+1000*1:floor((max(d_far_toi$strike)-min(d_far_toi$strike))/1000)),
                      labels = label_number(suffix = "K",
                                            scale = 1e-3))+
   scale_y_continuous(name = "volume")+
@@ -496,8 +541,6 @@ p_opt_OI_current_far <-
               color = "red",
               x = 28000,
               y = -4000)
-
-
 
 
 ### Here comes the challeging part.
@@ -592,8 +635,8 @@ p_total_gamma<-
             nudge_y = 5e10
             )+
   scale_x_continuous(name = "Price",
-                     limits = c(31750, spot_price+2500),
-                     breaks = c(30000+500*1:20),
+                     limits = c(spot_price-6000, spot_price+5000),
+                     breaks = c(spot_price-6000+500*1:20),
                      labels = label_number(suffix = "K",
                                            scale = 1e-3)
                    )+
@@ -620,13 +663,13 @@ p_total_gamma<-
 
 Date: `r {p_date}` Contract: Dec 2023\
 
-```{r warning=FALSE}
+```{r, layout="l-body-outset", warning=FALSE}
 p_opt_volume_near
 ```
 
 Contract: Jan & Feb 2024\
 
-```{r warning=FALSE}
+```{r, layout="l-body-outset", warning=FALSE}
 p_opt_volume_far
 ```
 
@@ -634,13 +677,13 @@ p_opt_volume_far
 
 Date: `r {p_date}`Contract: Dec 2023\
 
-```{r warning=FALSE}
+```{r, layout="l-body-outset", warning=FALSE}
 p_opt_OI_current_near
 ```
 
 Contract: Jan and Feb 2024\
 
-```{r warning=FALSE}
+```{r, layout="l-body-outset", warning=FALSE}
 p_opt_OI_current_far
 ```
 
@@ -648,13 +691,13 @@ p_opt_OI_current_far
 
 Date: `r {p_date}` Contract: Dec 2023\
 
-```{r warning=FALSE}
+```{r, layout="l-body-outset", warning=FALSE}
 p_opt_change_OI_near
 ```
 
 Contract: Jan and Feb 2024\
 
-```{r warning=FALSE}
+```{r, layout="l-body-outset", warning=FALSE}
 p_opt_change_OI_far
 ```
 
@@ -663,7 +706,7 @@ p_opt_change_OI_far
 Date: `r {p_date}`\
 Nikkei 225 Closing Price: `r {spot_price}`\
 
-```{r warning=FALSE}
+```{r, layout="l-body-outset", warning=FALSE}
 p_call_put_gamma
 ```
 
@@ -672,6 +715,6 @@ p_call_put_gamma
 Date: `r {p_date}`\
 Nikkei 225 Closing Price: `r {spot_price}`\
 
-```{r warning=FALSE, preview = TRUE}
+```{r, layout="l-body-outset", warning=FALSE, preview = TRUE}
 p_total_gamma
 ```
