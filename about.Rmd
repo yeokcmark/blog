@@ -20,7 +20,7 @@ Why R? Everyone seemed to be talking about python, so I decided to go "against t
 
 ### A little about me
 
-![](images/HANDSTAND.png){width="15%"}
+<center>![](images/HANDSTAND.png){width="15%"}</center>
 
 I'm approaching 50, so if I can learn R, it's proof that you can teach an old dog new tricks! Wooof! I graduated from an Ivy-League university some 30 years ago, and have a bit of programming background in Java and HTML. My work experience has been in tourism, hotel development, and finance.
 
