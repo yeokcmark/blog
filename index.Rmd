@@ -1,6 +1,7 @@
 ---
 title: "maRk's blog"
 description:
+site: distill::distill_website
 ---
 
 <center>![](images/me.jpg){width="30%"}</center>
