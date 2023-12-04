@@ -1,6 +1,8 @@
 ---
 title: "maRk's blog"
 description: |
+  something something...
+
 ---
 
 ```{r setup, include=FALSE}
