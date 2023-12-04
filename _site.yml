@@ -12,6 +12,8 @@ navbar:
       href: index.html
     - text: "Nikkei225"
       href: nikkei225.html
+    - text: "Whatsapp Chat Analysis"
+      href: whatsapp.html
     - text: "About"
       href: about.html
     - icon: fab fa-github
