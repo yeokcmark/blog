@@ -121,8 +121,11 @@ p_trading_participant <-
            aes(y = -volume,
                x = strike),
            fill = "red") +
-  facet_wrap(~ participant_name, 
-             ncol = 2)
+  facet_wrap(~ factor(participant_name, c("ABN AMRO Clearing Tokyo",
+                                          "Societe Generale Securities Japan",
+                                          "Goldman Sachs Japan",
+                                          "Morgan Stanley MUFG Securities")),
+             nrow = 2)
   
   
 ```

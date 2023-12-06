@@ -1,7 +1,7 @@
 ---
-title: "Trading Participant Volume 2023-12-04"
+title: "Trading Participant Volume 2023-12-06"
 description: |
-date: 2023-12-04
+date: 2023-12-06
 categories:
   - nikkei225
   - options
@@ -43,20 +43,20 @@ sessionInfo()
 
 # Import Data ----
 # download daily day session regular market ----
-download_date <- "20231204"
+download_date <- "20231206"
 #  format(today(), "%Y%m%d")
-URL <- glue("https://www.jpx.co.jp/english/markets/derivatives/participant-volume/o4sio7000000346f-att/{download_date}_volume_by_participant_whole_day.xlsx")
+#URL <- glue("https://www.jpx.co.jp/english/markets/derivatives/participant-volume/o4sio7000000346f-att/{download_date}_volume_by_participant_whole_day.xlsx")
 file_name <- glue("{download_date}_volume_by_participant_whole_day.xlsx")
-GET(URL, write_disk(file_name, overwrite=TRUE))
+#GET(URL, write_disk(file_name, overwrite=TRUE))
 
 data <- read_excel(file_name,
                    sheet = "手口上位一覧",
                    skip = 5)
 names(data)
 # download daily day session J-NET market ----
-URL1 <-glue("https://www.jpx.co.jp/english/markets/derivatives/participant-volume/o4sio7000000346f-att/{download_date}_volume_by_participant_whole_day_J-NET.xlsx")
-file_name1 <- glue("{download_date}__volume_by_participant_whole_day_J-NET.xlsx")
-GET(URL1, write_disk(file_name1, overwrite=TRUE))
+#URL1 <-glue("https://www.jpx.co.jp/english/markets/derivatives/participant-volume/o4sio7000000346f-att/{download_date}_volume_by_participant_whole_day_J-NET.xlsx")
+file_name1 <- glue("{download_date}_volume_by_participant_whole_day_J-NET.xlsx")
+#GET(URL1, write_disk(file_name1, overwrite=TRUE))
 data1 <- read_excel(file_name1,
                  sheet = "手口上位一覧",
                  skip = 5)
@@ -129,7 +129,7 @@ p_trading_participant <-
   
   
 ```
+
 ```{r, layout="l-body-outset", echo = FALSE}
 p_trading_participant
 ```
-
