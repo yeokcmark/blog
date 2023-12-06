@@ -21,13 +21,13 @@
       "description": "Gamma Exposure Profile\n",
       "author": [],
       "contents": "\r\nGamma Exposure\r\nWhat’s Gamma Exposure? Also known as “dollar gamma”, Gamma Exposure measures the price sensitivity of a portfolio of options (in this case, we are trying to estimate the dealer’s book of Nikkei 225 options) to changes in the price of the underlying security (Nikkei 225 futures).\r\nA “how-to” or “step by step” article might be written soon, but meanwhile, credit goes to Sergei Perfiliev and Squeeze Metrics, where I first learnt of this concept. There’s a lot of research out there on Gamma Exposure for S&P500, but not much about Asian indices. Hence, when I started learning R, I decided to put my skills to the test and developed a similar Gamma Exposure for the Nikkei 225 index.\r\n\r\n\r\n\r\n",
-      "last_modified": "2023-12-05T20:23:16+08:00"
+      "last_modified": "2023-12-06T11:54:52+08:00"
     },
     {
       "path": "README.html",
       "author": [],
       "contents": "\r\n\r\nContents\r\nblog\r\n\r\nblog\r\nlets make a change and see if it updates\r\n\r\n\r\n",
-      "last_modified": "2023-12-05T20:23:16+08:00"
+      "last_modified": "2023-12-06T11:54:53+08:00"
     },
     {
       "path": "README2.html",
