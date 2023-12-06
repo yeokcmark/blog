@@ -125,9 +125,15 @@ p_trading_participant <-
                                           "Societe Generale Securities Japan",
                                           "Goldman Sachs Japan",
                                           "Morgan Stanley MUFG Securities")),
-             nrow = 2)
-  
-  
+             nrow = 2) +
+  labs(title = "Total Options Volume Traded by Market Participant",
+       subtitle = "Top row: Designated Market Makers. Bottom row: Prominent Trading Firms",
+       caption = "Blue: Calls; Red:Puts. Put volume plotted on negative Y axis. Volume represents total volume traded at each strike.\nThere is no information whether options were sold or purchased.")+
+  theme(plot.title = element_text(size = rel(0.8)),
+        plot.subtitle = element_text(size = rel(0.7)),
+        plot.caption = element_text(size = rel(0.6)),
+        axis.text.y = element_text(size = rel(0.5)),
+        axis.text.x = element_text(angle = 45, size = rel(0.5)))
 ```
 
 ```{r, layout="l-body-outset", echo = FALSE}
