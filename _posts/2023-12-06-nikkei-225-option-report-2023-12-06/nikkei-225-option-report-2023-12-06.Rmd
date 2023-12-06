@@ -1,7 +1,8 @@
 ---
 title: "Nikkei 225 Option Report 2023-12-06"
 description: |
-  A short description of the post.
+  Japan's Nikkei share average rose sharply on Wednesday, erasing losses from the previous three sessions as investors bought back beaten-down chip-related stocks. The Nikkei index jumped 2.04% to close at 33,445.90, posting its biggest daily gains since Nov. 15. The broader Topix rose 1.9% to 2,387.20.
+  
 date: 2023-12-06
 categories:
   - nikkei225
