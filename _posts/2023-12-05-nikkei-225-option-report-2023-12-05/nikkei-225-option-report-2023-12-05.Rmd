@@ -1,9 +1,8 @@
 ---
 title: "Nikkei 225 Option Report 2023-12-05"
 description: |
+  Japan's Nikkei share average touched a three-week low on Tuesday, as an overnight rise in U.S. Treasury yields drove a heavy sell-off in Advantest and other chip-related stocks. "Investors unwound high-technology stocks in today's session. Those shares had been bought amid declines of U.S. yields," said Naoki Fujiwara, senior fund manager at Shinkin Asset Management. Most of the Nikkei's top percentage losers were chip-related, with Advantest losing 5.41%, Tokyo Electron falling 3.5% and Screen Holdings slipping 4.5%. Renesas Electronics lost 4.55%. The broader Topix slipped 0.74% to 2,345.22. (Reporting from Reuters)
 
-author:
-  - name: Mark Y
 date: 2023-12-04
 categories:
   - nikkei225
@@ -52,20 +51,20 @@ sessionInfo()
 
 # Import Data ----
 # download daily open interest ----
-download_date <-
-  format(today(), "%Y%m%d")
-URL <- glue("https://www.jpx.co.jp/english/markets/derivatives/trading-volume/tvdivq00000014nn-att/{download_date}open_interest_e.xlsx")
+download_date <- "20231205"
+#  format(today(), "%Y%m%d")
+#URL <- glue("https://www.jpx.co.jp/english/markets/derivatives/trading-volume/tvdivq00000014nn-att/{download_date}open_interest_e.xlsx")
 file_name <- glue("{download_date}open_interest_e.xlsx")
-GET(URL, write_disk(file_name, overwrite=TRUE))
+#GET(URL, write_disk(file_name, overwrite=TRUE))
 
 data <- read_excel(file_name,
                    sheet = "Attachment1",
                    skip = 4)
 names(data)
 # download daily option theoretical price ----
-URL1 <-glue("https://www.jpx.co.jp/english/markets/derivatives/option-price/data/ose{download_date}tp.zip")
+#URL1 <-glue("https://www.jpx.co.jp/english/markets/derivatives/option-price/data/ose{download_date}tp.zip")
 file_name1 <- glue("ose{download_date}tp.zip")
-GET(URL1, write_disk(file_name1, overwrite=TRUE))
+#GET(URL1, write_disk(file_name1, overwrite=TRUE))
 d1 <- unzip(file_name1)
 data1 <- read_csv(d1, col_names = F)
 
@@ -266,7 +265,6 @@ d %>%
              linetype = "longdash",
              color = "darkgreen")
 
-
 p_call_put_gamma <-
   d %>% 
   filter(CallGEX !=0 | PutGEX !=0) %>% 
@@ -282,24 +280,23 @@ p_call_put_gamma <-
   geom_vline(xintercept = spot_price,
              linetype = "longdash",
              color = "darkgreen")+
-  scale_x_continuous(name = "Price",
-                     limits = c(min(d$strike), max(d$strike)),
-                     breaks = c(min(d$strike)+500*1:floor((max(d$strike)-min(d$strike))/500)),
+  scale_x_continuous(name = "strike",
+                     limits = c(round(from_strike*1.1), round(to_strike*0.9)),
+                     breaks = seq(from = round(from_strike*1.1), to = round(to_strike*0.9), by = 250),
                      labels = label_number(suffix = "K",
-                                           scale = 1e-3)
-  )+
+                                           scale = 1e-3))+
+    theme(legend.text = element_text(size = rel(0.6)),
+        legend.title = element_text(size = rel(0.6)),
+        plot.title = element_text(size = rel(0.9)),
+        plot.subtitle = element_text(size = rel(0.8)),
+        axis.text.y = element_text(size = rel(0.5)),
+        axis.text.x = element_text(angle = 45, size = rel(0.5)))+
   scale_y_continuous(name = "Spot Gamma Exposure ($M Yen/1% move)",
                      labels = label_number(suffix = "M",
                                            scale = 1e-6)
   ) +
   labs(title = "Spot Gamma Exposure ($M Yen/1% move)",
-       subtitle = glue("Nikkei 225 {p_date}, Spot Price: {spot_price}")
-       )+
-  theme(legend.text = element_text(size = rel(0.6)),
-        legend.title = element_text(size = rel(0.6)),
-        plot.title = element_text(size = rel(0.9)),
-        plot.subtitle = element_text(size = rel(0.8)),
-        axis.text = element_text(size = rel(0.5)))
+       subtitle = glue("Nikkei 225 {p_date}, Spot Price: {spot_price}"))
 
 
 ### Create plots for daily traded option volume----
@@ -326,8 +323,8 @@ p_opt_volume_near <-
              linetype = "longdash",
              color = "darkgreen")+
   scale_x_continuous(name = "strike",
-                     limits = c(28000, max(d_near_volume$strike)),
-                     breaks = c(27500+500*1:floor((max(d_near_volume$strike)-28000)/500)),
+                     limits = c(round(from_strike*1.1), round(to_strike*0.9)),
+                     breaks = seq(from = round(from_strike*1.1), to = round(to_strike*0.9), by = 250),
                      labels = label_number(suffix = "K",
                                            scale = 1e-3))+
   scale_y_continuous(name = "volume")+
@@ -339,7 +336,8 @@ p_opt_volume_near <-
         legend.title = element_text(size = rel(0.6)),
         plot.title = element_text(size = rel(0.9)),
         plot.subtitle = element_text(size = rel(0.8)),
-        axis.text = element_text(size = rel(0.5)))+
+        axis.text.y = element_text(size = rel(0.5)),
+        axis.text.x = element_text(angle = 45, size = rel(0.5)))+
   geom_label(label = "Calls", #label calls
              color = "blue",
              x = 36000,
@@ -371,20 +369,21 @@ p_opt_volume_far <-
              linetype = "longdash",
              color = "darkgreen")+
   scale_x_continuous(name = "strike",
-                     limits = c(25000, max(d_far_volume$strike)),
-                     breaks = c(24500+500*1:floor((max(d_far_volume$strike)-min(d_far_volume$strike))/500)),
+                     limits = c(round(from_strike*1.1), round(to_strike*0.9)),
+                     breaks = seq(from = round(from_strike*1.1), to = round(to_strike*0.9), by = 250),
                      labels = label_number(suffix = "K",
                                            scale = 1e-3))+
+    theme(legend.text = element_text(size = rel(0.6)),
+        legend.title = element_text(size = rel(0.6)),
+        plot.title = element_text(size = rel(0.9)),
+        plot.subtitle = element_text(size = rel(0.8)),
+        axis.text.y = element_text(size = rel(0.5)),
+        axis.text.x = element_text(angle = 45, size = rel(0.5)))+
   scale_y_continuous(name = "volume")+
   labs(title = glue("Nikkei 225 Options Daily Traded Volume - {p_date}"),
        subtitle = glue("Non-Front Month Contracts, Spot Price: {spot_price}"),
        caption = "Put volume is plotted on negative y-axis"
   )+
-  theme(legend.text = element_text(size = rel(0.6)),
-        legend.title = element_text(size = rel(0.6)),
-        plot.title = element_text(size = rel(0.9)),
-        plot.subtitle = element_text(size = rel(0.8)),
-        axis.text = element_text(size = rel(0.5)))+
   geom_label(label = "Calls", #label calls
              color = "blue",
              x = 37000,
@@ -419,19 +418,20 @@ p_opt_change_OI_near <-
              linetype = "longdash",
              color = "darkgreen")+
   scale_x_continuous(name = "strike",
-                     limits = c(25000, max(d_near_oic$strike)),
-                     breaks = c(24500+500*1:floor((max(d_near_oic$strike)-25000)/500)),
+                     limits = c(round(from_strike*1.1), round(to_strike*0.9)),
+                     breaks = seq(from = round(from_strike*1.1), to = round(to_strike*0.9), by = 250),
                      labels = label_number(suffix = "K",
                                            scale = 1e-3))+
+    theme(legend.text = element_text(size = rel(0.6)),
+        legend.title = element_text(size = rel(0.6)),
+        plot.title = element_text(size = rel(0.9)),
+        plot.subtitle = element_text(size = rel(0.8)),
+        axis.text.y = element_text(size = rel(0.5)),
+        axis.text.x = element_text(angle = 45, size = rel(0.5)))+
   scale_y_continuous(name = "volume")+
   labs(title = glue("Nikkei 225 Options Daily Change in Open Interest - {p_date}"),
        subtitle = glue("Contract: Dec 2023, Spot Price: {spot_price}")
   )+
-  theme(legend.text = element_text(size = rel(0.6)),
-        legend.title = element_text(size = rel(0.6)),
-        plot.title = element_text(size = rel(0.9)),
-        plot.subtitle = element_text(size = rel(0.8)),
-        axis.text = element_text(size = rel(0.5)))+
   geom_label(label = "Calls", #label calls
              color = "blue",
              x = 36000,
@@ -463,19 +463,20 @@ p_opt_change_OI_far <-
              linetype = "longdash",
              color = "darkgreen")+
   scale_x_continuous(name = "strike",
-                     limits = c(25000, max(d_far_oic$strike)),
-                     breaks = c(24500+500*1:floor((max(d_far_oic$strike)-25000)/500)),
+                     limits = c(round(from_strike), round(to_strike)),
+                     breaks = seq(from = round(from_strike), to = round(to_strike), by = 250),
                      labels = label_number(suffix = "K",
                                            scale = 1e-3))+
+    theme(legend.text = element_text(size = rel(0.6)),
+        legend.title = element_text(size = rel(0.6)),
+        plot.title = element_text(size = rel(0.9)),
+        plot.subtitle = element_text(size = rel(0.8)),
+        axis.text.y = element_text(size = rel(0.5)),
+        axis.text.x = element_text(angle = 45, size = rel(0.5)))+
   scale_y_continuous(name = "volume")+
   labs(title = glue("Nikkei 225 Options Daily Change in Open Interest - {p_date}"),
        subtitle = glue("Non-Front Month Contracts, Spot Price: {spot_price}")
   )+
-  theme(legend.text = element_text(size = rel(0.6)),
-        legend.title = element_text(size = rel(0.6)),
-        plot.title = element_text(size = rel(0.9)),
-        plot.subtitle = element_text(size = rel(0.8)),
-        axis.text = element_text(size = rel(0.5)))+
   geom_label(label = "Calls", #label calls
              color = "blue",
              x = 37000,
@@ -510,20 +511,21 @@ p_opt_OI_current_near <-
              linetype = "longdash",
              color = "darkgreen")+
   scale_x_continuous(name = "strike",
-                     limits = c(min(d_near_toi$strike), max(d_near_toi$strike)),
-                     breaks = c(min(d_near_toi$strike)+1000*1:floor((max(d_near_toi$strike)-min(d_near_toi$strike))/1000)),
+                     limits = c(10000, 40000),
+                     breaks = seq(from = 10000, to = 40000, by = 500),
                      labels = label_number(suffix = "K",
                                            scale = 1e-3))+
+    theme(legend.text = element_text(size = rel(0.6)),
+        legend.title = element_text(size = rel(0.6)),
+        plot.title = element_text(size = rel(0.9)),
+        plot.subtitle = element_text(size = rel(0.8)),
+        axis.text.y = element_text(size = rel(0.5)),
+        axis.text.x = element_text(angle = 45, size = rel(0.5)))+
   scale_y_continuous(name = "volume")+
   labs(title = glue("Nikkei 225 Options Daily Open Interest - {p_date}"),
        subtitle = glue("Contract: Dec 2023, Spot Price: {spot_price}"),
        caption = "Put volume is plotted on negative y-axis"
   )+
-  theme(legend.text = element_text(size = rel(0.6)),
-        legend.title = element_text(size = rel(0.6)),
-        plot.title = element_text(size = rel(0.9)),
-        plot.subtitle = element_text(size = rel(0.8)),
-        axis.text = element_text(size = rel(0.5)))+
   geom_label(label = "Calls", #label calls
              color = "blue",
              x = 36000,
@@ -556,20 +558,21 @@ p_opt_OI_current_far <-
              linetype = "longdash",
              color = "darkgreen")+
   scale_x_continuous(name = "strike",
-                     limits = c(24000, max(d_far_toi$strike)),
-                     breaks = c(23000+1000*1:floor((max(d_far_toi$strike)-min(d_far_toi$strike))/1000)),
+                     limits = c(20000, 40000),
+                     breaks = seq(from = 20000, to = 40000, by = 500),
                      labels = label_number(suffix = "K",
                                            scale = 1e-3))+
+    theme(legend.text = element_text(size = rel(0.6)),
+        legend.title = element_text(size = rel(0.6)),
+        plot.title = element_text(size = rel(0.9)),
+        plot.subtitle = element_text(size = rel(0.8)),
+        axis.text.y = element_text(size = rel(0.5)),
+        axis.text.x = element_text(angle = 45, size = rel(0.5)))+
   scale_y_continuous(name = "volume")+
   labs(title = glue("Nikkei 225 Options Daily Open Interest - {p_date}"),
        subtitle = glue("Non-Front Month Contracts, Spot Price: {spot_price}"),
        caption = "Put volume is plotted on negative y-axis"
   )+
-  theme(legend.text = element_text(size = rel(0.6)),
-        legend.title = element_text(size = rel(0.6)),
-        plot.title = element_text(size = rel(0.9)),
-        plot.subtitle = element_text(size = rel(0.8)),
-        axis.text = element_text(size = rel(0.5)))+
   geom_label(label = "Calls", #label calls
              color = "blue",
              x = 37000,
@@ -677,6 +680,12 @@ p_total_gamma<-
                      labels = label_number(suffix = "K",
                                            scale = 1e-3)
                    )+
+      theme(legend.text = element_text(size = rel(0.6)),
+        legend.title = element_text(size = rel(0.6)),
+        plot.title = element_text(size = rel(0.9)),
+        plot.subtitle = element_text(size = rel(0.8)),
+        axis.text.y = element_text(size = rel(0.5)),
+        axis.text.x = element_text(angle = 45, size = rel(0.5)))+
   scale_y_continuous(name = "Gamma Exposure ($M Yen/1% move)",
                      labels = label_number(suffix = "M",
                                            scale = 1e-6)
@@ -689,12 +698,7 @@ p_total_gamma<-
                     ymin = min(total_gamma),ymax = max(total_gamma), 
                     alpha = 0.1, fill = "red")+
   labs(title = glue("Gamma Exposure Profile"),
-       subtitle = glue("Nikkei 225 {p_date}, Spot Price: {spot_price}"))+
-  theme(legend.text = element_text(size = rel(0.6)),
-        legend.title = element_text(size = rel(0.6)),
-        plot.title = element_text(size = rel(0.9)),
-        plot.subtitle = element_text(size = rel(0.8)),
-        axis.text = element_text(size = rel(0.5)))
+       subtitle = glue("Nikkei 225 {p_date}, Spot Price: {spot_price}"))
 
 
 #ggplotly(p_total_gamma)
