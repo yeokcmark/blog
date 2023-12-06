@@ -24,7 +24,7 @@
   {
     "path": "posts/2023-12-04-nikkei-225-option-report-2023-12-04/",
     "title": "Nikkei 225 Option Report 2023-12-04",
-    "description": {},
+    "description": "Japan's Nikkei share average sank to a nearly three-week low on Monday as a stronger yen dented the earnings outlook for the nation's exporters, with automakers leading declines. The Nikkei closed down 0.6% at 33,231.27 after earlier sliding as much as 1.22% to reach 33,023.04 for the first time since Nov. 14. The broader Topix slumped 0.83%. (Reporting from Reuters)",
     "author": [
       {
         "name": "Mark Y",
@@ -36,9 +36,9 @@
       "nikkei225",
       "options"
     ],
-    "contents": "\r\n\r\nContents\r\nTraded Volume:\r\nOpen Interest:\r\nChange in Open Interest:\r\nSpot Gamma Exposure:\r\nGamma Exposure Profile\r\n\r\nTraded Volume:\r\nDate: 2023-12-05 Contract: Dec 2023\r\n\r\n\r\n\r\nContract: Jan & Feb 2024\r\n\r\n\r\n\r\nOpen Interest:\r\nDate: 2023-12-05Contract: Dec 2023\r\n\r\n\r\n\r\nContract: Jan and Feb 2024\r\n\r\n\r\n\r\nChange in Open Interest:\r\nDate: 2023-12-05 Contract: Dec 2023\r\n\r\n\r\n\r\nContract: Jan and Feb 2024\r\n\r\n\r\n\r\nSpot Gamma Exposure:\r\nDate: 2023-12-05\r\nNikkei 225 Closing Price: 3.2776^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile\r\nDate: 2023-12-05\r\nNikkei 225 Closing Price: 3.2776^{4}\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+    "contents": "\r\n\r\nContents\r\nTraded Volume:\r\nOpen Interest:\r\nChange in Open Interest:\r\nSpot Gamma Exposure:\r\nGamma Exposure Profile\r\n\r\nTraded Volume:\r\nDate: 2023-12-04 Contract: Dec 2023\r\n\r\n\r\n\r\nContract: Jan & Feb 2024\r\n\r\n\r\n\r\nOpen Interest:\r\nDate: 2023-12-04Contract: Dec 2023\r\n\r\n\r\n\r\nContract: Jan and Feb 2024\r\n\r\n\r\n\r\nChange in Open Interest:\r\nDate: 2023-12-04 Contract: Dec 2023\r\n\r\n\r\n\r\nContract: Jan and Feb 2024\r\n\r\n\r\n\r\nSpot Gamma Exposure:\r\nDate: 2023-12-04\r\nNikkei 225 Closing Price: 3.3231^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile\r\nDate: 2023-12-04\r\nNikkei 225 Closing Price: 3.3231^{4}\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/2023-12-04-nikkei-225-option-report-2023-12-04/nikkei-225-option-report-2023-12-04_files/figure-html5/unnamed-chunk-9-1.png",
-    "last_modified": "2023-12-05T20:31:35+08:00",
+    "last_modified": "2023-12-06T08:29:56+08:00",
     "input_file": "nikkei-225-option-report-2023-12-04.knit.md",
     "preview_width": 1248,
     "preview_height": 768
