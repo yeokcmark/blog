@@ -6,6 +6,10 @@ site: distill::distill_website
 toc: false
 listing: posts
 ---
+<br>
+
+<center><FONT COLOR="#ff0000">SCROLL DOWN FOR DAILY POST ON GAMMA EXPOSURE PROFILE</FONT></center>
+
 
 ### Introduction
 
