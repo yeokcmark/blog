@@ -35,7 +35,7 @@ pacman::p_load(tidyverse, lubridate,glue, forcats, knitr, rmarkdown,
                scales, gridExtra, ggthemes, ggrepel, cowplot, magick, plotrix, 
                patchwork, hexbin,
                data.table, styler, DT, blogdown,
-               quantmod, bizdays, roptions, #plotly,
+               quantmod, bizdays, roptions, plotly,
                gtrendsR,rvest, Rcrawler, RCurl, httr2, crul, jsonlite, RSelenium, httr,
                mapdata, maps, ggmap,
                tidytext, wordcloud2, igraph, ggraph, textdata, tm, haven, readxl,
@@ -340,12 +340,12 @@ p_opt_volume_near <-
         axis.text.x = element_text(angle = 45, size = rel(0.5)))+
   geom_label(label = "Calls", #label calls
              color = "blue",
-             x = 36000,
-             y = 2500)+
+             x = spot_price + 1000,
+             y = 1000)+
   geom_label (label = "Puts",
               color = "red",
-              x = 28000,
-              y = -2000)
+              x = spot_price - 1000,
+              y = - 1000)
 # far month
 
 d_far_volume <-
@@ -386,11 +386,11 @@ p_opt_volume_far <-
   )+
   geom_label(label = "Calls", #label calls
              color = "blue",
-             x = 37000,
-             y = 500)+
+             x = spot_price + 1000,
+             y = 1000)+
   geom_label (label = "Puts",
               color = "red",
-              x = 28000,
+              x = spot_price - 1000,
               y = -1000)
 
 
@@ -434,11 +434,11 @@ p_opt_change_OI_near <-
   )+
   geom_label(label = "Calls", #label calls
              color = "blue",
-             x = 36000,
+             x = spot_price +1000,
              y = 200)+
   geom_label (label = "Puts",
               color = "red",
-              x = 28000,
+              x = spot_price - 1000,
               y = 200)
 # far month
 
@@ -479,11 +479,11 @@ p_opt_change_OI_far <-
   )+
   geom_label(label = "Calls", #label calls
              color = "blue",
-             x = 37000,
+             x = spot_price + 1000,
              y = 400)+
   geom_label (label = "Puts",
               color = "red",
-              x = 28000,
+              x = spot_price - 1000,
               y = 400)
 
 ### Create plots for daily total open interest----
@@ -528,11 +528,11 @@ p_opt_OI_current_near <-
   )+
   geom_label(label = "Calls", #label calls
              color = "blue",
-             x = 36000,
+             x = spot_price +1000,
              y = 10000)+
   geom_label (label = "Puts",
               color = "red",
-              x = 28000,
+              x = spot_price - 1000,
               y = -10000)
 # far month
 
@@ -575,11 +575,11 @@ p_opt_OI_current_far <-
   )+
   geom_label(label = "Calls", #label calls
              color = "blue",
-             x = 37000,
+             x = spot_price + 1000,
              y = 4000)+
   geom_label (label = "Puts",
               color = "red",
-              x = 28000,
+              x = spot_price - 1000,
               y = -4000)
 
 
@@ -633,16 +633,28 @@ for (level in spot_price_levels) {
 df_gamma <- data.frame(spot_price_levels, total_gamma, total_gamma_ex_front)
 
 ### Find where gamma flip occurs ie: when gamma goes from positive to negative ----
-# Find Gamma Flip Point
+# Find Gamma Flip Point for total gamma
 zero_cross <- which(diff(sign(df_gamma$total_gamma)) != 0)
 
 neg_gamma <- df_gamma$total_gamma[zero_cross]
 pos_gamma <- df_gamma$total_gamma[zero_cross+1]
-neg_strike = df_gamma$spot_price_levels[zero_cross]
-pos_strike = df_gamma$spot_price_levels[zero_cross+1]
+neg_strike <- df_gamma$spot_price_levels[zero_cross]
+pos_strike <- df_gamma$spot_price_levels[zero_cross+1]
 
-zero_gamma = pos_strike - ((pos_strike - neg_strike) * pos_gamma/(pos_gamma-neg_gamma))
+zero_gamma <- pos_strike - ((pos_strike - neg_strike) * pos_gamma/(pos_gamma-neg_gamma))
 
+# Find gamma flip point for total gamma ex front month
+
+zero_cross_back <-which(diff(sign(df_gamma$total_gamma_ex_front)) !=0)
+
+neg_gamma_back <- df_gamma$total_gamma_ex_front[zero_cross_back]
+pos_gamma_back <- df_gamma$total_gamma_ex_front[zero_cross_back+1]
+neg_strike_back <- df_gamma$spot_price_levels[zero_cross_back]
+pos_strike_back <- df_gamma$spot_price_levels[zero_cross_back+1]
+
+zero_gamma_back <- pos_strike_back - ((pos_strike_back - neg_strike_back) * pos_gamma_back/(pos_gamma_back-neg_gamma_back))
+
+# plot for total gamma exposure (all months)
 p_total_gamma<-
   df_gamma %>% 
   ggplot(aes(x = spot_price_levels)
@@ -701,6 +713,69 @@ p_total_gamma<-
        subtitle = glue("Nikkei 225 {p_date}, Spot Price: {spot_price}"))
 
 
+# Plot for total gamma back month
+
+
+p_total_gamma_back<-
+  df_gamma %>% 
+  ggplot(aes(x = spot_price_levels)
+         )+
+  geom_line(aes(y = total_gamma_ex_front),
+            color = "blue"
+            )+
+  geom_vline(xintercept = spot_price,
+             linetype = "longdash",
+             color = "darkgreen")+
+  geom_text(aes(x = spot_price,
+                y = 0),
+            label = round(spot_price, digits = 0),
+            color = "black",
+            size = 3,
+            nudge_x = 400,
+            nudge_y = 5e10)+
+  geom_vline(xintercept = zero_gamma_back,
+             linetype = "dotdash",
+             color = "red")+
+  geom_point(aes(x = max(zero_gamma_back),
+                 y = 0),
+             color = "red"
+             )+
+  geom_text(aes(x = max(zero_gamma_back),
+                y = 0),
+            label = round(max(zero_gamma_back), digits = 0),
+            size = 3,
+            nudge_x = -400,
+            nudge_y = 5e10
+            )+
+  scale_x_continuous(name = "Price",
+                     limits = c(from_strike, to_strike),
+                     breaks = seq(from = from_strike, to = to_strike, by = 1000),
+                     labels = label_number(suffix = "K",
+                                           scale = 1e-3)
+                   )+
+      theme(legend.text = element_text(size = rel(0.6)),
+        legend.title = element_text(size = rel(0.6)),
+        plot.title = element_text(size = rel(0.9)),
+        plot.subtitle = element_text(size = rel(0.8)),
+        axis.text.y = element_text(size = rel(0.5)),
+        axis.text.x = element_text(angle = 45, size = rel(0.5)))+
+  scale_y_continuous(name = "Gamma Exposure ($M Yen/1% move)",
+                     labels = label_number(suffix = "M",
+                                           scale = 1e-6)
+                     ) +
+  geom_hline(yintercept = 0)+
+  ggplot2::annotate("rect", xmin = max(zero_gamma_back), xmax = Inf,
+                    ymin = min(total_gamma_ex_front),ymax = max(total_gamma_ex_front), 
+                    alpha = 0.1, fill = "green") +
+  ggplot2::annotate("rect", xmin = -Inf, xmax = max(zero_gamma_back),
+                    ymin = min(total_gamma_ex_front),ymax = max(total_gamma_ex_front), 
+                    alpha = 0.1, fill = "red")+
+  labs(title = glue("Gamma Exposure Profile - Excluding Front Month Options"),
+       subtitle = glue("Nikkei 225 {p_date}, Spot Price: {spot_price}"))
+
+
+
+
 #ggplotly(p_total_gamma)
 
 ```
@@ -756,12 +831,24 @@ Nikkei 225 Closing Price: `r {spot_price}`\
 p_call_put_gamma
 ```
 
-### Gamma Exposure Profile
+### Gamma Exposure Profile (All Months)
 
 Date: `r {p_date}`\
 Nikkei 225 Closing Price: `r {spot_price}`\
 
 ```{r, layout="l-body-outset", warning=FALSE, preview = TRUE}
 p_total_gamma
+```
+
+### Gamma Exposure Profile (Excluding Front Month)
+
+Date: `r {p_date}`\
+Nikkei 225 Closing Price: `r {spot_price}`\
+
+```{r, layout="l-body-outset", warning=FALSE, preview = TRUE}
+p_total_gamma_back
+```
+```{r, layout="l-body-outset", warning=FALSE, preview = TRUE}
+ggplotly(p_total_gamma)
 ```
 
