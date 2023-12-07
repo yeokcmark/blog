@@ -6,4 +6,14 @@ site: distill::distill_website
 
 <center>![](images/me.jpg){width="30%"}</center>
 
-Welcome! And thank you for stopping by. This blog was created using [Distill for R Markdown](https://rstudio.github.io/distill/) and written entirely in R Studio. Hopefully, it will be a growing showcase of all projects related to R which I embark on.
+Welcome! And thank you for stopping by. This blog was created using [Distill for R Markdown](https://rstudio.github.io/distill/) and written entirely in R Studio. Hopefully, it will be a growing showcase of all projects related to R which I embark on. <br> <br>
+
+<center>
+
+Number of visitors since inception:
+
+<p>
+
+<a href="https://www.freecounterstat.com" title="hit counter widget"><img src="https://counter7.optistats.ovh/private/freecounterstat.php?c=n2knm64z231g5qgwelaxsr8z6x8m7ykp" title="hit counter widget" alt="hit counter widget" border="0"/></a>
+
+</center>
