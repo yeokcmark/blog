@@ -1,0 +1,49 @@
+---
+title: "How to calculate Gamma Exposure Profile"
+description: |
+  This is a work in progress. Do check back as there will be frequent updates.
+---
+
+### Introduction
+
+What happens in the options market strongly influences the behavior of the underlying asset. Market-making firms quote two-sided markets (ie: they provide liquidity on the bid and ask) and need to constantly delta-hedge their position to minimize any directional risks that they might have. (ie: maintain delta neutral portfolio) If all this sounds greek to you, well, that's because it is. Here's a primer on [option greeks](https://www.investopedia.com/trading/getting-to-know-the-greeks/#:~:text=Option%20Greeks%20are%20financial%20metrics,price%20of%20the%20underlying%20asset.).
+
+In options trading, delta hedging is defined as the process of buying or selling shares (or futures in this case) in the underlying asset to reduce the directional risk (meaning you do not want to be long or short in delta terms) of the portfolio as price changes. The number of shares (or futures) to buy or sell depends on the price movement of the underlying asset, in this case the Nikkei 225 index.
+
+### Why is this important?
+
+Gamma shows the potential amount of delta-hedging activity by the market making firms. It's a source of one of the most significant structural flows in the equity markets and it is non-discretionary. Market makers need to hedge regardless of market liquidity. In the Nikkei225, the top market making firm in the options market is ABN AMRO Clearing Tokyo, followed by Societe Generale Securities Japan (in terms of volume). Here is a list of appointed [market makers](https://www.jpx.co.jp/english/derivatives/rules/market-maker/tvdivq0000003l9t-att/b5b4pj0000015gia.pdf) in JPX. As of the date of publishing this article, it appears that ABN AMRO is more active in the options market, hence we will try and monitor its activities more closely.
+
+Due to its nature, Gamma can exacerbate how the market moves, and that is largely dependent on how market makers are positioned. If the market maker is "long gamma" (ie: on net they are long options), they tend to be sellers when markets rally, and buyers when markets drop, thus dampening volatility. Generally, if you are net long options, you are gamma positive. If you are a net seller of options, you are short gamma.
+
+The basic assumption in our calculation is that market-makers are short puts and long calls. The basis of this assumption is that you, as as investor, tend to buy puts for protection, and sell calls for yield. Hence, the market maker's book is opposite to yours. This assumption seems rudimentary (because it is!), but it would suffice for the purpose of this article. I do have more sophisticated algorithms to monitor if "bids are hit" or "offers are lifted" to provide a better guess if the market-maker bought or sold an option.
+
+Figuring out the book of ABN AMRO Clearing Tokyo is not a trivial task. Its probably impossible, but we can make educated guesses. But take heed, all we are doing is guess-work. Fortunately for us, JPX releases several pieces of information on its website, for FREE. Our job is to parse these releases, and hopefully glean some insights to guide our trading activities. Here's where R comes in.
+
+At the end of each trading day, JPX releases 3 reports on its website (I'm sure there are more reports released, but these are the 3 that we're most interested in):
+
+-   [Today's Trading Overview](https://www.jpx.co.jp/english/markets/derivatives/trading-volume/index.html), which details the "Derivative Open Interest" for all products traded, including the Nikkei 225. From this report, we are able to obtain the trading volume, change in open interest, and current/previous day open interest for every Nikkei 225 options contract traded that day. This report is released at 2000 hrs every business day.
+
+-   [Option Theoretical Price](https://www.jpx.co.jp/english/markets/derivatives/option-price/index.html), which provides us information on the theoretical price and volatility of every option listed, based on the day's closing price of the underlying asset. No time of release indicated, but its available at 2000 hrs when I download "Today's Trading Overview".
+
+-   [Trading Volume by Trading Participant](https://www.jpx.co.jp/english/markets/derivatives/participant-volume/index.html), which gives us information on total trading activity of call and put options by trading participants for about 10 call and 10 put strikes, spanning approximately 1250 points. This information is provided only for the front-month contract. It's important to note here that the information is total trading activity, and not net position. For example: If the information tells you that XYZ Firm traded 1000 contracts in the Dec 23 33500 call, the firm could possibly have bought 500 contracts and sold 500 contracts within the trading day, giving it a net position of 0. This report is released at 1715 every business day.
+
+Additionally, Monday at 1530, JPX releases a report on [Open Interest by Trading Participants](https://www.jpx.co.jp/english/markets/derivatives/open-interest/index.html) for the previous trading week. Now this report contains some real gems! Unfortunately, its not available daily, and it is quite delayed (by one week!). Nevertheless, it gives you a glimpse into the book for each trading participant. But, it only provides information on the front-month contract, and for only 5 call and 5 put strikes. 😡
+
+That's quite a bit of clues given to us for FREE by JPX. Thank you JPX. Parsing this information manually in Excel (even with the use of macros) used to take me about an hour each day. Thanks to R, the process now takes 5 minutes. And that includes generating plots, and updates to the website.
+
+Getting back to the concept of "Gamma Exposure". How you decide to parse the available information to "guesstimate" the market maker's book is up to you, but the base assumption I've made is that the market-maker is short put and long calls. Depending on their net book, ABN AMRO Clearing Tokyo could be short or long gamma. Generally, you are short gamma (theta positive) when you are nett short options, and you are long gamma when you are nett long options. Many factors influence the gamma of an option, such as volatility of the underlying asset, and time to expiration.
+
+### Gamma Exposure
+
+What's Gamma Exposure? Also known as "dollar gamma", Gamma Exposure measures the price sensitivity of a portfolio of options (in this case, we are trying to estimate the market maker's book of Nikkei 225 options) to changes in the price of the underlying security (Nikkei 225 futures).
+
+A "how-to" or "step by step" article might be written soon, but meanwhile, let's take a minute to credit [Sergei Perfiliev](https://perfiliev.co.uk/market-commentary/how-to-calculate-gamma-exposure-and-zero-gamma-level/) and [Squeeze Metrics](https://squeezemetrics.com/monitor/dix#gex), where I first learnt of this concept.
+
+Getting back to Gamma Exposure. As the market moves, there is a price point where market maker's gamma exposure "flips" from positive to negative (or negative to positive). If the market maker's book is in positive gamma territory, market's tend to be calm and volatility tends to be low. Rallies are sold, and dips are bought by the market maker (as long as they stay within positive gamma). However, when the market maker's book flips to negative gamma, that's when it starts to get exciting.
+
+When a market maker's book is negative gamma, expect delta hedging flows in the direction of market moves. Meaning selling as the market falls, and buying back as the market bounces. These flows tend to amplify already market moves, leading to increased volatility.
+
+There's a lot of research out there on Gamma Exposure for S&P500, but not much about Asian indices. Hence, when I started learning R, I decided to put my skills to the test and developed a similar Gamma Exposure Profile for the Nikkei 225 index.
+
+This is a work in progress, meaning you will (hopefully) see the quality of my posts get better as my skills in R improve. Thank you for reading!

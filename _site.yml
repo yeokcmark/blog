@@ -11,13 +11,19 @@ navbar:
     - text: "Home"
       href: index.html
     - text: "Nikkei225"
-      href: nikkei225.html
+      menu:
+        - text: "How to calculate Gamma Exposure Profile"
+          href: calculate_gamma_exposure_profile_nikkei225.html
+        - text: "Daily Market Updates"
+          href: nikkei225.html
     - text: "Whatsapp Chat Analysis"
       href: whatsapp.html
     - text: "About"
       href: about.html
     - icon: fab fa-github
       href: https://github.com/yeokcmark
+    - icon: fab fa-twitter
+      href: https://twitter.com/yeokcmark_mark
 output:
   distill::distill_article:
     css: theme.css

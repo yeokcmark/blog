@@ -2582,11 +2582,24 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <div class="nav-right">
 <a href="index.html">Home</a>
-<a href="nikkei225.html">Nikkei225</a>
+<div class="nav-dropdown">
+<button class="nav-dropbtn">
+Nikkei225
+ 
+<span class="down-arrow">&#x25BE;</span>
+</button>
+<div class="nav-dropdown-content">
+<a href="calculate_gamma_exposure_profile_nikkei225.html">How to calculate Gamma Exposure Profile</a>
+<a href="nikkei225.html">Daily Market Updates</a>
+</div>
+</div>
 <a href="whatsapp.html">Whatsapp Chat Analysis</a>
 <a href="about.html">About</a>
 <a href="https://github.com/yeokcmark">
 <i class="fab fa-github" aria-hidden="true"></i>
+</a>
+<a href="https://twitter.com/yeokcmark_mark">
+<i class="fab fa-twitter" aria-hidden="true"></i>
 </a>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
 </div>
@@ -2925,29 +2938,8 @@ function init_posts_list() {
 <div class="d-article">
 <p><br></p>
 <center>
-<FONT COLOR="#ff0000">SCROLL DOWN FOR DAILY POST ON GAMMA EXPOSURE PROFILE</FONT>
+<FONT COLOR="#ff0000">Check <a href="calculate_gamma_exposure_profile_nikkei225.html">here</a> for the article on “How to calculate Gamma Exposure Profile”</FONT>
 </center>
-<h3 id="introduction">Introduction</h3>
-<p>What happens in the options market strongly influences the behavior of the underlying asset. Market-making firms quote two-sided markets (ie: they provide liquidity on the bid and ask) and need to constantly delta-hedge their position to minimize any directional risks that they might have. (ie: maintain delta neutral portfolio) If all this sounds greek to you, well, that’s because it is. Here’s a primer on <a href="https://www.investopedia.com/trading/getting-to-know-the-greeks/#:~:text=Option%20Greeks%20are%20financial%20metrics,price%20of%20the%20underlying%20asset.">option greeks</a>.</p>
-<p>In options trading, delta hedging is defined as the process of buying or selling shares (or futures in this case) in the underlying asset to reduce the directional risk (meaning you do not want to be long or short in delta terms) of the portfolio as price changes. The number of shares (or futures) to buy or sell depends on the price movement of the underlying asset, in this case the Nikkei 225 index.</p>
-<h3 id="why-is-this-important">Why is this important?</h3>
-<p>Gamma shows the potential amount of delta-hedging activity by the market making firms. It’s a source of one of the most significant structural flows in the equity markets and it is non-discretionary. Market makers need to hedge regardless of market liquidity. In the Nikkei225, the top market making firm in the options market is ABN AMRO Clearing Tokyo followed by Societe Generale Securities Japan (in terms of volume). Here is a list of appointed <a href="https://www.jpx.co.jp/english/derivatives/rules/market-maker/tvdivq0000003l9t-att/b5b4pj0000015gia.pdf">market makers</a> in JPX.</p>
-<p>Due to its nature, Gamma can exacerbate how the market moves, and that is largely dependent on how market makers are positioned. If the market maker is “long gamma” (ie: on net they are long options), they tend to be sellers when markets rally, and buyers when markets drop, thus dampening volatility. Generally, if you are net long options, you are gamma positive. If you are a net seller of options, you are short gamma.</p>
-<p>The assumption in our calculation is that market-makers are short puts and long calls. The basis of this assumption is that you, as as investor, tends to buy puts for protection, and sell calls for yield. Hence, the market maker’s book is opposite to yours.</p>
-<p>Figuring out the book of ABN AMRO Clearing Tokyo is not a trivial task. Its probably impossibe, but we can make educated guesses. Every evening, at around 2000 hrs, JPX releases 2 reports on its website.</p>
-<ul>
-<li><p><a href="https://www.jpx.co.jp/english/markets/derivatives/trading-volume/index.html">Today’s Trading Overview</a>, which details the “Derivative Open Interest” for all products traded, Nikkei 225 include, and</p></li>
-<li><p><a href="https://www.jpx.co.jp/english/markets/derivatives/participant-volume/index.html">Trading Volume by Trading Participant</a>, which gives us information on net buying/selling of call and put options by trading members in option contracts within 750 points of the previous closing price, for the front month contract.</p></li>
-</ul>
-<p>Additionally, every weekend, JPX releases a report on <a href="https://www.jpx.co.jp/english/markets/derivatives/open-interest/index.html">Open Interest by Trading Participants</a>.</p>
-<p>That’s quite a bit of clues given to us for FREE by JPX. Thank you JPX. How you decide to parse that information to figure out the market maker’s book is up to you, but the base assumption I’ve made is that the market-maker is short put and long calls. Depending on their net book, ABN AMRO Clearing Tokyo could be short or long gamma. This is where the concept of Gamma Exposure comes in.</p>
-<h3 id="gamma-exposure">Gamma Exposure</h3>
-<p>What’s Gamma Exposure? Also known as “dollar gamma”, Gamma Exposure measures the price sensitivity of a portfolio of options (in this case, we are trying to estimate the market maker’s book of Nikkei 225 options) to changes in the price of the underlying security (Nikkei 225 futures).</p>
-<p>A “how-to” or “step by step” article might be written soon, but meanwhile, let’s take a minute to credit <a href="https://perfiliev.co.uk/market-commentary/how-to-calculate-gamma-exposure-and-zero-gamma-level/">Sergei Perfiliev</a> and <a href="https://squeezemetrics.com/monitor/dix#gex">Squeeze Metrics</a>, where I first learnt of this concept.</p>
-<p>Getting back to Gamma Exposure. As the market moves, there is a price point where market maker’s gamma exposure “flips” from positive to negative (or negative to positive). If the market maker’s book is in positive gamma territory, market’s tend to be calm and volatility tends to be low. Rallies are sold, and dips are bought by the market maker (as long as they stay within positive gamma). However, when the market maker’s book flips to negative gamma, that’s when it starts to get exciting.</p>
-<p>When a market maker’s book is negative gamma, expect delta hedging flows in the direction of market moves. Meaning selling as the market falls, and buying back as the market bounces. These flows tend to amplify already market moves, leading to increased volatility.</p>
-<p>There’s a lot of research out there on Gamma Exposure for S&amp;P500, but not much about Asian indices. Hence, when I started learning R, I decided to put my skills to the test and developed a similar Gamma Exposure Profile for the Nikkei 225 index.</p>
-<p>This is a work in progress, meaning you will (hopefully) see the quality of my posts get better as my skills in R improve. Thank you for reading!</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
