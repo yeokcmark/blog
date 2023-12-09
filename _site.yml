@@ -6,6 +6,7 @@ description: |
 citations: false
 base_url: https://yeokcmark.netlify.app/
 output_dir: "docs"
+google_analytics: "G-6K2395F6YC"
 navbar:
   right:
     - text: "Home"
