@@ -74,7 +74,7 @@ hat <-
 
 plot_window <- tibble(
   x = c(-4, 4),
-  y = c(0, 13.5)
+  y = c(0, 12.5)
 )
 
 snow <- tibble(
@@ -121,7 +121,8 @@ p_snowman <-
                    y = y),
                fill = "dodgerblue")+
   theme(panel.background = element_rect(fill = "#fefef9"),
-        panel.grid.major = element_blank())+
+        panel.grid.major = element_blank(),
+        plot.background = element_rect(fill = "#fefef9"))+
   geom_point(data=snow, aes(group=id, x = x, y = y), 
              colour="#a3a3a3", shape=8, size=3) +
   transition_time(id)+
