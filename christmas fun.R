@@ -1,35 +1,28 @@
----
-title: "maRk's blog"
-description:
-site: distill::distill_website
----
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6K2395F6YC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+# Remove all objects in workspace ----
+rm(list = ls())
+#setwd("C:/Users/User/Dropbox/Papa Work/Data Science/R/SMU/Readings")
 
-  gtag('config', 'G-6K2395F6YC');
-</script>
+# Please import necessary libraries ----
+#pacman::p_unload("all")
 
-<center>![](images/me.jpg){width="30%"}</center>
-
-Welcome! And thank you for stopping by. This blog was created using [Distill for R Markdown](https://rstudio.github.io/distill/) and written entirely in R Studio. Hopefully, it will be a growing showcase of all projects related to R which I embark on. <br> <br>
-
-<center>
-
-Number of visitors since inception:
-
-<p>
-
-<a href="https://www.freecounterstat.com" title="hit counter widget"><img src="https://counter7.optistats.ovh/private/freecounterstat.php?c=n2knm64z231g5qgwelaxsr8z6x8m7ykp" title="hit counter widget" alt="hit counter widget" border="0"/></a>
-<p>
-This site is hosted FREE by Netlify.
-
-```{r, echo = FALSE}
-pacman::p_load(tidyverse, ggforce, gganimate
+#### Set up dependencies (Activate necessary packages) ----
+pacman::p_load(tidyverse, lubridate,glue, forcats, knitr, rmarkdown,
+               scales, gridExtra, ggthemes, ggrepel, cowplot, magick, plotrix, 
+               patchwork, hexbin,
+               data.table, styler, DT, blogdown,
+               quantmod, bizdays, roptions, plotly,
+               gtrendsR,rvest, Rcrawler, RCurl, httr2, crul, jsonlite, RSelenium, httr,
+               mapdata, maps, ggmap,
+               tidytext, wordcloud2, igraph, ggraph, textdata, tm, haven, readxl,
+               jtools, huxtable, broom, modelr, skimr, psych, Hmisc, texreg, GGally,
+               randomForest, gvlma, ggfortify, sandwich, car, ggstance, broom.mixed,
+               interactions, distill, ggforce, gganimate
 )
+
+
+theme_set(theme_economist())
+sessionInfo()
+
 body <- 
   tibble(x = c(0,0,0),
          r = c(1,2,3), 
@@ -127,6 +120,6 @@ p_snowman <-
   transition_time(id)+
   coord_fixed()
 p_snowman
-```
 
-</center>
+
+
