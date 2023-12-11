@@ -7,7 +7,17 @@
     <description>my jouRney in R
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Fri, 08 Dec 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 11 Dec 2023 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Nikkei 225 Open Interest by Trading Participant 2023-12-08</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-11-nikkei-225-open-interest-by-trading-participant-08-dec-2023</link>
+      <description>Nikkei 225 Open Interest by Trading Participant 2023-12-08</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-11-nikkei-225-open-interest-by-trading-participant-08-dec-2023</guid>
+      <pubDate>Mon, 11 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-11-nikkei-225-open-interest-by-trading-participant-08-dec-2023/nikkei-225-open-interest-by-trading-participant-08-dec-2023_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
     <item>
       <title>Nikkei 225 Option Report 2023-12-08</title>
       <link>https://yeokcmark.netlify.app/posts/2023-12-08-nikkei-225-option-report-2023-12-08</link>
@@ -98,16 +108,6 @@
       <guid>https://yeokcmark.netlify.app/posts/2023-12-05-nikkei-225-option-report-2023-12-05</guid>
       <pubDate>Mon, 04 Dec 2023 00:00:00 +0000</pubDate>
       <media:content url="https://yeokcmark.netlify.app/posts/2023-12-05-nikkei-225-option-report-2023-12-05/nikkei-225-option-report-2023-12-05_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
-    </item>
-    <item>
-      <title>Trading Participant Volume 2023-12-04</title>
-      <link>https://yeokcmark.netlify.app/posts/2023-12-06-trading-participant-volume-2023-12-04</link>
-      <description>Trading Participant Volume 2023-12-04</description>
-      <category>nikkei225</category>
-      <category>options</category>
-      <guid>https://yeokcmark.netlify.app/posts/2023-12-06-trading-participant-volume-2023-12-04</guid>
-      <pubDate>Mon, 04 Dec 2023 00:00:00 +0000</pubDate>
-      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-06-trading-participant-volume-2023-12-04/trading-participant-volume-2023-12-04_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
   </channel>
 </rss>
