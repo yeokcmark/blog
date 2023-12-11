@@ -13,27 +13,14 @@ site: distill::distill_website
   gtag('config', 'G-6K2395F6YC');
 </script>
 
-<center>![](images/me.jpg){width="30%"}</center>
-
-Welcome! And thank you for stopping by. This blog was created using [Distill for R Markdown](https://rstudio.github.io/distill/) and written entirely in R Studio. Hopefully, it will be a growing showcase of all projects related to R which I embark on. <br> <br>
-
-<center>
-
-Number of visitors since inception:
-
-<p>
-
-<a href="https://www.freecounterstat.com" title="hit counter widget"><img src="https://counter7.optistats.ovh/private/freecounterstat.php?c=n2knm64z231g5qgwelaxsr8z6x8m7ykp" title="hit counter widget" alt="hit counter widget" border="0"/></a>
-<p>
-This site is hosted FREE by Netlify.
 
 ```{r, echo = FALSE}
 pacman::p_load(tidyverse, ggforce, gganimate
 )
 body <- 
-  tibble(x = c(0,0,0),
-         r = c(1,2,3), 
-         y = c(11,8,3)
+  tibble(x = c(0,0),
+         r = c(1,2), 
+         y = c(11,8)
          )
 face <-
   tibble(
@@ -73,8 +60,8 @@ hat <-
 ## Falling snow
 
 plot_window <- tibble(
-  x = c(-4, 4),
-  y = c(0, 12.5)
+  x = c(-2.5, 2.5),
+  y = c(5, 12.5)
 )
 
 snow <- tibble(
@@ -93,7 +80,8 @@ p_snowman <-
   theme_void()+
   geom_circle(data = body, # plot body
               aes(x0 = x, y0 = y, r =r),
-              fill = "#FAF9F6"
+              fill = "#FAF9F6",
+              color = "darkblue"
               )+
   geom_point(data = face, show.legend = FALSE, #plot face
              aes(x = x,
@@ -120,13 +108,31 @@ p_snowman <-
                aes(x = x,
                    y = y),
                fill = "dodgerblue")+
-  theme(panel.background = element_rect(fill = "#fefef9"),
-        panel.grid.major = element_blank(),
-        plot.background = element_rect(fill = "#fefef9"))+
+  theme(#panel.background = element_rect(fill = "#fefef9"),
+        panel.grid.major = element_blank())+
+        #plot.background = element_rect(fill = "#fefef9"))+
   geom_point(data=snow, aes(group=id, x = x, y = y), 
-             colour="#a3a3a3", shape=8, size=3) +
+             colour="#37444f", shape=8, size=3) +
   transition_time(id)+
   coord_fixed()
+
+```
+
+<center>![](images/me.jpg){width="30%"}</center>
+
+Welcome! And thank you for stopping by. This blog was created using [Distill for R Markdown](https://rstudio.github.io/distill/) and written entirely in R Studio. Hopefully, it will be a growing showcase of all projects related to R which I embark on. <br> <br>
+
+<center>
+
+Number of visitors since inception:
+
+<p>
+
+<a href="https://www.freecounterstat.com" title="hit counter widget"><img src="https://counter7.optistats.ovh/private/freecounterstat.php?c=n2knm64z231g5qgwelaxsr8z6x8m7ykp" title="hit counter widget" alt="hit counter widget" border="0"/></a>
+<p>
+This site is hosted FREE by Netlify.
+
+```{r, echo=FALSE}
 p_snowman
 ```
 
