@@ -14,7 +14,7 @@ site: distill::distill_website
 </script>
 
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, warning=FALSE, error=FALSE, include=FALSE}
 pacman::p_load(tidyverse, ggforce, gganimate
 )
 body <- 
@@ -108,12 +108,12 @@ p_snowman <-
                aes(x = x,
                    y = y),
                fill = "dodgerblue")+
-  theme(#panel.background = element_rect(fill = "#fefef9"),
-        panel.grid.major = element_blank())+
-        #plot.background = element_rect(fill = "#fefef9"))+
+  theme(panel.grid.major = element_blank(),
+        plot.caption = element_text(size = rel(0.6)))+
   geom_point(data=snow, aes(group=id, x = x, y = y), 
-             colour="#37444f", shape=8, size=3) +
+             colour="#37444f", shape=8, size=5) +
   transition_time(id)+
+  labs(caption = "Inspired by Dr Mowinckel's Do you wanna build a snowman.\nCheck out her website at https://drmowinckels.io/blog/2019/do-you-wanna-build-a-snowman/")+
   coord_fixed()
 
 ```
@@ -132,7 +132,7 @@ Number of visitors since inception:
 <p>
 This site is hosted FREE by Netlify.
 
-```{r, echo=FALSE}
+```{r, echo = FALSE}
 p_snowman
 ```
 
