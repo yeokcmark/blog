@@ -1,5 +1,39 @@
 [
   {
+    "path": "posts/2023-12-12-nikkei-225-option-report-2023-12-12/",
+    "title": "Nikkei 225 Option Report 2023-12-12",
+    "description": {},
+    "author": [],
+    "date": "2023-12-12",
+    "categories": [
+      "nikkei225",
+      "options"
+    ],
+    "contents": "\r\n\r\nContents\r\nTraded Volume:\r\nOpen Interest:\r\nChange in Open Interest:\r\nSpot Gamma Exposure:\r\nGamma Exposure Profile (All Months)\r\nGamma Exposure Profile (Excluding Front Month)\r\n\r\nTraded Volume:\r\nDate: 2023-12-12 Contract: Jan 2024\r\n\r\n\r\n\r\nContract: Feb & March 2024\r\n\r\n\r\n\r\nOpen Interest:\r\nDate: 2023-12-12Contract: Jan 2024\r\n\r\n\r\n\r\nContract: Feb and March 2024\r\n\r\n\r\n\r\nChange in Open Interest:\r\nDate: 2023-12-12 Contract: Jan 2024\r\n\r\n\r\n\r\nContract: Feb and March 2024\r\n\r\n\r\n\r\nSpot Gamma Exposure:\r\nDate: 2023-12-12\r\nNikkei 225 Closing Price: 3.2844^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (All Months)\r\nDate: 2023-12-12\r\nNikkei 225 Closing Price: 3.2844^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (Excluding Front Month)\r\nDate: 2023-12-12\r\nNikkei 225 Closing Price: 3.2844^{4}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+    "preview": "posts/2023-12-12-nikkei-225-option-report-2023-12-12/nikkei-225-option-report-2023-12-12_files/figure-html5/unnamed-chunk-9-1.png",
+    "last_modified": "2023-12-12T21:19:13+08:00",
+    "input_file": {},
+    "preview_width": 1248,
+    "preview_height": 768
+  },
+  {
+    "path": "posts/2023-12-12-trading-participant-volume-2023-12-12/",
+    "title": "Trading Participant Volume 2023-12-12",
+    "description": {},
+    "author": [],
+    "date": "2023-12-12",
+    "categories": [
+      "nikkei225",
+      "options"
+    ],
+    "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+    "preview": "posts/2023-12-12-trading-participant-volume-2023-12-12/trading-participant-volume-2023-12-12_files/figure-html5/unnamed-chunk-2-1.png",
+    "last_modified": "2023-12-12T16:16:44+08:00",
+    "input_file": {},
+    "preview_width": 1248,
+    "preview_height": 768
+  },
+  {
     "path": "posts/2023-12-11-nikkei-225-open-interest-by-trading-participant-08-dec-2023/",
     "title": "Nikkei 225 Open Interest by Trading Participant 2023-12-08",
     "description": {},
@@ -47,23 +81,6 @@
     "preview": "posts/2023-12-11-trading-participant-volume-2023-12-11/trading-participant-volume-2023-12-11_files/figure-html5/unnamed-chunk-2-1.png",
     "last_modified": "2023-12-11T21:47:02+08:00",
     "input_file": {},
-    "preview_width": 1248,
-    "preview_height": 768
-  },
-  {
-    "path": "posts/2023-12-12-trading-participant-volume-2023-12-12/",
-    "title": "Trading Participant Volume 2023-12-12",
-    "description": {},
-    "author": [],
-    "date": "2023-12-12",
-    "categories": [
-      "nikkei225",
-      "options"
-    ],
-    "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
-    "preview": "posts/2023-12-12-trading-participant-volume-2023-12-12/trading-participant-volume-2023-12-12_files/figure-html5/unnamed-chunk-2-1.png",
-    "last_modified": "2023-12-12T16:16:43+08:00",
-    "input_file": "trading-participant-volume-2023-12-12.knit.md",
     "preview_width": 1248,
     "preview_height": 768
   },
