@@ -7,7 +7,27 @@
     <description>my jouRney in R
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Tue, 12 Dec 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 13 Dec 2023 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Nikkei 225 Option Report 2023-12-13</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-13-nikkei-225-option-report-2023-12-13</link>
+      <description>Nikkei 225 Option Report 2023-12-13</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-13-nikkei-225-option-report-2023-12-13</guid>
+      <pubDate>Wed, 13 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-13-nikkei-225-option-report-2023-12-13/nikkei-225-option-report-2023-12-13_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2023-12-13</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-13-trading-participant-volume-2023-12-13</link>
+      <description>Trading Participant Volume 2023-12-13</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-13-trading-participant-volume-2023-12-13</guid>
+      <pubDate>Wed, 13 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-13-trading-participant-volume-2023-12-13/trading-participant-volume-2023-12-13_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
     <item>
       <title>Nikkei 225 Option Report 2023-12-12</title>
       <link>https://yeokcmark.netlify.app/posts/2023-12-12-nikkei-225-option-report-2023-12-12</link>
@@ -87,26 +107,6 @@
       <guid>https://yeokcmark.netlify.app/posts/2023-12-07-nikkei-225-option-report-2023-12-07</guid>
       <pubDate>Thu, 07 Dec 2023 00:00:00 +0000</pubDate>
       <media:content url="https://yeokcmark.netlify.app/posts/2023-12-07-nikkei-225-option-report-2023-12-07/nikkei-225-option-report-2023-12-07_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
-    </item>
-    <item>
-      <title>Trading Participant Volume 2023-12-07</title>
-      <link>https://yeokcmark.netlify.app/posts/2023-12-07-trading-participant-volume-2023-12-07</link>
-      <description>Trading Participant Volume 2023-12-07</description>
-      <category>nikkei225</category>
-      <category>options</category>
-      <guid>https://yeokcmark.netlify.app/posts/2023-12-07-trading-participant-volume-2023-12-07</guid>
-      <pubDate>Thu, 07 Dec 2023 00:00:00 +0000</pubDate>
-      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-07-trading-participant-volume-2023-12-07/trading-participant-volume-2023-12-07_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
-    </item>
-    <item>
-      <title>Nikkei 225 Option Report 2023-12-06</title>
-      <link>https://yeokcmark.netlify.app/posts/2023-12-06-nikkei-225-option-report-2023-12-06</link>
-      <description>Japan's Nikkei share average rose sharply on Wednesday, erasing losses from the previous three sessions as investors bought back beaten-down chip-related stocks. The Nikkei index jumped 2.04% to close at 33,445.90, posting its biggest daily gains since Nov. 15. The broader Topix rose 1.9% to 2,387.20.</description>
-      <category>nikkei225</category>
-      <category>options</category>
-      <guid>https://yeokcmark.netlify.app/posts/2023-12-06-nikkei-225-option-report-2023-12-06</guid>
-      <pubDate>Wed, 06 Dec 2023 00:00:00 +0000</pubDate>
-      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-06-nikkei-225-option-report-2023-12-06/nikkei-225-option-report-2023-12-06_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
   </channel>
 </rss>
