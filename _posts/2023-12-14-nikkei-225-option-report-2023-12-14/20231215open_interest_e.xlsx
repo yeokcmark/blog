@@ -1,0 +1,2304 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<meta http-equiv="Content-Style-Type"  content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta name="copyright" content=" (C) Japan Exchange Group, Inc." />
+<meta name="description" content="Japan Exchange Group (JPX) offers a one-stop shop for a range of products and services with TSE, OSE, and TOCOM markets at its core, ensuring safe and highly convenient trading venues for all market users." />
+<meta name="keywords" content="Japan Exchange Group,JPX,Tokyo Stock Exchange,Osaka Exchange,TSE,OSE" />
+<meta property="og:title" content="Page Not Found | Japan Exchange Group">
+<meta property="og:type" content="article">
+<meta property="og:description" content="Japan Exchange Group (JPX) provides an integrated financial infrastructure with TSE, OSE, and TOCOM markets at its core.">
+<meta property="og:image" content="https://www.jpx.co.jp/english/common/images/other/b5b4pj000000f2gn-img/ogp.jpg">
+<meta property="og:site_name" content="Japan Exchange Group">
+<link href="/english/common/images/icon/b5b4pj000000ds4y-img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<title>Page Not Found | Japan Exchange Group</title>
+      <link href="/english/common/stylesheets/reset.css" rel="stylesheet" type="text/css" media="all" />
+    
+      <link href="/english/common/stylesheets/layout.css" rel="stylesheet" type="text/css" media="all" />
+    
+      <link href="/english/common/stylesheets/parts.css" rel="stylesheet" type="text/css" media="all" />
+    
+      <link href="/english/common/stylesheets/top-menu.css" rel="stylesheet" type="text/css" media="all" />
+    
+      <link href="/english/common/stylesheets/prettyPhoto.css" rel="stylesheet" type="text/css" media="all" />
+    
+      <link href="/english/common/stylesheets/list_add.css" rel="stylesheet" type="text/css" media="all" />
+    
+      <link href="/english/common/stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
+
+      <link href="/english/common/stylesheets/probo.css" rel="stylesheet" type="text/css" media="all" />
+
+      <link href="/english/common/stylesheets/style_add.css" rel="stylesheet" type="text/css" media="all" />
+
+      <link href="/english/common/stylesheets/lity.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="/english/public/javascripts/jquery.js"></script>
+
+<script type="text/javascript" src="/english/common/javascripts/b5b4pj000002th99-att/lity.js"></script>
+
+<script type="text/javascript" src="/english/common/javascripts/tvdivq0000001ub2-att/link.js"></script>
+
+<script type="text/javascript" src="/english/common/javascripts/b5b4pj0000028erx-att/jquery.bxslider.min.js"></script>
+
+<script type="text/javascript" src="/english/common/javascripts/tvdivq00000032wq-att/heightLine.js"></script>
+
+<script type="text/javascript" src="/english/common/javascripts/b5b4pj000002i696-att/fixed_midashi.js"></script>
+
+<script type="text/javascript" src="/english/common/javascripts/b5b4pj0000028eu4-att/add-action.js"></script>
+
+<script>
+var UA = (function() {
+	var ua = window.navigator.userAgent;
+	var reIeU7 = new RegExp('msie [1-7]\\.');
+	var ieU7flg = ua.toLowerCase().search(reIeU7) > 0 ? true : false;
+	var iphoneflg = ua.toLowerCase().indexOf('iphone') > 0 ? true : false ; 
+	var ipadflg = ua.toLowerCase().indexOf('ipad') > 0 ? true : false ; 
+	var androidflg = ua.toLowerCase().indexOf('android') > 0 ? true : false ;
+	var mobileflg = ua.toLowerCase().indexOf('mobile') > 0 ? true : false
+
+	return {
+		isIeU7 : function() {
+			return ieU7flg;
+		}
+		, isSp : function() {
+			return iphoneflg || ipadflg || androidflg ? true : false;
+		}
+	};
+})();
+</script>
+
+<script src="//cdn1.readspeaker.com/script/6483/webReader/webReader.js?pids=wr&amp;forceAdapter=ioshtml5&amp;disable=translation,lookup" type="text/javascript"></script>
+</head>
+<body id="unique">
+
+<!-- body_prepend -->
+<!-- Google Tag Manager -->
+<link rel="stylesheet" type="text/css" href="/common/stylesheets/cookieconsent_customize.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+<script src="/english/common/javascripts/b5b4pj000002qx89.js"></script>
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MS2WRF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>
+function startGtm() {
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MS2WRF');
+}
+</script>
+<!-- End Google Tag Manager -->
+<div id="wrapper-area">
+  <div id="header-area">
+<div id="header-areaIn">
+<div class="header-menu">
+<ul>
+<li><a href="/english/corporate/about-jpx/access/index.html">Access</a></li>
+<li><a href="/english/corporate/about-jpx/tour/index.html">Visit JPX</a></li>
+<li><a href="/english/contact/index.html">Contact us</a></li>
+</ul>
+</div>
+<div class="header-btn">
+<ul class="language-btn">
+<li><a href="/">Japanese</a></li>
+<li><a href="/chinese/">Chinese</a></li>
+</ul>
+<ul class="fontsize-btn">
+<li>Font Size</li>
+<li><a href="javaScript:void(0)" data-size="small">S</a></li>
+<li class="act"><a href="javaScript:void(0)" data-size="medium">M</a></li>
+<li><a href="javaScript:void(0)" data-size="large">L</a></li>
+</ul>
+<div class="search-btn">
+  <form action="/english/search.html">
+    <input type="text" id="q2" class="search-input" name="q" value="" placeholder="Search">
+    <div class="search-input-btn"><input type="image" src="/english/common/images/other/tvdivq000000klrc-img/btn-search.png" name="" /></div>
+  </form>
+</div>
+</div>
+</div>
+</div>
+
+  <div id="menu-area">
+ <div id="menu-areaIn">
+<p id="site-logo">
+  <a href="/english/">
+    <img class="onlypc" src="/english/common/images/other/tvdivq00000001cx-img/logo_en.gif" width="207" alt="Japan Exchange Group" title="Japan Exchange Group" />
+    <img class="onlysp" src="/english/common/images/other/logo_sp.png" alt="Japan Exchange Group" title="Japan Exchange Group">
+  </a>
+  <a class="onlysp" id="spmenu-open"><img class="onlysp" src="/english/common/images/other/menu_sp.png" alt="Japan Exchange Group" title="Japan Exchange Group"></a>
+</p>
+  
+<div id="main-menu">
+  <div class="search-btn onlysp">
+    <form method="get" name="" id="" action="/english/search.html">
+      <input type="text" id="q2" class="search-input" name="q" value="" placeholder="Search" />
+      <div class="search-input-btn">
+        <input type="image" src="/english/common/images/other/tvdivq000000klrc-img/btn-search.png" name="" value="" />
+      </div>
+    </form>
+  </div>
+	<div id="main-menuIn">
+		
+
+						<h2><a href="/english/news/index.html" data-target="menutvdivq000000vegk">Market News</a></h2>
+
+
+						<h2><a href="/english/markets/index.html" data-target="menutvdivq0000008si7">Data &amp; Statistics</a><span class="onlysp"></span></h2>
+
+
+<div id="menutvdivq0000008si7" class="subsub-menu level-01">
+	<div data-role="scroll-outer">
+		<div data-role="scroll-inner">
+			<ul>
+				
+							<li><a href="/english/markets/equities/index.html" data-target="menutvdivq0000008si7-tvdivq00000095ch" class="arw">Equities</a></li>
+						
+							<li><a href="/english/markets/derivatives/index.html" data-target="menutvdivq0000008si7-tvdivq0000009bvp" class="arw">Derivatives</a></li>
+						
+							<li><a href="/english/markets/indices/index.html" data-target="menutvdivq0000008si7-tvdivq0000009cmx" class="arw">Indices</a></li>
+						
+							<li><a href="/english/markets/derivatives-indices/index.html" data-target="menutvdivq0000008si7-b5b4pj0000047yii" class="arw">Derivatives Indices</a></li>
+						
+							<li><a href="/english/markets/statistics-equities/index.html" data-target="menutvdivq0000008si7-tvdivq0000009cxq" class="arw">Statistics (Equities)</a></li>
+						
+	
+							<li><a href="/english/markets/statistics-derivatives/index.html" data-target="menutvdivq0000008si7-tvdivq0000009dr4" class="arw">Statistics (Derivatives)</a></li>
+						
+	
+							<li><a href="/english/markets/paid-info-equities/index.html" data-target="menutvdivq0000008si7-tvdivq0000009emv" class="arw">Paid Information Services (Equities)</a></li>
+						
+	
+							<li><a href="/english/markets/paid-info-derivatives/index.html" data-target="menutvdivq0000008si7-tvdivq0000009ezd" class="arw">Paid Information Services (Derivatives)</a></li>
+						
+	
+							<li><a href="/english/markets/public/index.html" data-target="menutvdivq0000008si7-tvdivq0000009fgi" class="arw">Documents Available for Public Inspection</a></li>
+						
+							<li><a href="/english/markets/data-catalog/index.html">JPX Data Catalog</a></li>
+						
+							<li><a href="/english/markets/sandbox/index.html">Data Sandboxing Program</a></li>
+						
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+						<div id="menutvdivq0000008si7-tvdivq00000095ch" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/markets/equities/suspended/index.html">Trading Halts</a></li>
+						
+							<li><a href="/english/markets/equities/alerts/index.html">Alerts Regarding Unclear Information</a></li>
+						
+							<li><a href="/english/markets/equities/summary/index.html">Equities Market Summary</a></li>
+						
+							<li><a href="/english/markets/equities/bonds-price/index.html">JGB Base Price</a></li>
+						
+							<li><a href="/english/markets/equities/tostnet/index.html">ToSTNeT Trading Super-Large Lot Execution Information</a></li>
+						
+							<li><a href="/english/markets/equities/off-auction-distro/index.html">Off-Auction Distribution Information</a></li>
+						
+							<li><a href="/english/markets/equities/off-auction-ownshares/index.html">Off-Auction Own Share Repurchase Transaction Information</a></li>
+						
+							<li><a href="/english/markets/equities/ss-reg/index.html">Short Selling Regulation-Information</a></li>
+						
+							<li><a href="/english/markets/equities/margin-daily/index.html">Daily Publication, etc., Concerning Margin Trading</a></li>
+						
+							<li><a href="/english/markets/equities/margin-reg/index.html">Regulatory Measures, etc., Concerning Margin Trading</a></li>
+						
+							<li><a href="/english/markets/equities/foreign/index.html">Overseas Exchanges Information</a></li>
+						
+							<li><a href="/english/markets/equities/rights/index.html">Information on  Treatment of Rights</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+						<div id="menutvdivq0000008si7-tvdivq0000009bvp" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/markets/derivatives/suspended/index.html">Trading Halts</a></li>
+						
+							<li><a href="/english/markets/derivatives/scb-info/index.html">Circuit Breaker Trigger Information</a></li>
+						
+							<li><a href="/english/markets/derivatives/quotes/index.html">Derivatives Quotes</a></li>
+						
+							<li><a href="/english/markets/derivatives/strike-price/index.html">New/Additional Strike Prices</a></li>
+						
+							<li><a href="/english/markets/derivatives/special-quotation/index.html">Final Settlement Prices</a></li>
+						
+							<li><a href="/english/markets/derivatives/option-price/index.html">Option Theoretical Price, etc.</a></li>
+						
+							<li><a href="/english/markets/derivatives/jnet-derivative/index.html">Reference Data for Futures and Options</a></li>
+						
+							<li><a href="/english/markets/derivatives/price-limits/index.html">Price Limits</a></li>
+						
+							<li><a href="/english/markets/derivatives/trading-volume/index.html">Today's Trading Overview</a></li>
+						
+							<li><a href="/english/markets/derivatives/participant-volume/index.html">Trading Volume by Trading Participant</a></li>
+						
+							<li><a href="/english/markets/derivatives/open-interest/index.html">Open Interest by Trading Participant</a></li>
+						
+							<li><a href="/english/markets/derivatives/flexible-options/index.html">Reference Data for Flexible Futures and Options</a></li>
+						
+							<li><a href="/english/markets/derivatives/options-calculator/index.html">Options Calculator</a></li>
+						
+							<li><a href="/english/markets/derivatives/option-chart/index.html">Option Chart (Securities Options)</a></li>
+						
+							<li><a href="/english/markets/derivatives/reference/index.html">Commodity Derivatives Reference</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+						<div id="menutvdivq0000008si7-tvdivq0000009cmx" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/markets/indices/line-up/index.html">Indices Line-up</a></li>
+						
+							<li><a href="/english/markets/indices/topix/index.html">TOPIX</a></li>
+						
+							<li><a href="/english/markets/indices/jpx-prime150/index.html">JPX Prime 150 Index</a></li>
+						
+							<li><a href="/english/markets/indices/jpx-nikkei400/index.html">JPX-Nikkei400 / JPX-Nikkei Mid Small</a></li>
+						
+							<li><a href="/english/markets/indices/carbon-efficient/index.html">S&amp;P/JPX Carbon Efficient Index</a></li>
+						
+							<li><a href="/english/markets/indices/net-zero/index.html">FTSE JPX Net Zero Japan Index Series</a></li>
+						
+							<li><a href="/english/markets/indices/realvalues/index.html">Stock Price Index - Real Time Values</a></li>
+						
+							<li><a href="/english/markets/indices/related/index.html">Related Data</a></li>
+						
+							<li><a href="/english/markets/indices/licence/index.html">License</a></li>
+						
+							<li><a href="/english/markets/indices/governance/index.html">Governance</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+						<div id="menutvdivq0000008si7-b5b4pj0000047yii" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/markets/derivatives-indices/sp-jpx-jgb-vix/index.html">S&amp;P/JPX JGB VIX Index</a></li>
+						
+							<li><a href="/english/markets/derivatives-indices/jpx-jgb-index/index.html">JPX JGB Futures Index Series</a></li>
+						
+							<li><a href="/english/markets/derivatives-indices/nikkei-jpx-commodity-index/index.html">Nikkei-JPX Commodity Index</a></li>
+						
+							<li><a href="/english/markets/derivatives-indices/cds-indices/index.html">Credit Default Swaps (CDS)</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+						<div id="menutvdivq0000008si7-tvdivq0000009cxq" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/markets/statistics-equities/daily/index.html">Daily Report</a></li>
+						
+							<li><a href="/english/markets/statistics-equities/monthly/index.html">Monthly Statistics Report</a></li>
+						
+							<li><a href="/english/markets/statistics-equities/price/index.html">Monthly Quotations</a></li>
+						
+							<li><a href="/english/markets/statistics-equities/margin/index.html">Outstanding Margin Trading , etc.</a></li>
+						
+							<li><a href="/english/markets/statistics-equities/short-selling/index.html">Short Selling Value</a></li>
+						
+							<li><a href="/english/markets/statistics-equities/investor-type/index.html">Trading by Type of Investors</a></li>
+						
+							<li><a href="/english/markets/statistics-equities/program/index.html">Program/Arbitrage Trading</a></li>
+						
+							<li><a href="/english/markets/statistics-equities/misc/index.html">Other Statistics</a></li>
+						
+							<li><a href="/english/markets/statistics-equities/examination/index.html">Other Reports</a></li>
+						
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+					
+		
+						<div id="menutvdivq0000008si7-tvdivq0000009dr4" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/markets/statistics-derivatives/daily/index.html">Daily Report</a></li>
+						
+							<li><a href="/english/markets/statistics-derivatives/trading-volume/index.html">Summary of Statistics</a></li>
+						
+							<li><a href="/english/markets/statistics-derivatives/monthly-quotations/index.html">Monthly Quotations</a></li>
+						
+							<li><a href="/english/markets/statistics-derivatives/yearly-price/index.html">Annual Quotations</a></li>
+						
+							<li><a href="/english/markets/statistics-derivatives/monthly-statistics/index.html">Monthly Statistics Report</a></li>
+						
+							<li><a href="/english/markets/statistics-derivatives/sector/index.html">Trading by Type of Investors</a></li>
+						
+							<li><a href="/english/markets/statistics-derivatives/ose-fx/index.html">OSE-FX</a></li>
+						
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+					
+		
+						<div id="menutvdivq0000008si7-tvdivq0000009emv" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/markets/paid-info-equities/realtime/index.html">Real Time Market Data</a></li>
+						
+							<li><a href="/english/markets/paid-info-equities/reference/index.html">Reference Data</a></li>
+						
+							<li><a href="/english/markets/paid-info-equities/historical/index.html">Historical Data</a></li>
+						
+							<li><a href="/english/markets/paid-info-equities/listing/index.html">Listed Company-related Data</a></li>
+						
+							<li><a href="/english/markets/paid-info-equities/alternative/index.html">Alternative Data</a></li>
+						
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+					
+		
+						<div id="menutvdivq0000008si7-tvdivq0000009ezd" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/markets/paid-info-derivatives/realtime/index.html">Real Time Market Data</a></li>
+						
+							<li><a href="/english/markets/paid-info-derivatives/reference/index.html">Reference Data</a></li>
+						
+							<li><a href="/english/markets/paid-info-derivatives/historical/index.html">Historical Data</a></li>
+						
+							<li><a href="/english/markets/paid-info-derivatives/alternative/index.html">Alternative Data</a></li>
+						
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+					
+		
+						<div id="menutvdivq0000008si7-tvdivq0000009fgi" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/markets/public/short-selling/index.html">Information on Outstanding Short Selling Positions</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+
+							
+
+						<h2><a href="/english/listing/index.html" data-target="menutvdivq0000008wh1">Listed Companies</a><span class="onlysp"></span></h2>
+
+
+<div id="menutvdivq0000008wh1" class="subsub-menu level-01">
+	<div data-role="scroll-outer">
+		<div data-role="scroll-inner">
+			<ul>
+				
+							<li><a href="/english/listing/disclosure/index.html">Company Announcements Service</a></li>
+						
+							<li><a href="/english/listing/co-search/index.html">Listed Company Search</a></li>
+						
+							<li><a href="/english/listing/cg-search/index.html">Corporate Governance Information Search</a></li>
+						
+							<li><a href="/english/listing/co/index.html">Number of Listed Companies/Shares</a></li>
+						
+							<li><a href="/english/listing/stocks/index.html" data-target="menutvdivq0000008wh1-tvdivq0000009g22" class="arw">New Listings/ Transfers/ Delistings</a></li>
+						
+							<li><a href="/english/listing/market-alerts/index.html" data-target="menutvdivq0000008wh1-b5b4pj000001496d" class="arw">Market Alerts</a></li>
+						
+							<li><a href="/english/listing/measures/index.html" data-target="menutvdivq0000008wh1-b5b4pj000004jupu" class="arw">Measures against Listed Companies</a></li>
+						
+							<li><a href="/english/listing/others/index.html" data-target="menutvdivq0000008wh1-b5b4pj00000149cy" class="arw">Other Information</a></li>
+						
+							<li><a href="/english/listing/event-schedules/index.html" data-target="menutvdivq0000008wh1-tvdivq0000009gjm" class="arw">Earnings Announcements/ Annual General Shareholders Meetings</a></li>
+						
+							<li><a href="/english/listing/ir-clips/index.html" data-target="menutvdivq0000008wh1-tvdivq0000009gl8" class="arw">Introduction of Listed Companies</a></li>
+						
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+						<div id="menutvdivq0000008wh1-tvdivq0000009g22" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/listing/stocks/new/index.html">New Listings</a></li>
+						
+							<li><a href="/english/listing/stocks/transfers/index.html">List of Segment Transferred Companies</a></li>
+						
+							<li><a href="/english/listing/stocks/delisted/index.html">List of Delisted Companies</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+						<div id="menutvdivq0000008wh1-b5b4pj000001496d" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/listing/market-alerts/supervision/index.html">Securities Under Supervision &amp; Securities to Be Delisted</a></li>
+						
+							<li><a href="/english/listing/market-alerts/improvement-period/index.html">Improvement Period</a></li>
+						
+							<li><a href="/english/listing/market-alerts/grace-period/index.html">Issues in a Grace Period pertaining to Delisting Criteria, etc.</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+						<div id="menutvdivq0000008wh1-b5b4pj000004jupu" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/listing/measures/public-announce/index.html">Public Announcement Measures</a></li>
+						
+							<li><a href="/english/listing/measures/listing-agreement-violation/index.html">Listing Agreement Violation Penalties</a></li>
+						
+							<li><a href="/english/listing/measures/improvement-reports/index.html">Companies Requested to Submit Improvement Reports/Improvement Status Reports</a></li>
+						
+							<li><a href="/english/listing/measures/alert/index.html">Designation of Securities on Alert</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+						<div id="menutvdivq0000008wh1-b5b4pj00000149cy" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/listing/others/ex-rights/index.html">Ex-dividend/Ex-rights</a></li>
+						
+							<li><a href="/english/listing/others/margin/index.html">List of Standardized/Loan Margin Trading Issues</a></li>
+						
+							<li><a href="/english/listing/others/extended/index.html">Extensions for Submission of Annual Securities Reports</a></li>
+						
+							<li><a href="/english/listing/others/adverse-opinion/index.html">Adverse Opinions, Qualified Opinions, and Disclaimers of Opinion</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+						<div id="menutvdivq0000008wh1-tvdivq0000009gjm" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/listing/event-schedules/financial-announcement/index.html">Scheduled Dates for Earnings Announcements</a></li>
+						
+							<li><a href="/english/listing/event-schedules/shareholders-mtg/index.html">Scheduled Dates for Annual General Shareholders Meetings of TSE listed companies</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+						<div id="menutvdivq0000008wh1-tvdivq0000009gl8" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/listing/ir-clips/ir-movie/index.html">TSE IR MOVIE SQUARE</a></li>
+						
+							<li><a href="/english/listing/ir-clips/interview/index.html">Top Executive Interviews "SOU"</a></li>
+						
+							<li><a href="/english/listing/ir-clips/relations-with-foreign-country/index.html">Recent IPOs of Companies with Links to Foreign Countries</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+
+							
+
+						<h2><a href="/english/equities/index.html" data-target="menutvdivq0000008xx5">Equities, Debt, Funds</a><span class="onlysp"></span></h2>
+
+
+<div id="menutvdivq0000008xx5" class="subsub-menu level-01">
+	<div data-role="scroll-outer">
+		<div data-role="scroll-inner">
+			<ul>
+				
+							<li><a href="/english/equities/listing-on-tse/index.html" data-target="menutvdivq0000008xx5-tvdivq0000009h36" class="arw">Listing on TSE</a></li>
+						
+							<li><a href="/english/equities/products/index.html" data-target="menutvdivq0000008xx5-tvdivq0000009i3g" class="arw">Products</a></li>
+						
+							<li><a href="/english/equities/trading/index.html" data-target="menutvdivq0000008xx5-tvdivq0000009utz" class="arw">Trading (Domestic Stocks)</a></li>
+						
+							<li><a href="/english/equities/listing/index.html" data-target="menutvdivq0000008xx5-tvdivq0000009u77" class="arw">Listing (Domestic Stocks)</a></li>
+						
+							<li><a href="/english/equities/improvements/index.html" data-target="menutvdivq0000008xx5-tvdivq0000009v8z" class="arw">Market Infrastructure for Listed Companies</a></li>
+						
+							<li><a href="/english/equities/listed-co/index.html" data-target="menutvdivq0000008xx5-tvdivq0000009vdf" class="arw">Support for Listed Companies</a></li>
+						
+							<li><a href="/english/equities/market-restructure/index.html" data-target="menutvdivq0000008xx5-b5b4pj0000048v77" class="arw">Market Restructuring</a></li>
+						
+							<li><a href="/english/equities/strengthening/index.html">Strengthening the Functions of the Cash Equity Market</a></li>
+						
+							<li><a href="/english/equities/carbon-credit/index.html" data-target="menutvdivq0000008xx5-uorii5000000102m" class="arw">Carbon Credit Market</a></li>
+						
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+						<div id="menutvdivq0000008xx5-tvdivq0000009h36" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/equities/listing-on-tse/ipo-benefits/index.html">About Listing</a></li>
+						
+							<li><a href="/english/equities/listing-on-tse/new/index.html">IPO</a></li>
+						
+							<li><a href="/english/equities/listing-on-tse/transfers/index.html">Segment Transfers</a></li>
+						
+							<li><a href="/english/equities/listing-on-tse/seminar/index.html">Seminars</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+						<div id="menutvdivq0000008xx5-tvdivq0000009i3g" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/equities/products/stocks/index.html">Stocks (Domestic Stocks)</a></li>
+						
+							<li><a href="/english/equities/products/foreign/index.html">Foreign Stocks</a></li>
+						
+							<li><a href="/english/equities/products/etfs/index.html">ETFs</a></li>
+						
+							<li><a href="/english/equities/products/etns/index.html">ETNs</a></li>
+						
+	
+							<li><a href="/english/equities/products/reits/index.html">REITs</a></li>
+						
+							<li><a href="/english/equities/products/vf/index.html">Venture Funds</a></li>
+						
+							<li><a href="/english/equities/products/cf/index.html">Country Funds</a></li>
+						
+							<li><a href="/english/equities/products/infrastructure/index.html">Infrastructure Funds</a></li>
+						
+	
+							<li><a href="/english/equities/products/preferred-stocks/index.html">Preferred Stocks, etc.</a></li>
+						
+							<li><a href="/english/equities/products/bonds/index.html">Japanese Government Bonds</a></li>
+						
+							<li><a href="/english/equities/products/cb/index.html">Convertible Bonds</a></li>
+						
+							<li><a href="/english/equities/products/subscription/index.html">Subscription Warrant Securities</a></li>
+						
+							<li><a href="/english/equities/products/preferred-securities/index.html">Preferred Equity Investment Securities</a></li>
+						
+	
+							<li><a href="/english/equities/products/tpm/index.html">TOKYO PRO Market</a></li>
+						
+							<li><a href="/english/equities/products/tpbm/index.html">TOKYO PRO-BOND Market</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+		
+		
+		
+					
+						<div id="menutvdivq0000008xx5-tvdivq0000009utz" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/equities/trading/domestic/index.html">Trading Rules of Domestic Stocks</a></li>
+						
+							<li><a href="/english/equities/trading/tostnet/index.html">ToSTNeT Market</a></li>
+						
+							<li><a href="/english/equities/trading/regulations/index.html">Restrictions on Trading</a></li>
+						
+							<li><a href="/english/equities/trading/when-issued/index.html">When-Issued Transaction</a></li>
+						
+							<li><a href="/english/equities/trading/own-company-shares/index.html">Acquiring Own Company Shares through the TSE Market</a></li>
+						
+							<li><a href="/english/equities/trading/cancel/index.html">Canceling Executed Transactions</a></li>
+						
+							<li><a href="/english/equities/trading/margin/index.html">Margin Trading</a></li>
+						
+							<li><a href="/english/equities/trading/relaunch/index.html">Trading resumption through a system reboot</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+						<div id="menutvdivq0000008xx5-tvdivq0000009u77" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/equities/listing/criteria/index.html">Listing</a></li>
+						
+							<li><a href="/english/equities/listing/continue/index.html">Continued Listing Criteria</a></li>
+						
+							<li><a href="/english/equities/listing/delisting/index.html">Delisting Criteria</a></li>
+						
+							<li><a href="/english/equities/listing/code-of-conduct/index.html">Code of Corporate Conduct</a></li>
+						
+	
+							<li><a href="/english/equities/listing/measure/index.html">Enforcement Measures</a></li>
+						
+							<li><a href="/english/equities/listing/disclosure/index.html">Timely Disclosure System</a></li>
+						
+							<li><a href="/english/equities/listing/cg/index.html">Enhancing Corporate Governance</a></li>
+						
+							<li><a href="/english/equities/listing/ind-executive/index.html">Independent Directors/Auditors</a></li>
+						
+							<li><a href="/english/equities/listing/company-split/index.html">Reduction of Investment Unit / Mechanism and Effects of Share Split</a></li>
+						
+							<li><a href="/english/equities/listing/fees/index.html">Listing Fees</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+		
+					
+						<div id="menutvdivq0000008xx5-tvdivq0000009v8z" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/equities/improvements/general/index.html">Improvements to TSE Listing System</a></li>
+						
+							<li><a href="/english/equities/improvements/unit/index.html">Standardization of Trading Units</a></li>
+						
+							<li><a href="/english/equities/improvements/class-shares/index.html">Establishment of Listing System for Class Shares with Voting Rights</a></li>
+						
+							<li><a href="/english/equities/improvements/ifrs/index.html">IFRS (International Financial Reporting Standards) </a></li>
+						
+							<li><a href="/english/equities/improvements/voting-platform/index.html">Electronic Voting Platform, etc.</a></li>
+						
+							<li><a href="/english/equities/improvements/spac/index.html">Study Group on the SPAC Listing System</a></li>
+						
+							<li><a href="/english/equities/improvements/market-structure/index.html">Review of TSE Cash Equity Market Structure</a></li>
+						
+							<li><a href="/english/equities/improvements/study-group/index.html">Study Group to review Minority Shareholder Protection and other Framework of Quasi-Controlled Listed Companies</a></li>
+						
+							<li><a href="/english/equities/improvements/follow-up/index.html">Follow-up of Market Restructuring</a></li>
+						
+							<li><a href="/english/equities/improvements/quarterly-disclosure/index.html">Council of Experts Concerning the Revision of the Quarterly Disclosure System</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+						<div id="menutvdivq0000008xx5-tvdivq0000009vdf" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/equities/listed-co/award/index.html">Listed Company Award</a></li>
+						
+							<li><a href="/english/equities/listed-co/seminer/index.html">Seminars and Training</a></li>
+						
+							<li><a href="/english/equities/listed-co/services/index.html">Services</a></li>
+						
+							<li><a href="/english/equities/listed-co/format/index.html">Disclosure Forms and Documents to be Submitted</a></li>
+						
+							<li><a href="/english/equities/listed-co/disclosure-gate/index.html">JPX English Disclosure GATE</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+						<div id="menutvdivq0000008xx5-b5b4pj0000048v77" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/equities/market-restructure/market-segments/index.html">Overview of Market Restructuring</a></li>
+						
+							<li><a href="/english/equities/market-restructure/revisions-indices/index.html">Index Revisions</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+						<div id="menutvdivq0000008xx5-uorii5000000102m" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/equities/carbon-credit/overview/index.html" data-target="menutvdivq0000008xx5-uorii5000000102m-uorii5000000103s" class="arw">Overview of Specifications</a></li>
+						
+							<li><a href="/english/equities/carbon-credit/participants/index.html" data-target="menutvdivq0000008xx5-uorii5000000102m-uorii5000000106z" class="arw"> Market Participants</a></li>
+						
+							<li><a href="/english/equities/carbon-credit/regulations/index.html" data-target="menutvdivq0000008xx5-uorii5000000102m-uorii50000001050" class="arw">Rulebooks</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+
+							
+
+						<h2><a href="/english/derivatives/index.html" data-target="menutvdivq0000008ze7">Derivatives</a><span class="onlysp"></span></h2>
+
+
+<div id="menutvdivq0000008ze7" class="subsub-menu level-01">
+	<div data-role="scroll-outer">
+		<div data-role="scroll-inner">
+			<ul>
+				
+							<li><a href="/english/derivatives/products/index.html" data-target="menutvdivq0000008ze7-tvdivq000000a1w0" class="arw">Products</a></li>
+						
+							<li><a href="/english/derivatives/rules/index.html" data-target="menutvdivq0000008ze7-tvdivq000000a4z3" class="arw">Trading</a></li>
+						
+							<li><a href="/english/derivatives/delivery-points/index.html" data-target="menutvdivq0000008ze7-b5b4pj0000050g7b" class="arw">Delivery</a></li>
+						
+							<li><a href="/english/derivatives/futures/index.html" data-target="menutvdivq0000008ze7-tvdivq000000a6n4" class="arw">Overview of Futures Trading</a></li>
+						
+							<li><a href="/english/derivatives/options/index.html" data-target="menutvdivq0000008ze7-tvdivq000000a880" class="arw">Overview of Options Trading</a></li>
+						
+							<li><a href="/english/derivatives/risk/index.html" data-target="menutvdivq0000008ze7-p6b22i0000002frz" class="arw">Risks Associated with Derivatives</a></li>
+						
+							<li><a href="/english/derivatives/futures-options-report/index.html">Futures ＆ Options Report</a></li>
+						
+							<li><a href="/english/derivatives/market-highlights/index.html">Market Highlights</a></li>
+						
+							<li><a href="/english/derivatives/eu-priips-regulation/index.html">Key Information Documents for EU PRIIPs Regulation</a></li>
+						
+							<li><a href="/english/derivatives/related/index.html" data-target="menutvdivq0000008ze7-tvdivq000000a94u" class="arw">Reference Information</a></li>
+						
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+						<div id="menutvdivq0000008ze7-tvdivq000000a1w0" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/derivatives/products/list/index.html">List of Products</a></li>
+						
+							<li><a href="/english/derivatives/products/domestic/index.html" data-target="menutvdivq0000008ze7-tvdivq000000a1w0-tvdivq000000a2g5" class="arw">Japanese Indices</a></li>
+						
+							<li><a href="/english/derivatives/products/foreign/index.html" data-target="menutvdivq0000008ze7-tvdivq000000a1w0-tvdivq000000a3a2" class="arw">Overseas Indices</a></li>
+						
+	
+							<li><a href="/english/derivatives/products/dividend/index.html" data-target="menutvdivq0000008ze7-tvdivq000000a1w0-tvdivq000000a3fg" class="arw">Dividends Indices</a></li>
+						
+							<li><a href="/english/derivatives/products/vi/index.html" data-target="menutvdivq0000008ze7-tvdivq000000a1w0-tvdivq000000a3t6" class="arw">Volatility Indices</a></li>
+						
+							<li><a href="/english/derivatives/products/reit/index.html" data-target="menutvdivq0000008ze7-tvdivq000000a1w0-tvdivq000000a3vw" class="arw">REIT Indices</a></li>
+						
+							<li><a href="/english/derivatives/products/jgb/index.html" data-target="menutvdivq0000008ze7-tvdivq000000a1w0-tvdivq000000a3wv" class="arw">Bond</a></li>
+						
+							<li><a href="/english/derivatives/products/interest-rate/index.html" data-target="menutvdivq0000008ze7-tvdivq000000a1w0-tcgh51000000407u" class="arw">Interest Rate</a></li>
+						
+							<li><a href="/english/derivatives/products/individual/index.html" data-target="menutvdivq0000008ze7-tvdivq000000a1w0-tvdivq000000a480" class="arw">Individual Security</a></li>
+						
+	
+							<li><a href="/english/derivatives/products/precious-metals/index.html" data-target="menutvdivq0000008ze7-tvdivq000000a1w0-b5b4pj000003iyv3" class="arw">Precious Metals</a></li>
+						
+							<li><a href="/english/derivatives/products/petroleum/index.html" data-target="menutvdivq0000008ze7-tvdivq000000a1w0-b5b4pj0000045hii" class="arw">Commodity Index</a></li>
+						
+							<li><a href="/english/derivatives/products/rubber/index.html" data-target="menutvdivq0000008ze7-tvdivq000000a1w0-b5b4pj000003iyx0" class="arw">Rubber</a></li>
+						
+							<li><a href="/english/derivatives/products/agricultural/index.html" data-target="menutvdivq0000008ze7-tvdivq000000a1w0-b5b4pj000003j6b7" class="arw">Agricultural</a></li>
+						
+							<li><a href="/english/derivatives/products/energy/index.html" data-target="menutvdivq0000008ze7-tvdivq000000a1w0-b5b4pj000004bg3d" class="arw">Energy</a></li>
+						
+							<li><a href="/english/derivatives/products/chukyo-oil/index.html" data-target="menutvdivq0000008ze7-tvdivq000000a1w0-b5b4pj000004bg9n" class="arw">Chukyo Oil </a></li>
+						
+							<li><a href="/english/derivatives/products/20230529/index.html" data-target="menutvdivq0000008ze7-tvdivq000000a1w0-dreu250000005d5x" class="arw">Futures and options listed on May 29, 2023</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+						<div id="menutvdivq0000008ze7-tvdivq000000a1w0-tvdivq000000a2g5" class="subsub-menu level-03">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/derivatives/products/domestic/225futures/index.html">Nikkei 225 Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/domestic/225mini/index.html">Nikkei 225 mini</a></li>
+						
+							<li><a href="/english/derivatives/products/domestic/225micro-futures/index.html">Nikkei 225 micro Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/domestic/225options/index.html">Nikkei 225 Options</a></li>
+						
+							<li><a href="/english/derivatives/products/domestic/225mini-options/index.html">Nikkei 225 mini Options</a></li>
+						
+							<li><a href="/english/derivatives/products/domestic/nikkei225tr-futures/index.html">Nikkei 225 Total Return Index Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/domestic/topix-futures/index.html">TOPIX Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/domestic/mini-topix-futures/index.html">mini-TOPIX Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/domestic/topix-options/index.html">TOPIX Options</a></li>
+						
+							<li><a href="/english/derivatives/products/domestic/jpx-nikkei400futures/index.html">JPX-Nikkei Index 400 Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/domestic/jpx-nikkei400options/index.html">JPX-Nikkei Index 400 Options</a></li>
+						
+							<li><a href="/english/derivatives/products/domestic/mothers-futures/index.html">TSE Growth Market 250 Index Futures (previously known as TSE Mothers Index Futures)</a></li>
+						
+							<li><a href="/english/derivatives/products/domestic/topix-core30futures/index.html">TOPIX Core30 Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/domestic/rnp-futures/index.html">RN Prime Index Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/domestic/topix-banks-index-futures/index.html">TOPIX Banks Index Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/domestic/topix-banks-index-options/index.html">TOPIX Banks Index Options</a></li>
+						
+							<li><a href="/english/derivatives/products/domestic/sp-jpx500esg-futures/index.html">S&amp;P/JPX 500 ESG Score Tilted Index Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/domestic/ftse-jpx-nz-futures/index.html">FTSE JPX Net Zero Japan 500 Index Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/domestic/225-climate-futures/index.html">Nikkei 225 Climate Change 1.5℃ Target Index Futures</a></li>
+						
+									</ul>
+								</div>
+							</div>
+						</div>
+					
+						<div id="menutvdivq0000008ze7-tvdivq000000a1w0-tvdivq000000a3a2" class="subsub-menu level-03">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/derivatives/products/foreign/djia-futures/index.html">DJIA Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/foreign/taiex-futures/index.html">TAIEX Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/foreign/ftse-china50futures/index.html">FTSE China 50 Index Futures</a></li>
+						
+									</ul>
+								</div>
+							</div>
+						</div>
+					
+		
+						<div id="menutvdivq0000008ze7-tvdivq000000a1w0-tvdivq000000a3fg" class="subsub-menu level-03">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/derivatives/products/dividend/225-dividend-futures/index.html">Nikkei 225 Dividend Index Futures</a></li>
+						
+									</ul>
+								</div>
+							</div>
+						</div>
+					
+						<div id="menutvdivq0000008ze7-tvdivq000000a1w0-tvdivq000000a3t6" class="subsub-menu level-03">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/derivatives/products/vi/225-vi-futures/index.html">Nikkei 225 VI Futures</a></li>
+						
+									</ul>
+								</div>
+							</div>
+						</div>
+					
+						<div id="menutvdivq0000008ze7-tvdivq000000a1w0-tvdivq000000a3vw" class="subsub-menu level-03">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/derivatives/products/reit/reit-futures/index.html">TSE REIT Index Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/reit/reit-options/index.html">TSE REIT Index Options</a></li>
+						
+									</ul>
+								</div>
+							</div>
+						</div>
+					
+						<div id="menutvdivq0000008ze7-tvdivq000000a1w0-tvdivq000000a3wv" class="subsub-menu level-03">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/derivatives/products/jgb/jgb-futures/index.html">JGB Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/jgb/mini-jgb-futures/index.html">mini-10year JGB Futures (Cash-Settled)</a></li>
+						
+							<li><a href="/english/derivatives/products/jgb/jgbf-options/index.html">Options on JGB Futures</a></li>
+						
+									</ul>
+								</div>
+							</div>
+						</div>
+					
+						<div id="menutvdivq0000008ze7-tvdivq000000a1w0-tcgh51000000407u" class="subsub-menu level-03">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/derivatives/products/interest-rate/3m-tona-futures/index.html">3-Month TONA Futures</a></li>
+						
+									</ul>
+								</div>
+							</div>
+						</div>
+					
+						<div id="menutvdivq0000008ze7-tvdivq000000a1w0-tvdivq000000a480" class="subsub-menu level-03">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/derivatives/products/individual/securities-options/index.html">Securities Options</a></li>
+						
+									</ul>
+								</div>
+							</div>
+						</div>
+					
+		
+						<div id="menutvdivq0000008ze7-tvdivq000000a1w0-b5b4pj000003iyv3" class="subsub-menu level-03">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/derivatives/products/precious-metals/gold-standard-futures/index.html">Gold Standard Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/precious-metals/gold-mini-futures/index.html">Gold Mini Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/precious-metals/gold-rolling-spot-futures/index.html">Gold Rolling-Spot Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/precious-metals/options-on-gold-futures/index.html">Options on Gold Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/precious-metals/silver-futures/index.html">Silver Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/precious-metals/platinum-standard-futures/index.html">Platinum Standard Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/precious-metals/platinum-mini-futures/index.html">Platinum Mini Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/precious-metals/platinum-rolling-spot-futures/index.html">Platinum Rolling-Spot Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/precious-metals/palladium-futures/index.html">Palladium Futures</a></li>
+						
+									</ul>
+								</div>
+							</div>
+						</div>
+					
+						<div id="menutvdivq0000008ze7-tvdivq000000a1w0-b5b4pj0000045hii" class="subsub-menu level-03">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/derivatives/products/petroleum/cme/index.html">CME Group Petroleum Index Futures</a></li>
+						
+									</ul>
+								</div>
+							</div>
+						</div>
+					
+						<div id="menutvdivq0000008ze7-tvdivq000000a1w0-b5b4pj000003iyx0" class="subsub-menu level-03">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/derivatives/products/rubber/rss3-rubber-futures/index.html">RSS3 Rubber Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/rubber/tsr20-rubber-futures/index.html">TSR20 Rubber Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/rubber/RubberFuturesInformation/index.html">Rubber Futures Information</a></li>
+						
+									</ul>
+								</div>
+							</div>
+						</div>
+					
+						<div id="menutvdivq0000008ze7-tvdivq000000a1w0-b5b4pj000003j6b7" class="subsub-menu level-03">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/derivatives/products/agricultural/soybean-futures/index.html">Soybean Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/agricultural/azuki-futures/index.html">Azuki (Red Bean) Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/agricultural/corn-futures/index.html">Corn Futures</a></li>
+						
+									</ul>
+								</div>
+							</div>
+						</div>
+					
+						<div id="menutvdivq0000008ze7-tvdivq000000a1w0-b5b4pj000004bg3d" class="subsub-menu level-03">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/derivatives/products/energy/platts-dubai-futures/index.html">Platts Dubai Crude Oil Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/energy/gasoline-futures/index.html">Gasoline Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/energy/kerosene-futures/index.html">Kerosene Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/energy/gas-oil-futures/index.html">Gas Oil Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/energy/electricity-futures/index.html">Electricity Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/energy/lng-futures/index.html">LNG (Platts JKM) Futures</a></li>
+						
+									</ul>
+								</div>
+							</div>
+						</div>
+					
+						<div id="menutvdivq0000008ze7-tvdivq000000a1w0-b5b4pj000004bg9n" class="subsub-menu level-03">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/derivatives/products/chukyo-oil/gasoline-futures/index.html">Chukyo-Gasoline Futures</a></li>
+						
+							<li><a href="/english/derivatives/products/chukyo-oil/kerosene-futures/index.html">Chukyo-Kerosene Futures</a></li>
+						
+									</ul>
+								</div>
+							</div>
+						</div>
+					
+		
+					
+						<div id="menutvdivq0000008ze7-tvdivq000000a4z3" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/derivatives/rules/trading-hours/index.html">Trading Hours</a></li>
+						
+							<li><a href="/english/derivatives/rules/last-trading-day/index.html">Last Trading Day /Delivery Day</a></li>
+						
+							<li><a href="/english/derivatives/rules/trading-methods/index.html">Trading Methods</a></li>
+						
+							<li><a href="/english/derivatives/rules/order-types/index.html">Order Types, etc.</a></li>
+						
+							<li><a href="/english/derivatives/rules/price-range/index.html">Immediately Executable Price Range Rule</a></li>
+						
+							<li><a href="/english/derivatives/rules/price-limit-cb/index.html">Price Limits/ Circuit Breaker Rule</a></li>
+						
+							<li><a href="/english/derivatives/rules/margin/index.html">Margin</a></li>
+						
+							<li><a href="/english/derivatives/rules/give-up/index.html">Give-Up System</a></li>
+						
+							<li><a href="/english/derivatives/rules/j-net/index.html">Off-floor Trade</a></li>
+						
+							<li><a href="/english/derivatives/rules/flexible/index.html">Flexible Trading</a></li>
+						
+							<li><a href="/english/derivatives/rules/holidaytrading/index.html">Holiday Trading</a></li>
+						
+							<li><a href="/english/derivatives/rules/compression/index.html">Compression Trade</a></li>
+						
+							<li><a href="/english/derivatives/rules/market-maker/index.html">Market Maker Program</a></li>
+						
+							<li><a href="/english/derivatives/rules/others/index.html">Other Trading Rules</a></li>
+						
+							<li><a href="/english/derivatives/rules/outline/index.html">Specifications and Operational Procedures</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+						<div id="menutvdivq0000008ze7-b5b4pj0000050g7b" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/derivatives/delivery-points/delivery-rules/index.html">Delivery Rules</a></li>
+						
+							<li><a href="/english/derivatives/delivery-points/invoice/index.html">Revisions by Invoice System</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+						<div id="menutvdivq0000008ze7-tvdivq000000a6n4" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/derivatives/futures/methods/index.html">Nikkei 225 VI Futures</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+						<div id="menutvdivq0000008ze7-tvdivq000000a880" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/derivatives/options/methods/index.html">Functions and Applications</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+						<div id="menutvdivq0000008ze7-p6b22i0000002frz" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/derivatives/risk/futures/index.html">Risks of Futures Trading</a></li>
+						
+							<li><a href="/english/derivatives/risk/options/index.html">Risks of Options Trading</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+						<div id="menutvdivq0000008ze7-tvdivq000000a94u" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/derivatives/related/commodity-support-member/index.html">OSE Commodity Support Member</a></li>
+						
+							<li><a href="/english/derivatives/related/vender-code/index.html">Vendor Code List</a></li>
+						
+							<li><a href="/english/derivatives/related/jgb-anniversary/index.html">30 Years of JGB Futures</a></li>
+						
+							<li><a href="/english/derivatives/related/jgb/index.html">20-year JGB Futures Market Stimulation Program</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+
+							
+
+						<h2><a href="/english/rules-participants/index.html" data-target="menutvdivq0000008yx8">Rules &amp; Trading Participants</a><span class="onlysp"></span></h2>
+
+
+<div id="menutvdivq0000008yx8" class="subsub-menu level-01">
+	<div data-role="scroll-outer">
+		<div data-role="scroll-inner">
+			<ul>
+				
+							<li><a href="/english/rules-participants/rules/index.html">Rules</a></li>
+						
+							<li><a href="/english/rules-participants/public-comment/index.html">Public Comments</a></li>
+						
+							<li><a href="/english/rules-participants/participants/index.html" data-target="menutvdivq0000008yx8-tvdivq00000109mw" class="arw">Trading Participants</a></li>
+						
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+						<div id="menutvdivq0000008yx8-tvdivq00000109mw" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/rules-participants/participants/outline/index.html">Overview of a trading participant/Acquisition of trading qualifications</a></li>
+						
+							<li><a href="/english/rules-participants/participants/list/index.html">List of Trading Participants</a></li>
+						
+							<li><a href="/english/rules-participants/participants/ratio/index.html">Capital Adequacy Ratio of General Trading Participants</a></li>
+						
+							<li><a href="/english/rules-participants/participants/fees/index.html">Trading Participation Fees </a></li>
+						
+							<li><a href="/english/rules-participants/participants/actions/index.html">Disciplinary Actions</a></li>
+						
+							<li><a href="/english/rules-participants/participants/permission/index.html">Permission from Overseas Relevant Authorities</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+
+							
+
+						<h2><a href="/english/systems/index.html" data-target="menutvdivq0000008z7z">Systems</a><span class="onlysp"></span></h2>
+
+
+<div id="menutvdivq0000008z7z" class="subsub-menu level-01">
+	<div data-role="scroll-outer">
+		<div data-role="scroll-inner">
+			<ul>
+				
+							<li><a href="/english/systems/outline/index.html">Overview of Systems</a></li>
+						
+							<li><a href="/english/systems/equities-trading/index.html">Equities Trading Services</a></li>
+						
+							<li><a href="/english/systems/derivatives-trading/index.html">Derivatives Trading Services</a></li>
+						
+							<li><a href="/english/systems/network/index.html">Network Services</a></li>
+						
+							<li><a href="/english/systems/connectivity/index.html">Connectivity Services</a></li>
+						
+							<li><a href="/english/systems/system-status/index.html">Market System Status</a></li>
+						
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+
+							
+
+						<h2><a href="/english/regulation/index.html" data-target="menutvdivq00000091fk">Self-Regulation</a><span class="onlysp"></span></h2>
+
+
+<div id="menutvdivq00000091fk" class="subsub-menu level-01">
+	<div data-role="scroll-outer">
+		<div data-role="scroll-inner">
+			<ul>
+				
+							<li><a href="/english/regulation/outline/index.html" data-target="menutvdivq00000091fk-dreu250000007zyz" class="arw">Self-Regulatory Operations</a></li>
+						
+							<li><a href="/english/regulation/listing/index.html" data-target="menutvdivq00000091fk-b5b4pj0000005wcb" class="arw">Listing Eligibility and Compliance</a></li>
+						
+							<li><a href="/english/regulation/preventing/index.html" data-target="menutvdivq00000091fk-uorii5000000393l" class="arw">Preventing Unfair Trading</a></li>
+						
+							<li><a href="/english/regulation/maintaining/index.html" data-target="menutvdivq00000091fk-b5b4pj0000005wmy" class="arw">Maintaining Trading Participant Quality</a></li>
+						
+							<li><a href="/english/regulation/public/index.html" data-target="menutvdivq00000091fk-dreu250000007zf6" class="arw">Publications</a></li>
+						
+							<li><a href="/english/regulation/activity/index.html" data-target="menutvdivq00000091fk-tvdivq000000vfoa" class="arw">Activities</a></li>
+						
+							<li><a href="/english/regulation/mail/index.html" data-target="menutvdivq00000091fk-dreu250000001mrg" class="arw">File a Tip or Complaint on Possible Irregularities or Violations</a></li>
+						
+							<li><a href="/english/regulation/tocom/index.html" data-target="menutvdivq00000091fk-b5b4pj0000048p9s" class="arw">TOCOM Self-Regulation</a></li>
+						
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+						<div id="menutvdivq00000091fk-dreu250000007zyz" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/regulation/outline/necessity/index.html">Necessity of Self-Regulatory Operations</a></li>
+						
+							<li><a href="/english/regulation/outline/about/index.html">Outline of Self-Regulatory Operations</a></li>
+						
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+					
+						<div id="menutvdivq00000091fk-b5b4pj0000005wcb" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/regulation/listing/eligibility/index.html">Listing Eligibility</a></li>
+						
+							<li><a href="/english/regulation/listing/compliance/index.html">Listed Company Compliance</a></li>
+						
+							<li><a href="/english/regulation/listing/equity-finance/index.html">Aiming for Better Equity Financing</a></li>
+						
+							<li><a href="/english/regulation/listing/principle/index.html">Principles for Responding to Corporate Scandals</a></li>
+						
+							<li><a href="/english/regulation/listing/preventive-principles/index.html">Principles for Preventing Corporate Scandals</a></li>
+						
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+					
+						<div id="menutvdivq00000091fk-uorii5000000393l" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/regulation/preventing/manipulation/index.html">Market Manipulation</a></li>
+						
+							<li><a href="/english/regulation/preventing/insider/index.html">Insider Trading</a></li>
+						
+							<li><a href="/english/regulation/preventing/activity/index.html">Educational Activities for Preventing Unfair Trading</a></li>
+						
+							<li><a href="/english/regulation/preventing/quarterly/index.html">Status of Market Surveillance Activities</a></li>
+						
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+					
+						<div id="menutvdivq00000091fk-b5b4pj0000005wmy" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/regulation/maintaining/outline/index.html">Outline</a></li>
+						
+							<li><a href="/english/regulation/maintaining/inspection-plan/index.html">Inspection Plan</a></li>
+						
+							<li><a href="/english/regulation/maintaining/quarterly/index.html">Current Inspections and Inspection Results</a></li>
+						
+							<li><a href="/english/regulation/maintaining/checkpoints/index.html">Check Points related to Trading Participant Internal Management Systems</a></li>
+						
+							<li><a href="/english/regulation/maintaining/points-of-note/index.html">Points of Consideration when Deciding Disciplinary Actions</a></li>
+						
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+					
+						<div id="menutvdivq00000091fk-dreu250000007zf6" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/regulation/public/index.html">Publications</a></li>
+						
+							<li><a href="/english/regulation/public/02.html">Annual Reports</a></li>
+						
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+					
+						<div id="menutvdivq00000091fk-tvdivq000000vfoa" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/regulation/activity/listed-co/index.html">Lists of New Listings and Segment Transfers</a></li>
+						
+							<li><a href="/english/regulation/activity/measure/index.html">Disciplinary Action on Listed Companies</a></li>
+						
+							<li><a href="/english/regulation/activity/punish/index.html">Disciplinary Action on Trading Participants</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+						<div id="menutvdivq00000091fk-dreu250000001mrg" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/regulation/mail/unfair/index.html">Report Unfair Trading in JPX Markets</a></li>
+						
+							<li><a href="/english/regulation/mail/participants/index.html">Report Non-Compliance with Laws and Regulations by Trading Participants</a></li>
+						
+							<li><a href="/english/regulation/mail/disclosure/index.html">Report Matters Affecting the Eligibility of Listed Companies</a></li>
+						
+							<li><a href="/english/regulation/mail/new_listing/index.html">Report Matters Affecting the Eligibility of Listing Applicants</a></li>
+						
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+					
+						<div id="menutvdivq00000091fk-b5b4pj0000048p9s" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/regulation/tocom/about/index.html">TOCOM Self-Regulatory Activities</a></li>
+						
+							<li><a href="/english/regulation/tocom/maintaining/index.html">Administration of Members</a></li>
+						
+							<li><a href="/english/regulation/tocom/preventing/index.html">Examination of Trades (Trade Practice Examination)</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+
+							
+
+						<h2><a href="/english/clearing-settlement/index.html" data-target="menutvdivq00000091z5">Clearing &amp; Settlement</a><span class="onlysp"></span></h2>
+
+
+<div id="menutvdivq00000091z5" class="subsub-menu level-01">
+	<div data-role="scroll-outer">
+		<div data-role="scroll-inner">
+			<ul>
+				
+							<li><a href="/english/clearing-settlement/outline/index.html">Clearing &amp; Settlement</a></li>
+						
+							<li><a href="/english/clearing-settlement/reg-sys-reform/index.html">Reform of Securities Clearing and Settlement System</a></li>
+						
+							<li><a href="/english/clearing-settlement/tplus2-settlement-cycle/index.html">Shortening of Settlement Cycle for Stocks and Other Securities (T+2) </a></li>
+						
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+
+							
+
+	<div class="main-menu-sub">
+
+		
+
+						<h2><a href="/english/corporate/index.html" data-target="menutvdivq000000vjmq">About JPX</a><span class="onlysp"></span></h2>
+
+
+<div id="menutvdivq000000vjmq" class="subsub-menu level-01">
+	<div data-role="scroll-outer">
+		<div data-role="scroll-inner">
+			<ul>
+				
+							<li><a href="/english/corporate/ceo-message/index.html">Group CEO Message</a></li>
+						
+							<li><a href="/english/corporate/news/news-releases/index.html" data-target="menutvdivq000000vjmq-tvdivq000000zn8c" class="arw">News</a></li>
+						
+							<li><a href="/english/corporate/about-jpx/index.html" data-target="menutvdivq000000vjmq-b5b4pj000002f44t" class="arw">About JPX</a></li>
+						
+							<li><a href="/english/corporate/governance/index.html" data-target="menutvdivq000000vjmq-b5b4pj000002ejtn" class="arw">Governance / Risk Management</a></li>
+						
+							<li><a href="/english/corporate/investor-relations/index.html" data-target="menutvdivq000000vjmq-tvdivq000000lbh5" class="arw">Investor Relations</a></li>
+						
+							<li><a href="/english/corporate/sustainability/index.html" data-target="menutvdivq000000vjmq-b5b4pj000003f23v" class="arw">Sustainability</a></li>
+						
+							<li><a href="/english/corporate/research-study/index.html" data-target="menutvdivq000000vjmq-tvdivq000000af0z" class="arw">Research and Studies / Policy Recommendations</a></li>
+						
+							<li><a href="/english/corporate/social-media-newsletters/index.html" data-target="menutvdivq000000vjmq-b5b4pj000002ejq2" class="arw">Social Media and Newsletters</a></li>
+						
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+						<div id="menutvdivq000000vjmq-tvdivq000000zn8c" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/corporate/news/news-releases/index.html">News Release</a></li>
+						
+							<li><a href="/english/corporate/news/monthly-headline/index.html">JPX Monthly Headlines</a></li>
+						
+							<li><a href="/english/corporate/news/press-conference/index.html">Press Conference</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+						<div id="menutvdivq000000vjmq-b5b4pj000002f44t" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/corporate/about-jpx/business/index.html">Our Business</a></li>
+						
+							<li><a href="/english/corporate/about-jpx/philosophy/index.html">Corporate Philosophy</a></li>
+						
+							<li><a href="/english/corporate/about-jpx/jpx-logo/index.html">JPX Logo</a></li>
+						
+							<li><a href="/english/corporate/about-jpx/profile/index.html">Company Profile</a></li>
+						
+							<li><a href="/english/corporate/about-jpx/officer/index.html">Board of Directors and Executive Officers</a></li>
+						
+							<li><a href="/english/corporate/about-jpx/organization/index.html">Organizational Structure</a></li>
+						
+							<li><a href="/english/corporate/about-jpx/history/index.html">History</a></li>
+						
+							<li><a href="/english/corporate/about-jpx/calendar/index.html">Market Holidays</a></li>
+						
+							<li><a href="/english/corporate/about-jpx/access/index.html">Access</a></li>
+						
+							<li><a href="/english/corporate/about-jpx/tour/index.html">Visit JPX</a></li>
+						
+							<li><a href="/english/corporate/about-jpx/recruit/index.html">Recruitment</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+						<div id="menutvdivq000000vjmq-b5b4pj000002ejtn" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/corporate/governance/charter/index.html">Charter of Corporate Behavior</a></li>
+						
+							<li><a href="/english/corporate/governance/policy/index.html">Corporate Governance</a></li>
+						
+							<li><a href="/english/corporate/governance/self-regulation/index.html">Policy on the Development of an Organizational Structure to Ensure Appropriate Implementation of Self-Regulatory Operations</a></li>
+						
+							<li><a href="/english/corporate/governance/compliance/index.html">Compliance Program</a></li>
+						
+							<li><a href="/english/corporate/governance/internal-control/index.html">Internal Control System</a></li>
+						
+							<li><a href="/english/corporate/governance/risk/index.html">Risk Management</a></li>
+						
+							<li><a href="/english/corporate/governance/tax-policy/index.html">Tax Policy</a></li>
+						
+							<li><a href="/english/corporate/governance/security/index.html">Information Security Management</a></li>
+						
+							<li><a href="/english/corporate/governance/principle/index.html">Response to the Principles for Preventing Corporate Scandals</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+						<div id="menutvdivq000000vjmq-tvdivq000000lbh5" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/corporate/investor-relations/management/index.html">Management Information</a></li>
+						
+							<li><a href="/english/corporate/investor-relations/ir-library/index.html">IR Library</a></li>
+						
+							<li><a href="/english/corporate/investor-relations/financials/index.html">Financial Highlights (Data&amp;Graph)</a></li>
+						
+							<li><a href="/english/corporate/investor-relations/shareholders/index.html">Shareholder &amp; Stock Information</a></li>
+						
+							<li><a href="/english/corporate/investor-relations/ir-calendar/index.html">IR Calendar</a></li>
+						
+							<li><a href="/english/corporate/investor-relations/ir-faq/index.html">Investor FAQs</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+						<div id="menutvdivq000000vjmq-b5b4pj000003f23v" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/corporate/sustainability/our-sustainability/index.html">Our Sustainability</a></li>
+						
+							<li><a href="/english/corporate/sustainability/esg-investment/index.html">ESG Investment</a></li>
+						
+							<li><a href="/english/corporate/sustainability/jpx-esg/index.html">JPX Corporate ESG Information</a></li>
+						
+							<li><a href="/english/corporate/sustainability/news-events/index.html">Sustainability News &amp; Events</a></li>
+						
+							<li><a href="/english/corporate/sustainability/esgknowledgehub/index.html">JPX ESG Knowledge Hub</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+						<div id="menutvdivq000000vjmq-tvdivq000000af0z" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/corporate/research-study/working-paper/index.html">JPX Working Papers</a></li>
+						
+							<li><a href="/english/corporate/research-study/suggestions/index.html">Policy Recommendations from JPX Financial and Capital Market Workshop</a></li>
+						
+							<li><a href="/english/corporate/research-study/research-archives/macro-group/index.html">Macroeconomic Workshop</a></li>
+						
+							<li><a href="/english/corporate/research-study/dlt/index.html">Proof of Concept Testing for Utilization of Blockchain/DLT in Capital Market Infrastructure</a></li>
+						
+							<li><a href="/english/corporate/research-study/system-failure/index.html">Council for Recurrence Prevention Measures in Response to System Failure</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+						<div id="menutvdivq000000vjmq-b5b4pj000002ejq2" class="subsub-menu level-02">
+							<div data-role="scroll-outer">
+								<div data-role="scroll-inner">
+									<ul>
+										
+							<li><a href="/english/corporate/social-media-newsletters/social-media/index.html">Social Media</a></li>
+						
+							<li><a href="/english/corporate/social-media-newsletters/mail-magazine/index.html">Newsletter</a></li>
+						
+	
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+		
+					
+
+							
+	</div>
+ 
+	
+
+
+	<div class="main-menu-sub">
+		<ul class="main-menu-link">
+			<li><a href="/english/corporate/social-media-newsletters/social-media/index.html">Social Media</a></li>
+			<li><a href="/english/corporate/social-media-newsletters/mail-magazine/index.html">Newsletter</a></li>
+		</ul>
+	</div>
+        </div>
+        
+<div id="sp-main-menuIn">
+	
+
+					<h2><a href="/english/news/index.html" data-target="menutvdivq000000vegk">Market News</a></h2>
+					
+					<h2><a href="/english/markets/index.html" data-target="menutvdivq0000008si7">Data &amp; Statistics</a><span></span></h2>
+					
+<div class="sp-sub-menu">
+	<ul>
+		
+							<li><a href="/english/markets/equities/index.html" data-target="menutvdivq0000008si7-tvdivq00000095ch" class="arw">Equities</a></li>
+						
+							<li><a href="/english/markets/derivatives/index.html" data-target="menutvdivq0000008si7-tvdivq0000009bvp" class="arw">Derivatives</a></li>
+						
+							<li><a href="/english/markets/indices/index.html" data-target="menutvdivq0000008si7-tvdivq0000009cmx" class="arw">Indices</a></li>
+						
+							<li><a href="/english/markets/derivatives-indices/index.html" data-target="menutvdivq0000008si7-b5b4pj0000047yii" class="arw">Derivatives Indices</a></li>
+						
+							<li><a href="/english/markets/statistics-equities/index.html" data-target="menutvdivq0000008si7-tvdivq0000009cxq" class="arw">Statistics (Equities)</a></li>
+						
+	
+							<li><a href="/english/markets/statistics-derivatives/index.html" data-target="menutvdivq0000008si7-tvdivq0000009dr4" class="arw">Statistics (Derivatives)</a></li>
+						
+	
+							<li><a href="/english/markets/paid-info-equities/index.html" data-target="menutvdivq0000008si7-tvdivq0000009emv" class="arw">Paid Information Services (Equities)</a></li>
+						
+	
+							<li><a href="/english/markets/paid-info-derivatives/index.html" data-target="menutvdivq0000008si7-tvdivq0000009ezd" class="arw">Paid Information Services (Derivatives)</a></li>
+						
+	
+							<li><a href="/english/markets/public/index.html" data-target="menutvdivq0000008si7-tvdivq0000009fgi" class="arw">Documents Available for Public Inspection</a></li>
+						
+							<li><a href="/english/markets/data-catalog/index.html">JPX Data Catalog</a></li>
+						
+							<li><a href="/english/markets/sandbox/index.html">Data Sandboxing Program</a></li>
+						
+	</ul>
+</div>
+						
+					<h2><a href="/english/listing/index.html" data-target="menutvdivq0000008wh1">Listed Companies</a><span></span></h2>
+					
+<div class="sp-sub-menu">
+	<ul>
+		
+							<li><a href="/english/listing/disclosure/index.html">Company Announcements Service</a></li>
+						
+							<li><a href="/english/listing/co-search/index.html">Listed Company Search</a></li>
+						
+							<li><a href="/english/listing/cg-search/index.html">Corporate Governance Information Search</a></li>
+						
+							<li><a href="/english/listing/co/index.html">Number of Listed Companies/Shares</a></li>
+						
+							<li><a href="/english/listing/stocks/index.html" data-target="menutvdivq0000008wh1-tvdivq0000009g22" class="arw">New Listings/ Transfers/ Delistings</a></li>
+						
+							<li><a href="/english/listing/market-alerts/index.html" data-target="menutvdivq0000008wh1-b5b4pj000001496d" class="arw">Market Alerts</a></li>
+						
+							<li><a href="/english/listing/measures/index.html" data-target="menutvdivq0000008wh1-b5b4pj000004jupu" class="arw">Measures against Listed Companies</a></li>
+						
+							<li><a href="/english/listing/others/index.html" data-target="menutvdivq0000008wh1-b5b4pj00000149cy" class="arw">Other Information</a></li>
+						
+							<li><a href="/english/listing/event-schedules/index.html" data-target="menutvdivq0000008wh1-tvdivq0000009gjm" class="arw">Earnings Announcements/ Annual General Shareholders Meetings</a></li>
+						
+							<li><a href="/english/listing/ir-clips/index.html" data-target="menutvdivq0000008wh1-tvdivq0000009gl8" class="arw">Introduction of Listed Companies</a></li>
+						
+	</ul>
+</div>
+						
+
+					<h2><a href="/english/equities/index.html" data-target="menutvdivq0000008xx5">Equities, Debt, Funds</a><span></span></h2>
+					
+<div class="sp-sub-menu">
+	<ul>
+		
+							<li><a href="/english/equities/listing-on-tse/index.html" data-target="menutvdivq0000008xx5-tvdivq0000009h36" class="arw">Listing on TSE</a></li>
+						
+							<li><a href="/english/equities/products/index.html" data-target="menutvdivq0000008xx5-tvdivq0000009i3g" class="arw">Products</a></li>
+						
+							<li><a href="/english/equities/trading/index.html" data-target="menutvdivq0000008xx5-tvdivq0000009utz" class="arw">Trading (Domestic Stocks)</a></li>
+						
+							<li><a href="/english/equities/listing/index.html" data-target="menutvdivq0000008xx5-tvdivq0000009u77" class="arw">Listing (Domestic Stocks)</a></li>
+						
+							<li><a href="/english/equities/improvements/index.html" data-target="menutvdivq0000008xx5-tvdivq0000009v8z" class="arw">Market Infrastructure for Listed Companies</a></li>
+						
+							<li><a href="/english/equities/listed-co/index.html" data-target="menutvdivq0000008xx5-tvdivq0000009vdf" class="arw">Support for Listed Companies</a></li>
+						
+							<li><a href="/english/equities/market-restructure/index.html" data-target="menutvdivq0000008xx5-b5b4pj0000048v77" class="arw">Market Restructuring</a></li>
+						
+							<li><a href="/english/equities/strengthening/index.html">Strengthening the Functions of the Cash Equity Market</a></li>
+						
+							<li><a href="/english/equities/carbon-credit/index.html" data-target="menutvdivq0000008xx5-uorii5000000102m" class="arw">Carbon Credit Market</a></li>
+						
+	</ul>
+</div>
+						
+
+					<h2><a href="/english/derivatives/index.html" data-target="menutvdivq0000008ze7">Derivatives</a><span></span></h2>
+					
+<div class="sp-sub-menu">
+	<ul>
+		
+							<li><a href="/english/derivatives/products/index.html" data-target="menutvdivq0000008ze7-tvdivq000000a1w0" class="arw">Products</a></li>
+						
+							<li><a href="/english/derivatives/rules/index.html" data-target="menutvdivq0000008ze7-tvdivq000000a4z3" class="arw">Trading</a></li>
+						
+							<li><a href="/english/derivatives/delivery-points/index.html" data-target="menutvdivq0000008ze7-b5b4pj0000050g7b" class="arw">Delivery</a></li>
+						
+							<li><a href="/english/derivatives/futures/index.html" data-target="menutvdivq0000008ze7-tvdivq000000a6n4" class="arw">Overview of Futures Trading</a></li>
+						
+							<li><a href="/english/derivatives/options/index.html" data-target="menutvdivq0000008ze7-tvdivq000000a880" class="arw">Overview of Options Trading</a></li>
+						
+							<li><a href="/english/derivatives/risk/index.html" data-target="menutvdivq0000008ze7-p6b22i0000002frz" class="arw">Risks Associated with Derivatives</a></li>
+						
+							<li><a href="/english/derivatives/futures-options-report/index.html">Futures ＆ Options Report</a></li>
+						
+							<li><a href="/english/derivatives/market-highlights/index.html">Market Highlights</a></li>
+						
+							<li><a href="/english/derivatives/eu-priips-regulation/index.html">Key Information Documents for EU PRIIPs Regulation</a></li>
+						
+							<li><a href="/english/derivatives/related/index.html" data-target="menutvdivq0000008ze7-tvdivq000000a94u" class="arw">Reference Information</a></li>
+						
+	</ul>
+</div>
+						
+					<h2><a href="/english/rules-participants/index.html" data-target="menutvdivq0000008yx8">Rules &amp; Trading Participants</a><span></span></h2>
+					
+<div class="sp-sub-menu">
+	<ul>
+		
+							<li><a href="/english/rules-participants/rules/index.html">Rules</a></li>
+						
+							<li><a href="/english/rules-participants/public-comment/index.html">Public Comments</a></li>
+						
+							<li><a href="/english/rules-participants/participants/index.html" data-target="menutvdivq0000008yx8-tvdivq00000109mw" class="arw">Trading Participants</a></li>
+						
+	</ul>
+</div>
+						
+					<h2><a href="/english/systems/index.html" data-target="menutvdivq0000008z7z">Systems</a><span></span></h2>
+					
+<div class="sp-sub-menu">
+	<ul>
+		
+							<li><a href="/english/systems/outline/index.html">Overview of Systems</a></li>
+						
+							<li><a href="/english/systems/equities-trading/index.html">Equities Trading Services</a></li>
+						
+							<li><a href="/english/systems/derivatives-trading/index.html">Derivatives Trading Services</a></li>
+						
+							<li><a href="/english/systems/network/index.html">Network Services</a></li>
+						
+							<li><a href="/english/systems/connectivity/index.html">Connectivity Services</a></li>
+						
+							<li><a href="/english/systems/system-status/index.html">Market System Status</a></li>
+						
+	</ul>
+</div>
+						
+					<h2><a href="/english/regulation/index.html" data-target="menutvdivq00000091fk">Self-Regulation</a><span></span></h2>
+					
+<div class="sp-sub-menu">
+	<ul>
+		
+							<li><a href="/english/regulation/outline/index.html" data-target="menutvdivq00000091fk-dreu250000007zyz" class="arw">Self-Regulatory Operations</a></li>
+						
+							<li><a href="/english/regulation/listing/index.html" data-target="menutvdivq00000091fk-b5b4pj0000005wcb" class="arw">Listing Eligibility and Compliance</a></li>
+						
+							<li><a href="/english/regulation/preventing/index.html" data-target="menutvdivq00000091fk-uorii5000000393l" class="arw">Preventing Unfair Trading</a></li>
+						
+							<li><a href="/english/regulation/maintaining/index.html" data-target="menutvdivq00000091fk-b5b4pj0000005wmy" class="arw">Maintaining Trading Participant Quality</a></li>
+						
+							<li><a href="/english/regulation/public/index.html" data-target="menutvdivq00000091fk-dreu250000007zf6" class="arw">Publications</a></li>
+						
+							<li><a href="/english/regulation/activity/index.html" data-target="menutvdivq00000091fk-tvdivq000000vfoa" class="arw">Activities</a></li>
+						
+							<li><a href="/english/regulation/mail/index.html" data-target="menutvdivq00000091fk-dreu250000001mrg" class="arw">File a Tip or Complaint on Possible Irregularities or Violations</a></li>
+						
+							<li><a href="/english/regulation/tocom/index.html" data-target="menutvdivq00000091fk-b5b4pj0000048p9s" class="arw">TOCOM Self-Regulation</a></li>
+						
+	</ul>
+</div>
+						
+					<h2><a href="/english/clearing-settlement/index.html" data-target="menutvdivq00000091z5">Clearing &amp; Settlement</a><span></span></h2>
+					
+<div class="sp-sub-menu">
+	<ul>
+		
+							<li><a href="/english/clearing-settlement/outline/index.html">Clearing &amp; Settlement</a></li>
+						
+							<li><a href="/english/clearing-settlement/reg-sys-reform/index.html">Reform of Securities Clearing and Settlement System</a></li>
+						
+							<li><a href="/english/clearing-settlement/tplus2-settlement-cycle/index.html">Shortening of Settlement Cycle for Stocks and Other Securities (T+2) </a></li>
+						
+	</ul>
+</div>
+						
+
+	<div class="main-menu-sub">
+		
+						<h3><a href="/english/corporate/index.html" data-target="menutvdivq000000vjmq">About JPX</a><span></span></h3>
+						
+<div class="sp-sub-menu">
+	<ul>
+		
+							<li><a href="/english/corporate/ceo-message/index.html">Group CEO Message</a></li>
+						
+							<li><a href="/english/corporate/news/news-releases/index.html" data-target="menutvdivq000000vjmq-tvdivq000000zn8c" class="arw">News</a></li>
+						
+							<li><a href="/english/corporate/about-jpx/index.html" data-target="menutvdivq000000vjmq-b5b4pj000002f44t" class="arw">About JPX</a></li>
+						
+							<li><a href="/english/corporate/governance/index.html" data-target="menutvdivq000000vjmq-b5b4pj000002ejtn" class="arw">Governance / Risk Management</a></li>
+						
+							<li><a href="/english/corporate/investor-relations/index.html" data-target="menutvdivq000000vjmq-tvdivq000000lbh5" class="arw">Investor Relations</a></li>
+						
+							<li><a href="/english/corporate/sustainability/index.html" data-target="menutvdivq000000vjmq-b5b4pj000003f23v" class="arw">Sustainability</a></li>
+						
+							<li><a href="/english/corporate/research-study/index.html" data-target="menutvdivq000000vjmq-tvdivq000000af0z" class="arw">Research and Studies / Policy Recommendations</a></li>
+						
+							<li><a href="/english/corporate/social-media-newsletters/index.html" data-target="menutvdivq000000vjmq-b5b4pj000002ejq2" class="arw">Social Media and Newsletters</a></li>
+						
+	</ul>
+</div>
+							
+	</div>
+	<div class="main-menu-sub">
+		<ul class="main-menu-link">
+			<li><a href="/english/corporate/social-media-newsletters/social-media/index.html">Social Media</a></li>
+			<li><a href="/english/corporate/social-media-newsletters/mail-magazine/index.html">Newsletter</a></li>
+		</ul>
+	</div>
+</div>
+<ul class="subject-navi onlysp">
+
+    <li><a href="/english/individuals/index.html">For Individual Investors</a></li>
+
+    <li><a href="/english/listed-companies/index.html">For Listed Companies</a></li>
+
+    <li><a href="/english/pre-listed-companies/index.html">For Prospective Issuers</a></li>
+
+    <li><a href="/english/participants/index.html">For Trading Participants</a></li>
+
+    <li><a href="/english/institutional/index.html">For Institutional Investors</a></li>
+
+    <li><a href="/english/media/index.html">For Media</a></li>
+
+</ul>
+        <div class="main-menu-addition">
+          
+<h2 class="recommend"><span>Recommended Contents</span><i class="onlysp"></i></h2>
+  <ul>
+    
+            <li><a href="/english/markets/statistics-equities/daily/index.html">TSE Daily Report</a></li>
+          
+            <li><a href="/english/markets/statistics-derivatives/daily/index.html">Daily Report</a></li>
+          
+            <li><a href="/english/markets/equities/summary/index.html">Equities Market Summary</a></li>
+          
+            <li><a href="/english/markets/indices/realvalues/index.html">Stock Price Index - Real Time Values</a></li>
+          
+            <li><a href="/english/markets/equities/margin-daily/index.html">Daily Publication, etc., Concerning Margin Trading</a></li>
+          
+            <li><a href="/english/markets/equities/margin-reg/index.html">Regulatory Measures, etc., Concerning Margin Trading</a></li>
+          
+            <li><a href="/english/markets/statistics-equities/short-selling/index.html">Short Selling Value</a></li>
+          
+            <li><a href="/english/markets/derivatives/special-quotation/index.html">Special Quotations</a></li>
+          
+            <li><a href="/english/corporate/news/monthly-headline/index.html">JPX Monthly Headlines</a></li>
+          
+  </ul>
+
+          
+<h2 class="category"><span>Our Markets</span><i class="onlysp"></i></h2>
+  <ul>
+    
+            <li><a href="/english/equities/products/index.html">TSE</a></li>
+          
+            <li><a href="/english/derivatives/products/list/index.html">OSE</a></li>
+          
+            <li><a href="/english/derivatives/products/list/index.html">TOCOM</a></li>
+          
+  </ul>
+
+          
+<h2 class="products"><span>Featured Products</span><i class="onlysp"></i></h2>
+  <ul>
+    
+            <li><a href="/english/equities/products/stocks/index.html">Stocks (Domestic)</a></li>
+          
+            <li><a href="/english/equities/products/etfs/index.html">ETFs</a></li>
+          
+            <li><a href="/english/equities/products/reits/index.html">REITs</a></li>
+          
+            <li><a href="/english/equities/products/tpm/index.html">TOKYO PRO Market</a></li>
+          
+            <li><a href="/english/equities/products/tpbm/index.html">TOKYO PRO-BOND Market</a></li>
+          
+            <li><a href="/english/derivatives/products/domestic/225futures/index.html">Nikkei 225 Futures (Large Contracts)</a></li>
+          
+            <li><a href="/english/derivatives/products/domestic/topix-futures/index.html">TOPIX Futures (Large Contracts)</a></li>
+          
+            <li><a href="/english/derivatives/products/interest-rate/3m-tona-futures/index.html">3-Month TONA Futures</a></li>
+          
+            <li><a href="/english/derivatives/products/domestic/225mini-options/index.html">Nikkei 225 mini Options</a></li>
+          
+            <li><a href="/english/derivatives/products/precious-metals/gold-standard-futures/index.html">Gold Standard Futures</a></li>
+          
+            <li><a href="/english/derivatives/products/energy/platts-dubai-futures/index.html">Platts Dubai Crude Oil Futures</a></li>
+          
+  </ul>
+
+          
+<h2 class="relatedsite"><span>External Links</span><i class="onlysp"></i></h2>
+  <ul>
+    
+            <li><a href="https://www.jpx.co.jp/jscc/en/index.html" rel="external">Japan Securities Clearing Corporation</a></li>
+          
+            <li><a href="/english/sicc/index.html">Securities Identification Code Committee</a></li>
+          
+            <li><a href="https://www.lei.jpx.co.jp/lei/en/index.html" rel="external">JPX-LEI (Legal Entity Identifier)</a></li>
+          
+            <li><a href="http://db-ec.jpx.co.jp/?__lang=en" rel="external">JPX Data Cloud</a></li>
+          
+            <li><a href="https://market-news-insights-jpx.com/" rel="external">Market News &amp; Insights</a></li>
+          
+  </ul>
+   
+        </div>
+        <div class="sp-submenu-wrap">
+          <ul class="sp-submenus onlysp">
+            <li><a href="/english/corporate/about-jpx/access/index.html">Access</a></li>
+            <li><a href="/english/corporate/about-jpx/tour/index.html">Visit JPX</a></li>
+            <li><a href="/english/contact/index.html">Contact us</a></li>
+          </ul>
+          <ul class="language-btn onlysp">
+            <li><a href="/">Japanese</a></li>
+            <li><a href="/chinese/">Chinese</a></li>
+          </ul>
+        </div>
+        <p class="menu-close onlysp"><i><img src="/english/common/images/icon/icon-close-white.png"></i>Close</p>
+</div>
+    
+</div><!-- /menu-areaIn -->
+
+</div><!-- /menu-area -->
+  <div id="main-area">
+    <div id="main-areaIn">
+      <div id="read-area">
+  <ul>
+    
+    <li class="icon-read"><a class="rs_href" rel="nofollow" accesskey="L" href="//app-as.readspeaker.com/cgi-bin/rsent?customerid=6483&amp;lang=en_us&amp;readid=readArea&amp;url=" target="_blank" onclick="readpage(this.href, 'xp1'); return false;"><div class="onlypc">Listen to this page</div></a></li>
+    <li class="icon-print"><a href="javascript:void(0)" onclick="window.print();return false;">Print</a></li>
+  </ul>
+</div>
+<div id="xp1" class="rs_preserve rs_skip rs_splitbutton rs_addtools rs_exp"></div>
+      <div id="readArea">
+        <div><div class="headline-title-wrap"><h1 class="headline-title"><span>Page Not Found</span></h1></div></div>
+        <div><p class="component-text">The page you are trying to access could not be found.<br/>
+This may be for one of the following reasons:</p></div>
+    <div>
+
+<div class="component-list">
+  <ul>
+  
+    <li>The URL entered is incorrect.</li>
+  
+    <li> The URL is outdated or the page has been removed.</li>
+  
+  </ul>
+</div>
+
+</div>
+    <div><p class="component-text">Please search from the top page or site map, or use the search feature.</p></div>
+    <div>
+<div class="component-margin24">&nbsp;</div>
+</div>
+
+
+    <div>
+  
+              <a href="/english/index.html" class="link-window">Back to Top Page</a>
+            
+</div>
+    
+      </div><!-- /readArea -->
+    </div><!-- /main-areaIn -->
+    <div id="footer-area">
+  <div class="page-top"><p class="icon-pagetop"><a href="#">Page Top</a></p></div>
+  <div class="footer-areaIn">
+    
+      <script>
+        $(function(){
+          $.ajax({
+            url:"/english/tvdivq000000zpw5.xml",
+            type:"GET",
+            dataType:"xml",
+            async:false,
+            timeout:1000,
+            error:function() {
+              $("#therd_map").html("Couldn't get information");
+            },
+            success:function(xml){
+              var second_menu_count = 0
+              var thard_menu_count = 0;
+              var count = 0;
+              var html = '';
+              html += '<div class="footer-sitemap">';
+              html += '<ul class="fs-table">';
+              $(xml).find("menu").each(function() {
+                if (thard_menu_count != count) {
+                  count++
+                  return true;
+                } else {
+                  if (second_menu_count%4 == 0 && second_menu_count != 0) {
+                    html += '</ul>';
+                    html += '</div>';
+                    html += '<div class="footer-sitemap">';
+                    html += '<ul class="fs-table">';
+                  }
+                  second_menu_count++;
+                }
+
+                if ($(this).find('second_url').text() != "/english/news/index.html") {
+                  html += '<li class="fs-table-sub">';
+                } else {
+                  html += '<li class="fs-table-sub fs-list-sub">';
+                }
+                html += '<h2><a href="'+$(this).find('second_url').text()+'">'+$(this).find('second_name').text()+'</a></h2>';
+                html += '<ul>';
+                $(this).find("menu_list").find("menu").each(function() {
+                  html += '<li><a href="'+$(this).find('third_url').text()+'">'+$(this).find('third_name').text()+'</a></li>';
+                  thard_menu_count++;
+                });
+                html += '</ul>';
+                html += '</li>';
+              });
+
+              if (second_menu_count%4 != 0) {
+                while(second_menu_count%4 != 0) {
+                  html += '<li class="fs-table-sub">&nbsp</li>';
+                  second_menu_count++;
+                }
+              }
+
+              html += '</ul>';
+              html += '</div>';
+              $("#therd_map").append(html);
+            }
+          });
+        });
+      </script>
+      <div class="footer-sitemap-box" id="therd_map">
+      </div>
+    <div class="footer-menu">
+<ul>
+<li class="onlysp"><a href="/english/">Top Page</a></li>
+
+<li><a href="/english/site-updates/index.html" >Site Updates</a></li>
+
+<li><a href="/english/faq/index.html" >FAQ</a></li>
+
+<li><a href="/english/sitemap/index.html" >Sitemap</a></li>
+
+<li><a href="/english/term-of-use/index.html" >Disclaimer/ Terms of Use</a></li>
+
+<li><a href="/english/corporate/governance/security/personal-information/index.html" >Handling of Personal Information</a></li>
+
+</ul>
+</div>
+
+<div class="footer-copyright">
+<p>&copy; <script type="text/javascript">document.write(new Date().getFullYear());</script> Japan Exchange Group, Inc.</p>
+</div>
+</div>
+</div>
+  </div><!-- /main-area -->
+</div><!-- /wrapper-area -->
+
+<script type="text/javascript" src="/english/common/javascripts/add_attribute_gid.js"></script>
+<!-- body_append -->
+<div id="modal-bg"></div>
+</body>
+
+</html>

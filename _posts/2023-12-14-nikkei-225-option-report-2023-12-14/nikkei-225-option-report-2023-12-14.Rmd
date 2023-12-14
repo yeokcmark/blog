@@ -44,8 +44,8 @@ sessionInfo()
 
 # Import Data ----
 # download daily open interest ----
-download_date <- #"20231205"
-  format(today(), "%Y%m%d")
+download_date <- "20231214"
+#  format(today(), "%Y%m%d")
 URL <- glue("https://www.jpx.co.jp/english/markets/derivatives/trading-volume/tvdivq00000014nn-att/{download_date}open_interest_e.xlsx")
 file_name <- glue("{download_date}open_interest_e.xlsx")
 GET(URL, write_disk(file_name, overwrite=TRUE))
@@ -843,5 +843,13 @@ Nikkei 225 Closing Price: `r {spot_price}`\
 p_total_gamma_back
 ```
 ```{r, layout="l-body-outset", warning=FALSE, preview = TRUE, echo =FALSE}
-ggplotly(p_total_gamma)
+
+f <-
+  ggplotly(p_total_gamma)
+f<-
+  f %>% 
+  layout(autosize = F,
+         widths = 900,
+         height = 600)
+f
 ```
