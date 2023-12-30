@@ -141,7 +141,7 @@ d <-
 
 d<-
   d %>%
-  select(1,2,4,6)
+  select(-volume.x, -volume.y)
 # # check if d is correct. IF yes, allocate to data_2311 and save
 data_2401 <- d
 saveRDS(data_2401, file = "data_2401.RDS")
