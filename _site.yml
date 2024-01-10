@@ -19,8 +19,6 @@ navbar:
           href: nikkei225.html
     - text: "Projects"
       menu:
-        - text: "Capstone Project: Home Ownership ~ Optimism?"
-          href: 
         - text: "Whatsapp Chat Analysis"
           href: whatsapp.html
         - text: "Christmas Snowman using gganimate (2023)"
