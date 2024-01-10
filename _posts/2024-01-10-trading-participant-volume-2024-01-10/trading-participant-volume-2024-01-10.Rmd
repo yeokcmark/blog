@@ -1,0 +1,313 @@
+---
+title: "Trading Participant Volume 2024-01-10"
+description: |
+date: 2024-01-10
+
+
+categories:
+  - nikkei225
+  - options
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 6
+    toc_float: true    
+    self_contained: false
+---
+
+```{r, echo = FALSE, include= FALSE}
+
+# Remove all objects in workspace ----
+rm(list = ls())
+#setwd("C:/Users/User/Dropbox/Papa Work/Data Science/R/SMU/Readings")
+
+# Please import necessary libraries ----
+#pacman::p_unload("all")
+
+#### Set up dependencies (Activate necessary packages) ----
+pacman::p_load(tidyverse, lubridate,glue, knitr, rmarkdown, ggthemes,
+               quantmod, bizdays, roptions, plotly,
+               httr2, httr,
+               readxl)
+theme_set(theme_clean())
+sessionInfo()
+
+
+# Import Data ----
+# download daily day session regular market ----
+download_date <- #"20240105"
+  format(today(), "%Y%m%d")
+#URL <- glue("https://www.jpx.co.jp/english/markets/derivatives/participant-volume/o4sio7000000346f-att/{download_date}_volume_by_participant_whole_day.xlsx")
+file_name <- glue("{download_date}_volume_by_participant_whole_day.xlsx")
+#GET(URL, write_disk(file_name, overwrite=TRUE))
+
+data <- read_excel(file_name,
+                   sheet = "手口上位一覧",
+                   skip = 5)
+names(data)
+
+# download daily day session J-NET market ----
+#URL1 <-glue("https://www.jpx.co.jp/english/markets/derivatives/participant-volume/o4sio7000000346f-att/{download_date}_volume_by_participant_whole_day_J-NET.xlsx")
+file_name1 <- glue("{download_date}_volume_by_participant_whole_day_J-NET.xlsx")
+#GET(URL1, write_disk(file_name1, overwrite=TRUE))
+data1 <- read_excel(file_name1,
+                 sheet = "手口上位一覧",
+                 skip = 5)
+
+names(data1)
+
+
+```
+
+```{r plot-options, echo = FALSE, include= FALSE}
+# Data Wrangling ----
+# Rename and filter by options and market maker and top 2 trading houses
+opt_data<-
+  data %>% 
+  rename(product = "分類 Product Class",
+         pid = "銘柄",
+         contract = "Contract Issue",
+         participant_id = "参加者 Participant",
+         participant_name = "...7",
+         volume = "取引高\nVolume") %>% 
+  select(product, pid, contract, participant_id, participant_name, volume) %>% 
+  filter(product == "NK225E" & participant_name %in% c("ABN AMRO Clearing Tokyo",
+                                                       "Societe Generale Securities Japan",
+                                                       "Goldman Sachs Japan",
+                                                       "Morgan Stanley MUFG Securities"
+                                                       ))
+opt_data1<-
+  data1 %>% 
+  rename(product = "分類 Product Class",
+         pid = "銘柄",
+         contract = "Contract Issue",
+         participant_id = "参加者 Participant",
+         participant_name = "...7",
+         volume = "取引高\nVolume") %>% 
+  select(product, pid, contract, participant_id, participant_name, volume) %>% 
+  filter(product == "NK225E" & participant_name %in% c("ABN AMRO Clearing Tokyo",
+                                                       "Societe Generale Securities Japan",
+                                                       "Goldman Sachs Japan",
+                                                       "Morgan Stanley MUFG Securities"))
+
+# plot options data
+data_reduced <-
+  full_join(opt_data, opt_data1, by = c("pid", "participant_id")) %>% 
+  group_by(pid, participant_id) %>% 
+  mutate(volume.x = ifelse(is.na(volume.x), 0, volume.x),
+         volume.y = ifelse(is.na(volume.y), 0, volume.y),
+         volume = volume.x + volume.y,
+         product.x = ifelse(is.na(product.x), product.y,product.x),
+         contract.x = ifelse(is.na(contract.x), contract.y,contract.x),
+         participant_name.x = as.factor(ifelse(is.na(participant_name.x), participant_name.y,participant_name.x))
+         ) %>% 
+  select(1:5, 11) %>% 
+  rename(product = "product.x",
+         contract = "contract.x",
+         participant_name = "participant_name.x"
+         ) %>% 
+  mutate(ctr = as.factor(str_extract(contract, pattern = "(?<=OOP )\\w+")),
+         strike = as.numeric(str_extract(contract, pattern = "(?<=-)\\d+")),
+         type = as.character(str_extract(ctr, pattern = "\\w"))) %>% 
+  group_by(contract)
+
+p_trading_participant <-
+  ggplot(data = data_reduced)+
+  geom_col(data = subset(data_reduced, type == "C"),
+           aes(y = volume,
+               x = strike),
+           fill = "blue") +
+  geom_col(data = subset(data_reduced, type == "P"),
+           aes(y = -volume,
+               x = strike),
+           fill = "red") +
+  facet_wrap(~ factor(participant_name, c("ABN AMRO Clearing Tokyo",
+                                          "Societe Generale Securities Japan",
+                                          "Goldman Sachs Japan",
+                                          "Morgan Stanley MUFG Securities")),
+             nrow = 2,
+             scales = "free_y") +
+  labs(title = "Total Options Volume Traded by Market Participant",
+       subtitle = "Top row: Designated Market Makers. Bottom row: Prominent Trading Firms",
+       caption = "Blue: Calls; Red:Puts. Put volume plotted on negative Y axis. Volume represents total volume traded at each strike.\nThere is no information whether options were sold or purchased.")+
+  theme(plot.title = element_text(size = rel(0.8)),
+        plot.subtitle = element_text(size = rel(0.7)),
+        plot.caption = element_text(size = rel(0.6)),
+        axis.text.y = element_text(size = rel(0.5)),
+        axis.text.x = element_text(angle = 45, size = rel(0.5)))
+```
+
+```{r plot-topix, echo = FALSE, include= FALSE}
+# Topix F filter by front month contract
+topix_data<-
+  data %>% 
+  rename(product = "分類 Product Class",
+         pid = "銘柄",
+         contract = "Contract Issue",
+         participant_id = "参加者 Participant",
+         participant_name = "...7",
+         volume = "取引高\nVolume") %>% 
+  select(product, pid, contract, participant_id, participant_name, volume) %>% 
+  filter(product == "TOPIXF" & contract == "TOPIX FUT 2403")
+
+topix_data1<-
+  data1 %>% 
+  rename(product = "分類 Product Class",
+         pid = "銘柄",
+         contract = "Contract Issue",
+         participant_id = "参加者 Participant",
+         participant_name = "...7",
+         volume = "取引高\nVolume") %>% 
+  select(product, pid, contract, participant_id, participant_name, volume) %>% 
+  filter(product == "TOPIXF" & contract == "TOPIX FUT 2403")
+
+# plot topix data
+data_reduced_topix <-
+  full_join(topix_data, topix_data1, by = c("pid", "participant_id")) %>% 
+  group_by(pid, participant_id) %>% 
+  mutate(volume.x = ifelse(is.na(volume.x), 0, volume.x),
+         volume.y = ifelse(is.na(volume.y), 0, volume.y),
+         volume = volume.x + volume.y,
+         product.x = ifelse(is.na(product.x), product.y,product.x),
+         contract.x = ifelse(is.na(contract.x), contract.y,contract.x),
+         participant_name.x = as.factor(ifelse(is.na(participant_name.x), participant_name.y,participant_name.x))
+         ) %>% 
+  select(1:5, 11) %>% 
+  rename(product = "product.x",
+         contract = "contract.x",
+         participant_name = "participant_name.x"
+         )
+
+p_topix_volume <-
+  ggplot(data = data_reduced_topix)+
+  geom_col(aes(x = reorder(participant_name, volume),
+               y = volume)
+           )+
+  coord_flip()+
+  labs(title = "Total Topix Futures Volume Traded by Market Participants",
+       x = "Trading Participants"
+       )+
+  theme(plot.title = element_text(size = rel(0.8)),
+        plot.subtitle = element_text(size = rel(0.7)),
+        plot.caption = element_text(size = rel(0.6)),
+        axis.text.y = element_text(size = rel(0.5)),
+        axis.text.x = element_text(angle = 45, size = rel(0.5)))
+
+```
+
+```{r plot-nikkeiF, echo = FALSE, include= FALSE}
+nkf_data<-
+  data %>% 
+  rename(product = "分類 Product Class",
+         pid = "銘柄",
+         contract = "Contract Issue",
+         participant_id = "参加者 Participant",
+         participant_name = "...7",
+         volume = "取引高\nVolume") %>% 
+  select(product, pid, contract, participant_id, participant_name, volume) %>% 
+  filter(product == "NK225F" & contract == "NIKKEI 225 FUT 2403")
+
+# mutate to convert to big nk volume equivalent
+nkmf_data <-
+  data %>% 
+  rename(product = "分類 Product Class",
+         pid = "銘柄",
+         contract = "Contract Issue",
+         participant_id = "参加者 Participant",
+         participant_name = "...7",
+         volume = "取引高\nVolume") %>% 
+  filter(product == "NK225MF" & contract == "MINI NK225 FUT 2403") %>% 
+  mutate(volume = round(volume/10,0)) %>% 
+    select(participant_id, participant_name, volume)
+
+nkf_combined_data <-
+  full_join(nkf_data, nkmf_data, by = "participant_id") %>% 
+  group_by(participant_id) %>% 
+  mutate(volume.x = ifelse(is.na(volume.x), 0, volume.x),
+         volume.y = ifelse(is.na(volume.y), 0, volume.y),
+         volume = volume.x + volume.y,
+         participant_name.x = as.factor(ifelse(is.na(participant_name.x), participant_name.y, participant_name.x))
+         ) %>% 
+  select(1:5, 9) %>% 
+  rename(participant_name = "participant_name.x"
+         ) %>% 
+  ungroup()
+
+nkf_data1<-
+  data1 %>% 
+  rename(product = "分類 Product Class",
+         pid = "銘柄",
+         contract = "Contract Issue",
+         participant_id = "参加者 Participant",
+         participant_name = "...7",
+         volume = "取引高\nVolume") %>% 
+  select(product, pid, contract, participant_id, participant_name, volume) %>% 
+  filter(product == "NK225F" & contract == "NIKKEI 225 FUT 2403")
+
+# mutate to convert to big nk volume equivalent
+nkmf_data1 <-
+  data1 %>% 
+  rename(product = "分類 Product Class",
+         pid = "銘柄",
+         contract = "Contract Issue",
+         participant_id = "参加者 Participant",
+         participant_name = "...7",
+         volume = "取引高\nVolume") %>% 
+  filter(product == "NK225MF" & contract == "MINI NK225 FUT 2403") %>% 
+  mutate(volume = round(volume/10,0)) %>% 
+    select(participant_id, participant_name, volume)
+
+nkf_combined_data1 <-
+  full_join(nkf_data1, nkmf_data1, by = "participant_id") %>% 
+  group_by(participant_id) %>% 
+  mutate(volume.x = ifelse(is.na(volume.x), 0, volume.x),
+         volume.y = ifelse(is.na(volume.y), 0, volume.y),
+         volume = volume.x + volume.y,
+         participant_name.x = as.factor(ifelse(is.na(participant_name.x), participant_name.y, participant_name.x))
+         ) %>% 
+  select(1:5, 9) %>% 
+  rename(participant_name = "participant_name.x"
+         ) %>% 
+  ungroup()
+
+# plot nkf data
+
+
+data_reduced_nkf <-
+  full_join(nkf_combined_data, nkf_combined_data1, by = "participant_id") %>% 
+  mutate(volume.x = ifelse(is.na(volume.x), 0, volume.x),
+         volume.y = ifelse(is.na(volume.y), 0, volume.y),
+         volume = volume.x + volume.y,
+         participant_name = participant_name.x)%>% 
+  select(12:13) 
+
+p_nkf_volume <-
+  data_reduced_nkf %>% 
+  slice_max(order_by = volume, n=15) %>% 
+  ggplot()+
+  geom_col(aes(x = reorder(participant_name, volume),
+               y = volume)
+           )+
+  coord_flip()+
+  labs(title = "Total Nikkei Futures Volume Traded by Market Participants",
+       x = "Trading Participants"
+       )+
+  theme(plot.title = element_text(size = rel(0.8)),
+        plot.subtitle = element_text(size = rel(0.7)),
+        plot.caption = element_text(size = rel(0.6)),
+        axis.text.y = element_text(size = rel(0.5)),
+        axis.text.x = element_text(angle = 45, size = rel(0.5)))
+
+```
+
+
+
+
+
+
+```{r, layout="l-body-outset", echo = FALSE}
+# plots
+p_trading_participant
+p_nkf_volume
+p_topix_volume
+```
