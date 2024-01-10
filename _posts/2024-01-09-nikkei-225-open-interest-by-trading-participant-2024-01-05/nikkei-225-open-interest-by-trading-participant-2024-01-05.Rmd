@@ -208,6 +208,20 @@ p_trading_participant_OI <-
         axis.title = element_text(size = rel(0.6)))+
   coord_flip()
  
+
+# Lets consider data for index futures
+f_file_name <- glue("{download_date}_indexfut_oi_by_tp_e.xlsx")
+#GET(URL, write_disk(file_name, overwrite=TRUE))
+
+f_data <- read_excel(f_file_name,
+                   sheet = "BO_DD0121",
+                   skip = 3)
+names(f_data)
+
+
+
+
+
 ```
 ```{r, layout="l-page", fig.width = 8, fig.height=12}
 p_trading_participant_OI
