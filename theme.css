@@ -105,3 +105,7 @@ description {
 body {
   background: #fefef9; /*tufte off-white*/
 }
+
+div {
+  width: 75%;
+}
