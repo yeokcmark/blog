@@ -20,6 +20,47 @@ site: distill::distill_website
 
 Welcome! And thank you for stopping by. This blog was created using [Distill for R Markdown](https://rstudio.github.io/distill/) and written entirely in R Studio. Hopefully, it will be a growing showcase of all projects related to R which I embark on. <br> <br>
 
+My first attempt at making a spiral. Hope to build it into a fireworks display!
+
+```{r, include = F}
+library(tidyverse)
+library(randomcoloR)
+library(gganimate)
+
+a <- 0.1
+b <- 0.2
+
+theta <- seq(0, 10 * pi, 0.01)
+radius <- a + b*theta
+max <- length(theta)
+col <- randomColor(max)
+size <- seq(0, 3, length.out = max)
+spiral <-
+  tibble(n = 1:max,
+         x = radius * cos(theta),
+         y = radius*sin(theta),
+         s = size,
+         z = col)
+p_spiral <-
+  spiral %>% 
+  ggplot(aes(x = x,
+             y = y)
+         ) +
+  geom_point(aes(color = z, size = s)
+             ) + 
+  theme_void()+
+  theme(legend.position = "none",
+        panel.background = element_rect(fill = "black"),
+        ) +
+  transition_time(n) +
+  shadow_wake(wake_length = 0.9, size = TRUE)
+
+```
+<center>
+```{r, echo = F, fig.height=2, fig.width=2}
+p_spiral
+```
+</center>
 <center>
 
 Number of visitors since inception:
