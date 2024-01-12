@@ -1,6 +1,6 @@
 ---
 title: "maRk's blog"
-description:
+description: null
 site: distill::distill_website
 ---
 <!-- Google tag (gtag.js) -->
@@ -16,7 +16,7 @@ site: distill::distill_website
 
 
 
-<center>![](images/me.jpg){width="30%"}</center>
+<center>![](images/me.jpg){width="30%"}
 
 Welcome! And thank you for stopping by. This blog was created using [Distill for R Markdown](https://rstudio.github.io/distill/) and written entirely in R Studio. Hopefully, it will be a growing showcase of all projects related to R which I embark on. <br> <br>
 
@@ -56,12 +56,11 @@ p_spiral <-
   shadow_wake(wake_length = 0.9, size = TRUE)
 
 ```
-<center>
+
 ```{r, echo = F, fig.height=2, fig.width=2}
 p_spiral
 ```
-</center>
-<center>
+
 
 Number of visitors since inception:
 

@@ -31,7 +31,7 @@ navbar:
       href: https://twitter.com/yeokcmark_mark
 output:
   distill::distill_article:
-    css: theme.css
+    css: bootstrap.css
     toc: true
     toc_depth: 6
     toc_float: true
