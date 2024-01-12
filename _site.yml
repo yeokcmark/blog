@@ -1,6 +1,6 @@
 name: "maRk's blog"
 title: "maRk's blog"
-theme: theme.css
+theme: bootstrap(1).css
 description: |
   my jouRney in R
 citations: false
