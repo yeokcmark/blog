@@ -19,13 +19,13 @@ navbar:
           href: nikkei225.html
     - text: "Projects"
       menu:
-        - text: "Whatsapp Chat Analysis"
+        - text: "Intro to NLP: Whatsapp Chat Analysis"
           href: whatsapp.html
-        - text: "Christmas Snowman using gganimate (2023)"
+        - text: "Digital Art: Christmas Snowman using gganimate (2023)"
           href: snowman2023.html
-        - text: "Spiral"
+        - text: "Digital Art: Archimedean Spiral"
           href: spiral.html
-        - text: "Thank you Prof Roh"
+        - text: "Digital Art: Thank you Prof Roh"
           href: thankyouprofroh.html
     - text: "About"
       href: about.html
