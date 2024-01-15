@@ -23,6 +23,10 @@ navbar:
           href: whatsapp.html
         - text: "Christmas Snowman using gganimate (2023)"
           href: snowman2023.html
+        - text: "Spiral"
+          href: spiral.html
+        - text: "Thank you Prof Roh"
+          href: thankyouprofroh.html
     - text: "About"
       href: about.html
     - icon: fab fa-github
