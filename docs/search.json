@@ -38,8 +38,8 @@
       "path": "index.html",
       "title": "maRk's blog",
       "author": [],
-      "contents": "\r\n\r\n\r\n\r\nWelcome! And thank you for stopping by. This blog was created using Distill for R Markdown and written entirely in R Studio. Hopefully, it will be a growing showcase of all projects related to R which I embark on. \r\nMy first attempt at making a spiral. Hope to build it into a fireworks display!\r\n\r\n\r\n\r\nNumber of visitors since inception:\r\n\r\n\r\n\r\nThis site is hosted FREE by Netlify.\r\n\r\n\r\n\r\n\r\n",
-      "last_modified": "2024-01-15T11:14:08+08:00"
+      "contents": "\r\n\r\n\r\n\r\nWelcome! And thank you for stopping by. This blog was created using Distill for R Markdown and written entirely in R Studio. Hopefully, it will be a growing showcase of all projects related to R which I embark on. \r\n15 Jan 2023: I’ve finally graduated from SMU’s Certified Data Analytics (R) Specialist course. I made this as a present for Prof Roh.\r\n\r\n\r\n\r\n\r\n\r\nNumber of visitors since inception:\r\n\r\n\r\n\r\nThis site is hosted FREE by Netlify.\r\n\r\n\r\n\r\n\r\n",
+      "last_modified": "2024-01-15T21:49:45+08:00"
     },
     {
       "path": "nikkei225.html",
@@ -53,7 +53,7 @@
       "path": "README.html",
       "author": [],
       "contents": "\r\n\r\nContents\r\nblog\r\n\r\nblog\r\nlets make a change and see if it updates\r\n\r\n\r\n",
-      "last_modified": "2024-01-15T11:19:19+08:00"
+      "last_modified": "2024-01-15T21:49:45+08:00"
     },
     {
       "path": "README2.html",
