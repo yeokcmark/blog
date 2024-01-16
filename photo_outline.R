@@ -4,9 +4,9 @@ library(imager) #package for image processing
 library(gganimate)
 
 # a low res photo with a "dull" background works best eg: pasport photo
-img <-load.image("images/thankyou.jpg")
+img <-load.image("images/sulking fat tiger.jpg")
 #cannyEdges() function to extract outlines of photo
-output <- cannyEdges(img, alpha = 0.1)
+output <- cannyEdges(img, alpha = 0.4)
 #alpha controls the threshold adjustment factor (default is 1)
 #play around with this factor to get the desired outcome
 
@@ -24,7 +24,7 @@ df <-
              n = rep((1:10), length.out = num_rows)) # n controls transition to complete image
 
 #write_csv(df, "thankyou.csv") #Save coordinates of your best plot
-df<-read_csv("prof_rohV2_coord.csv")
+#df<-read_csv("prof_rohV2_coord.csv")
 p <-
   ggplot(data = df,
        aes(x = x,
@@ -41,8 +41,16 @@ p <-
 
 animate(p, fps = 20, nframes = 200, end_pause = 60)
 
+tiger_df <- 
+  as.data.frame (img, wide = "c") %>% 
+  mutate(rgb.val=rgb(c.1,c.2,c.3),
+         n = rep(1:20, length.out = 338668))
+tiger_p <- 
+  ggplot(tiger_df,aes(x,y))+
+  geom_point(aes(fill=rgb.val))
 
-
++scale_fill_identity()
+tiger_p+scale_y_reverse()
 
 
 
