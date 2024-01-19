@@ -47,13 +47,13 @@
       "description": "Gamma Exposure Profile\n",
       "author": [],
       "contents": "\r\n\r\n\r\nCheck here for the article on “How to calculate Gamma Exposure Profile”\r\n\r\n\r\n\r\n\r\n",
-      "last_modified": "2024-01-15T22:17:06+08:00"
+      "last_modified": "2024-01-19T23:21:00+08:00"
     },
     {
       "path": "README.html",
       "author": [],
       "contents": "\r\n\r\nContents\r\nblog\r\n\r\nblog\r\nlets make a change and see if it updates\r\n\r\n\r\n",
-      "last_modified": "2024-01-15T22:18:31+08:00"
+      "last_modified": "2024-01-20T07:40:42+08:00"
     },
     {
       "path": "README2.html",
@@ -72,10 +72,9 @@
     {
       "path": "spiral.html",
       "title": "maRk's blog",
-      "description": "something something...\n",
       "author": [],
       "contents": "\r\nI made this spiral animation as part of my first exploration into digital art using R.\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
-      "last_modified": "2024-01-15T22:17:32+08:00"
+      "last_modified": "2024-01-20T07:40:39+08:00"
     },
     {
       "path": "thankyouprofroh.html",

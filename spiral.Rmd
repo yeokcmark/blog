@@ -1,7 +1,5 @@
 ---
 title: "maRk's blog"
-description: |
-  something something...
 
 ---
 I made this spiral animation as part of my first exploration into digital art using R.

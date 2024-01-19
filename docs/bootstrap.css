@@ -11929,7 +11929,9 @@ th {
 
 d-title {
   visibility: hidden;
+  margin:0;
 }
 description {
   visibility: hidden;
+  margin:0;
 }
