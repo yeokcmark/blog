@@ -33,6 +33,8 @@ navbar:
       href: https://github.com/yeokcmark
     - icon: fab fa-twitter
       href: https://twitter.com/yeokcmark_mark
+    - icon: fab fa-envelope
+      href: mailto:yeokcmark@gmail.com?subject=Hi, I read your blog!
 output:
   distill::distill_article:
     css: bootstrap.css
