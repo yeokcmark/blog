@@ -3,10 +3,11 @@ title: "maRk's blog"
 description: |
   something something...
 ---
+Do you think its been getting hotter and hotter in recent years? What about rain? Have we been getting more erratic rainfall in recent years? Here's a cool way to visualize both.
 
 I stumbled upon Pat Schloss' youtube [channel](https://www.youtube.com/@Riffomonas) the other day, while searching for R tutorials online. I watched his video on creating an animated climate spiral, and was inspired to try and do the same, using data for Singapore.
 
-This is the link to Pat's [blog](https://riffomonas.org/code_club/2022-06-02-climate-spiral). I "borrowed" his idea of using "next_jan" so that the lines for December and January would touch and appear seamless. Thanks Pat!
+This is the link to Pat's [blog](https://riffomonas.org/code_club/2022-06-02-climate-spiral). I "borrowed" his idea of using "next_jan" so that the lines for December and January would touch and appear seamless. Thanks Pat! This is the climate spiral created by the smart folks at [NASA's](https://climate.nasa.gov/climate_resources/300/video-climate-spiral-1880-2022/) Scientific Visualization Studio.
 
 Here is my attempt at creating a temperature spiral for Singapore. It is slightly different from Pat's. My temperature lines are colored by temperature difference, rather than by year.
 

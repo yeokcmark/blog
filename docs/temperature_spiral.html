@@ -26301,8 +26301,9 @@ Projects
 
 
 <div class="d-article">
+<p>Do you think its been getting hotter and hotter in recent years? What about rain? Have we been getting more erratic rainfall in recent years? Here’s a cool way to visualize both.</p>
 <p>I stumbled upon Pat Schloss’ youtube <a href="https://www.youtube.com/@Riffomonas">channel</a> the other day, while searching for R tutorials online. I watched his video on creating an animated climate spiral, and was inspired to try and do the same, using data for Singapore.</p>
-<p>This is the link to Pat’s <a href="https://riffomonas.org/code_club/2022-06-02-climate-spiral">blog</a>. I “borrowed” his idea of using “next_jan” so that the lines for December and January would touch and appear seamless. Thanks Pat!</p>
+<p>This is the link to Pat’s <a href="https://riffomonas.org/code_club/2022-06-02-climate-spiral">blog</a>. I “borrowed” his idea of using “next_jan” so that the lines for December and January would touch and appear seamless. Thanks Pat! This is the climate spiral created by the smart folks at <a href="https://climate.nasa.gov/climate_resources/300/video-climate-spiral-1880-2022/">NASA’s</a> Scientific Visualization Studio.</p>
 <p>Here is my attempt at creating a temperature spiral for Singapore. It is slightly different from Pat’s. My temperature lines are colored by temperature difference, rather than by year.</p>
 <center>
 <p><img src="images/temp_spiral.gif" /></p>
@@ -26324,62 +26325,62 @@ Projects
 <span></span>
 <span><span class='fu'>pacman</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/pacman/man/p_load.html'>p_load</a></span><span class='op'>(</span><span class='va'>tidyverse</span>, <span class='va'>lubridate</span>, <span class='va'>glue</span>, <span class='va'>ggthemes</span>, <span class='va'>readr</span>, <span class='va'>gganimate</span>, <span class='va'>gifski</span>, <span class='va'>magick</span><span class='op'>)</span></span>
 <span></span>
-<span><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"SurfaceAirTemperatureMonthlyMean.csv"</span><span class='op'>)</span> <span class='co'>#obtain data from data.gov.sg</span></span>
+<span><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'>read_csv</span><span class='op'>(</span><span class='st'>"SurfaceAirTemperatureMonthlyMean.csv"</span><span class='op'>)</span> <span class='co'>#obtain data from data.gov.sg</span></span>
 <span></span>
 <span><span class='va'>data</span> <span class='op'>&lt;-</span></span>
-<span>  <span class='va'>df</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
-<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/separate_wider_delim.html'>separate_wider_delim</a></span><span class='op'>(</span><span class='va'>month</span>,</span>
+<span>  <span class='va'>df</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>separate_wider_delim</span><span class='op'>(</span><span class='va'>month</span>,</span>
 <span>                       delim <span class='op'>=</span> <span class='st'>"-"</span>,</span>
 <span>                       names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"year"</span>, <span class='st'>"mth"</span><span class='op'>)</span></span>
-<span>                       <span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
-<span>  <span class='fu'><a href='https://tibble.tidyverse.org/reference/deprecated.html'>as.tibble</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>year <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>year</span><span class='op'>)</span>,</span>
+<span>                       <span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>as.tibble</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>mutate</span><span class='op'>(</span>year <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>year</span><span class='op'>)</span>,</span>
 <span>         mth <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>mth</span><span class='op'>)</span>,</span>
 <span>         month <span class='op'>=</span> <span class='va'>month.abb</span><span class='op'>[</span><span class='va'>mth</span><span class='op'>]</span></span>
 <span>         <span class='op'>)</span></span>
 <span></span>
 <span><span class='va'>df_8289</span> <span class='op'>&lt;-</span> </span>
-<span>  <span class='va'>data</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>year</span> <span class='op'>&gt;=</span> <span class='fl'>1982</span> <span class='op'>&amp;</span> <span class='va'>year</span> <span class='op'>&lt;=</span> <span class='fl'>1989</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>mth</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>m_temp <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>mean_temp</span><span class='op'>)</span><span class='op'>)</span></span>
+<span>  <span class='va'>data</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>year</span> <span class='op'>&gt;=</span> <span class='fl'>1982</span> <span class='op'>&amp;</span> <span class='va'>year</span> <span class='op'>&lt;=</span> <span class='fl'>1989</span><span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>mth</span><span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>summarise</span><span class='op'>(</span>m_temp <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>mean_temp</span><span class='op'>)</span><span class='op'>)</span></span>
 <span></span>
 <span><span class='va'>data_joined</span> <span class='op'>&lt;-</span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>df_8289</span>, by <span class='op'>=</span> <span class='st'>"mth"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>temp_dev <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='op'>(</span><span class='va'>mean_temp</span> <span class='op'>-</span> <span class='va'>m_temp</span><span class='op'>)</span>, digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span></span>
+<span>  <span class='fu'>left_join</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>df_8289</span>, by <span class='op'>=</span> <span class='st'>"mth"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>mutate</span><span class='op'>(</span>temp_dev <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='op'>(</span><span class='va'>mean_temp</span> <span class='op'>-</span> <span class='va'>m_temp</span><span class='op'>)</span>, digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span></span>
 <span>  </span>
 <span><span class='va'>next_jan</span> <span class='op'>&lt;-</span></span>
-<span>  <span class='va'>data_joined</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>month</span> <span class='op'>==</span> <span class='st'>"Jan"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>year <span class='op'>=</span> <span class='va'>year</span> <span class='op'>-</span><span class='fl'>1</span>,</span>
+<span>  <span class='va'>data_joined</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>month</span> <span class='op'>==</span> <span class='st'>"Jan"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>mutate</span><span class='op'>(</span>year <span class='op'>=</span> <span class='va'>year</span> <span class='op'>-</span><span class='fl'>1</span>,</span>
 <span>         month <span class='op'>=</span> <span class='st'>"next_jan"</span><span class='op'>)</span></span>
 <span></span>
 <span><span class='va'>temp_data</span> <span class='op'>&lt;-</span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/bind_rows.html'>bind_rows</a></span><span class='op'>(</span><span class='va'>data_joined</span>, <span class='va'>next_jan</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>month <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>month</span>,</span>
+<span>  <span class='fu'>bind_rows</span><span class='op'>(</span><span class='va'>data_joined</span>, <span class='va'>next_jan</span><span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>mutate</span><span class='op'>(</span>month <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>month</span>,</span>
 <span>                        levels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>month.abb</span>, <span class='st'>"next_jan"</span><span class='op'>)</span></span>
 <span>                        <span class='op'>)</span>,</span>
 <span>         mth <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>month</span><span class='op'>)</span></span>
 <span>         <span class='op'>)</span> </span>
 <span></span>
 <span><span class='va'>p</span> <span class='op'>&lt;-</span> </span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>temp_data</span>,</span>
-<span>       <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mth</span>,</span>
+<span>  <span class='fu'>ggplot</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>temp_data</span>,</span>
+<span>       <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mth</span>,</span>
 <span>           y <span class='op'>=</span> <span class='va'>temp_dev</span>,</span>
 <span>           group <span class='op'>=</span> <span class='va'>year</span><span class='op'>)</span></span>
 <span>       <span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='va'>temp_dev</span><span class='op'>)</span> <span class='co'>#plot lines for each year</span></span>
+<span>  <span class='fu'>geom_line</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>color <span class='op'>=</span> <span class='va'>temp_dev</span><span class='op'>)</span> <span class='co'>#plot lines for each year</span></span>
 <span>            <span class='op'>)</span><span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_hline</a></span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>)</span>, <span class='co'># concentric lines indicating scale</span></span>
+<span>  <span class='fu'>geom_hline</span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>)</span>, <span class='co'># concentric lines indicating scale</span></span>
 <span>             color <span class='op'>=</span> <span class='st'>"grey"</span><span class='op'>)</span><span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_text.html'>geom_label</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>12</span>, <span class='co'># year in the middle</span></span>
+<span>  <span class='fu'>geom_label</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>12</span>, <span class='co'># year in the middle</span></span>
 <span>                y <span class='op'>=</span> <span class='op'>-</span><span class='fl'>2.8</span>,</span>
 <span>                label <span class='op'>=</span> <span class='va'>year</span><span class='op'>)</span>, </span>
 <span>            fill <span class='op'>=</span> <span class='st'>"black"</span>,</span>
 <span>            color <span class='op'>=</span> <span class='st'>"white"</span>,</span>
 <span>            size <span class='op'>=</span> <span class='fl'>9</span>,</span>
 <span>            label.size <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_text.html'>geom_label</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>12</span>, <span class='co'>#labels for each concentric line</span></span>
+<span>  <span class='fu'>geom_label</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>12</span>, <span class='co'>#labels for each concentric line</span></span>
 <span>                 y <span class='op'>=</span> <span class='op'>-</span><span class='fl'>1</span><span class='op'>)</span>,</span>
 <span>             label <span class='op'>=</span> <span class='st'>"-1 \u00B0C"</span>,</span>
 <span>             fill <span class='op'>=</span> <span class='st'>"black"</span>,</span>
@@ -26387,7 +26388,7 @@ Projects
 <span>             label.size <span class='op'>=</span> <span class='fl'>0</span>,</span>
 <span>             size <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  </span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_text.html'>geom_label</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>12</span>,</span>
+<span>  <span class='fu'>geom_label</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>12</span>,</span>
 <span>                 y <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>,</span>
 <span>             label <span class='op'>=</span> <span class='st'>"+0 \u00B0C"</span>,</span>
 <span>             fill <span class='op'>=</span> <span class='st'>"black"</span>,</span>
@@ -26395,14 +26396,14 @@ Projects
 <span>             label.size <span class='op'>=</span> <span class='fl'>0</span>,</span>
 <span>             size <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  </span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_text.html'>geom_label</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>12</span>,</span>
+<span>  <span class='fu'>geom_label</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>12</span>,</span>
 <span>                 y <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>,</span>
 <span>             label <span class='op'>=</span> <span class='st'>"+1 \u00B0C"</span>,</span>
 <span>             fill <span class='op'>=</span> <span class='st'>"black"</span>,</span>
 <span>             color <span class='op'>=</span> <span class='st'>"orange"</span>,</span>
 <span>             label.size <span class='op'>=</span> <span class='fl'>0</span>,</span>
 <span>             size <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_text.html'>geom_label</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>12</span>,</span>
+<span>  <span class='fu'>geom_label</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>12</span>,</span>
 <span>                 y <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>,</span>
 <span>             label <span class='op'>=</span> <span class='st'>"+2 \u00B0C"</span>,</span>
 <span>             fill <span class='op'>=</span> <span class='st'>"black"</span>,</span>
@@ -26410,38 +26411,38 @@ Projects
 <span>             label.size <span class='op'>=</span> <span class='fl'>0</span>,</span>
 <span>             size <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_polar.html'>coord_polar</a></span><span class='op'>(</span>start <span class='op'>=</span> <span class='fl'>2</span><span class='op'>*</span><span class='va'>pi</span><span class='op'>/</span><span class='fl'>12</span><span class='op'>)</span><span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_x_continuous</a></span><span class='op'>(</span>breaks <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>12</span>,</span>
+<span>  <span class='fu'>coord_polar</span><span class='op'>(</span>start <span class='op'>=</span> <span class='fl'>2</span><span class='op'>*</span><span class='va'>pi</span><span class='op'>/</span><span class='fl'>12</span><span class='op'>)</span><span class='op'>+</span></span>
+<span>  <span class='fu'>scale_x_continuous</span><span class='op'>(</span>breaks <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>12</span>,</span>
 <span>                     labels <span class='op'>=</span> <span class='va'>month.abb</span></span>
 <span>                     <span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_y_continuous</a></span><span class='op'>(</span>breaks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>1.5</span>, <span class='fl'>2.5</span>, <span class='fl'>0.2</span><span class='op'>)</span>,</span>
+<span>  <span class='fu'>scale_y_continuous</span><span class='op'>(</span>breaks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>1.5</span>, <span class='fl'>2.5</span>, <span class='fl'>0.2</span><span class='op'>)</span>,</span>
 <span>                     limits <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>3</span>, <span class='fl'>2.5</span><span class='op'>)</span></span>
 <span>                     <span class='op'>)</span><span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_gradient.html'>scale_color_gradient</a></span><span class='op'>(</span>low <span class='op'>=</span> <span class='st'>"blue"</span>,</span>
+<span>  <span class='fu'>scale_color_gradient</span><span class='op'>(</span>low <span class='op'>=</span> <span class='st'>"blue"</span>,</span>
 <span>                       high <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span><span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Temperature change in Singapore (1982-2023)"</span>,</span>
+<span>  <span class='fu'>labs</span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Temperature change in Singapore (1982-2023)"</span>,</span>
 <span>       subtitle <span class='op'>=</span> <span class='st'>"Monthly Mean Surface Air Temperature."</span>,</span>
 <span>       caption <span class='op'>=</span> <span class='st'>"Data from https//data.gov.sg\n</span></span>
 <span><span class='st'>       Baseline: Average Monthly Temperature from 1982-1989"</span><span class='op'>)</span><span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"none"</span>,</span>
-<span>        plot.title <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"white"</span>, </span>
-<span>                                  size <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>rel</a></span><span class='op'>(</span><span class='fl'>1.2</span><span class='op'>)</span><span class='op'>)</span>,</span>
-<span>        plot.subtitle <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"white"</span>,</span>
-<span>                                    size <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>rel</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>,</span>
-<span>        plot.caption <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"white"</span>,</span>
-<span>                                    size <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>rel</a></span><span class='op'>(</span><span class='fl'>0.8</span><span class='op'>)</span><span class='op'>)</span>,</span>
-<span>        axis.text.x <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"white"</span>,</span>
-<span>                                   size <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>rel</a></span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>,</span>
-<span>        axis.text.y <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_blank</a></span><span class='op'>(</span><span class='op'>)</span>,</span>
-<span>        axis.ticks <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_blank</a></span><span class='op'>(</span><span class='op'>)</span>,</span>
-<span>        panel.background <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_rect</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span>,</span>
-<span>        panel.grid <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_blank</a></span><span class='op'>(</span><span class='op'>)</span>,</span>
-<span>        plot.background <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_rect</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span></span>
+<span>  <span class='fu'>theme</span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"none"</span>,</span>
+<span>        plot.title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"white"</span>, </span>
+<span>                                  size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>1.2</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span>        plot.subtitle <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"white"</span>,</span>
+<span>                                    size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span>        plot.caption <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"white"</span>,</span>
+<span>                                    size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.8</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span>        axis.text.x <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"white"</span>,</span>
+<span>                                   size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span>        axis.text.y <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,</span>
+<span>        axis.ticks <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,</span>
+<span>        panel.background <span class='op'>=</span> <span class='fu'>element_rect</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span>,</span>
+<span>        panel.grid <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,</span>
+<span>        plot.background <span class='op'>=</span> <span class='fu'>element_rect</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span></span>
 <span>        <span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://gganimate.com/reference/transition_time.html'>transition_time</a></span><span class='op'>(</span><span class='va'>year</span><span class='op'>)</span><span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://gganimate.com/reference/shadow_mark.html'>shadow_mark</a></span><span class='op'>(</span>past <span class='op'>=</span> <span class='cn'>TRUE</span>, alpha <span class='op'>=</span> <span class='fl'>0.9</span><span class='op'>)</span></span>
-<span><span class='fu'><a href='https://gganimate.com/reference/animate.html'>animate</a></span><span class='op'>(</span><span class='va'>p</span>, fps <span class='op'>=</span> <span class='fl'>10</span>, nframes <span class='op'>=</span> <span class='fl'>200</span>, end_pause <span class='op'>=</span> <span class='fl'>60</span><span class='op'>)</span></span>
-<span><span class='fu'><a href='https://gganimate.com/reference/anim_save.html'>anim_save</a></span><span class='op'>(</span><span class='st'>"name_of_your_choice"</span>, <span class='va'>p</span><span class='op'>)</span></span></code></pre>
+<span>  <span class='fu'>transition_time</span><span class='op'>(</span><span class='va'>year</span><span class='op'>)</span><span class='op'>+</span></span>
+<span>  <span class='fu'>shadow_mark</span><span class='op'>(</span>past <span class='op'>=</span> <span class='cn'>TRUE</span>, alpha <span class='op'>=</span> <span class='fl'>0.9</span><span class='op'>)</span></span>
+<span><span class='fu'>animate</span><span class='op'>(</span><span class='va'>p</span>, fps <span class='op'>=</span> <span class='fl'>10</span>, nframes <span class='op'>=</span> <span class='fl'>200</span>, end_pause <span class='op'>=</span> <span class='fl'>60</span><span class='op'>)</span></span>
+<span><span class='fu'>anim_save</span><span class='op'>(</span><span class='st'>"name_of_your_choice"</span>, <span class='va'>p</span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
