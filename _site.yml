@@ -27,6 +27,8 @@ navbar:
           href: spiral.html
         - text: "Digital Art: Thank you Prof Roh"
           href: thankyouprofroh.html
+        - text: "Singapore Temperature and Rainfall animated spirals"
+          href: temperature_spiral.html
     - text: "About"
       href: about.html
     - icon: fab fa-github
