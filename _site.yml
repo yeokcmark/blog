@@ -17,6 +17,12 @@ navbar:
           href: calculate_gamma_exposure_profile_nikkei225.html
         - text: "Daily Market Updates"
           href: nikkei225.html
+    - text: "Capstone"
+      menu:
+        - text: "Data Import, wrangling, tidy"
+          href: capstone_Import_data.html
+        - text: "Analysis: Does home ownership lead to greater optimism"
+          href: capstone_home_ownership_optimism.html
     - text: "Projects"
       menu:
         - text: "Intro to NLP: Whatsapp Chat Analysis"
