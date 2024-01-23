@@ -1,28 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" version="1.0">
   <url>
-    <loc>https://yeokcmark.netlify.app/about.html</loc>
-    <lastmod>2024-01-23T12:35:30+08:00</lastmod>
-  </url>
-  <url>
-    <loc>https://yeokcmark.netlify.app/calculate_gamma_exposure_profile_nikkei225.html.html</loc>
-    <lastmod>2024-01-23T12:44:17+08:00</lastmod>
-  </url>
-  <url>
-    <loc>https://yeokcmark.netlify.app/capstone_home_ownership_optimism.html</loc>
-    <lastmod>2024-01-23T12:59:44+08:00</lastmod>
-  </url>
-  <url>
     <loc>https://yeokcmark.netlify.app/capstone_Import_data.html</loc>
     <lastmod>2024-01-23T13:03:00+08:00</lastmod>
-  </url>
-  <url>
-    <loc>https://yeokcmark.netlify.app/</loc>
-    <lastmod>2024-01-23T13:03:43+08:00</lastmod>
-  </url>
-  <url>
-    <loc>https://yeokcmark.netlify.app/nikkei225.html</loc>
-    <lastmod>2023-12-08T16:58:16+08:00</lastmod>
   </url>
   <url>
     <loc>https://yeokcmark.netlify.app/README.html</loc>
