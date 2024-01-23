@@ -12,15 +12,15 @@ This is the link to Pat's [blog](https://riffomonas.org/code_club/2022-06-02-cli
 
 Here is my attempt at creating a temperature spiral for Singapore. It is slightly different from Pat's. My temperature lines are colored by temperature difference, rather than by year.
 
-<center>![](images/temp_spiral.gif){width="480"}</center>
+![](images/temp_spiral.gif)
 
 This is a different way of visualizing the same data. Which is more effective? Which do you prefer?
 
-<center>![](images/temp_dots.gif){width="480"}</center>
+<center>![](images/temp_dots.gif){width="600"}</center>
 
 I didnt stop there. Since there was rainfall data available, I created something similar for rainfall in Singapore.
 
-<center>![](images/rain_spiral.gif)</center>
+![](images/rain_spiral.gif)
 
 The code for generating the temperature spiral. WARNING! It takes while to render, which is why I've included them as animated gifs in this page, rather than having the code render them "on the fly". Data was obtained from [data.gov.sg](https://beta.data.gov.sg/). Wouldn't it be great to have data going back to the early 1900s?
 
