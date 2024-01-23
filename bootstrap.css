@@ -11939,4 +11939,7 @@ date {
   visibility: hidden;
   margin:0;
 }
-
+d-article {
+grid-template-columns: [screen-start] 1fr [text-start kicker-end] 2% 2% 2% 2% 2% 2% 2% 2% [text-end gutter-start] 2% [middle-end] 2% [page-end gutter-end] 1fr [screen-end];
+grid-column-gap: 15%;
+}
