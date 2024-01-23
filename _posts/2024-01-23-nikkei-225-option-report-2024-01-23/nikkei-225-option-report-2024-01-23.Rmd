@@ -1,6 +1,6 @@
 ---
-title: "Nikkei 225 Option Report 2024-01-22"
-date: 2024-01-22
+title: "Nikkei 225 Option Report 2024-01-23"
+date: 2024-01-23
 
 categories:
   - nikkei225
