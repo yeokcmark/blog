@@ -1,7 +1,6 @@
 ---
 title: "How to calculate Gamma Exposure Profile"
-description: |
-  This is a work in progress. Do check back as there will be frequent updates.
+site: distill::distill_website
 ---
 
 ### Introduction

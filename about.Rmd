@@ -1,7 +1,6 @@
 ---
 title: "maRk's blog"
-description: |
-  Some additional details about the blog
+site: distill::distill_website
 ---
 
 ### Why this blog?

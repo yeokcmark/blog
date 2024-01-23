@@ -1,8 +1,6 @@
 ---
 title: "Capstone Project: Does home ownership lead to improved outlook and optimism for one's future?"
-description: |
-  This is the capstone project I worked on for the Certified Data Analytics (R) Specialist course offered by Singapore Management University.
-date: "2024-01-10"
+site: distill::distill_website
 ---
 
 ```{r setup, include = F}

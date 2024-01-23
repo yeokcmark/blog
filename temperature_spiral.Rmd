@@ -1,7 +1,6 @@
 ---
 title: "maRk's blog"
-description: |
-  something something...
+site: distill::distill_website
 ---
 
 Do you think its been getting hotter and hotter in recent years? What about rain? Have we been getting more erratic rainfall in recent years? Here's a cool way to visualize both.

@@ -1,8 +1,6 @@
 ---
 title: "maRk's blog"
-description: |
-  something something...
-
+site: distill::distill_website
 ---
 I made this snowman in Dec 2023 to celebrate Christmas and to learn gganimate. It may not look like much, but it did take a number of hours and about 100 lines of code. Enjoy!
 

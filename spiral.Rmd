@@ -1,6 +1,6 @@
 ---
 title: "maRk's blog"
-
+site: distill::distill_website
 ---
 I made this spiral animation as part of my first exploration into digital art using R.
 
