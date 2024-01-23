@@ -88,26 +88,26 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>maRk's blog</title>
+  <title>maRk's blog: Capstone Project: Does home ownership lead to improved outlook and optimism for one's future?</title>
 
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="maRk&#39;s blog"/>
+  <meta property="og:title" content="maRk&#39;s blog: Capstone Project: Does home ownership lead to improved outlook and optimism for one&#39;s future?"/>
   <meta property="og:type" content="article"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="maRk&#39;s blog"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="maRk&#39;s blog"/>
+  <meta property="twitter:title" content="maRk&#39;s blog: Capstone Project: Does home ownership lead to improved outlook and optimism for one&#39;s future?"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","site"]}},"value":[{"type":"character","attributes":{},"value":["maRk's blog"]},{"type":"character","attributes":{},"value":["distill::distill_website"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","site"]}},"value":[{"type":"character","attributes":{},"value":["Capstone Project: Does home ownership lead to improved outlook and optimism for one's future?"]},{"type":"character","attributes":{},"value":["distill::distill_website"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -14271,6 +14271,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   }</style>
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+  <script src="site_libs/htmlwidgets-1.6.3/htmlwidgets.js"></script>
+  <link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+  <script src="site_libs/datatables-binding-0.30/datatables.js"></script>
+  <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <link href="site_libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet" />
+  <link href="site_libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet" />
+  <script src="site_libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script>
+  <link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+  <script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -26243,7 +26252,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"maRk's blog","authors":[]}
+{"title":"Capstone Project: Does home ownership lead to improved outlook and optimism for one's future?","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -26311,7 +26320,7 @@ Projects
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>maRk’s blog</h1>
+<h1>Capstone Project: Does home ownership lead to improved outlook and optimism for one’s future?</h1>
 
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
@@ -26320,13 +26329,1340 @@ Projects
 
 
 <div class="d-article">
-<p>I made this spiral animation as part of my first exploration into digital art using R.</p>
-<center>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="spiral_files/figure-html5/unnamed-chunk-2-1.gif" /><!-- --></p>
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#introduction" id="toc-introduction">Introduction</a></li>
+<li><a href="#problem-statement" id="toc-problem-statement">Problem Statement</a></li>
+<li><a href="#why-is-this-important" id="toc-why-is-this-important">Why is this important?</a></li>
+<li><a href="#data-source" id="toc-data-source">Data Source</a></li>
+<li><a href="#importing-our-dataset" id="toc-importing-our-dataset">Importing our Dataset</a></li>
+<li><a href="#preparing-the-data-for-regression" id="toc-preparing-the-data-for-regression">Preparing the Data for Regression</a></li>
+<li><a href="#response-and-explanatory-variables" id="toc-response-and-explanatory-variables">Response and Explanatory Variables</a></li>
+<li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis">Exploratory Data Analysis</a></li>
+<li><a href="#correlation-analysis" id="toc-correlation-analysis">Correlation Analysis</a></li>
+<li><a href="#ordinary-least-square-model" id="toc-ordinary-least-square-model">Ordinary Least Square Model</a>
+<ul>
+<li><a href="#barebones-base-model" id="toc-barebones-base-model">“Barebones” Base Model</a></li>
+<li><a href="#model-with-demographic-control-variables" id="toc-model-with-demographic-control-variables">Model with Demographic Control Variables</a></li>
+<li><a href="#model-with-current-economic-status" id="toc-model-with-current-economic-status">Model with Current Economic Status</a></li>
+<li><a href="#model-substituting-age-with-generations" id="toc-model-substituting-age-with-generations">Model Substituting Age with Generations</a></li>
+<li><a href="#model-with-interactions" id="toc-model-with-interactions">Model with Interactions</a></li>
+<li><a href="#simple-slopes-analysis" id="toc-simple-slopes-analysis">Simple Slopes Analysis</a></li>
+</ul></li>
+<li><a href="#reporting-of-results" id="toc-reporting-of-results">Reporting of Results</a>
+<ul>
+<li><a href="#evaluating-models-using-anova" id="toc-evaluating-models-using-anova">Evaluating Models using ANOVA</a></li>
+<li><a href="#assumption-check-using-gvlma" id="toc-assumption-check-using-gvlma">Assumption Check using GVLMA</a></li>
+<li><a href="#check-multicollinearity-using-vif" id="toc-check-multicollinearity-using-vif">Check Multicollinearity using VIF</a></li>
+</ul></li>
+<li><a href="#interpretation-of-the-results" id="toc-interpretation-of-the-results">Interpretation of the Results</a></li>
+<li><a href="#threats-to-causal-inference" id="toc-threats-to-causal-inference">Threats to Causal Inference</a></li>
+<li><a href="#implications" id="toc-implications">Implications</a></li>
+<li><a href="#limitations-and-future-directions" id="toc-limitations-and-future-directions">Limitations and Future Directions</a></li>
+<li><a href="#references" id="toc-references">References</a></li>
+<li><a href="#run-sessioninfo" id="toc-run-sessioninfo">Run <code>sessionInfo()</code></a></li>
+</ul>
+</nav>
 </div>
+<h2 id="introduction">Introduction</h2>
+<p>This is the capstone project my partner (Ms Dxxx Nx) and I worked on for the Certified Data Analytics (R) Specialist <a href="https://academy.smu.edu.sg/certified-data-analytics-r-specialist-1911">course</a> offered by Singapore Management University, taught by an inspiring Professor Sungjong <a href="https://www.talktoroh.com/">Roh</a>.</p>
+<p>It is a culmination of about 6 months of learning, and about 1 month’s work.</p>
+<h2 id="problem-statement">Problem Statement</h2>
+<center>
+<em>“If a man owns a little property, that property is him… it is a part of him… in some ways he’s bigger because he owns it”</em> - John Steinbeck, The Grapes of Wrath
 </center>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>
+<p>Property rights are the most fundamental institution in any economy and society. Apart from economic gains that property ownership confers, individual owners are more confident, self-reliant, and entrepreneurial than non-property owners. In countries where property ownership is highly skewed and accessible only to elites, income inequality could lead to uncertainty and a lack of overall optimism among non-property owners.</p>
+<p>Our Capstone Project will attempt to determine if John Steinbeck is correct. Does property ownership lead to a better perception of oneself and greater optimism for the future?</p>
+<h2 id="why-is-this-important">Why is this important?</h2>
+<p>The findings of this project may influence how policies are implemented in Indonesia. If home-ownership leads to greater optimism and entrepreneurship among its people, this could positively impact the economy and political stability.</p>
+<p>For our data science project, we activated the following packages, using the <code>Tidyverse</code> approach.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Load necessary packages</span></span>
+<span><span class='fu'>pacman</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/pacman/man/p_load.html'>p_load</a></span><span class='op'>(</span><span class='va'>tidyverse</span>, <span class='va'>lubridate</span> ,<span class='va'>glue</span>, <span class='va'>forcats</span>, <span class='va'>knitr</span>, <span class='va'>rmarkdown</span>, <span class='va'>gganimate</span>, <span class='va'>transformr</span>,</span>
+<span>               <span class='va'>scales</span>, <span class='va'>gridExtra</span>, <span class='va'>ggthemes</span>, <span class='va'>ggrepel</span>, <span class='va'>patchwork</span>, <span class='va'>DT</span>, </span>
+<span>               <span class='va'>jtools</span>, <span class='va'>huxtable</span>, <span class='va'>broom</span>, <span class='va'>modelr</span>, <span class='va'>skimr</span>, <span class='va'>psych</span>, <span class='va'>Hmisc</span>, </span>
+<span>               <span class='va'>gvlma</span>, <span class='va'>ggfortify</span>, <span class='va'>sandwich</span>, <span class='va'>car</span>, <span class='va'>ggstance</span>, <span class='va'>broom.mixed</span>,</span>
+<span>               <span class='va'>interactions</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<p>We chose <code>theme_minimal()</code> as the default theme for our plots.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>theme_set</span><span class='op'>(</span><span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<p>We wrote a function to make it easier to present results from our models. Let’s load it here.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Function for model reporting (to make things look pretty)</span></span>
+<span></span>
+<span><span class='va'>model_variable_true_regression_function</span> <span class='op'>&lt;-</span></span>
+<span>  <span class='kw'>function</span><span class='op'>(</span><span class='va'>name_of_model</span><span class='op'>)</span></span>
+<span>  <span class='op'>{</span></span>
+<span>    <span class='va'>model_name</span> <span class='op'>&lt;-</span></span>
+<span>      <span class='fu'>glue</span><span class='op'>(</span><span class='st'>"{name_of_model}_variables"</span><span class='op'>)</span></span>
+<span>    <span class='va'>model_name</span> <span class='op'>&lt;-</span></span>
+<span>      <span class='va'>name_of_model</span> <span class='op'>%&gt;%</span></span>
+<span>      <span class='fu'>jtools</span><span class='fu'>::</span><span class='fu'><a href='https://jtools.jacob-long.com/reference/summ.html'>summ</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span></span>
+<span>      <span class='fu'>broom</span><span class='fu'>::</span><span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span></span>
+<span>    <span class='va'>model_regression_name</span> <span class='op'>&lt;-</span></span>
+<span>      <span class='fu'>glue</span><span class='op'>(</span><span class='st'>"{name_of_model}_regression"</span><span class='op'>)</span></span>
+<span></span>
+<span>    <span class='va'>model_regression_name</span> <span class='op'>&lt;-</span></span>
+<span>      <span class='va'>model_name</span> <span class='op'>%&gt;%</span></span>
+<span>      <span class='va'>.</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span> <span class='op'>%&gt;%</span></span>
+<span>      <span class='fu'>rename</span><span class='op'>(</span>b <span class='op'>=</span> <span class='va'>estimate</span>,</span>
+<span>             SE <span class='op'>=</span> <span class='va'>std.error</span><span class='op'>)</span> <span class='op'>%&gt;%</span></span>
+<span>      <span class='fu'>mutate</span><span class='op'>(</span>Z95_x_SE <span class='op'>=</span> <span class='fl'>1.96</span> <span class='op'>*</span> <span class='va'>SE</span>,</span>
+<span>             CI_95_upper_bound <span class='op'>=</span> <span class='va'>b</span><span class='op'>+</span><span class='va'>Z95_x_SE</span>,</span>
+<span>             significance_95 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span><span class='op'>(</span><span class='va'>b</span><span class='op'>)</span> <span class='op'>&gt;</span> <span class='va'>Z95_x_SE</span>,</span>
+<span>                                      <span class='st'>"sig"</span>, <span class='st'>"NULL"</span><span class='op'>)</span></span>
+<span>             <span class='op'>)</span></span>
+<span></span>
+<span>  <span class='op'>}</span></span></code></pre>
+</div>
+</div>
+<h2 id="data-source">Data Source</h2>
+<p>The RAND Indonesian Family Life Survey (IFLS) is an on-going longitudinal survey in Indonesia. The sample is representative of about 83% of the Indonesian population and contains over 30,000 individuals living in 13 of the 27 provinces in the country.</p>
+<p>The fifth wave, IFLS-5, where our Capstone Project draws data from, was fielded 2014-15. More information about the survey can be found at this <a href="https://www.rand.org/well-being/social-and-behavioral-policy/data/FLS/IFLS.html">link</a>.</p>
+<h2 id="importing-our-dataset">Importing our Dataset</h2>
+<p>Our dataset was imported in a two-step process:</p>
+<p>Step 1: The IFLS contained over 150 separate datasets in Stata (DTA) format. Our variables were drawn from 7 datasets. As the process of importing, extracting, recoding (wrangling), and combining datasets is only necessary to be performed once, this process is detailed in a separate <code>Rmarkdown</code> document named <code>capstone_Import_data.Rmd</code>. Click <a href="capstone_Import_data.html">here</a> for more details about this process.</p>
+<p>The final dataset for use in our analysis is saved as <code>capstone_data.csv</code>.</p>
+<p>Step 2: Here we import the dataset.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>data_recoded</span><span class='op'>&lt;-</span></span>
+<span>  <span class='fu'>read_csv</span><span class='op'>(</span><span class='st'>"capstone_data.csv"</span><span class='op'>)</span></span>
+<span><span class='fu'>glimpse</span><span class='op'>(</span><span class='va'>data_recoded</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>Rows: 36,581
+Columns: 16
+$ hhid14_9 &lt;chr&gt; &quot;001060000&quot;, &quot;001060004&quot;, &quot;001060000&quot;, &quot;001060000&quot;,…
+$ age      &lt;dbl&gt; 59, 28, 39, 16, 30, 36, 26, 40, 55, 54, 34, 28, 24,…
+$ marstat  &lt;dbl&gt; 2, 2, 2, 1, 2, 2, 1, 2, 2, 2, 2, 1, 1, 1, 2, 1, 5, …
+$ sex      &lt;dbl&gt; 1, 3, 3, 3, 1, 1, 1, 3, 1, 3, 1, 1, 1, 1, 3, 3, 3, …
+$ pidlink  &lt;chr&gt; &quot;001060001&quot;, &quot;001060004&quot;, &quot;001060007&quot;, &quot;001060008&quot;,…
+$ dl01f    &lt;chr&gt; &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;…
+$ dl06     &lt;dbl&gt; 1, 1, 1, 2, 2, 1, 1, NA, 1, 1, 4, 4, 4, 4, 1, 2, 1,…
+$ sw00     &lt;dbl&gt; 1, 3, 2, 3, 2, 3, 3, 3, 2, 3, 1, 2, 2, 2, 2, 4, 3, …
+$ sw01     &lt;dbl&gt; 3, 2, 3, 3, 2, 2, 2, 2, 4, 3, 2, 2, 1, 3, 2, 3, 3, …
+$ sw03     &lt;dbl&gt; 4, 2, 3, 3, 2, 2, 3, 2, NA, 2, 2, 3, 5, 5, 3, 5, NA…
+$ tk01a    &lt;dbl&gt; 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, …
+$ tr11     &lt;dbl&gt; 3, 2, 4, 3, 3, 2, 4, 3, 3, 3, 4, 3, 4, 3, 4, 3, 3, …
+$ kk01     &lt;dbl&gt; 2, 2, 2, 2, 2, 3, 3, 3, 2, 3, 3, 2, 3, 3, 3, 2, 2, …
+$ kr03     &lt;dbl&gt; 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, …
+$ female   &lt;dbl&gt; 0, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, …
+$ fo01     &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 1, 0, NA, -1, 0, 1, 4, 2, 1, 2, N…</code></pre>
+</div>
+<p>The <code>data_recoded</code> contained 36581 observations.</p>
+<h2 id="preparing-the-data-for-regression">Preparing the Data for Regression</h2>
+<p>We prepare the data for regression by:</p>
+<ol type="1">
+<li><p>removing NA data,</p></li>
+<li><p>renaming variables to more intuitive names (eg: employ vs tk01a for employment status),</p></li>
+<li><p>using <code>mutate</code> to recode each variable,</p></li>
+<li><p>using <code>cut</code> to create a new variable <code>generations</code> from <code>age</code>, to hopefully provide opportunity for deeper analysis.</p></li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Here we produce the final data set for regression</span></span>
+<span><span class='co'># There is an opportunity to rename variables here</span></span>
+<span></span>
+<span><span class='va'>data_regression</span><span class='op'>&lt;-</span></span>
+<span>  <span class='va'>data_recoded</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>drop_na</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>rename</span><span class='op'>(</span>home_own <span class='op'>=</span> <span class='va'>kr03</span>, <span class='co'>#home ownership</span></span>
+<span>         employ <span class='op'>=</span> <span class='va'>tk01a</span>, <span class='co'># employment</span></span>
+<span>         religion <span class='op'>=</span> <span class='va'>tr11</span>, <span class='co'>#religion</span></span>
+<span>         health <span class='op'>=</span> <span class='va'>kk01</span>, <span class='co'># health</span></span>
+<span>         edu <span class='op'>=</span> <span class='va'>dl06</span>, <span class='co'># education</span></span>
+<span>         outlook <span class='op'>=</span> <span class='va'>fo01</span>, <span class='co'># future outlook</span></span>
+<span>         life_sat <span class='op'>=</span> <span class='va'>sw00</span>, <span class='co'># current life satisfaction</span></span>
+<span>         current_econ <span class='op'>=</span> <span class='va'>sw01</span>, <span class='co'># current economic step</span></span>
+<span>         future_econ <span class='op'>=</span> <span class='va'>sw03</span>, <span class='co'># future economic step expectation</span></span>
+<span>         ethnicity <span class='op'>=</span> <span class='va'>dl01f</span> <span class='co'># ethnicity</span></span>
+<span>         <span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>mutate</span><span class='op'>(</span>ethnicity <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>ethnicity</span><span class='op'>)</span>, </span>
+<span>         marstat <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>marstat</span><span class='op'>)</span>,</span>
+<span>         sex <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>sex</span><span class='op'>)</span>,</span>
+<span>         edu <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>edu</span><span class='op'>)</span>,</span>
+<span>         employ <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>employ</span><span class='op'>)</span>,</span>
+<span>         religion <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>religion</span><span class='op'>)</span>,</span>
+<span>         health <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>health</span><span class='op'>)</span>,</span>
+<span>         home_own <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>home_own</span><span class='op'>)</span>,</span>
+<span>         female <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>female</span><span class='op'>)</span></span>
+<span>         <span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>mutate</span><span class='op'>(</span>birth_year <span class='op'>=</span> <span class='fl'>2014</span> <span class='op'>-</span> <span class='va'>age</span>,</span>
+<span>         generations <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/cut.html'>cut</a></span><span class='op'>(</span><span class='va'>birth_year</span>,</span>
+<span>                           breaks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1900</span>, <span class='fl'>1927</span>, <span class='fl'>1945</span>, <span class='fl'>1964</span>, <span class='fl'>1980</span>, <span class='fl'>1996</span>, <span class='fl'>2012</span>, <span class='fl'>2020</span><span class='op'>)</span>,</span>
+<span>                           labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Greatest Generation"</span>,</span>
+<span>                                      <span class='st'>"Silent Generation"</span>,</span>
+<span>                                      <span class='st'>"Baby Boomers"</span>,</span>
+<span>                                      <span class='st'>"Gen X"</span>,</span>
+<span>                                      <span class='st'>"Millenials"</span>,</span>
+<span>                                      <span class='st'>"Gen Z"</span>,</span>
+<span>                                      <span class='st'>"Gen Alpha"</span><span class='op'>)</span></span>
+<span>                           <span class='op'>)</span></span>
+<span></span>
+<span>         <span class='op'>)</span><span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='va'>hhid14_9</span>, <span class='op'>-</span><span class='va'>pidlink</span>, <span class='op'>-</span><span class='va'>birth_year</span><span class='op'>)</span> <span class='co'># removed hhid14_9 and pidlink</span></span></code></pre>
+</div>
+</div>
+<p>After wrangling and removal of missing data, it yielded 28432 responses.</p>
+<h2 id="response-and-explanatory-variables">Response and Explanatory Variables</h2>
+<p>The project attempts to answer the question “Does property ownership lead to a better perception of oneself and greater optimism for the future?”. As a measure of each individual’s outlook for the future, we extracted two variables from the survey:</p>
+<ol type="1">
+<li><p>sw01 (named current_econ): On which economic step do you consider yourself now? Respondents were asked to rate themselves on a scale of 1 (poorest) to 5 (richest).</p></li>
+<li><p>sw03 (named future_econ): On which economic step do you consider yourself to be in 5 years? Respondents were again asked to rate themselves on a scale of 1 (poorest) to 5 (richest).</p></li>
+</ol>
+<p>From these 2 variables, we constructed a response variable Future Outlook (named outlook in the dataset), where:</p>
+<center>
+<strong>outlook = future_econ - current_econ</strong>
+</center>
+<p>
+<p>A positive outlook score implies optimism about one’s future, while a negative score implies pessimism.</p>
+<p>We explored the impact of 10 explanatory variables on one’s outlook. They are:</p>
+<ol type="1">
+<li><p>home_own: Home ownership, where a response of 0 indicated that the respondent did not own a property, while a response of 1 indicated property ownership.This is our variable of interest, and serves to answer our research question on the impact of property ownership on our outcome variable.</p></li>
+<li><p>sex: Gender of respondents were coded 1 for male, and 3 for female.</p></li>
+<li><p>marstat: Maritial status of respondents, coded 1 never married, 2 married, 3 separated, 4 divorced, 5 widow(er), 6 cohabitate</p></li>
+<li><p>age/generations: responded as a numeric variable. In addition to age, we classified each respondent into his/her respective social generation using their year of birth. Greatest Generation (1900 to 1927), Silent Generation (1928 to 1945), Baby Boomers (1946 to 1964), Gen X (1965 to 1980), Millenials also known as Gen Y (1981 to 1996), Gen Z (1997 to 2012), and Generation Alpha (2020 to present).</p></li>
+<li><p>life_sat: Life Satisfaction, where responses ranged from 1 for “Not at all satisfied” to 5 for “completely satisfied”.</p></li>
+<li><p>edu: Education level of respondent, coded 0 for “don’t know, no schooling, or school for the disabled”, 1 for kindergarten, elementary, islamic elementary, 2 for junior high (normal, vocational and Islamic), 3 for senior hi(normal, vocational and Islamic), 4 for college and university (undergraduate, masters, doctorate), and 5 for adult education, open university and Islamic school.</p></li>
+<li><p>employ: Employment, coded 0 for “unemployed” or “prefer not to say” and 1 for “employed”</p></li>
+<li><p>health: Respondents were asked to rank their physical health status. Responses were recoded as 1 for “unhealthy”, 2 “somewhat unhealthy”, 3 “somewhat healthy” and 4 “healthy”</p></li>
+<li><p>religion: Respondents were asked “how religious do they see themselves”. Reponses were recoded as 0 “refused to say”, 1 “not religious”, 2 “somewhat religious”, 3 “religious” and 4 “very religious”.</p></li>
+<li><p>ethnicity: We attempted to perform the analysis using ethnicity as a variable. However, as there were over 20 different classifications and sometimes multiple classifications per individual (mixed ethnicity), and given our lack of familiarity with ethnicity in Indonesia, this variable was subsequently dropped.</p></li>
+</ol>
+<p>We use <code>skim()</code> from the <code>skimr</code> package to quickly provide a broad overview of the data.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>skim</span><span class='op'>(</span><span class='va'>data_regression</span><span class='op'>)</span></span></code></pre>
+</div>
+<table>
+<caption><span id="tab:skim-data-regression">Table 1: </span>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">data_regression</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Number of rows</td>
+<td style="text-align: left;">28432</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number of columns</td>
+<td style="text-align: left;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_______________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Column type frequency:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">factor</td>
+<td style="text-align: left;">10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">________________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Group variables</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: factor</strong></p>
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 10%" />
+<col style="width: 14%" />
+<col style="width: 8%" />
+<col style="width: 9%" />
+<col style="width: 44%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: left;">ordered</th>
+<th style="text-align: right;">n_unique</th>
+<th style="text-align: left;">top_counts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">marstat</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">2: 20653, 1: 5966, 5: 1128, 4: 554</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sex</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">3: 14926, 1: 13506</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ethnicity</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">82</td>
+<td style="text-align: left;">A: 12370, B: 3593, I: 1530, H: 1286</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">edu</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">3: 9628, 1: 8551, 2: 5623, 4: 4190</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">employ</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">1: 19042, 0: 9390</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">religion</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">3: 17004, 2: 6041, 4: 4635, 1: 719</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">health</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">3: 17183, 2: 5488, 4: 5463, 1: 298</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">home_own</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">1: 21092, 0: 7340</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">1: 14926, 0: 13506</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">generations</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">Mil: 11556, Gen: 9427, Bab: 4584, Gen: 2179</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 13%" />
+<col style="width: 18%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 3%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 6%" />
+<col style="width: 7%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+<th style="text-align: left;">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">age</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">36.19</td>
+<td style="text-align: right;">14.23</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">101</td>
+<td style="text-align: left;">▇▇▃▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">life_sat</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3.33</td>
+<td style="text-align: right;">0.80</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">▁▂▇▇▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">current_econ</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3.05</td>
+<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">▃▇▅▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">future_econ</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4.16</td>
+<td style="text-align: right;">1.19</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">▂▅▇▇▃</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">outlook</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.11</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">-5</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">▁▁▇▃▁</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="exploratory-data-analysis">Exploratory Data Analysis</h2>
+<p>The mean age of our survey respondents is 36.2 years old. The plot below shows the age distribution of these respondents.</p>
+<div class="layout-chunk" data-layout="l-page">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>age_dist</span><span class='op'>&lt;-</span></span>
+<span>  <span class='va'>data_regression</span> <span class='op'>%&gt;%</span> </span>
+<span>    <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>age</span>, fill <span class='op'>=</span> <span class='va'>generations</span><span class='op'>)</span></span>
+<span>           <span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>geom_histogram</span><span class='op'>(</span>binwidth <span class='op'>=</span> <span class='fl'>1</span>,</span>
+<span>                 alpha <span class='op'>=</span> <span class='fl'>0.7</span><span class='op'>)</span><span class='op'>+</span></span>
+<span>  <span class='fu'>geom_vline</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>xintercept <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>age</span><span class='op'>)</span></span>
+<span>                 <span class='op'>)</span>,</span>
+<span>              color <span class='op'>=</span> <span class='st'>"blue"</span><span class='op'>)</span><span class='op'>+</span></span>
+<span>  <span class='fu'>geom_text</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>age</span><span class='op'>)</span><span class='op'>-</span><span class='fl'>2</span>, <span class='co'># add a text label for mean age</span></span>
+<span>                y <span class='op'>=</span> <span class='fl'>500</span>,</span>
+<span>                label <span class='op'>=</span> <span class='fu'>glue</span><span class='op'>(</span><span class='st'>"Mean Age = {round(mean(age),1)}"</span><span class='op'>)</span></span>
+<span>                <span class='op'>)</span>,</span>
+<span>            color <span class='op'>=</span> <span class='st'>"blue"</span>,</span>
+<span>            size <span class='op'>=</span> <span class='fl'>3</span>,</span>
+<span>            angle <span class='op'>=</span> <span class='fl'>90</span><span class='op'>)</span><span class='op'>+</span> </span>
+<span>  <span class='fu'>scale_x_continuous</span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"Age"</span>,</span>
+<span>                     limits <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>min</a></span><span class='op'>(</span><span class='va'>data_regression</span><span class='op'>$</span><span class='va'>age</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='va'>data_regression</span><span class='op'>$</span><span class='va'>age</span><span class='op'>)</span><span class='op'>+</span><span class='fl'>5</span><span class='op'>)</span>,</span>
+<span>                     breaks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span>from <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>min</a></span><span class='op'>(</span><span class='va'>data_regression</span><span class='op'>$</span><span class='va'>age</span><span class='op'>)</span>, to <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='va'>data_regression</span><span class='op'>$</span><span class='va'>age</span><span class='op'>)</span><span class='op'>+</span><span class='fl'>5</span>, by <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span></span>
+<span>                     <span class='op'>)</span><span class='op'>+</span></span>
+<span>  <span class='fu'>labs</span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Age Distribution of Survey Respondents"</span>,</span>
+<span>       y <span class='op'>=</span> <span class='st'>"Number of Respondents"</span><span class='op'>)</span><span class='op'>+</span></span>
+<span>  <span class='fu'>theme</span><span class='op'>(</span>legend.text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.6</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span>        legend.title <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,</span>
+<span>        legend.position <span class='op'>=</span> <span class='st'>"bottom"</span>,</span>
+<span>        plot.title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.9</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span>        plot.subtitle <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.8</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span>        axis.text.y <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.6</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span>        axis.text.x <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>angle <span class='op'>=</span> <span class='fl'>45</span>, size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.6</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span>        axis.title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.7</span><span class='op'>)</span></span>
+<span>                                  <span class='op'>)</span></span>
+<span>        <span class='op'>)</span><span class='op'>+</span></span>
+<span>  <span class='fu'>guides</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='fu'>guide_legend</span><span class='op'>(</span>nrow <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>age_dist</span></span></code></pre>
+</div>
+<div class="figure"><span style="display:block;" id="fig:plot-age-dist"></span>
+<img src="capstone_home_ownership_optimism_files/figure-html5/plot-age-dist-1.png" alt="Age Distribution of Survey Respondents" width="864" />
+<p class="caption">
+Figure 1: Age Distribution of Survey Respondents
+</p>
+</div>
+</div>
+<p>Next, we explored respondent’s outlook by current economic standing.</p>
+<div class="layout-chunk" data-layout="l-page">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>outlook_dist2</span><span class='op'>&lt;-</span></span>
+<span>  <span class='va'>data_regression</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>outlook</span>, fill <span class='op'>=</span> <span class='va'>generations</span><span class='op'>)</span></span>
+<span>         <span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>geom_histogram</span><span class='op'>(</span>binwidth <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>geom_vline</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>xintercept <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>,</span>
+<span>             color<span class='op'>=</span><span class='st'>"black"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span><span class='va'>current_econ</span>,</span>
+<span>             nrow<span class='op'>=</span><span class='fl'>2</span>,</span>
+<span>             scale <span class='op'>=</span> <span class='st'>"free_y"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>labs</span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Future outlook by perception of current economic standing"</span>,</span>
+<span>       y <span class='op'>=</span> <span class='st'>"Number of Respondents"</span><span class='op'>)</span><span class='op'>+</span></span>
+<span>  <span class='fu'>theme</span><span class='op'>(</span>legend.text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.7</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span>        legend.title <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,</span>
+<span>        legend.position <span class='op'>=</span> <span class='st'>"bottom"</span>,</span>
+<span>        plot.title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.9</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span>        plot.subtitle <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.8</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span>        axis.text.y <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.7</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span>        axis.text.x <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>angle <span class='op'>=</span> <span class='fl'>45</span>, size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.7</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span>        axis.title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.7</span><span class='op'>)</span></span>
+<span>                                  <span class='op'>)</span></span>
+<span>        <span class='op'>)</span><span class='op'>+</span></span>
+<span>  <span class='fu'>guides</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='fu'>guide_legend</span><span class='op'>(</span>nrow <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>outlook_dist2</span>  </span></code></pre>
+</div>
+<div class="figure"><span style="display:block;" id="fig:plot-outlook-current-econ"></span>
+<img src="capstone_home_ownership_optimism_files/figure-html5/plot-outlook-current-econ-1.png" alt="Future Outlook of Respondents by Perception of Current Economic Standing" width="864" />
+<p class="caption">
+Figure 2: Future Outlook of Respondents by Perception of Current Economic Standing
+</p>
+</div>
+</div>
+<p>There are a couple of interesting observations. A majority of respondents who perceive themselves of low current economic standing (score 1 to 3) are optimistic about their future outlook (score &gt; 0). On the other hand, respondents who perceive themselves of high current economic standing (score 5 and 6) are less optimistic of their future outlook.</p>
+<p>Lastly, we look at Outlook by Current Economic Standing, for each generation. Here we can see different slopes across some generations, implying that there are interaction effects between age and current_econ. This will be explored later in our model.</p>
+<div class="layout-chunk" data-layout="l-page">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>data_regression</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>current_econ</span>,</span>
+<span>             y <span class='op'>=</span> <span class='va'>outlook</span>,</span>
+<span>             color <span class='op'>=</span> <span class='va'>generations</span><span class='op'>)</span></span>
+<span>         <span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>geom_point</span><span class='op'>(</span>position <span class='op'>=</span> <span class='st'>"jitter"</span>,</span>
+<span>             alpha <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span><span class='op'>+</span></span>
+<span>  <span class='fu'>geom_smooth</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>,</span>
+<span>              se <span class='op'>=</span> <span class='cn'>FALSE</span>,</span>
+<span>              color <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span><span class='op'>+</span></span>
+<span>  <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='va'>.</span><span class='op'>~</span><span class='va'>generations</span><span class='op'>)</span><span class='op'>+</span></span>
+<span>  <span class='fu'>labs</span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Outlook by perception of current economic standing"</span>,</span>
+<span>       y <span class='op'>=</span> <span class='st'>"Outlook"</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>"Current Economic Standing"</span><span class='op'>)</span><span class='op'>+</span></span>
+<span>  <span class='fu'>theme</span><span class='op'>(</span>legend.text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.7</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span>        legend.title <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,</span>
+<span>        legend.position <span class='op'>=</span> <span class='st'>"none"</span>,</span>
+<span>        plot.title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.9</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span>        plot.subtitle <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.8</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span>        axis.text.y <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.7</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span>        axis.text.x <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>angle <span class='op'>=</span> <span class='fl'>45</span>, size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.7</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span>        axis.title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.7</span><span class='op'>)</span></span>
+<span>                                  <span class='op'>)</span></span>
+<span>        <span class='op'>)</span></span></code></pre>
+</div>
+<div class="figure"><span style="display:block;" id="fig:plot-outlook-generations"></span>
+<img src="capstone_home_ownership_optimism_files/figure-html5/plot-outlook-generations-1.png" alt="Future Outlook of Respondents (facet by Generations) by Perception of Current Economic Standing" width="864" />
+<p class="caption">
+Figure 3: Future Outlook of Respondents (facet by Generations) by Perception of Current Economic Standing
+</p>
+</div>
+</div>
+<h2 id="correlation-analysis">Correlation Analysis</h2>
+<p>For the preparation of the model, we created and ran a correlational matrix, to see how our variables of interest (within the model) are related.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>data_regression</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='va'>ethnicity</span>, <span class='op'>-</span><span class='va'>generations</span><span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>Hmisc</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/Hmisc/man/rcorr.html'>rcorr</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>broom</span><span class='fu'>::</span><span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>rename</span><span class='op'>(</span>variable_1 <span class='op'>=</span> <span class='va'>column1</span>,</span>
+<span>       variable_2 <span class='op'>=</span> <span class='va'>column2</span>,</span>
+<span>       corr <span class='op'>=</span> <span class='va'>estimate</span><span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>mutate</span><span class='op'>(</span>abs_corr <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span><span class='op'>(</span><span class='va'>corr</span><span class='op'>)</span>,<span class='fl'>3</span><span class='op'>)</span>,</span>
+<span>         corr <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='va'>corr</span>,<span class='fl'>3</span><span class='op'>)</span>,</span>
+<span>         p.value <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='va'>p.value</span>,<span class='fl'>3</span><span class='op'>)</span></span>
+<span>         <span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>relocate</span><span class='op'>(</span><span class='va'>abs_corr</span>, .after <span class='op'>=</span> <span class='va'>corr</span><span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='va'>n</span><span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>arrange</span><span class='op'>(</span><span class='op'>-</span><span class='va'>abs_corr</span><span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>DT</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/DT/man/datatable.html'>datatable</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-203ce91fdc60e78edf5f" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-203ce91fdc60e78edf5f">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78"],["female","outlook","future_econ","marstat","edu","employ","female","future_econ","outlook","future_econ","edu","current_econ","outlook","current_econ","future_econ","religion","employ","future_econ","home_own","health","sex","female","health","outlook","home_own","religion","outlook","health","religion","home_own","religion","health","life_sat","life_sat","outlook","employ","health","religion","female","current_econ","female","future_econ","female","current_econ","health","health","female","current_econ","life_sat","health","female","employ","outlook","life_sat","home_own","employ","home_own","outlook","edu","female","sex","female","religion","employ","home_own","home_own","outlook","home_own","outlook","outlook","employ","religion","home_own","female","health","religion","outlook","home_own"],["sex","future_econ","current_econ","age","age","sex","employ","age","age","edu","marstat","life_sat","current_econ","edu","life_sat","age","age","marstat","age","life_sat","marstat","marstat","age","marstat","edu","life_sat","edu","future_econ","edu","religion","marstat","marstat","age","edu","home_own","marstat","current_econ","sex","religion","sex","current_econ","sex","future_econ","marstat","edu","sex","health","age","sex","religion","life_sat","future_econ","religion","marstat","marstat","current_econ","current_econ","health","sex","edu","age","age","current_econ","life_sat","life_sat","future_econ","employ","employ","sex","female","edu","future_econ","sex","home_own","employ","employ","life_sat","health"],[1,0.654,0.577,0.529,-0.335,-0.309,-0.309,-0.288,-0.283,0.261,-0.244,0.241,-0.24,0.215,0.184,0.172,0.171,-0.17,0.168,0.154,0.152,0.152,-0.146,-0.131,-0.123,0.119,0.111,0.109,-0.098,0.098,0.095,-0.095,-0.091,0.089,-0.089,0.08799999999999999,0.08799999999999999,0.08599999999999999,0.08599999999999999,0.08400000000000001,0.08400000000000001,0.083,0.083,-0.077,0.06900000000000001,-0.066,-0.066,-0.064,0.062,0.062,0.062,-0.058,-0.058,-0.057,0.055,-0.05,0.048,0.048,-0.047,-0.047,-0.046,-0.046,0.043,-0.041,0.041,-0.038,-0.024,0.02,0.02,0.02,-0.019,-0.015,0.014,0.014,0.013,0.008999999999999999,-0.005,0.002],[1,0.654,0.577,0.529,0.335,0.309,0.309,0.288,0.283,0.261,0.244,0.241,0.24,0.215,0.184,0.172,0.171,0.17,0.168,0.154,0.152,0.152,0.146,0.131,0.123,0.119,0.111,0.109,0.098,0.098,0.095,0.095,0.091,0.089,0.089,0.08799999999999999,0.08799999999999999,0.08599999999999999,0.08599999999999999,0.08400000000000001,0.08400000000000001,0.083,0.083,0.077,0.06900000000000001,0.066,0.066,0.064,0.062,0.062,0.062,0.058,0.058,0.057,0.055,0.05,0.048,0.048,0.047,0.047,0.046,0.046,0.043,0.041,0.041,0.038,0.024,0.02,0.02,0.02,0.019,0.015,0.014,0.014,0.013,0.008999999999999999,0.005,0.002],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.001,0.001,0.001,0.001,0.014,0.022,0.022,0.025,0.129,0.412,0.792]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>variable_1<\/th>\n      <th>variable_2<\/th>\n      <th>corr<\/th>\n      <th>abs_corr<\/th>\n      <th>p.value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<p>We noted that life satisfaction had positive correlation of around 0.241 with current economic status, there is reason to believe they capture roughly something similar. We will exclude life satisfaction to reduce multicollinearity in our model.</p>
+<h2 id="ordinary-least-square-model">Ordinary Least Square Model</h2>
+<p>We ran four regression models.</p>
+<h3 id="barebones-base-model">“Barebones” Base Model</h3>
+<p>In our basic model, we regressed home ownership (home_own) onto outlook (<code>model1</code>), to see the ‘barebones’ relationship between home ownership and future outlook.</p>
+<p><span class="math display">\[
+\begin{eqnarray}
+\widehat{outlook} = intercept + b_1home\_own + \epsilon
+\end{eqnarray}
+\]</span></p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>model1</span> <span class='op'>&lt;-</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>outlook</span> <span class='op'>~</span> <span class='va'>home_own</span>,</span>
+<span>     data <span class='op'>=</span> <span class='va'>data_regression</span><span class='op'>)</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>model1</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>
+Call:
+lm(formula = outlook ~ home_own, data = data_regression)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-6.0609 -0.2635 -0.0609  0.7365  3.9391 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  1.26349    0.01160  108.88   &lt;2e-16 ***
+home_own1   -0.20256    0.01347  -15.04   &lt;2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.9942 on 28430 degrees of freedom
+Multiple R-squared:  0.007888,  Adjusted R-squared:  0.007853 
+F-statistic:   226 on 1 and 28430 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<p>The results of the regression analysis was contrary to our expectations (<em>John Steinbeck is WRONG</em>)! Outlook appears to diminish (-0.203) if you own a property. We will investigate if the direction and magnitude of this relationship will continue when control variables are added to the model.</p>
+<h3 id="model-with-demographic-control-variables">Model with Demographic Control Variables</h3>
+<p>We went on to add demographic controls to the model— such as age and gender.</p>
+<p><span class="math display">\[
+\begin{eqnarray}
+\widehat{outlook} = intercept + b_1home\_own  + b_2age + b_3female + \epsilon
+\end{eqnarray}
+\]</span></p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>model2</span> <span class='op'>&lt;-</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>outlook</span> <span class='op'>~</span> <span class='va'>home_own</span> <span class='op'>+</span> <span class='va'>age</span> <span class='op'>+</span> <span class='va'>female</span>,</span>
+<span>     data <span class='op'>=</span> <span class='va'>data_regression</span><span class='op'>)</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>model2</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>
+Call:
+lm(formula = outlook ~ home_own + age + female, data = data_regression)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-6.4856 -0.4892 -0.1379  0.5530  4.9017 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  1.876092   0.018318 102.416  &lt; 2e-16 ***
+home_own1   -0.097145   0.013152  -7.386 1.55e-13 ***
+age         -0.019318   0.000405 -47.699  &lt; 2e-16 ***
+female1      0.015765   0.011374   1.386    0.166    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.9565 on 28428 degrees of freedom
+Multiple R-squared:  0.08183,   Adjusted R-squared:  0.08173 
+F-statistic: 844.5 on 3 and 28428 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<p>As age and gender are statistically significant in predicting future economic outlook, it is a good thing we controlled for them. Controlling for these characteristics, the effect size of home ownership increased. Here we use the <code>model_variable_true_regression_function</code> function which we wrote to prepare the models for reporting.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Prepare models for reporting</span></span>
+<span><span class='va'>model_used</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>model1</span>,</span>
+<span>                   <span class='va'>model2</span></span>
+<span>                   <span class='op'>)</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span><span class='va'>model_used</span>,</span>
+<span>       <span class='va'>model_variable_true_regression_function</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>[[1]]
+# A tibble: 2 × 6
+  term             b     SE Z95_x_SE CI_95_upper_bound significance_95
+  &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;             &lt;dbl&gt; &lt;chr&gt;          
+1 (Intercept)  1.26  0.0116   0.0227             1.29  sig            
+2 home_own1   -0.203 0.0135   0.0264            -0.176 sig            
+
+[[2]]
+# A tibble: 4 × 6
+  term            b      SE Z95_x_SE CI_95_upper_bound significance_95
+  &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;             &lt;dbl&gt; &lt;chr&gt;          
+1 (Interce…  1.88   1.83e-2 0.0359              1.91   sig            
+2 home_own1 -0.0971 1.32e-2 0.0258             -0.0714 sig            
+3 age       -0.0193 4.05e-4 0.000794           -0.0185 sig            
+4 female1    0.0158 1.14e-2 0.0223              0.0381 NULL           </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>export_summs</span><span class='op'>(</span><span class='va'>model1</span>, </span>
+<span>             <span class='va'>model2</span>,</span>
+<span>             model.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Base Model"</span>,</span>
+<span>                             <span class='st'>"Base Model with \nDemographic Controls"</span><span class='op'>)</span>,</span>
+<span>             digits <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>    ──────────────────────────────────────────────────────
+                     Base Model       Base Model with     
+                                    Demographic Controls  
+                  ────────────────────────────────────────
+      (Intercept)       1.263 ***              1.876 ***  
+                       (0.012)                (0.018)     
+      home_own1        -0.203 ***             -0.097 ***  
+                       (0.013)                (0.013)     
+      age                                     -0.019 ***  
+                                              (0.000)     
+      female1                                  0.016      
+                                              (0.011)     
+                  ────────────────────────────────────────
+      N             28432                  28432          
+      R2                0.008                  0.082      
+    ──────────────────────────────────────────────────────
+      *** p &lt; 0.001; ** p &lt; 0.01; * p &lt; 0.05.             </code></pre>
+<p>Column names: names, Base Model, Base Model with Demographic Controls</p>
+</div>
+<p>Initially, we had included marital status but when this variable was explored, we noticed that there are very few observations in some of the categories, this would make its inclusion in the model difficult as there is too little variation within group for analysis to take place.</p>
+<p>We also considered ethnicity but there were some complications in analysing this. Did you know Indonesia has &gt;1000 ethnic groups? Though the Javanese are the largest ethnic group, they do not form the majority. While we considered merging some groups together to reduce the number of groups as well as to increase the number of respondents within each group (some groups were very sparse with only a handful of respondents), without understanding the historical and cultural nuance, it was difficult to merge groups together. In addition, there were individuals who identified as belonging to more than one ethnic group.</p>
+<h3 id="model-with-current-economic-status">Model with Current Economic Status</h3>
+<p>In our next model (<code>model3</code>), we added current economic outlook to the model with our two demographic controls. This allows us to compare the effect of home ownership on outlook while controlling for individuals who may be at different economic statuses currently.</p>
+<span class="math display">\[
+\begin{eqnarray}
+\widehat{outlook} = intercept + b_1home\_own + b_2current\_econ + b_3age + b_4female + \epsilon
+\end{eqnarray}
+\]</span>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>model3</span> <span class='op'>&lt;-</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>outlook</span> <span class='op'>~</span> <span class='va'>home_own</span> <span class='op'>+</span> <span class='va'>current_econ</span> <span class='op'>+</span> <span class='va'>age</span> <span class='op'>+</span> <span class='va'>female</span>,</span>
+<span>     data <span class='op'>=</span> <span class='va'>data_regression</span><span class='op'>)</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>model3</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>
+Call:
+lm(formula = outlook ~ home_own + current_econ + age + female, 
+    data = data_regression)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-5.7103 -0.5180 -0.0838  0.5364  4.4047 
+
+Coefficients:
+               Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   2.7309365  0.0252729 108.058  &lt; 2e-16 ***
+home_own1    -0.0625284  0.0126863  -4.929 8.32e-07 ***
+current_econ -0.2810045  0.0059494 -47.233  &lt; 2e-16 ***
+age          -0.0205986  0.0003909 -52.692  &lt; 2e-16 ***
+female1       0.0575173  0.0109880   5.235 1.67e-07 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.921 on 28427 degrees of freedom
+Multiple R-squared:  0.1486,    Adjusted R-squared:  0.1485 
+F-statistic:  1241 on 4 and 28427 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<h3 id="model-substituting-age-with-generations">Model Substituting Age with Generations</h3>
+<p>We took our final model one step further (<code>model3_gen</code>) by replacing age with generations, which allowed us to investigate if there were any changes to outlook by generations.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>model3_gen</span> <span class='op'>&lt;-</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>outlook</span> <span class='op'>~</span> <span class='va'>home_own</span> <span class='op'>+</span> <span class='va'>current_econ</span> <span class='op'>+</span> <span class='va'>generations</span> <span class='op'>+</span> <span class='va'>female</span>,</span>
+<span>     data <span class='op'>=</span> <span class='va'>data_regression</span><span class='op'>)</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>model3_gen</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>
+Call:
+lm(formula = outlook ~ home_own + current_econ + generations + 
+    female, data = data_regression)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-5.6021 -0.4911 -0.0922  0.6299  4.0562 
+
+Coefficients:
+                              Estimate Std. Error t value Pr(&gt;|t|)
+(Intercept)                   1.520254   0.247518   6.142 8.26e-10
+home_own1                    -0.061593   0.012769  -4.823 1.42e-06
+current_econ                 -0.275801   0.005973 -46.174  &lt; 2e-16
+generationsSilent Generation -0.300680   0.249642  -1.204  0.22843
+generationsBaby Boomers      -0.045644   0.247478  -0.184  0.85367
+generationsGen X              0.401595   0.247293   1.624  0.10439
+generationsMillenials         0.670277   0.247284   2.711  0.00672
+generationsGen Z              0.738884   0.247939   2.980  0.00288
+female1                       0.059333   0.011038   5.376 7.70e-08
+                                
+(Intercept)                  ***
+home_own1                    ***
+current_econ                 ***
+generationsSilent Generation    
+generationsBaby Boomers         
+generationsGen X                
+generationsMillenials        ** 
+generationsGen Z             ** 
+female1                      ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.9242 on 28423 degrees of freedom
+Multiple R-squared:  0.1428,    Adjusted R-squared:  0.1426 
+F-statistic: 591.9 on 8 and 28423 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<p>When analyzed across generations rather than age, we observe contrasting effects. Analyzing by generation is essentially a comparison across the means of each group. Grouping the age variable allows comparison across groups which may have experienced different economic conditions and are at different life stages. In this analysis, our reference group is the ‘Greatest Generation.’ This group consists of those born before 1927 and are the oldest group of respondents in the sample.</p>
+<p>We see that the generations born after them are slightly more pessimistic about their future outlook (Silent Generation and Baby Boomers), though this is not statistically significant, hence it is possible that all those born before 1964 do not have notable differences in terms of future outlook.</p>
+<p>However, when comparing the Greatest Generation with Millenials and Gen Z, we see that there are statistically significant differences. Compared to the Greatest Generation, Millenials are more optimistic about their future outlook. Similarly, Gen Zs are more optimistic than those in Greatest Generation. This may be expected, since younger generations have a longer way ahead of them and possess the energy to carve a road for themselves as compared to the Greatest Generation, who may be in their sunset years and do not see their outlook varying much in the coming years.</p>
+<h3 id="model-with-interactions">Model with Interactions</h3>
+<p>In our final model (<code>model4</code>), we consider the interaction effect of age on current economic status. Logically, there is reason to believe there is an interaction effect between these two terms. The effect of current economic status on future economic outlook is likely to differ by age.</p>
+<p>For example, those who are in poorer current economic status may have a more pessimistic outlook, but those who are younger may be more optimistic than those who are older (maybe youthful vigor?). As such, we added this interaction term to capture these effects.</p>
+<span class="math display">\[
+\begin{eqnarray}
+\widehat{outlook} = intercept + b_1home\_own + b_2current\_econ + b_3age + b_4female + b_5current\_econ * age + \epsilon  
+\end{eqnarray}
+\]</span>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>model4</span> <span class='op'>&lt;-</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>outlook</span> <span class='op'>~</span> <span class='va'>home_own</span> <span class='op'>+</span> <span class='va'>age</span><span class='op'>*</span><span class='va'>current_econ</span> <span class='op'>+</span> <span class='va'>female</span>,</span>
+<span>     data <span class='op'>=</span> <span class='va'>data_regression</span><span class='op'>)</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>model4</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>
+Call:
+lm(formula = outlook ~ home_own + age * current_econ + female, 
+    data = data_regression)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-5.4906 -0.5291 -0.0693  0.5213  4.7493 
+
+Coefficients:
+                   Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)       3.1314562  0.0521275  60.073  &lt; 2e-16 ***
+home_own1        -0.0614472  0.0126699  -4.850 1.24e-06 ***
+age              -0.0311293  0.0012611 -24.683  &lt; 2e-16 ***
+current_econ     -0.4117695  0.0160326 -25.683  &lt; 2e-16 ***
+female1           0.0575191  0.0109733   5.242 1.60e-07 ***
+age:current_econ  0.0034563  0.0003936   8.781  &lt; 2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.9198 on 28426 degrees of freedom
+Multiple R-squared:  0.1509,    Adjusted R-squared:  0.1508 
+F-statistic:  1011 on 5 and 28426 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<p>We find the interaction term to be statistically significant 😀</p>
+<p>We will take a deeper look into this interaction effect in a way that is easier to visualise. Since current economic status runs from 1 to 6, we will treat it as a continuous variable.</p>
+<div class="layout-chunk" data-layout="l-page">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>interact_plot</span><span class='op'>(</span>model <span class='op'>=</span> <span class='va'>model4</span>, </span>
+<span>              pred<span class='op'>=</span> <span class='va'>age</span>, </span>
+<span>              modx <span class='op'>=</span> <span class='va'>current_econ</span>,</span>
+<span>              interval <span class='op'>=</span> <span class='cn'>T</span>, </span>
+<span>              legend.main <span class='op'>=</span> <span class='st'>"Current Economic Status"</span>,</span>
+<span>              main.title <span class='op'>=</span> <span class='st'>"Interaction Plot for Model 4"</span>,</span>
+<span>              y.label <span class='op'>=</span> <span class='st'>"Future Outlook"</span>,</span>
+<span>              x.label <span class='op'>=</span> <span class='st'>"Age"</span><span class='op'>)</span><span class='op'>+</span></span>
+<span>  <span class='fu'>theme</span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"bottom"</span><span class='op'>)</span></span></code></pre>
+</div>
+<div class="figure"><span style="display:block;" id="fig:plot-interact-age-current-econ"></span>
+<img src="capstone_home_ownership_optimism_files/figure-html5/plot-interact-age-current-econ-1.png" alt="Interaction Plot of Model 4" width="864" />
+<p class="caption">
+Figure 4: Interaction Plot of Model 4
+</p>
+</div>
+</div>
+<p>We see that those whose current economic statuses are better, seem to report lower future outlook scores even when compared across the same age. Based on this interaction plot, we see that the interaction effect is strongest when the respondent is young. As they get older, the effect of economic status on future outlook seems to diminish.</p>
+<h3 id="simple-slopes-analysis">Simple Slopes Analysis</h3>
+<p>We also ran Simple Slopes Analysis to get a greater understanding of interacting effects in <code>model4</code>, using the <code>sim_slopes()</code> function from the <code>interactions</code> package.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>sim_slopes</span><span class='op'>(</span>model <span class='op'>=</span> <span class='va'>model4</span>,</span>
+<span>          pred <span class='op'>=</span> <span class='va'>current_econ</span>, </span>
+<span>          modx <span class='op'>=</span> <span class='va'>age</span>, </span>
+<span>          johnson_neyman <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>JOHNSON-NEYMAN INTERVAL 
+
+When age is OUTSIDE the interval [103.99, 142.81], the slope of
+current_econ is p &lt; .05.
+
+Note: The range of observed values of age is [14.00, 101.00]
+
+SIMPLE SLOPES ANALYSIS 
+
+Slope of current_econ when age = 21.96236 (- 1 SD): 
+
+   Est.   S.E.   t val.      p
+------- ------ -------- ------
+  -0.34   0.01   -38.96   0.00
+
+Slope of current_econ when age = 36.18873 (Mean): 
+
+   Est.   S.E.   t val.      p
+------- ------ -------- ------
+  -0.29   0.01   -47.97   0.00
+
+Slope of current_econ when age = 50.41510 (+ 1 SD): 
+
+   Est.   S.E.   t val.      p
+------- ------ -------- ------
+  -0.24   0.01   -30.71   0.00</code></pre>
+</div>
+<p>Based on the result, interaction effect is not significant above the age of 103.</p>
+<h2 id="reporting-of-results">Reporting of Results</h2>
+<p>Here is a summary of our four regression models:</p>
+<div class="layout-chunk" data-layout="l-page">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>model_used</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>model1</span>,</span>
+<span>                   <span class='va'>model2</span>,</span>
+<span>                   <span class='va'>model3</span>,</span>
+<span>                   <span class='va'>model4</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span><span class='va'>model_used</span>,</span>
+<span>       <span class='va'>model_variable_true_regression_function</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>[[1]]
+# A tibble: 2 × 6
+  term             b     SE Z95_x_SE CI_95_upper_bound significance_95
+  &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;             &lt;dbl&gt; &lt;chr&gt;          
+1 (Intercept)  1.26  0.0116   0.0227             1.29  sig            
+2 home_own1   -0.203 0.0135   0.0264            -0.176 sig            
+
+[[2]]
+# A tibble: 4 × 6
+  term            b      SE Z95_x_SE CI_95_upper_bound significance_95
+  &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;             &lt;dbl&gt; &lt;chr&gt;          
+1 (Interce…  1.88   1.83e-2 0.0359              1.91   sig            
+2 home_own1 -0.0971 1.32e-2 0.0258             -0.0714 sig            
+3 age       -0.0193 4.05e-4 0.000794           -0.0185 sig            
+4 female1    0.0158 1.14e-2 0.0223              0.0381 NULL           
+
+[[3]]
+# A tibble: 5 × 6
+  term            b      SE Z95_x_SE CI_95_upper_bound significance_95
+  &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;             &lt;dbl&gt; &lt;chr&gt;          
+1 (Interce…  2.73   2.53e-2 0.0495              2.78   sig            
+2 home_own1 -0.0625 1.27e-2 0.0249             -0.0377 sig            
+3 current_… -0.281  5.95e-3 0.0117             -0.269  sig            
+4 age       -0.0206 3.91e-4 0.000766           -0.0198 sig            
+5 female1    0.0575 1.10e-2 0.0215              0.0791 sig            
+
+[[4]]
+# A tibble: 6 × 6
+  term            b      SE Z95_x_SE CI_95_upper_bound significance_95
+  &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;             &lt;dbl&gt; &lt;chr&gt;          
+1 (Interc…  3.13    5.21e-2 0.102              3.23    sig            
+2 home_ow… -0.0614  1.27e-2 0.0248            -0.0366  sig            
+3 age      -0.0311  1.26e-3 0.00247           -0.0287  sig            
+4 current… -0.412   1.60e-2 0.0314            -0.380   sig            
+5 female1   0.0575  1.10e-2 0.0215             0.0790  sig            
+6 age:cur…  0.00346 3.94e-4 0.000771           0.00423 sig            </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>export_summs</span><span class='op'>(</span><span class='va'>model1</span>, <span class='va'>model2</span>, <span class='va'>model3</span>, <span class='va'>model4</span>,</span>
+<span>             model.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Base Model"</span>,</span>
+<span>                             <span class='st'>"Base Model with Demographic Controls"</span>,</span>
+<span>                             <span class='st'>"Base Model, Demographic Controls,\nCurrent Economic Outlook"</span>,</span>
+<span>                             <span class='st'>"Base Model, Demographic Controls,\nCurrent Economic Outlook\nwith interactions"</span><span class='op'>)</span>,</span>
+<span>             error_format <span class='op'>=</span> <span class='st'>"[{conf.low}:{conf.high}]"</span>,</span>
+<span>             digits <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span></span></code></pre>
+</div>
+<p>──────────────────────────────────────────────────────────────────
+Base Model Base Model Base Base<br />
+with Model, Model,<br />
+Demographi Demographi Demographi<br />
+c Controls c c<br />
+Controls, Controls,<br />
+Current Current<br />
+Economic Economic<br />
+Outlook Outlook<br />
+with<br />
+interactio<br />
+ns<br />
+─────────────────────────────────────────────────────
+(Intercept 1.263 *** 1.876 *** 2.731 *** 3.131 ***<br />
+)<br />
+[1.241:1.2 [1.840:1.9 [2.681:2.7 [3.029:3.2<br />
+86]    12]    80]    34]   <br />
+home_own1 -0.203 *** -0.097 *** -0.063 *** -0.061 ***<br />
+[-0.229:-0 [-0.123:-0 [-0.087:-0 [-0.086:-0<br />
+.176]    .071]    .038]    .037]   <br />
+age          -0.019 *** -0.021 *** -0.031 ***<br />
+         [-0.020:-0 [-0.021:-0 [-0.034:-0<br />
+.019]    .020]    .029]   <br />
+female1          0.016     0.058 *** 0.058 ***<br />
+         [-0.007:0. [0.036:0.0 [0.036:0.0<br />
+038]    79]    79]   <br />
+current_ec                   -0.281 *** -0.412 ***<br />
+on<br />
+                  [-0.293:-0 [-0.443:-0<br />
+.269]    .380]   <br />
+age:curren                            0.003 ***<br />
+t_econ<br />
+                           [0.003:0.0<br />
+04]   <br />
+─────────────────────────────────────────────────────
+N 28432      28432      28432      28432     <br />
+               <br />
+R2 0.008     0.082     0.149     0.151    <br />
+──────────────────────────────────────────────────────────────────
+*** p &lt; 0.001; ** p &lt; 0.01; * p &lt; 0.05.</p>
+<p>Column names: names, Base Model, Base Model with Demographic
+Controls, Base Model, Demographic Controls, Current Economic Outlook,
+Base Model, Demographic Controls, Current Economic Outlook with
+interactions</p>
+</div>
+<p>The results of the models can also be shown visually. Here, we use <code>plot_summs</code> to show the estimates of models 1-4 visually.</p>
+<div class="layout-chunk" data-layout="l-page">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>plot_summs</span><span class='op'>(</span><span class='va'>model1</span>, <span class='va'>model2</span>, <span class='va'>model3</span>, <span class='va'>model4</span>,</span>
+<span>           plot.distributions <span class='op'>=</span> <span class='cn'>T</span>,</span>
+<span>           scale <span class='op'>=</span> <span class='cn'>T</span>,</span>
+<span>           model.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Base Model"</span>,</span>
+<span>                             <span class='st'>"Base Model with Demographic Controls"</span>,</span>
+<span>                             <span class='st'>"Base Model, Demographic Controls,\nCurrent Economic Outlook"</span>,</span>
+<span>                             <span class='st'>"Base Model, Demographic Controls,\nCurrent Economic Outlook\nwith interactions"</span><span class='op'>)</span>,</span>
+<span>           point.size <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span><span class='op'>+</span></span>
+<span>  <span class='fu'>labs</span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Comparing our Model Estimates : Models 1 to 4"</span><span class='op'>)</span><span class='op'>+</span></span>
+<span>  <span class='fu'>theme</span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"bottom"</span>,</span>
+<span>        legend.text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.6</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span>        legend.title <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,</span>
+<span>        plot.title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.9</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span>        axis.text.y <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.7</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span>        axis.text.x <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>angle <span class='op'>=</span> <span class='fl'>45</span>, size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.7</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span>        axis.title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.7</span><span class='op'>)</span></span>
+<span>                                  <span class='op'>)</span></span>
+<span>        <span class='op'>)</span></span></code></pre>
+</div>
+<div class="figure"><span style="display:block;" id="fig:model-report-visual"></span>
+<img src="capstone_home_ownership_optimism_files/figure-html5/model-report-visual-1.png" alt="Comparing Models 1 to 4 Estimates" width="864" />
+<p class="caption">
+Figure 5: Comparing Models 1 to 4 Estimates
+</p>
+</div>
+</div>
+<h3 id="evaluating-models-using-anova">Evaluating Models using ANOVA</h3>
+<p>We analyzed the explanatory power of each model using the ANOVA function. The <code>anova()</code> function will take each model’s objects as arguments, and return an ANOVA testing whether the more complex model is significantly better than the simpler model. If the resulting p-value is sufficiently low (usually less than 0.05), we conclude that the more complex model is significantly better than the simpler model, and thus favor the more complex model. If the p-value is not sufficiently low (usually greater than 0.05), we should favor the simpler model.</p>
+We start by comparing between model1 and model2.
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/stats/anova.html'>anova</a></span><span class='op'>(</span><span class='va'>model1</span>, <span class='va'>model2</span><span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>tidy</span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>┌────────────────────────────────────────────────────────────
+│ term       df.resid        rss   df      sumsq   statisti  
+│                 ual                                     c  
+├────────────────────────────────────────────────────────────
+│ outlook    2.84e+04   2.81e+04                             
+│ ~                                                          
+│ home_own                                                   
+│ outlook    2.84e+04   2.6e+04     2   2.09e+03   1.14e+03  
+│ ~                                                          
+│ home_own                                                   
+│ + age +                                                    
+│ female                                                     
+└────────────────────────────────────────────────────────────</code></pre>
+<p>Column names: term, df.residual, rss, df, sumsq, statistic, p.value</p>
+<p>6/7 columns shown.</p>
+</div>
+<p>The ANOVA result has a very small p-value (&lt;0.001), indicating that model2 (with addition of age and gender) <em>did</em> lead to a significantly improved fit over model1.</p>
+<p>Next we compare between model2 and model3.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/stats/anova.html'>anova</a></span><span class='op'>(</span><span class='va'>model2</span>, <span class='va'>model3</span><span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>tidy</span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>┌────────────────────────────────────────────────────────────
+│ term       df.resid        rss   df      sumsq   statisti  
+│                 ual                                     c  
+├────────────────────────────────────────────────────────────
+│ outlook    2.84e+04   2.6e+04                              
+│ ~                                                          
+│ home_own                                                   
+│ + age +                                                    
+│ female                                                     
+│ outlook    2.84e+04   2.41e+04    1   1.89e+03   2.23e+03  
+│ ~                                                          
+│ home_own                                                   
+│ +                                                          
+│ current_                                                   
+│ econ +                                                     
+│ age +                                                      
+│ female                                                     
+└────────────────────────────────────────────────────────────</code></pre>
+<p>Column names: term, df.residual, rss, df, sumsq, statistic, p.value</p>
+<p>6/7 columns shown.</p>
+</div>
+<p>Once again, the ANOVA result has a very small p-value (&lt;0.001), indicating that model3 (with addition of current_econ) led to a <em>significantly improved</em> fit over model2.</p>
+<p>Lastly, we compare between model3 and model4, to ascertain whether adding interaction effects improved the model.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/stats/anova.html'>anova</a></span><span class='op'>(</span><span class='va'>model3</span>, <span class='va'>model4</span><span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>tidy</span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>  ┌─────────────────────────────────────────────────────────
+  │ term       df.resid        rss   df   sumsq   statisti  
+  │                 ual                                  c  
+  ├─────────────────────────────────────────────────────────
+  │ outlook    2.84e+04   2.41e+04                          
+  │ ~                                                       
+  │ home_own                                                
+  │ +                                                       
+  │ current_                                                
+  │ econ +                                                  
+  │ age +                                                   
+  │ female                                                  
+  │ outlook    2.84e+04   2.4e+04     1    65.2       77.1  
+  │ ~                                                       
+  │ home_own                                                
+  │ + age *                                                 
+  │ current_                                                
+  │ econ +                                                  
+  │ female                                                  
+  └─────────────────────────────────────────────────────────</code></pre>
+<p>Column names: term, df.residual, rss, df, sumsq, statistic, p.value</p>
+<p>6/7 columns shown.</p>
+</div>
+<p>The ANOVA test result tells us that model4 (with interaction effects), improves on model3. We will report model4 as our final result.</p>
+<h3 id="assumption-check-using-gvlma">Assumption Check using GVLMA</h3>
+<p>We checked the linearity assumptions of <code>model4</code> using the <em>Global Validation of Linear Model Assumption</em> (<code>gvlma</code>) package. Unfortunately, the model failed global stats, skewness, kurtosis, link function and heteroskedasticity assumptions.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>gvlma</span> <span class='op'>(</span><span class='va'>model4</span><span class='op'>)</span> </span></code></pre>
+</div>
+<pre><code>
+Call:
+lm(formula = outlook ~ home_own + age * current_econ + female, 
+    data = data_regression)
+
+Coefficients:
+     (Intercept)         home_own1               age  
+        3.131456         -0.061447         -0.031129  
+    current_econ           female1  age:current_econ  
+       -0.411770          0.057519          0.003456  
+
+
+ASSESSMENT OF THE LINEAR MODEL ASSUMPTIONS
+USING THE GLOBAL TEST ON 4 DEGREES-OF-FREEDOM:
+Level of Significance =  0.05 
+
+Call:
+ gvlma(x = model4) 
+
+                     Value   p-value                   Decision
+Global Stat        2396.96 0.000e+00 Assumptions NOT satisfied!
+Skewness            456.70 0.000e+00 Assumptions NOT satisfied!
+Kurtosis           1868.33 0.000e+00 Assumptions NOT satisfied!
+Link Function        58.05 2.565e-14 Assumptions NOT satisfied!
+Heteroscedasticity   13.88 1.945e-04 Assumptions NOT satisfied!</code></pre>
+</div>
+<p>We tested <code>model3</code> using gvlma. There was some improvement with link function assumptions being acceptable.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>gvlma</span> <span class='op'>(</span><span class='va'>model3</span><span class='op'>)</span> </span></code></pre>
+</div>
+<pre><code>
+Call:
+lm(formula = outlook ~ home_own + current_econ + age + female, 
+    data = data_regression)
+
+Coefficients:
+ (Intercept)     home_own1  current_econ           age       female1  
+     2.73094      -0.06253      -0.28100      -0.02060       0.05752  
+
+
+ASSESSMENT OF THE LINEAR MODEL ASSUMPTIONS
+USING THE GLOBAL TEST ON 4 DEGREES-OF-FREEDOM:
+Level of Significance =  0.05 
+
+Call:
+ gvlma(x = model3) 
+
+                       Value   p-value                   Decision
+Global Stat        2.258e+03 0.0000000 Assumptions NOT satisfied!
+Skewness           4.820e+02 0.0000000 Assumptions NOT satisfied!
+Kurtosis           1.761e+03 0.0000000 Assumptions NOT satisfied!
+Link Function      7.020e-03 0.9332272    Assumptions acceptable.
+Heteroscedasticity 1.453e+01 0.0001379 Assumptions NOT satisfied!</code></pre>
+</div>
+<p>We attempted to transform the data (squaring and log transformation), but it still resulted in “Assumptions not satisfied”.</p>
+<p>We concluded that this is likely due to the fact that most of our variables are categorical variables.</p>
+<p>Here is a visual representation of the core information of assumption checks for <code>model4</code>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>autoplot</span><span class='op'>(</span><span class='fu'>gvlma</span><span class='op'>(</span><span class='va'>model4</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="capstone_home_ownership_optimism_files/figure-html5/plot-gvlma-1.png" width="864" /></p>
+</div>
+<h3 id="check-multicollinearity-using-vif">Check Multicollinearity using VIF</h3>
+<p>We perform a check for multicollinearity using the Variance Inflation Factor or <code>vif</code> from the <code>car</code> package. Multicollinearity occurs when there is a correlation between multiple independent variables in a multiple regression model. This can negatively impact the regression results. The VIF test measures the correlation and strength of correlation between the independent variables in a regression model.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>vif</span><span class='op'>(</span><span class='va'>model4</span>,</span>
+<span>    type <span class='op'>=</span> <span class='st'>"predictor"</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>    ┌───────────────────────────────────────────────────┐
+    │ GVIF    Df   GVIF^(1/(2   Interacts    Other      │
+    │                   *Df))   With         Predictors │
+    ├───────────────────────────────────────────────────┤
+    │ 1.03     1         1.02   --           age,       │
+    │                                        current_ec │
+    │                                        on, female │
+    │ 1.04     3         1.01   current_ec   home_own,  │
+    │                           on           female     │
+    │ 1.04     3         1.01   age          home_own,  │
+    │                                        female     │
+    │ 1.01     1         1      --           home_own,  │
+    │                                        age,       │
+    │                                        current_ec │
+    │                                        on         │
+    └───────────────────────────────────────────────────┘</code></pre>
+<p>Column names: GVIF, Df, GVIF^(1/(2*Df)), Interacts With, Other
+Predictors</p>
+</div>
+<p>Within model4, all 4 variables report a GVIF of close to 1, suggesting that multicollinearity does not exist within the model.</p>
+<h2 id="interpretation-of-the-results">Interpretation of the Results</h2>
+<p>From our data science project, we found the following findings:</p>
+<ol type="1">
+<li><p>The relationship between one’s outlook and ownership of property, contrary to our expectations, appears to be a negative one. In our “barebones” <code>model1</code>, owning a property resulted in a decrease in outlook by -0.203.</p></li>
+<li><p>The effects size of home ownership on outlook increased (-0.097) when we added demographic control variables, age and gender, to the model (<code>model2</code>). Age appeared to have a negative effect on outlook (-0.019), while females were marginally more positive than males (0.016). These findings persisted across all models.</p></li>
+<li><p>The effect of home ownership on outlook improved further (-0.063) when we considered the respondent’s current economic background. Interestingly, the model suggests that outlook decreased (-0.281) as one’s current economic status increased. As discussed earlier, this makes sense as a respondent who is already leading a very successful and well life (and indicated it as the maximum score on the scale), would either see it remaining that way (0 change) or it getting worse (negative score). Adding current economic status to our model allows us to compare between groups of differing current economic status (i.e. those of the same baseline).</p></li>
+<li><p>Lastly, we concluded that there was an interaction effect between age and current economic status. The effect size of home ownership on outlook increased further (-0.061) and the estimated effect of interaction term age * current_econ is positive (0.003) and significant, though it diminishes with age. Across the same age, those who are worse off now report a better future economic outlook. I guess when you are down, the only way is up :)</p></li>
+</ol>
+<h2 id="threats-to-causal-inference">Threats to Causal Inference</h2>
+<ul>
+<li><p><code>Confounders</code>: Demographic variables (age and gender) and current economic status were identified as `<code>confounders</code> that could influence both home ownership and outlook. These were controlled and included in the model. Additionally, the interacting effect between age and current economic status was identified and accounted for in our final <code>model4</code>. In spite of our best efforts, there may still be omitted variable bias in our model are likely unobservable variables which we failed to capture. For example, terminal illnesses and degree of autonomy are other factors that could affect future outlook.</p></li>
+<li><p><code>Colliders</code>: Among the variables we have considered, we did not identify any colliders that we know of. Given that our predictor variable is home ownership, it could be that certain policies which are based on home ownership that could affect the future outlook of respondents are not captured.</p></li>
+<li><p><code>Counterfactuals</code>: The role of counterfactuals, ie: <strong><em>what would have happened to your unit of analysis if the treatment had not occurred</em></strong>, could be explored through simulations.</p></li>
+</ul>
+<h2 id="implications">Implications</h2>
+<p>The results of our data science project was surprising, as we had expected home ownership to have a positive effect on outlook. The “barebones” <code>model1</code> rejected this hypothesis, but the effects decreased after the inclusion of age, gender, and current economic status.</p>
+<h2 id="limitations-and-future-directions">Limitations and Future Directions</h2>
+<p>Indonesia is a large country with a relatively small urban population of 58 percent (as a percentage of total population). It is ranked 126th in terms of urban population percentage by the World Bank.(<a href="https://data.worldbank.org/indicator/SP.URB.TOTL.IN.ZS" class="uri">https://data.worldbank.org/indicator/SP.URB.TOTL.IN.ZS</a>)</p>
+<p>It would be interesting to expand the scope of this study to other countries or cities with greater urban population percentages. Would the findings be the same if survey respondents lived in land-scarce urbanized cities such as New York, Shanghai, or Singapore where housing is very expensive? The bar to owning a home in rural parts of Indonesia, where land is comparatively much cheaper, may be much lower than in urbanized cities, and hence not have much impact at all on one’s outlook for the future.</p>
+<p>Singapore would be an ideal candidate to repeat this study. In recent years, property prices have skyrocketed and the younger generation are fretting over their ability to purchase their own home. We can already see the Government tweaking it policies to rein in property prices. A study done here could provide the Government with more information about how to further tweak its policies.</p>
+<p><em>Grapes of Wrath</em> was published in 1939, while the IFLS was conducted in 2014-15. Perhaps attitudes towards property ownership might have changed over the course of 75 years? Maybe Steinbeck is correct after all, but in his era of 1930s-40s. Attitudes and importance of home ownership may likely have changed through the years.</p>
+<p>Lastly, 8,149 observations (22 percent) were “dropped” from the study due to incomplete data, or duplicate entries. This could have impacted the results of the study, or the statistical power of our models. However, we are limited in our ability to handle missing data as we are not involved in study design, data collection, or data entry.</p>
+<h2 id="references">References</h2>
+<p>[RAND Indonesian Family Life Survey] (<a href="https://www.rand.org/well-being/social-and-behavioral-policy/data/FLS/IFLS.html" class="uri">https://www.rand.org/well-being/social-and-behavioral-policy/data/FLS/IFLS.html</a>).</p>
+<!-- ## Contribution Statement -->
+<!-- <span style="text-decoration:underline">Mark's Contribution Statement:</span> I am excited to have worked on this project, as it allowed me the opportunity to further my learning in R. Dxxx and I complimented each other very well. She was the brains behind much of the complicated analysis, while I was the brawn behind the coding in R. -->
+<!-- I contributed to the study in the following areas: -->
+<!-- 1.  Preparing and importing of raw survey data, wrangling, tidy/transforming the data into `capstone_data.csv` and the corresponding rmarkdown document `DaraNg_MarkYeo_ImportData.Rmd`; -->
+<!-- 2.  evaluated several linear regression models for the final report; -->
+<!-- 3.  drafted parts of the final report `DaraNg_MarkYeo_IndonesiaLifeSurvey_Capstone.rmd`. -->
+<!-- <p> -->
+<!-- <span style="text-decoration:underline">Dara's Contribution Statement:</span> I am glad to have a reliable partner and a very inspiring professor in this jouRney. I have to thank Mark for doing a lot of heavy lifting and for agreeing to look at this very rich dataset together with me. I did the: EDA and parts of the write up on the regression models :) <p> -->
+<h2 id="run-sessioninfo">Run <code>sessionInfo()</code></h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>packages_utilized</span> <span class='op'>&lt;-</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/utils/sessionInfo.html'>sessionInfo</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span><span class='va'>packages_utilized</span></span></code></pre>
+</div>
+<pre><code>R version 4.3.1 (2023-06-16 ucrt)
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+Running under: Windows 10 x64 (build 19045)
+
+Matrix products: default
+
+
+locale:
+[1] LC_COLLATE=English_Singapore.utf8 
+[2] LC_CTYPE=English_Singapore.utf8   
+[3] LC_MONETARY=English_Singapore.utf8
+[4] LC_NUMERIC=C                      
+[5] LC_TIME=English_Singapore.utf8    
+
+time zone: Asia/Singapore
+tzcode source: internal
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods  
+[7] base     
+
+other attached packages:
+ [1] interactions_1.1.5  broom.mixed_0.2.9.4 ggstance_0.3.6     
+ [4] car_3.1-2           carData_3.0-5       sandwich_3.0-2     
+ [7] ggfortify_0.4.16    gvlma_1.0.0.3       Hmisc_5.1-1        
+[10] psych_2.3.9         skimr_2.1.5         modelr_0.1.11      
+[13] broom_1.0.5         huxtable_5.5.2      jtools_2.2.2       
+[16] DT_0.30             patchwork_1.1.3     ggrepel_0.9.4      
+[19] ggthemes_5.0.0      gridExtra_2.3       scales_1.3.0       
+[22] transformr_0.1.4    gganimate_1.0.8     rmarkdown_2.25     
+[25] knitr_1.45          glue_1.6.2          lubridate_1.9.3    
+[28] forcats_1.0.0       stringr_1.5.1       dplyr_1.1.3        
+[31] purrr_1.0.2         readr_2.1.4         tidyr_1.3.0        
+[34] tibble_3.2.1        ggplot2_3.4.4       tidyverse_2.0.0    
+
+loaded via a namespace (and not attached):
+ [1] rstudioapi_0.15.0  jsonlite_1.8.7     magrittr_2.0.3    
+ [4] farver_2.1.1       vctrs_0.6.3        memoise_2.0.1     
+ [7] base64enc_0.1-3    htmltools_0.5.7    progress_1.2.2    
+[10] Formula_1.2-5      sass_0.4.7         parallelly_1.36.0 
+[13] KernSmooth_2.23-21 bslib_0.6.1        htmlwidgets_1.6.3 
+[16] fontawesome_0.5.2  zoo_1.8-12         cachem_1.0.8      
+[19] lifecycle_1.0.4    pkgconfig_2.0.3    Matrix_1.6-4      
+[22] R6_2.5.1           fastmap_1.1.1      future_1.33.0     
+[25] digest_0.6.33      colorspace_2.1-0   furrr_0.3.1       
+[28] rprojroot_2.0.4    crosstalk_1.2.1    labeling_0.4.3    
+[31] fansi_1.0.4        timechange_0.2.0   abind_1.4-5       
+[34] mgcv_1.8-42        compiler_4.3.1     proxy_0.4-27      
+[37] bit64_4.0.5        withr_2.5.2        pander_0.6.5      
+[40] htmlTable_2.4.2    backports_1.4.1    DBI_1.1.3         
+[43] highr_0.10         classInt_0.4-10    tools_4.3.1       
+[46] units_0.8-5        foreign_0.8-84     nnet_7.3-19       
+[49] nlme_3.1-162       grid_4.3.1         sf_1.0-15         
+[52] checkmate_2.3.0    cluster_2.1.4      generics_0.1.3    
+[55] lpSolve_5.6.20     gtable_0.3.4       tzdb_0.4.0        
+[58] class_7.3-22       data.table_1.14.8  hms_1.1.3         
+[61] xml2_1.3.5         utf8_1.2.3         pillar_1.9.0      
+[64] vroom_1.6.4        splines_4.3.1      tweenr_2.0.2      
+[67] lattice_0.21-8     bit_4.0.5          tidyselect_1.2.0  
+[70] downlit_0.4.3      bookdown_0.37      distill_1.6       
+[73] xfun_0.40          stringi_1.8.2      yaml_2.3.7        
+[76] pacman_0.5.1       evaluate_0.23      codetools_0.2-19  
+[79] cli_3.6.1          rpart_4.1.19       repr_1.1.6        
+[82] munsell_0.5.0      jquerylib_0.1.4    Rcpp_1.0.11       
+[85] globals_0.16.2     png_0.1-8          parallel_4.3.1    
+[88] ellipsis_0.3.2     assertthat_0.2.1   prettyunits_1.2.0 
+[91] gifski_1.12.0-2    listenv_0.9.0      e1071_1.7-13      
+[94] crayon_1.5.2       rlang_1.1.1        mnormt_2.1.1      </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'>#save.image("capstone.RData")</span></span></code></pre>
+</div>
+</div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -26334,6 +27670,15 @@ Projects
 <div class="d-appendix">
 </div>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->

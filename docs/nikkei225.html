@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
   <meta name="generator" content="distill" />
+  <link rel="alternate" type="application/rss+xml" href="https://yeokcmark.netlify.app/nikkei225.xml" />
 
   <style type="text/css">
   /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
@@ -88,26 +89,29 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>maRk's blog</title>
+  <title>maRk's blog: Nikkei225 Gamma Exposure Profile</title>
 
+  <meta property="description" itemprop="description" content="Gamma Exposure Profile"/>
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="maRk&#39;s blog"/>
+  <meta property="og:title" content="maRk&#39;s blog: Nikkei225 Gamma Exposure Profile"/>
   <meta property="og:type" content="article"/>
+  <meta property="og:description" content="Gamma Exposure Profile"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="maRk&#39;s blog"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="maRk&#39;s blog"/>
+  <meta property="twitter:title" content="maRk&#39;s blog: Nikkei225 Gamma Exposure Profile"/>
+  <meta property="twitter:description" content="Gamma Exposure Profile"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","site"]}},"value":[{"type":"character","attributes":{},"value":["maRk's blog"]},{"type":"character","attributes":{},"value":["distill::distill_website"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","site","toc","listing"]}},"value":[{"type":"character","attributes":{},"value":["Nikkei225 Gamma Exposure Profile"]},{"type":"character","attributes":{},"value":["Gamma Exposure Profile\n"]},{"type":"character","attributes":{},"value":["distill::distill_website"]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["posts"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -26238,12 +26242,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 </head>
 
-<body>
+<body class="layout-listing">
 
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"maRk's blog","authors":[]}
+{"title":"Nikkei225 Gamma Exposure Profile","description":"Gamma Exposure Profile","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -26309,22 +26313,1130 @@ Projects
 <!--/radix_placeholder_navigation_before_body-->
 <!--radix_placeholder_site_before_body-->
 <!--/radix_placeholder_site_before_body-->
+<!--radix_placeholder_article_listing-->
+
+
+<script type="application/javascript">
+
+function init_posts_list() {
+
+  function load_image(img) {
+    var src = $(img).attr('data-src');
+    if (src) {
+      $(img).attr('src', src);
+      $(img).on("load", function() {
+        img.removeAttribute('data-src');
+      });
+    }
+  }
+
+  function set_posts_visible(posts, visible) {
+    if (visible) {
+
+      // show bottom border by default
+      $(posts).removeClass('post-preview-last');
+
+      // apply limits if need be
+      var max_posts = 25;
+      var apply_limits = $('.posts-container').hasClass('posts-apply-limit');
+      if (apply_limits && posts.length > max_posts) {
+        posts = $(posts).slice(0, max_posts);
+      } else {
+        $('.posts-more a').addClass('hidden');
+      }
+
+      // apply last style
+      $(posts.slice(-1)[0]).addClass('post-preview-last');
+
+      $(posts).removeClass('hidden');
+      $(posts).find('img[data-src]').each(function(i, img) {
+        load_image(img);
+      });
+    } else {
+      $(posts).addClass('hidden');
+    }
+  }
+
+  function apply_hash_filter() {
+
+    // clear active state
+    $('.categories .active').removeClass('active');
+
+    // mark all posts invisible to start
+    set_posts_visible($('.posts-list').children('a'), false);
+
+    // if we have a hash filter
+    if (window.location.hash && window.location.hash.startsWith("#category:")) {
+
+      // mark posts that match the category visible
+      var page_category = window.location.hash.replace(/^#category:/, "");
+      page_category = decodeURIComponent(page_category)
+      var posts = $('.post-metadata').map(function(idx, script) {
+        var metadata = $.parseJSON($(script).html());
+        var post = null;
+        $.each(metadata.categories, function(idx, category) {
+          category = category.replace(/ /g,"_");
+          if ((page_category || '').toLowerCase() === "articles" || category === page_category) {
+            post = $(script).parent().get();
+            return false;
+          }
+        });
+        return post;
+      });
+      set_posts_visible(posts, true);
+
+      // mark the hash active
+      $('.categories li>a[href="' + decodeURIComponent(window.location.hash) + '"]').addClass('active');
+
+      // update the list_caption
+      var list_caption = $('.posts-list-caption');
+      var caption = (page_category || '').toLowerCase() === "articles"
+        ? list_caption.attr('data-caption')
+        : ('Category: ' + page_category.replace(/_/g," "));
+      list_caption.text(caption);
+
+    } else {
+
+      // no hash filter, make all posts visible (subject to max display)
+      set_posts_visible($('.posts-list').children(), true);
+
+      // reset list caption
+      var list_caption = $('.posts-list-caption');
+      list_caption.text(list_caption.attr('data-caption'));
+
+
+    }
+  }
+
+  // more articles
+  function apply_post_limits(apply) {
+    if (apply) {
+      $('.posts-container').addClass('posts-apply-limit');
+      $('.posts-more a').removeClass('hidden');
+    } else {
+      $('.posts-container').removeClass('posts-apply-limit');
+      $('.posts-more a').addClass('hidden');
+    }
+  }
+
+  // click handling for tags
+  $('.dt-tag').click(function(ev) {
+    window.location.hash = '#category:' + $(this).text().replace(/ /g, "_");
+    return false;
+  })
+
+  // hash filter handling
+  apply_hash_filter();
+  $(window).on('hashchange',function() {
+    apply_post_limits(true);
+    apply_hash_filter();
+  });
+
+  // more articles link
+  $('.posts-more a').click(function(e) {
+    e.preventDefault();
+    apply_post_limits(false);
+    apply_hash_filter();
+    return false;
+  });
+
+}
+
+</script>
+
+
+
+<div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
+<div class="posts-list">
+<h1 class="posts-list-caption" data-caption="Nikkei225 Gamma Exposure Profile">Nikkei225 Gamma Exposure Profile</h1>
+<a href="posts/2024-01-22-nikkei-225-open-interest-by-trading-participant-2024-01-19/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 22, 2024</div>
+</div>
+<div class="thumbnail">
+<img src="posts/2024-01-22-nikkei-225-open-interest-by-trading-participant-2024-01-19/nikkei-225-open-interest-by-trading-participant-2024-01-19_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Open Interest by Trading Participant 2024-01-19</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2024-01-22-nikkei-225-option-report-2024-01-22/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 22, 2024</div>
+</div>
+<div class="thumbnail">
+<img src="posts/2024-01-22-nikkei-225-option-report-2024-01-22/nikkei-225-option-report-2024-01-22_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2024-01-22</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2024-01-22-trading-participant-volume-2024-01-22/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 22, 2024</div>
+</div>
+<div class="thumbnail">
+<img src="posts/2024-01-22-trading-participant-volume-2024-01-22/trading-participant-volume-2024-01-22_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2024-01-22</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2024-01-19-nikkei-225-option-report-2024-01-18/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 19, 2024</div>
+</div>
+<div class="thumbnail">
+<img src="posts/2024-01-19-nikkei-225-option-report-2024-01-18/nikkei-225-option-report-2024-01-18_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2024-01-18</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2024-01-19-nikkei-225-option-report-2024-01-19/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 19, 2024</div>
+</div>
+<div class="thumbnail">
+<img src="posts/2024-01-19-nikkei-225-option-report-2024-01-19/nikkei-225-option-report-2024-01-19_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2024-01-19</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2024-01-19-trading-participant-volume-2024-01-18/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 19, 2024</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2024-01-19-trading-participant-volume-2024-01-18/trading-participant-volume-2024-01-18_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2024-01-18</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2024-01-19-trading-participant-volume-2024-01-19/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 19, 2024</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2024-01-19-trading-participant-volume-2024-01-19/trading-participant-volume-2024-01-19_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2024-01-19</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2024-01-17-nikkei-225-option-report-2024-01-17/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 17, 2024</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2024-01-17-nikkei-225-option-report-2024-01-17/nikkei-225-option-report-2024-01-17_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2024-01-17</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2024-01-17-trading-participant-volume-2024-01-17/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 17, 2024</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2024-01-17-trading-participant-volume-2024-01-17/trading-participant-volume-2024-01-17_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2024-01-17</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2024-01-16-nikkei-225-option-report-2024-01-16/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 16, 2024</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2024-01-16-nikkei-225-option-report-2024-01-16/nikkei-225-option-report-2024-01-16_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2024-01-16</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2024-01-16-trading-participant-volume-2024-01-16/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 16, 2024</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2024-01-16-trading-participant-volume-2024-01-16/trading-participant-volume-2024-01-16_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2024-01-16</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2024-01-15-nikkei-225-open-interest-by-trading-participant-2024-01-12/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 15, 2024</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2024-01-15-nikkei-225-open-interest-by-trading-participant-2024-01-12/nikkei-225-open-interest-by-trading-participant-2024-01-12_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Open Interest by Trading Participant 2024-01-12</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2024-01-15-nikkei-225-option-report-2024-01-15/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 15, 2024</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2024-01-15-nikkei-225-option-report-2024-01-15/nikkei-225-option-report-2024-01-15_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2024-01-15</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2024-01-15-trading-participant-volume-2024-01-15/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 15, 2024</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2024-01-15-trading-participant-volume-2024-01-15/trading-participant-volume-2024-01-15_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2024-01-15</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2024-01-12-nikkei-225-option-report-2024-01-12/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 12, 2024</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2024-01-12-nikkei-225-option-report-2024-01-12/nikkei-225-option-report-2024-01-12_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2024-01-12</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2024-01-12-trading-participant-volume-2024-01-12/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 12, 2024</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2024-01-12-trading-participant-volume-2024-01-12/trading-participant-volume-2024-01-12_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2024-01-12</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2024-01-10-nikkei-225-option-report-2024-01-10/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 10, 2024</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2024-01-10-nikkei-225-option-report-2024-01-10/nikkei-225-option-report-2024-01-10_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2024-01-10</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2024-01-10-trading-participant-volume-2024-01-10/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 10, 2024</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2024-01-10-trading-participant-volume-2024-01-10/trading-participant-volume-2024-01-10_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2024-01-10</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2024-01-09-nikkei-225-open-interest-by-trading-participant-2024-01-05/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 9, 2024</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2024-01-09-nikkei-225-open-interest-by-trading-participant-2024-01-05/nikkei-225-open-interest-by-trading-participant-2024-01-05_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Open Interest by Trading Participant 2024-01-05</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2024-01-09-nikkei-225-option-report-2024-01-09/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 9, 2024</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2024-01-09-nikkei-225-option-report-2024-01-09/nikkei-225-option-report-2024-01-09_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2024-01-09</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2024-01-09-trading-participant-volume-2024-01-09/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 9, 2024</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2024-01-09-trading-participant-volume-2024-01-09/trading-participant-volume-2024-01-09_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2024-01-09</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2024-01-05-nikkei-225-option-report-2024-01-05/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 5, 2024</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2024-01-05-nikkei-225-option-report-2024-01-05/nikkei-225-option-report-2024-01-05_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2024-01-05</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2024-01-05-trading-participant-volume-2024-01-05/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 5, 2024</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2024-01-05-trading-participant-volume-2024-01-05/trading-participant-volume-2024-01-05_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2024-01-05</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2024-01-04-nikkei-225-open-interest-by-trading-participant-2023-12-29/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 4, 2024</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2024-01-04-nikkei-225-open-interest-by-trading-participant-2023-12-29/nikkei-225-open-interest-by-trading-participant-2023-12-29_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Open Interest by Trading Participant 2023-12-29</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2024-01-04-nikkei-225-option-report-2024-01-04/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 4, 2024</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2024-01-04-nikkei-225-option-report-2024-01-04/nikkei-225-option-report-2024-01-04_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2024-01-04</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2024-01-04-trading-participant-volume-2024-01-04/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 4, 2024</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2024-01-04-trading-participant-volume-2024-01-04/trading-participant-volume-2024-01-04_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2024-01-04</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-30-nikkei-225-option-report-2023-12-29/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 30, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-30-nikkei-225-option-report-2023-12-29/nikkei-225-option-report-2023-12-29_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2023-12-29</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-30-trading-participant-volume-2023-12-29/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 30, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-30-trading-participant-volume-2023-12-29/trading-participant-volume-2023-12-29_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2023-12-29</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-28-nikkei-225-open-interest-by-trading-participant-2023-12-22/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 28, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-28-nikkei-225-open-interest-by-trading-participant-2023-12-22/nikkei-225-open-interest-by-trading-participant-2023-12-22_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Open Interest by Trading Participant 2023-12-22</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-28-nikkei-225-option-report-2023-12-28/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 28, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-28-nikkei-225-option-report-2023-12-28/nikkei-225-option-report-2023-12-28_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2023-12-28</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-28-trading-participant-volume-2023-12-28/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 28, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-28-trading-participant-volume-2023-12-28/trading-participant-volume-2023-12-28_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2023-12-28</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-27-nikkei-225-option-report-2023-12-26/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 27, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-27-nikkei-225-option-report-2023-12-26/nikkei-225-option-report-2023-12-26_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2023-12-26</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-27-nikkei-225-option-report-2023-12-27/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 27, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-27-nikkei-225-option-report-2023-12-27/nikkei-225-option-report-2023-12-27_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2023-12-27</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-27-trading-participant-volume-2023-12-26/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 27, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-27-trading-participant-volume-2023-12-26/trading-participant-volume-2023-12-26_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2023-12-26</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-27-trading-participant-volume-2023-12-27/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 27, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-27-trading-participant-volume-2023-12-27/trading-participant-volume-2023-12-27_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2023-12-27</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-25-nikkei-225-option-report-2023-12-25/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 25, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-25-nikkei-225-option-report-2023-12-25/nikkei-225-option-report-2023-12-25_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2023-12-25</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-25-trading-participant-volume-2023-12-25/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 25, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-25-trading-participant-volume-2023-12-25/trading-participant-volume-2023-12-25_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2023-12-25</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-22-nikkei-225-option-report-2023-12-22/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 22, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-22-nikkei-225-option-report-2023-12-22/nikkei-225-option-report-2023-12-22_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2023-12-22</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-22-trading-participant-volume-2023-12-22/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 22, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-22-trading-participant-volume-2023-12-22/trading-participant-volume-2023-12-22_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2023-12-22</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-21-nikkei-225-option-report-2023-12-21/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 21, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-21-nikkei-225-option-report-2023-12-21/nikkei-225-option-report-2023-12-21_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2023-12-21</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-21-trading-participant-volume-2023-12-21/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 21, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-21-trading-participant-volume-2023-12-21/trading-participant-volume-2023-12-21_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2023-12-21</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-20-nikkei-225-option-report-2023-12-20/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 20, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-20-nikkei-225-option-report-2023-12-20/nikkei-225-option-report-2023-12-20_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2023-12-20</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-20-trading-participant-volume-2023-12-20/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 20, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-20-trading-participant-volume-2023-12-20/trading-participant-volume-2023-12-20_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2023-12-20</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-19-nikkei-225-option-report-2023-12-19/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 19, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-19-nikkei-225-option-report-2023-12-19/nikkei-225-option-report-2023-12-19_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2023-12-19</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-19-trading-participant-volume-2023-12-19/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 19, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-19-trading-participant-volume-2023-12-19/trading-participant-volume-2023-12-19_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2023-12-19</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-18-nikkei-225-open-interest-by-trading-participant-2023-12-15/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 18, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-18-nikkei-225-open-interest-by-trading-participant-2023-12-15/nikkei-225-open-interest-by-trading-participant-2023-12-15_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Open Interest by Trading Participant 2023-12-15</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-18-nikkei-225-option-report-2023-12-18/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 18, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-18-nikkei-225-option-report-2023-12-18/nikkei-225-option-report-2023-12-18_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2023-12-18</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-18-trading-participant-volume-2023-12-18/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 18, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-18-trading-participant-volume-2023-12-18/trading-participant-volume-2023-12-18_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2023-12-18</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-15-nikkei-225-option-report-2023-12-15/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 15, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-15-nikkei-225-option-report-2023-12-15/nikkei-225-option-report-2023-12-15_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2023-12-15</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-15-trading-participant-volume-2023-12-15/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 15, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-15-trading-participant-volume-2023-12-15/trading-participant-volume-2023-12-15_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2023-12-15</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-14-nikkei-225-option-report-2023-12-14/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 14, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-14-nikkei-225-option-report-2023-12-14/nikkei-225-option-report-2023-12-14_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2023-12-14</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-14-trading-participant-volume-2023-12-14/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 14, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-14-trading-participant-volume-2023-12-14/trading-participant-volume-2023-12-14_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2023-12-14</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-13-nikkei-225-option-report-2023-12-13/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 13, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-13-nikkei-225-option-report-2023-12-13/nikkei-225-option-report-2023-12-13_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2023-12-13</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-13-trading-participant-volume-2023-12-13/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 13, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-13-trading-participant-volume-2023-12-13/trading-participant-volume-2023-12-13_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2023-12-13</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-12-nikkei-225-option-report-2023-12-12/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 12, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-12-nikkei-225-option-report-2023-12-12/nikkei-225-option-report-2023-12-12_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2023-12-12</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-12-trading-participant-volume-2023-12-12/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 12, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-12-trading-participant-volume-2023-12-12/trading-participant-volume-2023-12-12_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2023-12-12</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-11-nikkei-225-open-interest-by-trading-participant-08-dec-2023/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 11, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-11-nikkei-225-open-interest-by-trading-participant-08-dec-2023/nikkei-225-open-interest-by-trading-participant-08-dec-2023_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Open Interest by Trading Participant 2023-12-08</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-11-nikkei-225-option-report-2023-12-11/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 11, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-11-nikkei-225-option-report-2023-12-11/nikkei-225-option-report-2023-12-11_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2023-12-11</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-11-trading-participant-volume-2023-12-11/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 11, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-11-trading-participant-volume-2023-12-11/trading-participant-volume-2023-12-11_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2023-12-11</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-08-nikkei-225-option-report-2023-12-08/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 8, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-08-nikkei-225-option-report-2023-12-08/nikkei-225-option-report-2023-12-08_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2023-12-08</h2>
+<p>Japanese markets were reeling on Friday, with the Nikkei heading for its biggest weekly drop in a year while bonds have been battered and the yen is eyeing its largest weekly gain in five months, as investors rushed out of bets on Japan’s rates staying low. The yen leapt more than 2% on Thursday and was well-supported on Friday as short sellers fear that a long-awaited rally may have finally begun. Reporting from Reuters.</p>
+</div>
+</a>
+<a href="posts/2023-12-08-trading-participant-volume-2023-12-08/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 8, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-08-trading-participant-volume-2023-12-08/trading-participant-volume-2023-12-08_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2023-12-08</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-07-nikkei-225-option-report-2023-12-07/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 7, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-07-nikkei-225-option-report-2023-12-07/nikkei-225-option-report-2023-12-07_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2023-12-07</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-07-trading-participant-volume-2023-12-07/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 7, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-07-trading-participant-volume-2023-12-07/trading-participant-volume-2023-12-07_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2023-12-07</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-06-nikkei-225-option-report-2023-12-06/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 6, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-06-nikkei-225-option-report-2023-12-06/nikkei-225-option-report-2023-12-06_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2023-12-06</h2>
+<p>Japan's Nikkei share average rose sharply on Wednesday, erasing losses from the previous three sessions as investors bought back beaten-down chip-related stocks. The Nikkei index jumped 2.04% to close at 33,445.90, posting its biggest daily gains since Nov. 15. The broader Topix rose 1.9% to 2,387.20.</p>
+</div>
+</a>
+<a href="posts/2023-12-06-trading-participant-volume-2023-12-06/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 6, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-06-trading-participant-volume-2023-12-06/trading-participant-volume-2023-12-06_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2023-12-06</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-06-trading-participant-volume-2023-12-05/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 5, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-06-trading-participant-volume-2023-12-05/trading-participant-volume-2023-12-05_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2023-12-05</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-04-nikkei-225-option-report-2023-12-04/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 4, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-04-nikkei-225-option-report-2023-12-04/nikkei-225-option-report-2023-12-04_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2023-12-04</h2>
+<p>Japan's Nikkei share average sank to a nearly three-week low on Monday as a stronger yen dented the earnings outlook for the nation's exporters, with automakers leading declines. The Nikkei closed down 0.6% at 33,231.27 after earlier sliding as much as 1.22% to reach 33,023.04 for the first time since Nov. 14. The broader Topix slumped 0.83%. (Reporting from Reuters)</p>
+</div>
+</a>
+<a href="posts/2023-12-05-nikkei-225-option-report-2023-12-05/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 4, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-05-nikkei-225-option-report-2023-12-05/nikkei-225-option-report-2023-12-05_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2023-12-05</h2>
+<p>Japan's Nikkei share average touched a three-week low on Tuesday, as an overnight rise in U.S. Treasury yields drove a heavy sell-off in Advantest and other chip-related stocks. "Investors unwound high-technology stocks in today's session. Those shares had been bought amid declines of U.S. yields," said Naoki Fujiwara, senior fund manager at Shinkin Asset Management. Most of the Nikkei's top percentage losers were chip-related, with Advantest losing 5.41%, Tokyo Electron falling 3.5% and Screen Holdings slipping 4.5%. Renesas Electronics lost 4.55%. The broader Topix slipped 0.74% to 2,345.22. (Reporting from Reuters)</p>
+</div>
+</a>
+<a href="posts/2023-12-06-trading-participant-volume-2023-12-04/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 4, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-06-trading-participant-volume-2023-12-04/trading-participant-volume-2023-12-04_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2023-12-04</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-12-01-nikkei-225-option-report-2023-12-01/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 1, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-01-nikkei-225-option-report-2023-12-01/nikkei-225-option-report-2023-12-01_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2023-12-01</h2>
+<p>A short description of the post.</p>
+</div>
+</a>
+<a href="posts/2023-12-06-trading-participant-volume-2023-12-01/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 1, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-12-06-trading-participant-volume-2023-12-01/trading-participant-volume-2023-12-01_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Trading Participant Volume 2023-12-01</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-11-30-nikkei-225-option-report-2023-11-30/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["nikkei225","options"]}</script>
+<div class="metadata">
+<div class="publishedDate">Nov. 30, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-11-30-nikkei-225-option-report-2023-11-30/nikkei-225-option-report-2023-11-30_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2023-11-30</h2>
+<p></p>
+</div>
+</a>
+<a href="posts/2023-11-29-nikkei-225-option-report-2023-11-29/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":[]}</script>
+<div class="metadata">
+<div class="publishedDate">Nov. 29, 2023</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2023-11-29-nikkei-225-option-report-2023-11-29/nikkei-225-option-report-2023-11-29_files/figure-html5/unnamed-chunk-9-1.png"/>
+</div>
+<div class="description">
+<h2>Nikkei 225 Option Report 2023-11-29</h2>
+<p></p>
+</div>
+</a>
+</div>
+<div class="posts-sidebar">
+<div class="sidebar-section categories">
+<h3>Categories</h3>
+<ul>
+<li>
+<a href="#category:articles">articles</a>
+<span class="category-count">(73)</span>
+</li>
+<li>
+<a href="#category:nikkei225">nikkei225</a>
+<span class="category-count">(72)</span>
+</li>
+<li>
+<a href="#category:options">options</a>
+<span class="category-count">(72)</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="posts-more">
+<a href="#">More articles &raquo;</a>
+</div>
+</div>
+<!--/radix_placeholder_article_listing-->
 
 <div class="d-title">
-<h1>maRk’s blog</h1>
+<h1>Nikkei225 Gamma Exposure Profile</h1>
 
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-
+<p><p>Gamma Exposure Profile</p></p>
 </div>
 
 
 <div class="d-article">
-<p>I made this spiral animation as part of my first exploration into digital art using R.</p>
+<p><br></p>
 <center>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="spiral_files/figure-html5/unnamed-chunk-2-1.gif" /><!-- --></p>
-</div>
+<FONT COLOR="#ff0000">Check <a href="calculate_gamma_exposure_profile_nikkei225.html">here</a> for the article on “How to calculate Gamma Exposure Profile”</FONT>
 </center>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
