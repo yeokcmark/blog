@@ -4,7 +4,7 @@ library(imager) #package for image processing
 library(gganimate)
 
 # a low res photo with a "dull" background works best eg: pasport photo
-img <-load.image("images/sulking fat tiger.jpg")
+img <-load.image("images/happy.jpg")
 #cannyEdges() function to extract outlines of photo
 output <- cannyEdges(img, alpha = 0.4)
 #alpha controls the threshold adjustment factor (default is 1)
@@ -39,7 +39,9 @@ p <-
   transition_time(n) + 
   shadow_mark(color = "white")
 
-animate(p, fps = 20, nframes = 200, end_pause = 60)
+animate(p, fps = 20, nframes = 200, end_pause = 60, width = 900,
+        height = 900,
+        renderer = gifski_renderer("happy_birthday_timothy.gif"))
 
 tiger_df <- 
   as.data.frame (img, wide = "c") %>% 
