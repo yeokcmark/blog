@@ -1,6 +1,6 @@
 ---
-title: "Nikkei 225 Open Interest by Trading Participant 2024-01-19"
-date: 2024-01-22
+title: "Nikkei 225 Open Interest by Trading Participant 2024-01-26"
+date: 2024-01-29
 
 
 categories:
@@ -51,7 +51,7 @@ sessionInfo()
 
 # Import Data ----
 # download weekly report. Issued every friday ----
-download_date <- "20240119"
+download_date <- "20240126"
 #  format(today(), "%Y%m%d")
 
 #URL <- glue("https://www.jpx.co.jp/english/markets/derivatives/participant-volume/o4sio7000000346f-att/{download_date}_volume_by_participant_whole_day.xlsx")
