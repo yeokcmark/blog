@@ -2,11 +2,12 @@ rm(list = ls())
 library(tidyverse)
 library(imager) #package for image processing
 library(gganimate)
+library(randomcoloR)
 
 # a low res photo with a "dull" background works best eg: pasport photo
-img <-load.image("images/happy.jpg")
+img <-load.image("images/dragon.jpg")
 #cannyEdges() function to extract outlines of photo
-output <- cannyEdges(img, alpha = 0.4)
+output <- cannyEdges(img, alpha = 0.1)
 #alpha controls the threshold adjustment factor (default is 1)
 #play around with this factor to get the desired outcome
 
@@ -21,7 +22,10 @@ num_rows <- nrow(coord)
 df <-
   data.frame(x = coord[,1],
              y = coord[,2],
-             n = rep((1:10), length.out = num_rows)) # n controls transition to complete image
+             n = rep((1:10), length.out = num_rows),
+             c = randomColor(count = num_rows,
+                             hue = "red",
+                             luminosity = "bright")) # n controls transition to complete image
 
 #write_csv(df, "thankyou.csv") #Save coordinates of your best plot
 #df<-read_csv("prof_rohV2_coord.csv")
@@ -29,24 +33,26 @@ p <-
   ggplot(data = df,
        aes(x = x,
            y = -y,
+           color = c,
            group = n)
        ) +
-  geom_point(size = 1,
-             color = "white") +
+  geom_point(size = 1) +
   theme_set(theme_void()) + 
   theme(panel.background = element_rect(fill = 'black'),
         legend.position = "none") +
   transition_time(n) + 
-  shadow_mark(color = "white")
+  shadow_mark(color = "red")
 
-animate(p, fps = 20, nframes = 200, end_pause = 60, width = 900,
-        height = 900,
-        renderer = gifski_renderer("happy_birthday_timothy.gif"))
+animate(p, fps = 20, nframes = 200, end_pause = 60, width = 500,
+        height = 500,
+        renderer = gifski_renderer("happy_cny_dragon.gif"))
+
+## animate a color photo
 
 tiger_df <- 
   as.data.frame (img, wide = "c") %>% 
   mutate(rgb.val=rgb(c.1,c.2,c.3),
-         n = rep(1:20, length.out = 338668))
+         n = rep(1:20, length.out = 98260))
 tiger_p <- 
   ggplot(tiger_df,aes(x,y))+
   geom_point(aes(fill=rgb.val))
@@ -110,7 +116,7 @@ names(fireworks)
 
 fireworks %>%
   
-  p <-
+
   ggplot()+
   geom_point(data = fireworks %>% filter(cluster_n == 1),
              aes(x = x, y = y, color = c), size = 2) +

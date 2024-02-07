@@ -1,5 +1,22 @@
 [
   {
+    "path": "posts/2024-02-07-nikkei-225-option-report-2024-02-07/",
+    "title": "Nikkei 225 Option Report 2024-02-07",
+    "description": {},
+    "author": [],
+    "date": "2024-02-07",
+    "categories": [
+      "nikkei225",
+      "options"
+    ],
+    "contents": "\r\n\r\nContents\r\nTraded Volume:\r\nOpen Interest:\r\nChange in Open Interest:\r\nSpot Gamma Exposure:\r\nGamma Exposure Profile (All Months)\r\nGamma Exposure Profile (Excluding Front Month)\r\n\r\nTraded Volume:\r\nDate: 2024-02-07 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nOpen Interest:\r\nDate: 2024-02-07Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nChange in Open Interest:\r\nDate: 2024-02-07 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nSpot Gamma Exposure:\r\nDate: 2024-02-07\r\nNikkei 225 Closing Price: 3.612^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (All Months)\r\nDate: 2024-02-07\r\nNikkei 225 Closing Price: 3.612^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (Excluding Front Month)\r\nDate: 2024-02-07\r\nNikkei 225 Closing Price: 3.612^{4}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+    "preview": "posts/2024-02-07-nikkei-225-option-report-2024-02-07/nikkei-225-option-report-2024-02-07_files/figure-html5/unnamed-chunk-9-1.png",
+    "last_modified": "2024-02-07T22:06:27+08:00",
+    "input_file": "nikkei-225-option-report-2024-02-07.knit.md",
+    "preview_width": 1248,
+    "preview_height": 768
+  },
+  {
     "path": "posts/2024-02-06-nikkei-225-option-report-2024-02-06/",
     "title": "Nikkei 225 Option Report 2024-02-06",
     "description": {},
@@ -13,6 +30,40 @@
     "preview": "posts/2024-02-06-nikkei-225-option-report-2024-02-06/nikkei-225-option-report-2024-02-06_files/figure-html5/unnamed-chunk-9-1.png",
     "last_modified": "2024-02-06T21:12:53+08:00",
     "input_file": "nikkei-225-option-report-2024-02-06.knit.md",
+    "preview_width": 1248,
+    "preview_height": 768
+  },
+  {
+    "path": "posts/2024-02-06-trading-participant-volume-2024-02-06/",
+    "title": "Trading Participant Volume 2024-02-06",
+    "description": {},
+    "author": [],
+    "date": "2024-02-06",
+    "categories": [
+      "nikkei225",
+      "options"
+    ],
+    "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+    "preview": "posts/2024-02-06-trading-participant-volume-2024-02-06/trading-participant-volume-2024-02-06_files/figure-html5/unnamed-chunk-2-1.png",
+    "last_modified": "2024-02-06T21:17:03+08:00",
+    "input_file": "trading-participant-volume-2024-02-06.knit.md",
+    "preview_width": 1248,
+    "preview_height": 768
+  },
+  {
+    "path": "posts/2024-02-07-trading-participant-volume-2024-02-07/",
+    "title": "Trading Participant Volume 2024-02-07",
+    "description": {},
+    "author": [],
+    "date": "2024-02-07",
+    "categories": [
+      "nikkei225",
+      "options"
+    ],
+    "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+    "preview": "posts/2024-02-07-trading-participant-volume-2024-02-07/trading-participant-volume-2024-02-07_files/figure-html5/unnamed-chunk-2-1.png",
+    "last_modified": "2024-02-07T22:08:55+08:00",
+    "input_file": "trading-participant-volume-2024-02-07.knit.md",
     "preview_width": 1248,
     "preview_height": 768
   },
@@ -66,23 +117,6 @@
     "input_file": "nikkei-225-open-interest-by-trading-participant-2024-02-02.knit.md",
     "preview_width": 1536,
     "preview_height": 2304
-  },
-  {
-    "path": "posts/2024-02-06-trading-participant-volume-2024-02-06/",
-    "title": "Trading Participant Volume 2024-02-06",
-    "description": {},
-    "author": [],
-    "date": "2024-02-06",
-    "categories": [
-      "nikkei225",
-      "options"
-    ],
-    "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
-    "preview": "posts/2024-02-06-trading-participant-volume-2024-02-06/trading-participant-volume-2024-02-06_files/figure-html5/unnamed-chunk-2-1.png",
-    "last_modified": "2024-02-06T21:17:03+08:00",
-    "input_file": "trading-participant-volume-2024-02-06.knit.md",
-    "preview_width": 1248,
-    "preview_height": 768
   },
   {
     "path": "posts/2024-02-01-nikkei-225-option-report-2024-02-01/",
