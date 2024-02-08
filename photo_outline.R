@@ -52,7 +52,7 @@ animate(p, fps = 20, nframes = 200, end_pause = 60, width = 500,
 tiger_df <- 
   as.data.frame (img, wide = "c") %>% 
   mutate(rgb.val=rgb(c.1,c.2,c.3),
-         n = rep(1:20, length.out = 98260))
+         n = rep(1:20, length.out = 589057))
 tiger_p <- 
   ggplot(tiger_df,aes(x,y))+
   geom_point(aes(fill=rgb.val))
