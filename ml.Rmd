@@ -1,8 +1,17 @@
 ---
 title: "Machine LeaRning"
-site: distill::distill_website
-toc: false
+output:
+  distill::distill_article:
+    toc: false
 listing: ml
 ---
+```{css, echo = FALSE}
+d-title {
+  display:none;
+  margin:0;
+}
+
+```
+
 <br>
 I started Module 1 of SMU Academy's [Predictive Analytics and Machine Learning](https://academy.smu.edu.sg/predictive-analytics-and-machine-learning-6916) class in January 2024. This blog will serve as a repository for various Machine Learning projects I embark on.

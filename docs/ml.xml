@@ -12,7 +12,7 @@
       <title>HDB Rental Prices</title>
       <dc:creator>Mark Y</dc:creator>
       <link>https://yeokcmark.netlify.app/ml/2024-02-09-hdb-rental-prices</link>
-      <description>HDB Rental Prices</description>
+      <description>Let's try and predict the mediaa rental price per sqft of HDA flats given information about their location, age, distance to MRT station....</description>
       <category>regression</category>
       <category>linear regression</category>
       <category>random forest</category>

@@ -6,6 +6,13 @@ site: distill::distill_website
 toc: false
 listing: posts
 ---
+```{css, echo = FALSE}
+d-title {
+  display:none;
+  margin:0;
+}
+
+```
 
 <br>
 

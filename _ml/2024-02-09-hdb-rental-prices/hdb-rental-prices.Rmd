@@ -1,5 +1,7 @@
 ---
 title: "HDB Rental Prices"
+description: |
+  Let's try and predict the mediaa rental price per sqft of HDA flats given information about their location, age, distance to MRT station....
 author:
   - name: Mark Y
 date: 2024-02-09
