@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>maRk's blog</title>
+    <link>https://yeokcmark.netlify.app/</link>
+    <atom:link href="https://yeokcmark.netlify.app/ml.xml" rel="self" type="application/rss+xml"/>
+    <description>my jouRney in R
+</description>
+    <generator>Distill</generator>
+    <lastBuildDate>Fri, 09 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>HDB Rental Prices</title>
+      <dc:creator>Mark Y</dc:creator>
+      <link>https://yeokcmark.netlify.app/ml/2024-02-09-hdb-rental-prices</link>
+      <description>HDB Rental Prices</description>
+      <category>regression</category>
+      <category>linear regression</category>
+      <category>random forest</category>
+      <category>knn</category>
+      <category>xgboost</category>
+      <guid>https://yeokcmark.netlify.app/ml/2024-02-09-hdb-rental-prices</guid>
+      <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/ml/2024-02-09-hdb-rental-prices/hdb-rental-prices_files/figure-html5/unnamed-chunk-13-1.png" medium="image" type="image/png" width="1152" height="768"/>
+    </item>
+  </channel>
+</rss>
