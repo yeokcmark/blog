@@ -11928,7 +11928,7 @@ th {
 }
 
 d-title {
-  visibility: hidden;
+  display:none;
   margin:0;
 }
 description {
