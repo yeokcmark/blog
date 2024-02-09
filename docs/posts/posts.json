@@ -11,42 +11,8 @@
     ],
     "contents": "\r\n\r\nContents\r\nTraded Volume:\r\nOpen Interest:\r\nChange in Open Interest:\r\nSpot Gamma Exposure:\r\nGamma Exposure Profile (All Months)\r\nGamma Exposure Profile (Excluding Front Month)\r\n\r\nTraded Volume:\r\nDate: 2024-02-08 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nOpen Interest:\r\nDate: 2024-02-08Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nChange in Open Interest:\r\nDate: 2024-02-08 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nSpot Gamma Exposure:\r\nDate: 2024-02-08\r\nNikkei 225 Closing Price: 3.6863^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (All Months)\r\nDate: 2024-02-08\r\nNikkei 225 Closing Price: 3.6863^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (Excluding Front Month)\r\nDate: 2024-02-08\r\nNikkei 225 Closing Price: 3.6863^{4}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/2024-02-08-nikkei-225-option-report-2024-02-08/nikkei-225-option-report-2024-02-08_files/figure-html5/unnamed-chunk-9-1.png",
-    "last_modified": "2024-02-08T22:57:03+08:00",
-    "input_file": "nikkei-225-option-report-2024-02-08.knit.md",
-    "preview_width": 1248,
-    "preview_height": 768
-  },
-  {
-    "path": "posts/2024-02-07-nikkei-225-option-report-2024-02-07/",
-    "title": "Nikkei 225 Option Report 2024-02-07",
-    "description": {},
-    "author": [],
-    "date": "2024-02-07",
-    "categories": [
-      "nikkei225",
-      "options"
-    ],
-    "contents": "\r\n\r\nContents\r\nTraded Volume:\r\nOpen Interest:\r\nChange in Open Interest:\r\nSpot Gamma Exposure:\r\nGamma Exposure Profile (All Months)\r\nGamma Exposure Profile (Excluding Front Month)\r\n\r\nTraded Volume:\r\nDate: 2024-02-07 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nOpen Interest:\r\nDate: 2024-02-07Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nChange in Open Interest:\r\nDate: 2024-02-07 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nSpot Gamma Exposure:\r\nDate: 2024-02-07\r\nNikkei 225 Closing Price: 3.612^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (All Months)\r\nDate: 2024-02-07\r\nNikkei 225 Closing Price: 3.612^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (Excluding Front Month)\r\nDate: 2024-02-07\r\nNikkei 225 Closing Price: 3.612^{4}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
-    "preview": "posts/2024-02-07-nikkei-225-option-report-2024-02-07/nikkei-225-option-report-2024-02-07_files/figure-html5/unnamed-chunk-9-1.png",
-    "last_modified": "2024-02-07T22:06:27+08:00",
-    "input_file": "nikkei-225-option-report-2024-02-07.knit.md",
-    "preview_width": 1248,
-    "preview_height": 768
-  },
-  {
-    "path": "posts/2024-02-07-trading-participant-volume-2024-02-07/",
-    "title": "Trading Participant Volume 2024-02-07",
-    "description": {},
-    "author": [],
-    "date": "2024-02-07",
-    "categories": [
-      "nikkei225",
-      "options"
-    ],
-    "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
-    "preview": "posts/2024-02-07-trading-participant-volume-2024-02-07/trading-participant-volume-2024-02-07_files/figure-html5/unnamed-chunk-2-1.png",
-    "last_modified": "2024-02-07T22:08:55+08:00",
-    "input_file": "trading-participant-volume-2024-02-07.knit.md",
+    "last_modified": "2024-02-08T22:57:05+08:00",
+    "input_file": {},
     "preview_width": 1248,
     "preview_height": 768
   },
@@ -62,8 +28,42 @@
     ],
     "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/2024-02-08-trading-participant-volume-2024-02-08/trading-participant-volume-2024-02-08_files/figure-html5/unnamed-chunk-2-1.png",
-    "last_modified": "2024-02-08T22:57:17+08:00",
-    "input_file": "trading-participant-volume-2024-02-08.knit.md",
+    "last_modified": "2024-02-08T22:57:19+08:00",
+    "input_file": {},
+    "preview_width": 1248,
+    "preview_height": 768
+  },
+  {
+    "path": "posts/2024-02-07-nikkei-225-option-report-2024-02-07/",
+    "title": "Nikkei 225 Option Report 2024-02-07",
+    "description": {},
+    "author": [],
+    "date": "2024-02-07",
+    "categories": [
+      "nikkei225",
+      "options"
+    ],
+    "contents": "\r\n\r\nContents\r\nTraded Volume:\r\nOpen Interest:\r\nChange in Open Interest:\r\nSpot Gamma Exposure:\r\nGamma Exposure Profile (All Months)\r\nGamma Exposure Profile (Excluding Front Month)\r\n\r\nTraded Volume:\r\nDate: 2024-02-07 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nOpen Interest:\r\nDate: 2024-02-07Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nChange in Open Interest:\r\nDate: 2024-02-07 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nSpot Gamma Exposure:\r\nDate: 2024-02-07\r\nNikkei 225 Closing Price: 3.612^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (All Months)\r\nDate: 2024-02-07\r\nNikkei 225 Closing Price: 3.612^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (Excluding Front Month)\r\nDate: 2024-02-07\r\nNikkei 225 Closing Price: 3.612^{4}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+    "preview": "posts/2024-02-07-nikkei-225-option-report-2024-02-07/nikkei-225-option-report-2024-02-07_files/figure-html5/unnamed-chunk-9-1.png",
+    "last_modified": "2024-02-07T22:06:31+08:00",
+    "input_file": {},
+    "preview_width": 1248,
+    "preview_height": 768
+  },
+  {
+    "path": "posts/2024-02-07-trading-participant-volume-2024-02-07/",
+    "title": "Trading Participant Volume 2024-02-07",
+    "description": {},
+    "author": [],
+    "date": "2024-02-07",
+    "categories": [
+      "nikkei225",
+      "options"
+    ],
+    "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+    "preview": "posts/2024-02-07-trading-participant-volume-2024-02-07/trading-participant-volume-2024-02-07_files/figure-html5/unnamed-chunk-2-1.png",
+    "last_modified": "2024-02-07T22:08:58+08:00",
+    "input_file": {},
     "preview_width": 1248,
     "preview_height": 768
   },
@@ -79,8 +79,8 @@
     ],
     "contents": "\r\n\r\nContents\r\nTraded Volume:\r\nOpen Interest:\r\nChange in Open Interest:\r\nSpot Gamma Exposure:\r\nGamma Exposure Profile (All Months)\r\nGamma Exposure Profile (Excluding Front Month)\r\n\r\nTraded Volume:\r\nDate: 2024-02-06 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nOpen Interest:\r\nDate: 2024-02-06Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nChange in Open Interest:\r\nDate: 2024-02-06 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nSpot Gamma Exposure:\r\nDate: 2024-02-06\r\nNikkei 225 Closing Price: 3.6161^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (All Months)\r\nDate: 2024-02-06\r\nNikkei 225 Closing Price: 3.6161^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (Excluding Front Month)\r\nDate: 2024-02-06\r\nNikkei 225 Closing Price: 3.6161^{4}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/2024-02-06-nikkei-225-option-report-2024-02-06/nikkei-225-option-report-2024-02-06_files/figure-html5/unnamed-chunk-9-1.png",
-    "last_modified": "2024-02-06T21:12:53+08:00",
-    "input_file": "nikkei-225-option-report-2024-02-06.knit.md",
+    "last_modified": "2024-02-06T21:12:59+08:00",
+    "input_file": {},
     "preview_width": 1248,
     "preview_height": 768
   },
@@ -96,42 +96,8 @@
     ],
     "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/2024-02-06-trading-participant-volume-2024-02-06/trading-participant-volume-2024-02-06_files/figure-html5/unnamed-chunk-2-1.png",
-    "last_modified": "2024-02-06T21:17:03+08:00",
-    "input_file": "trading-participant-volume-2024-02-06.knit.md",
-    "preview_width": 1248,
-    "preview_height": 768
-  },
-  {
-    "path": "posts/2024-02-05-nikkei-225-option-report-2024-02-05/",
-    "title": "Nikkei 225 Option Report 2024-02-05",
-    "description": {},
-    "author": [],
-    "date": "2024-02-05",
-    "categories": [
-      "nikkei225",
-      "options"
-    ],
-    "contents": "\r\n\r\nContents\r\nTraded Volume:\r\nOpen Interest:\r\nChange in Open Interest:\r\nSpot Gamma Exposure:\r\nGamma Exposure Profile (All Months)\r\nGamma Exposure Profile (Excluding Front Month)\r\n\r\nTraded Volume:\r\nDate: 2024-02-05 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nOpen Interest:\r\nDate: 2024-02-05Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nChange in Open Interest:\r\nDate: 2024-02-05 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nSpot Gamma Exposure:\r\nDate: 2024-02-05\r\nNikkei 225 Closing Price: 3.6354^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (All Months)\r\nDate: 2024-02-05\r\nNikkei 225 Closing Price: 3.6354^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (Excluding Front Month)\r\nDate: 2024-02-05\r\nNikkei 225 Closing Price: 3.6354^{4}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
-    "preview": "posts/2024-02-05-nikkei-225-option-report-2024-02-05/nikkei-225-option-report-2024-02-05_files/figure-html5/unnamed-chunk-9-1.png",
-    "last_modified": "2024-02-05T21:00:11+08:00",
-    "input_file": "nikkei-225-option-report-2024-02-05.knit.md",
-    "preview_width": 1248,
-    "preview_height": 768
-  },
-  {
-    "path": "posts/2024-02-05-trading-participant-volume-2024-02-05/",
-    "title": "Trading Participant Volume 2024-02-05",
-    "description": {},
-    "author": [],
-    "date": "2024-02-05",
-    "categories": [
-      "nikkei225",
-      "options"
-    ],
-    "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
-    "preview": "posts/2024-02-05-trading-participant-volume-2024-02-05/trading-participant-volume-2024-02-05_files/figure-html5/unnamed-chunk-2-1.png",
-    "last_modified": "2024-02-05T21:04:42+08:00",
-    "input_file": "trading-participant-volume-2024-02-05.knit.md",
+    "last_modified": "2024-02-06T21:17:08+08:00",
+    "input_file": {},
     "preview_width": 1248,
     "preview_height": 768
   },
@@ -147,10 +113,44 @@
     ],
     "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/2024-02-05-nikkei-225-open-interest-by-trading-participant-2024-02-02/nikkei-225-open-interest-by-trading-participant-2024-02-02_files/figure-html5/unnamed-chunk-2-1.png",
-    "last_modified": "2024-02-05T21:09:06+08:00",
-    "input_file": "nikkei-225-open-interest-by-trading-participant-2024-02-02.knit.md",
+    "last_modified": "2024-02-05T21:09:12+08:00",
+    "input_file": {},
     "preview_width": 1536,
     "preview_height": 2304
+  },
+  {
+    "path": "posts/2024-02-05-nikkei-225-option-report-2024-02-05/",
+    "title": "Nikkei 225 Option Report 2024-02-05",
+    "description": {},
+    "author": [],
+    "date": "2024-02-05",
+    "categories": [
+      "nikkei225",
+      "options"
+    ],
+    "contents": "\r\n\r\nContents\r\nTraded Volume:\r\nOpen Interest:\r\nChange in Open Interest:\r\nSpot Gamma Exposure:\r\nGamma Exposure Profile (All Months)\r\nGamma Exposure Profile (Excluding Front Month)\r\n\r\nTraded Volume:\r\nDate: 2024-02-05 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nOpen Interest:\r\nDate: 2024-02-05Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nChange in Open Interest:\r\nDate: 2024-02-05 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nSpot Gamma Exposure:\r\nDate: 2024-02-05\r\nNikkei 225 Closing Price: 3.6354^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (All Months)\r\nDate: 2024-02-05\r\nNikkei 225 Closing Price: 3.6354^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (Excluding Front Month)\r\nDate: 2024-02-05\r\nNikkei 225 Closing Price: 3.6354^{4}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+    "preview": "posts/2024-02-05-nikkei-225-option-report-2024-02-05/nikkei-225-option-report-2024-02-05_files/figure-html5/unnamed-chunk-9-1.png",
+    "last_modified": "2024-02-05T21:00:17+08:00",
+    "input_file": {},
+    "preview_width": 1248,
+    "preview_height": 768
+  },
+  {
+    "path": "posts/2024-02-05-trading-participant-volume-2024-02-05/",
+    "title": "Trading Participant Volume 2024-02-05",
+    "description": {},
+    "author": [],
+    "date": "2024-02-05",
+    "categories": [
+      "nikkei225",
+      "options"
+    ],
+    "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+    "preview": "posts/2024-02-05-trading-participant-volume-2024-02-05/trading-participant-volume-2024-02-05_files/figure-html5/unnamed-chunk-2-1.png",
+    "last_modified": "2024-02-05T21:04:46+08:00",
+    "input_file": {},
+    "preview_width": 1248,
+    "preview_height": 768
   },
   {
     "path": "posts/2024-02-01-nikkei-225-option-report-2024-02-01/",
@@ -164,8 +164,8 @@
     ],
     "contents": "\r\n\r\nContents\r\nTraded Volume:\r\nOpen Interest:\r\nChange in Open Interest:\r\nSpot Gamma Exposure:\r\nGamma Exposure Profile (All Months)\r\nGamma Exposure Profile (Excluding Front Month)\r\n\r\nTraded Volume:\r\nDate: 2024-02-01 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nOpen Interest:\r\nDate: 2024-02-01Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nChange in Open Interest:\r\nDate: 2024-02-01 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nSpot Gamma Exposure:\r\nDate: 2024-02-01\r\nNikkei 225 Closing Price: 3.6011^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (All Months)\r\nDate: 2024-02-01\r\nNikkei 225 Closing Price: 3.6011^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (Excluding Front Month)\r\nDate: 2024-02-01\r\nNikkei 225 Closing Price: 3.6011^{4}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/2024-02-01-nikkei-225-option-report-2024-02-01/nikkei-225-option-report-2024-02-01_files/figure-html5/unnamed-chunk-9-1.png",
-    "last_modified": "2024-02-01T20:49:01+08:00",
-    "input_file": "nikkei-225-option-report-2024-02-01.knit.md",
+    "last_modified": "2024-02-01T20:49:09+08:00",
+    "input_file": {},
     "preview_width": 1248,
     "preview_height": 768
   },
@@ -181,8 +181,8 @@
     ],
     "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/2024-02-01-trading-participant-volume-2024-02-01/trading-participant-volume-2024-02-01_files/figure-html5/unnamed-chunk-2-1.png",
-    "last_modified": "2024-02-01T20:50:38+08:00",
-    "input_file": "trading-participant-volume-2024-02-01.knit.md",
+    "last_modified": "2024-02-01T20:50:42+08:00",
+    "input_file": {},
     "preview_width": 1248,
     "preview_height": 768
   },
@@ -198,8 +198,8 @@
     ],
     "contents": "\r\n\r\nContents\r\nTraded Volume:\r\nOpen Interest:\r\nChange in Open Interest:\r\nSpot Gamma Exposure:\r\nGamma Exposure Profile (All Months)\r\nGamma Exposure Profile (Excluding Front Month)\r\n\r\nTraded Volume:\r\nDate: 2024-01-31 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nOpen Interest:\r\nDate: 2024-01-31Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nChange in Open Interest:\r\nDate: 2024-01-31 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nSpot Gamma Exposure:\r\nDate: 2024-01-31\r\nNikkei 225 Closing Price: 3.6287^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (All Months)\r\nDate: 2024-01-31\r\nNikkei 225 Closing Price: 3.6287^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (Excluding Front Month)\r\nDate: 2024-01-31\r\nNikkei 225 Closing Price: 3.6287^{4}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/2024-01-31-nikkei-225-option-report-2024-01-31/nikkei-225-option-report-2024-01-31_files/figure-html5/unnamed-chunk-9-1.png",
-    "last_modified": "2024-01-31T21:33:00+08:00",
-    "input_file": "nikkei-225-option-report-2024-01-31.knit.md",
+    "last_modified": "2024-01-31T21:33:06+08:00",
+    "input_file": {},
     "preview_width": 1248,
     "preview_height": 768
   },
@@ -215,8 +215,8 @@
     ],
     "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/2024-01-31-trading-participant-volume-2024-01-31/trading-participant-volume-2024-01-31_files/figure-html5/unnamed-chunk-2-1.png",
-    "last_modified": "2024-01-31T21:33:47+08:00",
-    "input_file": "trading-participant-volume-2024-01-31.knit.md",
+    "last_modified": "2024-01-31T21:33:51+08:00",
+    "input_file": {},
     "preview_width": 1248,
     "preview_height": 768
   },
@@ -232,8 +232,8 @@
     ],
     "contents": "\r\n\r\nContents\r\nTraded Volume:\r\nOpen Interest:\r\nChange in Open Interest:\r\nSpot Gamma Exposure:\r\nGamma Exposure Profile (All Months)\r\nGamma Exposure Profile (Excluding Front Month)\r\n\r\nTraded Volume:\r\nDate: 2024-01-30 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nOpen Interest:\r\nDate: 2024-01-30Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nChange in Open Interest:\r\nDate: 2024-01-30 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nSpot Gamma Exposure:\r\nDate: 2024-01-30\r\nNikkei 225 Closing Price: 3.6066^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (All Months)\r\nDate: 2024-01-30\r\nNikkei 225 Closing Price: 3.6066^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (Excluding Front Month)\r\nDate: 2024-01-30\r\nNikkei 225 Closing Price: 3.6066^{4}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/2024-01-30-nikkei-225-option-report-2024-01-30/nikkei-225-option-report-2024-01-30_files/figure-html5/unnamed-chunk-9-1.png",
-    "last_modified": "2024-01-30T20:41:11+08:00",
-    "input_file": "nikkei-225-option-report-2024-01-30.knit.md",
+    "last_modified": "2024-01-30T20:41:17+08:00",
+    "input_file": {},
     "preview_width": 1248,
     "preview_height": 768
   },
@@ -249,42 +249,8 @@
     ],
     "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/2024-01-30-trading-participant-volume-2024-01-30/trading-participant-volume-2024-01-30_files/figure-html5/unnamed-chunk-2-1.png",
-    "last_modified": "2024-01-30T20:45:38+08:00",
-    "input_file": "trading-participant-volume-2024-01-30.knit.md",
-    "preview_width": 1248,
-    "preview_height": 768
-  },
-  {
-    "path": "posts/2024-01-29-nikkei-225-option-report-2024-01-29/",
-    "title": "Nikkei 225 Option Report 2024-01-29",
-    "description": {},
-    "author": [],
-    "date": "2024-01-29",
-    "categories": [
-      "nikkei225",
-      "options"
-    ],
-    "contents": "\r\n\r\nContents\r\nTraded Volume:\r\nOpen Interest:\r\nChange in Open Interest:\r\nSpot Gamma Exposure:\r\nGamma Exposure Profile (All Months)\r\nGamma Exposure Profile (Excluding Front Month)\r\n\r\nTraded Volume:\r\nDate: 2024-01-29 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nOpen Interest:\r\nDate: 2024-01-29Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nChange in Open Interest:\r\nDate: 2024-01-29 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nSpot Gamma Exposure:\r\nDate: 2024-01-29\r\nNikkei 225 Closing Price: 3.6027^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (All Months)\r\nDate: 2024-01-29\r\nNikkei 225 Closing Price: 3.6027^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (Excluding Front Month)\r\nDate: 2024-01-29\r\nNikkei 225 Closing Price: 3.6027^{4}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
-    "preview": "posts/2024-01-29-nikkei-225-option-report-2024-01-29/nikkei-225-option-report-2024-01-29_files/figure-html5/unnamed-chunk-9-1.png",
-    "last_modified": "2024-01-29T20:47:07+08:00",
-    "input_file": "nikkei-225-option-report-2024-01-29.knit.md",
-    "preview_width": 1248,
-    "preview_height": 768
-  },
-  {
-    "path": "posts/2024-01-29-trading-participant-volume-2024-01-29/",
-    "title": "Trading Participant Volume 2024-01-29",
-    "description": {},
-    "author": [],
-    "date": "2024-01-29",
-    "categories": [
-      "nikkei225",
-      "options"
-    ],
-    "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
-    "preview": "posts/2024-01-29-trading-participant-volume-2024-01-29/trading-participant-volume-2024-01-29_files/figure-html5/unnamed-chunk-2-1.png",
-    "last_modified": "2024-01-29T20:49:42+08:00",
-    "input_file": "trading-participant-volume-2024-01-29.knit.md",
+    "last_modified": "2024-01-30T20:45:43+08:00",
+    "input_file": {},
     "preview_width": 1248,
     "preview_height": 768
   },
@@ -300,10 +266,44 @@
     ],
     "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/2024-01-29-nikkei-225-open-interest-by-trading-participant-2024-01-26/nikkei-225-open-interest-by-trading-participant-2024-01-26_files/figure-html5/unnamed-chunk-2-1.png",
-    "last_modified": "2024-01-29T20:57:12+08:00",
-    "input_file": "nikkei-225-open-interest-by-trading-participant-2024-01-26.knit.md",
+    "last_modified": "2024-01-29T20:57:16+08:00",
+    "input_file": {},
     "preview_width": 1536,
     "preview_height": 2304
+  },
+  {
+    "path": "posts/2024-01-29-nikkei-225-option-report-2024-01-29/",
+    "title": "Nikkei 225 Option Report 2024-01-29",
+    "description": {},
+    "author": [],
+    "date": "2024-01-29",
+    "categories": [
+      "nikkei225",
+      "options"
+    ],
+    "contents": "\r\n\r\nContents\r\nTraded Volume:\r\nOpen Interest:\r\nChange in Open Interest:\r\nSpot Gamma Exposure:\r\nGamma Exposure Profile (All Months)\r\nGamma Exposure Profile (Excluding Front Month)\r\n\r\nTraded Volume:\r\nDate: 2024-01-29 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nOpen Interest:\r\nDate: 2024-01-29Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nChange in Open Interest:\r\nDate: 2024-01-29 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nSpot Gamma Exposure:\r\nDate: 2024-01-29\r\nNikkei 225 Closing Price: 3.6027^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (All Months)\r\nDate: 2024-01-29\r\nNikkei 225 Closing Price: 3.6027^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (Excluding Front Month)\r\nDate: 2024-01-29\r\nNikkei 225 Closing Price: 3.6027^{4}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+    "preview": "posts/2024-01-29-nikkei-225-option-report-2024-01-29/nikkei-225-option-report-2024-01-29_files/figure-html5/unnamed-chunk-9-1.png",
+    "last_modified": "2024-01-29T20:47:12+08:00",
+    "input_file": {},
+    "preview_width": 1248,
+    "preview_height": 768
+  },
+  {
+    "path": "posts/2024-01-29-trading-participant-volume-2024-01-29/",
+    "title": "Trading Participant Volume 2024-01-29",
+    "description": {},
+    "author": [],
+    "date": "2024-01-29",
+    "categories": [
+      "nikkei225",
+      "options"
+    ],
+    "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+    "preview": "posts/2024-01-29-trading-participant-volume-2024-01-29/trading-participant-volume-2024-01-29_files/figure-html5/unnamed-chunk-2-1.png",
+    "last_modified": "2024-01-29T20:49:45+08:00",
+    "input_file": {},
+    "preview_width": 1248,
+    "preview_height": 768
   },
   {
     "path": "posts/2024-01-26-nikkei-225-option-report-2024-01-26/",
@@ -317,8 +317,8 @@
     ],
     "contents": "\r\n\r\nContents\r\nTraded Volume:\r\nOpen Interest:\r\nChange in Open Interest:\r\nSpot Gamma Exposure:\r\nGamma Exposure Profile (All Months)\r\nGamma Exposure Profile (Excluding Front Month)\r\n\r\nTraded Volume:\r\nDate: 2024-01-26 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nOpen Interest:\r\nDate: 2024-01-26Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nChange in Open Interest:\r\nDate: 2024-01-26 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nSpot Gamma Exposure:\r\nDate: 2024-01-26\r\nNikkei 225 Closing Price: 3.5751^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (All Months)\r\nDate: 2024-01-26\r\nNikkei 225 Closing Price: 3.5751^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (Excluding Front Month)\r\nDate: 2024-01-26\r\nNikkei 225 Closing Price: 3.5751^{4}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/2024-01-26-nikkei-225-option-report-2024-01-26/nikkei-225-option-report-2024-01-26_files/figure-html5/unnamed-chunk-9-1.png",
-    "last_modified": "2024-01-26T21:58:43+08:00",
-    "input_file": "nikkei-225-option-report-2024-01-26.knit.md",
+    "last_modified": "2024-01-26T21:58:47+08:00",
+    "input_file": {},
     "preview_width": 1248,
     "preview_height": 768
   },
@@ -334,8 +334,8 @@
     ],
     "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/2024-01-26-trading-participant-volume-2024-01-26/trading-participant-volume-2024-01-26_files/figure-html5/unnamed-chunk-2-1.png",
-    "last_modified": "2024-01-26T22:00:35+08:00",
-    "input_file": "trading-participant-volume-2024-01-26.knit.md",
+    "last_modified": "2024-01-26T22:00:40+08:00",
+    "input_file": {},
     "preview_width": 1248,
     "preview_height": 768
   },
@@ -351,8 +351,8 @@
     ],
     "contents": "\r\n\r\nContents\r\nTraded Volume:\r\nOpen Interest:\r\nChange in Open Interest:\r\nSpot Gamma Exposure:\r\nGamma Exposure Profile (All Months)\r\nGamma Exposure Profile (Excluding Front Month)\r\n\r\nTraded Volume:\r\nDate: 2024-01-25 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nOpen Interest:\r\nDate: 2024-01-25Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nChange in Open Interest:\r\nDate: 2024-01-25 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nSpot Gamma Exposure:\r\nDate: 2024-01-25\r\nNikkei 225 Closing Price: 3.6236^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (All Months)\r\nDate: 2024-01-25\r\nNikkei 225 Closing Price: 3.6236^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (Excluding Front Month)\r\nDate: 2024-01-25\r\nNikkei 225 Closing Price: 3.6236^{4}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/2024-01-25-nikkei-225-option-report-2024-01-25/nikkei-225-option-report-2024-01-25_files/figure-html5/unnamed-chunk-9-1.png",
-    "last_modified": "2024-01-25T22:50:09+08:00",
-    "input_file": "nikkei-225-option-report-2024-01-25.knit.md",
+    "last_modified": "2024-01-25T22:50:11+08:00",
+    "input_file": {},
     "preview_width": 1248,
     "preview_height": 768
   },
@@ -368,8 +368,8 @@
     ],
     "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/2024-01-25-trading-participant-volume-2024-01-25/trading-participant-volume-2024-01-25_files/figure-html5/unnamed-chunk-2-1.png",
-    "last_modified": "2024-01-25T22:53:11+08:00",
-    "input_file": "trading-participant-volume-2024-01-25.knit.md",
+    "last_modified": "2024-01-25T22:53:13+08:00",
+    "input_file": {},
     "preview_width": 1248,
     "preview_height": 768
   },
@@ -385,8 +385,8 @@
     ],
     "contents": "\r\n\r\nContents\r\nTraded Volume:\r\nOpen Interest:\r\nChange in Open Interest:\r\nSpot Gamma Exposure:\r\nGamma Exposure Profile (All Months)\r\nGamma Exposure Profile (Excluding Front Month)\r\n\r\nTraded Volume:\r\nDate: 2024-01-24 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nOpen Interest:\r\nDate: 2024-01-24Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nChange in Open Interest:\r\nDate: 2024-01-24 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nSpot Gamma Exposure:\r\nDate: 2024-01-24\r\nNikkei 225 Closing Price: 3.6226^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (All Months)\r\nDate: 2024-01-24\r\nNikkei 225 Closing Price: 3.6226^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (Excluding Front Month)\r\nDate: 2024-01-24\r\nNikkei 225 Closing Price: 3.6226^{4}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/2024-01-24-nikkei-225-option-report-2024-01-24/nikkei-225-option-report-2024-01-24_files/figure-html5/unnamed-chunk-9-1.png",
-    "last_modified": "2024-01-24T19:39:00+08:00",
-    "input_file": "nikkei-225-option-report-2024-01-24.knit.md",
+    "last_modified": "2024-01-24T19:39:03+08:00",
+    "input_file": {},
     "preview_width": 1248,
     "preview_height": 768
   },
@@ -402,8 +402,8 @@
     ],
     "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/2024-01-24-trading-participant-volume-2024-01-24/trading-participant-volume-2024-01-24_files/figure-html5/unnamed-chunk-2-1.png",
-    "last_modified": "2024-01-24T19:45:05+08:00",
-    "input_file": "trading-participant-volume-2024-01-24.knit.md",
+    "last_modified": "2024-01-24T19:45:06+08:00",
+    "input_file": {},
     "preview_width": 1248,
     "preview_height": 768
   },
@@ -419,8 +419,8 @@
     ],
     "contents": "\r\n\r\nContents\r\nTraded Volume:\r\nOpen Interest:\r\nChange in Open Interest:\r\nSpot Gamma Exposure:\r\nGamma Exposure Profile (All Months)\r\nGamma Exposure Profile (Excluding Front Month)\r\n\r\nTraded Volume:\r\nDate: 2024-01-23 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nOpen Interest:\r\nDate: 2024-01-23Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nChange in Open Interest:\r\nDate: 2024-01-23 Contract: Feb 2024\r\n\r\n\r\n\r\nContract: March & April 2024\r\n\r\n\r\n\r\nSpot Gamma Exposure:\r\nDate: 2024-01-23\r\nNikkei 225 Closing Price: 3.6518^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (All Months)\r\nDate: 2024-01-23\r\nNikkei 225 Closing Price: 3.6518^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (Excluding Front Month)\r\nDate: 2024-01-23\r\nNikkei 225 Closing Price: 3.6518^{4}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/2024-01-23-nikkei-225-option-report-2024-01-23/nikkei-225-option-report-2024-01-23_files/figure-html5/unnamed-chunk-9-1.png",
-    "last_modified": "2024-01-23T21:08:35+08:00",
-    "input_file": "nikkei-225-option-report-2024-01-23.knit.md",
+    "last_modified": "2024-01-23T21:08:42+08:00",
+    "input_file": {},
     "preview_width": 1248,
     "preview_height": 768
   },
@@ -436,8 +436,8 @@
     ],
     "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/2024-01-23-trading-participant-volume-2024-01-23/trading-participant-volume-2024-01-23_files/figure-html5/unnamed-chunk-2-1.png",
-    "last_modified": "2024-01-23T21:11:36+08:00",
-    "input_file": "trading-participant-volume-2024-01-23.knit.md",
+    "last_modified": "2024-01-23T21:11:42+08:00",
+    "input_file": {},
     "preview_width": 1248,
     "preview_height": 768
   },
@@ -1675,7 +1675,7 @@
     ],
     "contents": "\r\n\r\nContents\r\nTraded Volume:\r\nOpen Interest:\r\nChange in Open Interest:\r\nSpot Gamma Exposure:\r\nGamma Exposure Profile\r\n\r\nTraded Volume:\r\nDate: 2023-11-30 Contract: Dec 2023\r\n\r\n\r\n\r\nContract: Jan & Feb 2024\r\n\r\n\r\n\r\nOpen Interest:\r\nDate: 2023-11-30Contract: Dec 2023\r\n\r\n\r\n\r\nContract: Jan and Feb 2024\r\n\r\n\r\n\r\nChange in Open Interest:\r\nDate: 2023-11-30 Contract: Dec 2023\r\n\r\n\r\n\r\nContract: Jan and Feb 2024\r\n\r\n\r\n\r\nSpot Gamma Exposure:\r\nDate: 2023-11-30\r\nNikkei 225 Closing Price: 3.3487^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile\r\nDate: 2023-11-30\r\nNikkei 225 Closing Price: 3.3487^{4}\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/2023-11-30-nikkei-225-option-report-2023-11-30/nikkei-225-option-report-2023-11-30_files/figure-html5/unnamed-chunk-9-1.png",
-    "last_modified": "2023-12-01T12:36:30+08:00",
+    "last_modified": "2023-12-01T12:32:36+08:00",
     "input_file": {},
     "preview_width": 1248,
     "preview_height": 768
