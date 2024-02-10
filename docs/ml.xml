@@ -22,5 +22,19 @@
       <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
       <media:content url="https://yeokcmark.netlify.app/ml/2024-02-09-hdb-rental-prices/hdb-rental-prices_files/figure-html5/unnamed-chunk-13-1.png" medium="image" type="image/png" width="1152" height="768"/>
     </item>
+    <item>
+      <title>hotel cancellation</title>
+      <dc:creator>Mark Y</dc:creator>
+      <link>https://yeokcmark.netlify.app/ml/2024-02-10-hotel-cancellation</link>
+      <description>A short description of the post.</description>
+      <category>classification</category>
+      <category>linear regression</category>
+      <category>random forest</category>
+      <category>knn</category>
+      <category>xgboost</category>
+      <guid>https://yeokcmark.netlify.app/ml/2024-02-10-hotel-cancellation</guid>
+      <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/ml/2024-02-10-hotel-cancellation/hotel-cancellation_files/figure-html5/unnamed-chunk-10-1.png" medium="image" type="image/png" width="1152" height="768"/>
+    </item>
   </channel>
 </rss>
