@@ -2,7 +2,7 @@ name: "maRk's blog"
 title: "maRk's blog"
 description: |
   my jouRney in R
-citations: false
+theme: bootstrap.css
 base_url: https://yeokcmark.netlify.app/
 output_dir: "docs"
 google_analytics: "G-6K2395F6YC"
@@ -47,7 +47,6 @@ navbar:
 output:
   distill::distill_article:
     citations: false
-    css: bootstrap.css
     toc: true
     toc_depth: 6
     toc_float: true

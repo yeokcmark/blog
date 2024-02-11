@@ -14,8 +14,6 @@ categories:
   - xgboost
 output:
   distill::distill_article:
-    theme: bootstrap.css
-    css: custom.css
     toc: true
     toc_depth: 6
     toc_float: true    
