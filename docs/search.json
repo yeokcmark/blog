@@ -1,0 +1,18 @@
+{
+  "articles": [
+    {
+      "path": "index.html",
+      "title": "maRk's blog",
+      "author": [],
+      "contents": "\r\n\r\n\r\n\r\nWelcome! And thank you for stopping by. This blog was created using Distill for R Markdown and written entirely in R Studio. Hopefully, it will be a growing showcase of all projects related to R which I embark on. \r\n2023 felt really hot in Singapore? Let’s see if that’s really true.\r\n\r\n\r\nSee the code here\r\nNumber of visitors since inception:\r\n\r\n\r\n\r\nThis site is hosted FREE by Netlify.\r\n\r\n\r\n\r\n\r\n",
+      "last_modified": "2024-02-11T18:40:46+08:00"
+    },
+    {
+      "path": "README.html",
+      "author": [],
+      "contents": "\r\n\r\nContents\r\nblog\r\n\r\nblog\r\nlets make a change and see if it updates\r\n\r\n\r\n",
+      "last_modified": "2024-02-11T18:40:49+08:00"
+    }
+  ],
+  "collections": ["ml/ml.json", "posts/posts.json"]
+}
