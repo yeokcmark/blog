@@ -1,11 +1,10 @@
 ---
-title: "hotel reservation cancellations"
+title: "Hotel reservation cancellations"
 description: |
   In this next exercise, we try and predict the probability that a hotel's reservations will eventually be cancelled, given information we have on hand, such as ADR, customer segment, and deposit type...
 author:
   - name: Mark Y
 date: 2024-02-10
-citations: false
 categories:
   - classification
   - logistic regression

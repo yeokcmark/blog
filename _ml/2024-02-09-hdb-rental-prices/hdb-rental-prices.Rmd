@@ -5,7 +5,6 @@ description: |
 author:
   - name: Mark Y
 date: 2024-02-09
-citations: false
 categories:
   - regression
   - linear regression
