@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>maRk's blog</title>
+    <link>https://yeokcmark.netlify.app/</link>
+    <atom:link href="https://yeokcmark.netlify.app/ml.xml" rel="self" type="application/rss+xml"/>
+    <description>my jouRney in R
+</description>
+    <generator>Distill</generator>
+    <lastBuildDate>Sat, 10 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Hotel reservation cancellations</title>
+      <dc:creator>Mark Y</dc:creator>
+      <link>https://yeokcmark.netlify.app/ml/2024-02-10-hotel-cancellation</link>
+      <description>In this next exercise, we try and predict the probability that a hotel's reservations will eventually be cancelled, given information we have on hand, such as ADR, customer segment, and deposit type...</description>
+      <category>classification</category>
+      <category>logistic regression</category>
+      <category>LASSO regression</category>
+      <category>random forest</category>
+      <category>decision tree</category>
+      <category>naive bayes</category>
+      <category>knn</category>
+      <category>xgboost</category>
+      <guid>https://yeokcmark.netlify.app/ml/2024-02-10-hotel-cancellation</guid>
+      <pubDate>Sat, 10 Feb 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/ml/2024-02-10-hotel-cancellation/hotel-cancellation_files/figure-html5/unnamed-chunk-4-1.png" medium="image" type="image/png" width="1152" height="768"/>
+    </item>
+    <item>
+      <title>HDB Rental Prices</title>
+      <dc:creator>Mark Y</dc:creator>
+      <link>https://yeokcmark.netlify.app/ml/2024-02-09-hdb-rental-prices</link>
+      <description>Let's try and predict the mediaa rental price per sqft of HDA flats given information about their location, age, distance to MRT station....</description>
+      <category>regression</category>
+      <category>linear regression</category>
+      <category>random forest</category>
+      <category>knn</category>
+      <category>xgboost</category>
+      <guid>https://yeokcmark.netlify.app/ml/2024-02-09-hdb-rental-prices</guid>
+      <pubDate>Thu, 08 Feb 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/ml/2024-02-09-hdb-rental-prices/hdb-rental-prices_files/figure-html5/unnamed-chunk-13-1.png" medium="image" type="image/png" width="1152" height="768"/>
+    </item>
+  </channel>
+</rss>

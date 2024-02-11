@@ -1,6 +1,6 @@
 ---
 title: "maRk's blog"
-site: distill::distill_website
+site: distill::distill_article
 ---
 
 ```{r setup, include=FALSE}

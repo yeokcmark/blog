@@ -11926,3 +11926,8 @@ th {
 .card .h6 {
   color: inherit;
 }
+
+d-title {
+  visibility: hidden;
+  margin:0;
+}

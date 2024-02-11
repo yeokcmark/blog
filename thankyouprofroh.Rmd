@@ -1,6 +1,6 @@
 ---
 title: "maRk's blog"
-site: distill::distill_website
+site: distill::distill_article
 ---
 I've finally graduated from SMU's Certified Data Analytics (R) Specialist course. It was an amazing 5 months, full of ups and downs. I kept my fingers crossed over the first three modules of the course, praying not to fail at each assessment. My code was plagued with errors which took many many hours to resolve. 
 
