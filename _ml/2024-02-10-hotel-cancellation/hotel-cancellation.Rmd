@@ -5,6 +5,7 @@ description: |
 author:
   - name: Mark Y
 date: 2024-02-10
+citations: false
 categories:
   - classification
   - logistic regression

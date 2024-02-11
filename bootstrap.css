@@ -11927,3 +11927,13 @@ th {
   color: inherit;
 }
 
+d-title {
+  visibility: hidden;
+}
+description {
+  visibility: hidden;
+}
+date {
+  visibility: hidden;
+}
+

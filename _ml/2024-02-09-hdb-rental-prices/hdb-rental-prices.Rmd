@@ -5,6 +5,7 @@ description: |
 author:
   - name: Mark Y
 date: 2024-02-09
+citations: false
 categories:
   - regression
   - linear regression
@@ -25,7 +26,7 @@ output:
 knitr::opts_chunk$set(results = FALSE, echo = TRUE, eval = FALSE, fig.width = 6, layout="l-body-outset")
 ```
 
-## Predicting HDB Rental Prices
+### Predicting HDB Rental Prices
 
 I started Module 1 of SMU Academy's [Predictive Analytics and Machine Learning](https://academy.smu.edu.sg/predictive-analytics-and-machine-learning-6916) class in January 2024. This data set was given in class for homework. I shall use it as practice to document what was learnt in class.
 
