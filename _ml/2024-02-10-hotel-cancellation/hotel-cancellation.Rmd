@@ -90,6 +90,52 @@ data <-
 
 ### EDA
 
+Let's perform some basic EDA. First, let's see what proportion of reservations are cancelled.
+
+```{r, eval = TRUE}
+data %>% 
+  dplyr::select(hotel, is_canceled) %>% 
+  group_by(hotel) %>% 
+  count(is_canceled) %>% 
+  mutate(percentage = n / sum(n) *100) %>% 
+  ggplot(aes(x = hotel,
+             y = percentage,
+             fill = is_canceled)
+         ) +
+  geom_col(position = "dodge") +
+  labs(fill = "cancel/stay") +
+  theme(legend.position = "bottom") +
+  theme_bw()
+
+```
+The  City Hotel has a higher proportion of cancellations compared to the Resort Hotel, 41.7 percent vs 27.8 percent.
+
+Do cancellations vary by market segment? Let's investigate that.
+
+```{r, eval = TRUE}
+data %>% 
+  dplyr::select(hotel, market_segment, is_canceled) %>% 
+  group_by(hotel, market_segment) %>% 
+  count(is_canceled) %>% 
+  mutate(percentage = n / length(data$hotel) *100) %>% 
+  ggplot(aes(x = market_segment,
+             y = percentage,
+             fill = is_canceled)
+         ) +
+  geom_col(position = "dodge") +
+  facet_grid(hotel~.)+
+  labs(fill = "cancel/stay") +
+  theme(legend.position = "bottom",
+        scale_x_discrete = element_text(size = rel(0.8))) +
+  theme_bw()
+
+```
+
+Assuming I am the City Hotel operator with no access to ML, I'd pay more attention to market segments with the highest cancellation rates, which are Groups and Online TA. I could proactively send out reminders to reconfirm reservations as the date of stay approaches. I could also "tighten-up" cancellation policies by imposing penalties if you cancel within 14 days of the intended date of stay.
+
+These are very common cancellation policies which we currently see in practice. A riskier approach would be to allow particular segments with higher cancellation rates to overbook rooms, but this would come at the risk of "walking the guest" should cancellations not materialize.
+
+I wonder if my rudimentary Machine Learning algorithm can do a better job?
 
 ### Correlation check
 

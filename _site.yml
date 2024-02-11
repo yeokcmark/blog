@@ -46,6 +46,7 @@ navbar:
       href: mailto:yeokcmark@gmail.com?subject=Hi, I read your blog!
 output:
   distill::distill_article:
+    citations: false
     css: bootstrap.css
     toc: true
     toc_depth: 6

@@ -104,7 +104,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <meta property="og:type" content="article"/>
 <meta property="og:description" content="In this next exercise, we try and predict the probability that a hotel&#39;s reservations will eventually be cancelled, given information we have on hand, such as ADR, customer segment, and deposit type..."/>
 <meta property="og:url" content="https://yeokcmark.netlify.app/ml/2024-02-10-hotel-cancellation/"/>
-<meta property="og:image" content="https://yeokcmark.netlify.app/ml/2024-02-10-hotel-cancellation/hotel-cancellation_files/figure-html5/unnamed-chunk-10-1.png"/>
+<meta property="og:image" content="https://yeokcmark.netlify.app/ml/2024-02-10-hotel-cancellation/hotel-cancellation_files/figure-html5/unnamed-chunk-4-1.png"/>
 <meta property="og:image:width" content="1152"/>
 <meta property="og:image:height" content="768"/>
 <meta property="og:locale" content="en_US"/>
@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <meta property="twitter:title" content="maRk&#39;s blog: hotel reservation cancellations"/>
 <meta property="twitter:description" content="In this next exercise, we try and predict the probability that a hotel&#39;s reservations will eventually be cancelled, given information we have on hand, such as ADR, customer segment, and deposit type..."/>
 <meta property="twitter:url" content="https://yeokcmark.netlify.app/ml/2024-02-10-hotel-cancellation/"/>
-<meta property="twitter:image" content="https://yeokcmark.netlify.app/ml/2024-02-10-hotel-cancellation/hotel-cancellation_files/figure-html5/unnamed-chunk-10-1.png"/>
+<meta property="twitter:image" content="https://yeokcmark.netlify.app/ml/2024-02-10-hotel-cancellation/hotel-cancellation_files/figure-html5/unnamed-chunk-4-1.png"/>
 <meta property="twitter:image:width" content="1152"/>
 <meta property="twitter:image:height" content="768"/>
 
@@ -134,7 +134,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["hotel-cancellation_files/anchor-4.2.2/anchor.min.js","hotel-cancellation_files/bowser-1.9.3/bowser.min.js","hotel-cancellation_files/crosstalk-1.2.1/css/crosstalk.min.css","hotel-cancellation_files/crosstalk-1.2.1/js/crosstalk.js","hotel-cancellation_files/crosstalk-1.2.1/js/crosstalk.js.map","hotel-cancellation_files/crosstalk-1.2.1/js/crosstalk.min.js","hotel-cancellation_files/crosstalk-1.2.1/js/crosstalk.min.js.map","hotel-cancellation_files/crosstalk-1.2.1/scss/crosstalk.scss","hotel-cancellation_files/datatables-binding-0.31/datatables.js","hotel-cancellation_files/datatables-css-0.0.0/datatables-crosstalk.css","hotel-cancellation_files/distill-2.2.21/template.v2.js","hotel-cancellation_files/dt-core-1.13.6/css/jquery.dataTables.extra.css","hotel-cancellation_files/dt-core-1.13.6/css/jquery.dataTables.min.css","hotel-cancellation_files/dt-core-1.13.6/js/jquery.dataTables.min.js","hotel-cancellation_files/figure-html5/unnamed-chunk-10-1.png","hotel-cancellation_files/figure-html5/unnamed-chunk-13-1.png","hotel-cancellation_files/figure-html5/unnamed-chunk-14-1.png","hotel-cancellation_files/figure-html5/unnamed-chunk-17-1.png","hotel-cancellation_files/figure-html5/unnamed-chunk-18-1.png","hotel-cancellation_files/figure-html5/unnamed-chunk-19-1.png","hotel-cancellation_files/figure-html5/unnamed-chunk-21-1.png","hotel-cancellation_files/figure-html5/unnamed-chunk-22-1.png","hotel-cancellation_files/figure-html5/unnamed-chunk-23-1.png","hotel-cancellation_files/figure-html5/unnamed-chunk-24-1.png","hotel-cancellation_files/figure-html5/unnamed-chunk-25-1.png","hotel-cancellation_files/header-attrs-2.25/header-attrs.js","hotel-cancellation_files/htmlwidgets-1.6.4/htmlwidgets.js","hotel-cancellation_files/jquery-3.6.0/jquery-3.6.0.js","hotel-cancellation_files/jquery-3.6.0/jquery-3.6.0.min.js","hotel-cancellation_files/jquery-3.6.0/jquery-3.6.0.min.map","hotel-cancellation_files/popper-2.6.0/popper.min.js","hotel-cancellation_files/tippy-6.2.7/tippy-bundle.umd.min.js","hotel-cancellation_files/tippy-6.2.7/tippy-light-border.css","hotel-cancellation_files/tippy-6.2.7/tippy.css","hotel-cancellation_files/tippy-6.2.7/tippy.umd.min.js","hotel-cancellation_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["hotel-cancellation_files/anchor-4.2.2/anchor.min.js","hotel-cancellation_files/bowser-1.9.3/bowser.min.js","hotel-cancellation_files/crosstalk-1.2.1/css/crosstalk.min.css","hotel-cancellation_files/crosstalk-1.2.1/js/crosstalk.js","hotel-cancellation_files/crosstalk-1.2.1/js/crosstalk.js.map","hotel-cancellation_files/crosstalk-1.2.1/js/crosstalk.min.js","hotel-cancellation_files/crosstalk-1.2.1/js/crosstalk.min.js.map","hotel-cancellation_files/crosstalk-1.2.1/scss/crosstalk.scss","hotel-cancellation_files/datatables-binding-0.31/datatables.js","hotel-cancellation_files/datatables-css-0.0.0/datatables-crosstalk.css","hotel-cancellation_files/distill-2.2.21/template.v2.js","hotel-cancellation_files/dt-core-1.13.6/css/jquery.dataTables.extra.css","hotel-cancellation_files/dt-core-1.13.6/css/jquery.dataTables.min.css","hotel-cancellation_files/dt-core-1.13.6/js/jquery.dataTables.min.js","hotel-cancellation_files/figure-html5/unnamed-chunk-10-1.png","hotel-cancellation_files/figure-html5/unnamed-chunk-12-1.png","hotel-cancellation_files/figure-html5/unnamed-chunk-13-1.png","hotel-cancellation_files/figure-html5/unnamed-chunk-14-1.png","hotel-cancellation_files/figure-html5/unnamed-chunk-16-1.png","hotel-cancellation_files/figure-html5/unnamed-chunk-17-1.png","hotel-cancellation_files/figure-html5/unnamed-chunk-18-1.png","hotel-cancellation_files/figure-html5/unnamed-chunk-19-1.png","hotel-cancellation_files/figure-html5/unnamed-chunk-21-1.png","hotel-cancellation_files/figure-html5/unnamed-chunk-22-1.png","hotel-cancellation_files/figure-html5/unnamed-chunk-23-1.png","hotel-cancellation_files/figure-html5/unnamed-chunk-24-1.png","hotel-cancellation_files/figure-html5/unnamed-chunk-25-1.png","hotel-cancellation_files/figure-html5/unnamed-chunk-27-1.png","hotel-cancellation_files/figure-html5/unnamed-chunk-4-1.png","hotel-cancellation_files/figure-html5/unnamed-chunk-5-1.png","hotel-cancellation_files/header-attrs-2.25/header-attrs.js","hotel-cancellation_files/htmlwidgets-1.6.4/htmlwidgets.js","hotel-cancellation_files/jquery-3.6.0/jquery-3.6.0.js","hotel-cancellation_files/jquery-3.6.0/jquery-3.6.0.min.js","hotel-cancellation_files/jquery-3.6.0/jquery-3.6.0.min.map","hotel-cancellation_files/popper-2.6.0/popper.min.js","hotel-cancellation_files/tippy-6.2.7/tippy-bundle.umd.min.js","hotel-cancellation_files/tippy-6.2.7/tippy-light-border.css","hotel-cancellation_files/tippy-6.2.7/tippy.css","hotel-cancellation_files/tippy-6.2.7/tippy.umd.min.js","hotel-cancellation_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -14078,8 +14078,10 @@ th {
   color: inherit;
 }
 
+
 d-title {
-  display: none;
+  visibility: hidden;
+  margin:0;
 }
 description {
   visibility: hidden;
@@ -14269,6 +14271,50 @@ Nikkei225
 </div>
 </div>
 <h3 id="eda">EDA</h3>
+<p>Let’s perform some basic EDA. First, let’s see what proportion of reservations are cancelled.</p>
+<div class="layout-chunk" data-layout="l-body-outset">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>data</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>hotel</span>, <span class='va'>is_canceled</span><span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>hotel</span><span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>count</span><span class='op'>(</span><span class='va'>is_canceled</span><span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>mutate</span><span class='op'>(</span>percentage <span class='op'>=</span> <span class='va'>n</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span> <span class='op'>*</span><span class='fl'>100</span><span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>hotel</span>,</span>
+<span>             y <span class='op'>=</span> <span class='va'>percentage</span>,</span>
+<span>             fill <span class='op'>=</span> <span class='va'>is_canceled</span><span class='op'>)</span></span>
+<span>         <span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>geom_col</span><span class='op'>(</span>position <span class='op'>=</span> <span class='st'>"dodge"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>labs</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"cancel/stay"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>theme</span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"bottom"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="hotel-cancellation_files/figure-html5/unnamed-chunk-4-1.png" width="576" /></p>
+</div>
+<p>The City Hotel has a higher proportion of cancellations compared to the Resort Hotel, 41.7 percent vs 27.8 percent.</p>
+<p>Do cancellations vary by market segment? Let’s investigate that.</p>
+<div class="layout-chunk" data-layout="l-body-outset">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>data</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>hotel</span>, <span class='va'>market_segment</span>, <span class='va'>is_canceled</span><span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>hotel</span>, <span class='va'>market_segment</span><span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>count</span><span class='op'>(</span><span class='va'>is_canceled</span><span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>mutate</span><span class='op'>(</span>percentage <span class='op'>=</span> <span class='va'>n</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>$</span><span class='va'>hotel</span><span class='op'>)</span> <span class='op'>*</span><span class='fl'>100</span><span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
+<span>  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>market_segment</span>,</span>
+<span>             y <span class='op'>=</span> <span class='va'>percentage</span>,</span>
+<span>             fill <span class='op'>=</span> <span class='va'>is_canceled</span><span class='op'>)</span></span>
+<span>         <span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>geom_col</span><span class='op'>(</span>position <span class='op'>=</span> <span class='st'>"dodge"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>facet_grid</span><span class='op'>(</span><span class='va'>hotel</span><span class='op'>~</span><span class='va'>.</span><span class='op'>)</span><span class='op'>+</span></span>
+<span>  <span class='fu'>labs</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"cancel/stay"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>theme</span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"bottom"</span>,</span>
+<span>        scale_x_discrete <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.8</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="hotel-cancellation_files/figure-html5/unnamed-chunk-5-1.png" width="576" /></p>
+</div>
+<p>Assuming I am the City Hotel operator with no access to ML, I’d pay more attention to market segments with the highest cancellation rates, which are Groups and Online TA. I could proactively send out reminders to reconfirm reservations as the date of stay approaches. I could also “tighten-up” cancellation policies by imposing penalties if you cancel within 14 days of the intended date of stay.</p>
+<p>These are very common cancellation policies which we currently see in practice. A riskier approach would be to allow particular segments with higher cancellation rates to overbook rooms, but this would come at the risk of “walking the guest” should cancellations not materialize.</p>
+<p>I wonder if my rudimentary Machine Learning algorithm can do a better job?</p>
 <h3 id="correlation-check">Correlation check</h3>
 <p>None of the numeric predictors appear to be highly correlated with each other.</p>
 <div class="layout-chunk" data-layout="l-body-outset">
@@ -14485,7 +14531,7 @@ Nikkei225
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>autoplot</span><span class='op'>(</span><span class='va'>model_results</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'>theme</span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"bottom"</span><span class='op'>)</span></span></code></pre>
 </div>
-<p><img src="hotel-cancellation_files/figure-html5/unnamed-chunk-10-1.png" width="576" /></p>
+<p><img src="hotel-cancellation_files/figure-html5/unnamed-chunk-12-1.png" width="576" /></p>
 </div>
 <div class="layout-chunk" data-layout="l-body-outset">
 <div class="sourceCode">
@@ -14538,7 +14584,7 @@ Nikkei225
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>autoplot</span><span class='op'>(</span><span class='va'>second_tree_tuning_results</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'>theme</span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"bottom"</span><span class='op'>)</span></span></code></pre>
 </div>
-<img src="hotel-cancellation_files/figure-html5/unnamed-chunk-14-1.png" width="576" />
+<img src="hotel-cancellation_files/figure-html5/unnamed-chunk-16-1.png" width="576" />
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>second_tree_tuning_results</span> <span class='op'>%&gt;%</span> </span>
 <span>  <span class='fu'>workflowsets</span><span class='fu'>::</span><span class='fu'><a href='https://workflowsets.tidymodels.org/reference/rank_results.html'>rank_results</a></span><span class='op'>(</span>rank_metric <span class='op'>=</span> <span class='st'>"roc_auc"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> </span>
@@ -14626,7 +14672,7 @@ Prediction  cancelled stayed
 <span>  <span class='fu'>autoplot</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
 </div>
-<p><img src="hotel-cancellation_files/figure-html5/unnamed-chunk-19-1.png" width="576" /></p>
+<p><img src="hotel-cancellation_files/figure-html5/unnamed-chunk-21-1.png" width="576" /></p>
 </div>
 <p>We are also able to analyze the model’s accuracy. Since this is a binary problem, guessing would give you a 50% chance of getting it correct. Let’s see how the model performed:</p>
 <div class="layout-chunk" data-layout="l-body-outset">
@@ -14679,7 +14725,7 @@ Prediction  cancelled stayed
 <span>  <span class='fu'>roc_curve</span><span class='op'>(</span><span class='va'>is_canceled</span>, <span class='va'>.pred_cancelled</span><span class='op'>)</span> <span class='op'>%&gt;%</span></span>
 <span>  <span class='fu'>autoplot</span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
 </div>
-<p><img src="hotel-cancellation_files/figure-html5/unnamed-chunk-23-1.png" width="576" /></p>
+<p><img src="hotel-cancellation_files/figure-html5/unnamed-chunk-25-1.png" width="576" /></p>
 </div>
 <p>Among the 4 models that we tuned the second time, the random forest model performed the best. We can visualize the <code>roc_curve</code> for all 4 models.</p>
 <div class="layout-chunk" data-layout="l-body-outset">
@@ -14700,7 +14746,7 @@ Prediction  cancelled stayed
 <span>  <span class='fu'>vip</span><span class='op'>(</span>geom <span class='op'>=</span> <span class='st'>"point"</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
 </div>
-<p><img src="hotel-cancellation_files/figure-html5/unnamed-chunk-25-1.png" width="576" /></p>
+<p><img src="hotel-cancellation_files/figure-html5/unnamed-chunk-27-1.png" width="576" /></p>
 </div>
 <p>The top 3 features determining cancellations are non-refundable deposit, lead-time, and the number of previous cancellations.</p>
 <div class="layout-chunk" data-layout="l-body-outset">
