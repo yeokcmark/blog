@@ -1,10 +1,9 @@
 ---
-title: "hotel cancellation"
+title: "hotel reservation cancellations"
 description: |
-  A short description of the post.
+  In this next exercise, we try and predict the probability that a hotel's reservations will eventually be cancelled, given information we have on hand, such as ADR, customer segment, and deposit type...
 author:
   - name: Mark Y
-    url: {}
 date: 2024-02-10
 categories:
   - classification
@@ -17,6 +16,8 @@ categories:
   - xgboost
 output:
   distill::distill_article:
+    theme: bootstrap.css
+    css: custom.css
     toc: true
     toc_depth: 6
     toc_float: true    
@@ -58,7 +59,7 @@ load("hotel_cancellation_data.RData")
 ```
 ### Importing the data
 
-We start by importing the data, and do a quick summary of it using `skim`.
+We start by importing the data, and do a quick summary of it using `skim`. Once again, I am also importing `hotel_cancellation_data.RData` and setting `eval = FALSE` for many of the code chunks to reduce the computational resources and time required to render this page.
 
 ```{r}
 df <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-02-11/hotels.csv")
@@ -91,17 +92,19 @@ data <-
 
 ### Correlation check
 
-None of the numeric predictors appear to be highly coorelated with each other. 
+None of the numeric predictors appear to be highly correlated with each other. 
 
-```{r}
+```{r, eval = TRUE, results = TRUE}
 data %>%
   select_if(is.numeric) %>%
   as.matrix(.) %>%
   rcorr() %>%
   tidy() %>%
-  mutate(absCorr = abs(estimate)
-  ) %>%
-  arrange(desc(absCorr))
+  mutate(absCorr = abs(estimate)) %>%
+  arrange(desc(absCorr)) %>% 
+  dplyr::select(-estimate, -n, - p.value) %>% 
+  DT::datatable() %>% 
+  formatRound("absCorr", digits = 3)
 
 ```
 
@@ -168,7 +171,7 @@ log_rec <-
 ```
 ### Build Models
 
-I explored XX models for predicting whether a reservation would be canceled or not. This is a classification problem. The models were random forest (using ranger), classification decision tress (using rpart), k-nearest neighbor (using kknn), xgboost (using xgboost), naive bayes (using naivebayes), logistic regression (using glm) and logistic LASSO regression (using glmnet). I considered models using their preset default, as well as tuned hyper-parameters.
+I explored 7 models for predicting whether a reservation would be canceled or not. This is a classification problem. The models were random forest (using ranger), classification decision tress (using rpart), k-nearest neighbor (using kknn), xgboost (using xgboost), naive bayes (using naivebayes), logistic regression (using glm) and logistic LASSO regression (using glmnet). I considered models using their preset default, as well as tuned hyper-parameters.
 
 
 ```{r}
@@ -219,10 +222,10 @@ xgb_spec_for_tuning <-
   xgb_spec %>% 
   set_args(tree_depth = tune(),
            min_n = tune(),
-           loss_reduction = tune(),                     ## first three: model complexity
+           loss_reduction = tune(),
            sample_size = tune(),
-           mtry = tune(),         ## randomness
-           learn_rate = tune())        ## randomness
+           mtry = tune(),
+           learn_rate = tune())
 
 # # naive bayes
 
@@ -296,7 +299,7 @@ model_set <-
 
 Thus far, working with workflow_set and workflow_map have made testing various recipe/workflow combinations quite easy. I fitted the workflow_set to the validation set `data_fold` and tuned hyper-parameters using `tune_grid'.
 
-```{r, eval = FALSE}
+```{r}
 # first fit
 set.seed(2024020102)
 doParallel::registerDoParallel()
@@ -313,7 +316,11 @@ model_results <-
 You can visualize the results using an `autoplot()` as well as rank the best recipe/workflow combination using `rank_results`. 
 
 ```{r, eval = TRUE}
-autoplot(model_results) + theme_bw()
+autoplot(model_results) + theme_bw() + theme(legend.position = "bottom")
+
+```
+
+```{r, eval = TRUE, results = TRUE}
 
 # rank results
 model_results %>% 
@@ -321,6 +328,7 @@ model_results %>%
   filter(.metric == "roc_auc") %>% 
   print(n = 10)
 ```
+
 
 ### Tuning hyper-parameters
 
@@ -346,18 +354,21 @@ second_tree_tuning_results <-
                verbose = TRUE,
                control = control_grid(save_pred = TRUE))
 
+```
 
-autoplot(second_tree_tuning_results) + theme_bw()
+```{r, eval = TRUE, results = TRUE}
+
+autoplot(second_tree_tuning_results) + theme_bw() + theme(legend.position = "bottom")
 
 second_tree_tuning_results %>% 
-  workflowsets::rank_results(rank_metric = "roc_auc")
-
+  workflowsets::rank_results(rank_metric = "roc_auc") %>% 
+  print(n=10)
 
 ```
 
 Its been 16 hours since the start of tuning, and my laptop is still on step 3 or 4, tuning the k-nearest neighbor model. I suppose the results would be ready tomorrow morning? Meanwhile, my laptop is feeling HOT and I can hear the cooling fans running at full speed.
 
-Update: After 36 hours, my laptop crashed. Perhaps this was too ambitious.
+Update: After 36 hours, my laptop crashed. Perhaps this was too ambitious. To to recap, the above "tuned results" were based on the "original" 10 percent dataset. I think I will need to upgrade my computing resources sooner rather than later.
 
 ## Finalize workflow and last fit
 
@@ -387,11 +398,11 @@ dummy_rec_rf_final_fit <-
   last_fit(data_split)
 
 ```
-### Assessing the workflow
+## Assessing the workflow
 
 With the final fitted workflow, we can obtain metrics for model performance using `collect_metrics`.
 
-```{r, eval = TRUE}
+```{r, eval = TRUE, results = TRUE}
 
 dummy_rec_rf_final_fit %>% 
   collect_metrics()
@@ -399,7 +410,7 @@ dummy_rec_rf_final_fit %>%
 ```
 We can also obtain a confusion matrix, which compares predictions vs truth for the whole dataset. This is a 2 by 2 matrix that compares stayed/cancelled reservations for truth vs prediction.
 
-```{r, eval = TRUE}
+```{r, eval = TRUE, results = TRUE}
 dummy_rec_rf_final_fit %>% 
   collect_predictions %>% 
   conf_mat(is_canceled, .pred_class)
@@ -417,28 +428,31 @@ dummy_rec_rf_final_fit %>%
 
 We are also able to analyze the model's accuracy. Since this is a binary problem, guessing would give you a 50% chance of getting it correct. Let's see how the model performed:
 
-```{r, eval = TRUE}
+```{r, eval = TRUE, results = TRUE}
 dummy_rec_rf_final_fit %>% 
   collect_predictions %>% 
   accuracy(is_canceled, .pred_class)
 ```
+
 Not too shabby. 78.2 percent chance of guessing correctly. At least my time and electricity wasn't wasted. But, Julia Silge says that accuracy isn't a great metric, and suggests that we look at sensitivity instead, as sensitivity tells us the "true positive" rate. Ok, let's analyze sensitivity then:
 
-```{r, eval = TRUE}
+```{r, eval = TRUE, results = TRUE}
 dummy_rec_rf_final_fit %>% 
   collect_predictions %>% 
   sensitivity(is_canceled, .pred_class)
 ```
+
 Our model has a sensitivity rate of 0.515. Let's take a look at its specificity, or "true negative" rate.
 
-```{r, eval = TRUE}
+```{r, eval = TRUE, results = TRUE}
 dummy_rec_rf_final_fit %>% 
   collect_predictions %>% 
   specificity(is_canceled, .pred_class)
 ```
+
 This gives us a much higher score of 0.943.
 
-We can also use `autoplot` to visualize the roc_curve.
+We can also use `autoplot` to visualize the `roc_curve`.
 
 ```{r, eval = TRUE}
 dummy_rec_rf_final_fit %>% 
@@ -446,14 +460,15 @@ dummy_rec_rf_final_fit %>%
   roc_curve(is_canceled, .pred_cancelled) %>%
   autoplot()
 ```
-Among the 4 models that we tuned the second time, the random forest model performed the best. We can visualize this as well.
+Among the 4 models that we tuned the second time, the random forest model performed the best. We can visualize the `roc_curve` for all 4 models.
 
 ```{r, eval = TRUE}
 second_tree_tuning_results %>%
   collect_predictions %>%
   group_by(model) %>% 
   roc_curve(is_canceled, .pred_cancelled) %>%
-  autoplot()
+  autoplot() %>% 
+  theme(legend.position = "bottom")
 ```
 
 And finally, we can use VIP to visualize which were the most important features in the model.
