@@ -21,7 +21,13 @@ output:
     toc_float: true    
     self_contained: false
 ---
+```{css, echo = FALSE}
+d-byline {
+  display: none;
+  margin:0;
+}
 
+```
 ```{r, setup, include=FALSE}
 knitr::opts_chunk$set(results = FALSE, echo = TRUE, eval = FALSE, fig.width = 6, layout="l-body-outset")
 ```

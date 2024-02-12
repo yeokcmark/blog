@@ -2,12 +2,12 @@
 title: "Nikkei225 Gamma Exposure Profile"
 description: |
   Gamma Exposure Profile
-site: distill::distill_website
-toc: false
+output:
+  distill::distill_article:
 listing: posts
 ---
 ```{css, echo = FALSE}
-d-title {
+h1.posts-list-caption {
   display:none;
   margin:0;
 }

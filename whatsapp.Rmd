@@ -1,7 +1,20 @@
 ---
 title: "maRk's blog"
-site: distill::distill_article
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 6
+    toc_float: true
+
 ---
+
+```{css, echo = FALSE}
+h1 {
+  display: none;
+  margin:0;
+}
+
+```
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -795,7 +808,7 @@ fig16<-
 bigram_data_for_NLP_tokenized %>% 
   slice_max(n, n = 50) %>% 
   graph_from_data_frame() %>% 
-  ggraph(layout = "fr") +
+  ggraph::ggraph(layout = "fr") +
   geom_edge_link(aes(edge_alpha = n),
                  show.legend = F,
                  arrow = grid::arrow(type = "closed",

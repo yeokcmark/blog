@@ -107,7 +107,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","site"]}},"value":[{"type":"character","attributes":{},"value":["maRk's blog"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output"]}},"value":[{"type":"character","attributes":{},"value":["maRk's blog"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"NULL"}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -14100,11 +14100,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   .card .h5,
   .card .h6 {
     color: inherit;
-  }
-
-  d-title {
-    visibility: hidden;
-    margin:0;
   }</style>
   <style type="text/css">
   /* base style */
@@ -14366,6 +14361,15 @@ Nikkei225
 
 
 <div class="d-article">
+<div class="layout-chunk" data-layout="l-body">
+<style type="text/css">
+h1 {
+  display: none;
+  margin:0;
+}
+
+</style>
+</div>
 <p>Do you think its been getting hotter and hotter in recent years? What about rain? Have we been getting more erratic rainfall in recent years? Here’s a cool way to visualize both.</p>
 <p>I stumbled upon Pat Schloss’ youtube <a href="https://www.youtube.com/@Riffomonas">channel</a> the other day, while searching for R tutorials online. I watched his video on creating an animated climate spiral, and was inspired to try and do the same, using data for Singapore.</p>
 <p>This is the link to Pat’s <a href="https://riffomonas.org/code_club/2022-06-02-climate-spiral">blog</a>. I “borrowed” his idea of using “next_jan” so that the lines for December and January would touch and appear seamless. Thanks Pat! This is the climate spiral created by the smart folks at <a href="https://climate.nasa.gov/climate_resources/300/video-climate-spiral-1880-2022/">NASA’s</a> Scientific Visualization Studio.</p>

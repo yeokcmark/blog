@@ -2,11 +2,10 @@
 title: "Machine LeaRning"
 output:
   distill::distill_article:
-    toc: false
 listing: ml
 ---
 ```{css, echo = FALSE}
-d-title {
+h1.posts-list-caption {
   display:none;
   margin:0;
 }

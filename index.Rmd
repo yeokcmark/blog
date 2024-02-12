@@ -1,6 +1,7 @@
 ---
 title: "maRk's blog"
 site: distill::distill_website
+css: custom.css
 ---
 
 <!-- Google tag (gtag.js) -->
@@ -17,6 +18,7 @@ site: distill::distill_website
   gtag('config', 'G-6K2395F6YC');
 </script>
 ```
+<hr>
 <center>
 
 ![](images/me.jpg){width="30%"}

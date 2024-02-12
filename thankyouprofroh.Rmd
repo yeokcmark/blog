@@ -1,7 +1,16 @@
 ---
 title: "maRk's blog"
-site: distill::distill_article
+output:
+  distill::distill_article:
 ---
+
+```{css, echo = FALSE}
+h1 {
+  display: none;
+  margin:0;
+}
+
+```
 I've finally graduated from SMU's Certified Data Analytics (R) Specialist course. It was an amazing 5 months, full of ups and downs. I kept my fingers crossed over the first three modules of the course, praying not to fail at each assessment. My code was plagued with errors which took many many hours to resolve. 
 
 It wasn't till November 2023 that I was able to follow along in class, and complete each lesson without any coding errors. I made this animation as a graduation present for Professor Roh. He is an amazing person.
