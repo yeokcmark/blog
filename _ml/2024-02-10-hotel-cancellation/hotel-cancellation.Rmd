@@ -21,7 +21,13 @@ output:
     toc_float: true    
     self_contained: false
 ---
+```{css, echo = FALSE}
+d-byline {
+  display: none;
+  margin:0;
+}
 
+```
 ```{r, setup, include=FALSE}
 knitr::opts_chunk$set(results = FALSE, echo = TRUE, eval = FALSE, fig.width = 6, layout="l-body-outset")
 ```
@@ -123,7 +129,7 @@ data %>%
   facet_grid(hotel~.)+
   labs(fill = "cancel/stay") +
   theme(legend.position = "bottom",
-        scale_x_discrete = element_text(size = rel(0.8))) +
+        axis.text.x = element_text(size = rel(0.5))) +
   theme_bw()
 
 ```
@@ -498,7 +504,7 @@ This gives us a much higher score of 0.943.
 
 We can also use `autoplot` to visualize the `roc_curve`.
 
-```{r, eval = TRUE}
+```{r, eval = TRUE, results = TRUE}
 dummy_rec_rf_final_fit %>% 
   collect_predictions %>% 
   roc_curve(is_canceled, .pred_cancelled) %>%
@@ -506,18 +512,18 @@ dummy_rec_rf_final_fit %>%
 ```
 Among the 4 models that we tuned the second time, the random forest model performed the best. We can visualize the `roc_curve` for all 4 models.
 
-```{r, eval = TRUE}
+```{r, eval = TRUE, results = TRUE}
 second_tree_tuning_results %>%
   collect_predictions %>%
   group_by(model) %>% 
   roc_curve(is_canceled, .pred_cancelled) %>%
-  autoplot() %>% 
+  autoplot() +
   theme(legend.position = "bottom")
 ```
 
 And finally, we can use VIP to visualize which were the most important features in the model.
 
-```{r, eval = TRUE}
+```{r, eval = TRUE, results = TRUE, preview = TRUE}
 dummy_rec_rf_final_fit %>% 
   extract_fit_parsnip() %>% 
   vip(geom = "point") +

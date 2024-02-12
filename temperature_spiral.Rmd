@@ -1,8 +1,16 @@
 ---
 title: "maRk's blog"
-site: distill::distill_article
+output:
+  distill::distill_article:
 ---
 
+```{css, echo = FALSE}
+h1 {
+  display: none;
+  margin:0;
+}
+
+```
 Do you think its been getting hotter and hotter in recent years? What about rain? Have we been getting more erratic rainfall in recent years? Here's a cool way to visualize both.
 
 I stumbled upon Pat Schloss' youtube [channel](https://www.youtube.com/@Riffomonas) the other day, while searching for R tutorials online. I watched his video on creating an animated climate spiral, and was inspired to try and do the same, using data for Singapore.

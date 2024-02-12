@@ -1,7 +1,17 @@
 ---
 title: "maRk's blog"
-site: distill::distill_website
+output:
+  distill::distill_article:
+    toc: true
+
 ---
+```{css, echo = FALSE}
+h1 {
+  display: none;
+  margin:0;
+}
+
+```
 
 ### Why this blog?
 

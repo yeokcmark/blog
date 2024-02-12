@@ -1,7 +1,16 @@
 ---
 title: "maRk's blog"
-site: distill::distill_article
+output:
+  distill::distill_article:
 ---
+
+```{css, echo = FALSE}
+h1 {
+  display: none;
+  margin:0;
+}
+
+```
 I made this spiral animation as part of my first exploration into digital art using R.
 
 ```{r, echo = TRUE, warning=FALSE, error=FALSE, include=FALSE}

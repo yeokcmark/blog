@@ -1,8 +1,19 @@
 ---
 title: "Capstone Project: Does home ownership lead to improved outlook and optimism for one's future?"
-site: distill::distill_website
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 6
+    toc_float: true
 ---
+```{css, echo = FALSE}
+h1 {
+  display: none;
+  margin:0;
+}
+code { color: rgb(205,79,57) }
 
+```
 ```{r setup, include = F}
 knitr::opts_chunk$set(echo = T, fig.width=9, fig.height=6, warnings = FALSE)
 # Remove all objects in workspace ----
@@ -10,7 +21,6 @@ rm(list = ls())
 ```
 
 ## Introduction
-
 
 This is the capstone project my partner (Ms Dxxx Nx) and I worked on for the Certified Data Analytics (R) Specialist [course](https://academy.smu.edu.sg/certified-data-analytics-r-specialist-1911) offered by Singapore Management University, taught by an inspiring Professor Sungjong [Roh](https://www.talktoroh.com/). 
 

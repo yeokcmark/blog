@@ -104,7 +104,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <meta property="og:type" content="article"/>
 <meta property="og:description" content="Let&#39;s try and predict the mediaa rental price per sqft of HDA flats given information about their location, age, distance to MRT station...."/>
 <meta property="og:url" content="https://yeokcmark.netlify.app/ml/2024-02-09-hdb-rental-prices/"/>
-<meta property="og:image" content="https://yeokcmark.netlify.app/ml/2024-02-09-hdb-rental-prices/hdb-rental-prices_files/figure-html5/unnamed-chunk-13-1.png"/>
+<meta property="og:image" content="https://yeokcmark.netlify.app/ml/2024-02-09-hdb-rental-prices/hdb-rental-prices_files/figure-html5/unnamed-chunk-14-1.png"/>
 <meta property="og:image:width" content="1152"/>
 <meta property="og:image:height" content="768"/>
 <meta property="og:locale" content="en_US"/>
@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <meta property="twitter:title" content="maRk&#39;s blog: HDB Rental Prices"/>
 <meta property="twitter:description" content="Let&#39;s try and predict the mediaa rental price per sqft of HDA flats given information about their location, age, distance to MRT station...."/>
 <meta property="twitter:url" content="https://yeokcmark.netlify.app/ml/2024-02-09-hdb-rental-prices/"/>
-<meta property="twitter:image" content="https://yeokcmark.netlify.app/ml/2024-02-09-hdb-rental-prices/hdb-rental-prices_files/figure-html5/unnamed-chunk-13-1.png"/>
+<meta property="twitter:image" content="https://yeokcmark.netlify.app/ml/2024-02-09-hdb-rental-prices/hdb-rental-prices_files/figure-html5/unnamed-chunk-14-1.png"/>
 <meta property="twitter:image:width" content="1152"/>
 <meta property="twitter:image:height" content="768"/>
 
@@ -128,7 +128,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["hdb-rental-prices_files/anchor-4.2.2/anchor.min.js","hdb-rental-prices_files/bowser-1.9.3/bowser.min.js","hdb-rental-prices_files/distill-2.2.21/template.v2.js","hdb-rental-prices_files/figure-html5/unnamed-chunk-11-1.png","hdb-rental-prices_files/figure-html5/unnamed-chunk-13-1.png","hdb-rental-prices_files/figure-html5/unnamed-chunk-17-1.png","hdb-rental-prices_files/figure-html5/unnamed-chunk-18-1.png","hdb-rental-prices_files/figure-html5/unnamed-chunk-19-1.png","hdb-rental-prices_files/figure-html5/unnamed-chunk-20-1.png","hdb-rental-prices_files/figure-html5/unnamed-chunk-5-1.png","hdb-rental-prices_files/figure-html5/unnamed-chunk-6-1.png","hdb-rental-prices_files/header-attrs-2.25/header-attrs.js","hdb-rental-prices_files/jquery-3.6.0/jquery-3.6.0.js","hdb-rental-prices_files/jquery-3.6.0/jquery-3.6.0.min.js","hdb-rental-prices_files/jquery-3.6.0/jquery-3.6.0.min.map","hdb-rental-prices_files/popper-2.6.0/popper.min.js","hdb-rental-prices_files/tippy-6.2.7/tippy-bundle.umd.min.js","hdb-rental-prices_files/tippy-6.2.7/tippy-light-border.css","hdb-rental-prices_files/tippy-6.2.7/tippy.css","hdb-rental-prices_files/tippy-6.2.7/tippy.umd.min.js","hdb-rental-prices_files/webcomponents-2.0.0/webcomponents.js","rental_price.csv"]}
+  {"type":"character","attributes":{},"value":["hdb-rental-prices_files/anchor-4.2.2/anchor.min.js","hdb-rental-prices_files/bowser-1.9.3/bowser.min.js","hdb-rental-prices_files/distill-2.2.21/template.v2.js","hdb-rental-prices_files/figure-html5/unnamed-chunk-11-1.png","hdb-rental-prices_files/figure-html5/unnamed-chunk-13-1.png","hdb-rental-prices_files/figure-html5/unnamed-chunk-14-1.png","hdb-rental-prices_files/figure-html5/unnamed-chunk-17-1.png","hdb-rental-prices_files/figure-html5/unnamed-chunk-18-1.png","hdb-rental-prices_files/figure-html5/unnamed-chunk-19-1.png","hdb-rental-prices_files/figure-html5/unnamed-chunk-20-1.png","hdb-rental-prices_files/figure-html5/unnamed-chunk-21-1.png","hdb-rental-prices_files/figure-html5/unnamed-chunk-5-1.png","hdb-rental-prices_files/figure-html5/unnamed-chunk-6-1.png","hdb-rental-prices_files/figure-html5/unnamed-chunk-7-1.png","hdb-rental-prices_files/header-attrs-2.25/header-attrs.js","hdb-rental-prices_files/jquery-3.6.0/jquery-3.6.0.js","hdb-rental-prices_files/jquery-3.6.0/jquery-3.6.0.min.js","hdb-rental-prices_files/jquery-3.6.0/jquery-3.6.0.min.map","hdb-rental-prices_files/popper-2.6.0/popper.min.js","hdb-rental-prices_files/tippy-6.2.7/tippy-bundle.umd.min.js","hdb-rental-prices_files/tippy-6.2.7/tippy-light-border.css","hdb-rental-prices_files/tippy-6.2.7/tippy.css","hdb-rental-prices_files/tippy-6.2.7/tippy.umd.min.js","hdb-rental-prices_files/webcomponents-2.0.0/webcomponents.js","rental_price.csv"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -14120,11 +14120,6 @@ th {
 .card .h5,
 .card .h6 {
   color: inherit;
-}
-
-d-title {
-  visibility: hidden;
-  margin:0;
 }</style>
 <style type="text/css">
 /* base style */
@@ -14419,6 +14414,15 @@ Nikkei225
 </ul>
 </nav>
 </div>
+<div class="layout-chunk" data-layout="l-body">
+<style type="text/css">
+d-byline {
+  display: none;
+  margin:0;
+}
+
+</style>
+</div>
 <h3 id="predicting-hdb-rental-prices">Predicting HDB Rental Prices</h3>
 <p>I started Module 1 of SMU Academy’s <a href="https://academy.smu.edu.sg/predictive-analytics-and-machine-learning-6916">Predictive Analytics and Machine Learning</a> class in January 2024. This data set was given in class for homework. I shall use it as practice to document what was learnt in class.</p>
 <p>At this stage of my learning, the primary objective of this exercise is to familiarize myself with the complete workflow from start to finish. Repeatedly fine-tuning hyper-parameters, or complex feature engineering in order to come up with the BEST predictive model, is not an objective at this stage.</p>
@@ -14510,7 +14514,7 @@ Nikkei225
 <span>       y <span class='op'>=</span> <span class='st'>"Price Median $ psf"</span><span class='op'>)</span><span class='op'>+</span></span>
 <span>  <span class='fu'>theme</span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"bottom"</span><span class='op'>)</span></span></code></pre>
 </div>
-<p><img src="hdb-rental-prices_files/figure-html5/unnamed-chunk-5-1.png" width="576" /></p>
+<p><img src="hdb-rental-prices_files/figure-html5/unnamed-chunk-6-1.png" width="576" /></p>
 </div>
 <p>Here we see the influence of location (as specified by <code>district</code> and <code>region</code>) on price.</p>
 <div class="layout-chunk" data-layout="l-body-outset">
@@ -14528,7 +14532,7 @@ Nikkei225
 <span>       y <span class='op'>=</span> <span class='st'>"Price Median $ psf"</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'>theme</span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"bottom"</span><span class='op'>)</span></span></code></pre>
 </div>
-<p><img src="hdb-rental-prices_files/figure-html5/unnamed-chunk-6-1.png" width="576" /></p>
+<p><img src="hdb-rental-prices_files/figure-html5/unnamed-chunk-7-1.png" width="576" /></p>
 </div>
 <p>Distance to MRT appears to have a stronger influence on price in region_CCR, and a more muted influence on price in region_OCR and region_RCR.</p>
 <h3 id="split-the-data">Split the data</h3>
@@ -14669,7 +14673,7 @@ Nikkei225
 <span>  <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'>theme</span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"bottom"</span><span class='op'>)</span></span></code></pre>
 </div>
-<p><img src="hdb-rental-prices_files/figure-html5/unnamed-chunk-13-1.png" width="576" data-distill-preview=1 /></p>
+<p><img src="hdb-rental-prices_files/figure-html5/unnamed-chunk-14-1.png" width="576" data-distill-preview=1 /></p>
 </div>
 <div class="layout-chunk" data-layout="l-body-outset">
 <div class="sourceCode">
@@ -14748,7 +14752,7 @@ Nikkei225
 <span>       y <span class='op'>=</span> <span class='st'>"Predicted Median Price $psf"</span><span class='op'>)</span><span class='op'>+</span></span>
 <span>  <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
 </div>
-<p><img src="hdb-rental-prices_files/figure-html5/unnamed-chunk-19-1.png" width="576" /></p>
+<p><img src="hdb-rental-prices_files/figure-html5/unnamed-chunk-20-1.png" width="576" /></p>
 </div>
 <h3 id="visualize-important-features">Visualize important features</h3>
 <p>We can use the <code>vip()</code> to see which were the most important features.</p>
@@ -14759,7 +14763,7 @@ Nikkei225
 <span>  <span class='fu'>vip</span><span class='op'>(</span>geom <span class='op'>=</span> <span class='st'>"point"</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
 </div>
-<p><img src="hdb-rental-prices_files/figure-html5/unnamed-chunk-20-1.png" width="576" /></p>
+<p><img src="hdb-rental-prices_files/figure-html5/unnamed-chunk-21-1.png" width="576" /></p>
 </div>
 <p>As we can see, location location location, or in this case <code>region</code> is the most important predictor of price, followed by age and distance to MRT station.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>

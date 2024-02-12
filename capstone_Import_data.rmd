@@ -1,8 +1,19 @@
 ---
 title: "Capstone Project: Does home ownership lead to greater optimism for one's future"
-site: distill::distill_website
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 6
+    toc_float: true
 ---
+```{css, echo = FALSE}
+h1 {
+  display: none;
+  margin:0;
+}
+code { color: rgb(205,79,57) }
 
+```
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
 ```
