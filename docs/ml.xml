@@ -7,7 +7,7 @@
     <description>my jouRney in R
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Sat, 10 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 09 Feb 2024 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Hotel reservation cancellations</title>
       <dc:creator>Mark Y</dc:creator>
@@ -22,8 +22,13 @@
       <category>knn</category>
       <category>xgboost</category>
       <guid>https://yeokcmark.netlify.app/ml/2024-02-10-hotel-cancellation</guid>
+<<<<<<< HEAD
       <pubDate>Sat, 10 Feb 2024 00:00:00 +0000</pubDate>
       <media:content url="https://yeokcmark.netlify.app/ml/2024-02-10-hotel-cancellation/hotel-cancellation_files/figure-html5/unnamed-chunk-28-1.png" medium="image" type="image/png" width="1152" height="768"/>
+=======
+      <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/ml/2024-02-10-hotel-cancellation/hotel-cancellation_files/figure-html5/unnamed-chunk-5-1.png" medium="image" type="image/png" width="1152" height="768"/>
+>>>>>>> af75236245e98285df60126277780b59ee34c2ad
     </item>
     <item>
       <title>HDB Rental Prices</title>
