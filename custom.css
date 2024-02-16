@@ -1,0 +1,13 @@
+
+d-title {
+  display: none;
+  margin:0;
+}
+description {
+  visibility: hidden;
+  margin:0;
+}
+date {
+  visibility: hidden;
+  margin:0;
+}

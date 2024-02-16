@@ -1,0 +1,684 @@
+---
+title: "Capstone Project: Does home ownership lead to improved outlook and optimism for one's future?"
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 6
+    toc_float: true
+---
+```{css, echo = FALSE}
+h1 {
+  display: none;
+  margin:0;
+}
+code { color: rgb(205,79,57) }
+
+```
+```{r setup, include = F}
+knitr::opts_chunk$set(echo = T, fig.width=9, fig.height=6, warnings = FALSE)
+# Remove all objects in workspace ----
+rm(list = ls())
+```
+
+## Introduction
+
+This is the capstone project my partner (Ms Dxxx Nx) and I worked on for the Certified Data Analytics (R) Specialist [course](https://academy.smu.edu.sg/certified-data-analytics-r-specialist-1911) offered by Singapore Management University, taught by an inspiring Professor Sungjong [Roh](https://www.talktoroh.com/). 
+
+It is a culmination of about 6 months of learning, and about 1 month's work.
+
+## Problem Statement
+
+<center>*"If a man owns a little property, that property is him... it is a part of him... in some ways he's bigger because he owns it"* - John Steinbeck, The Grapes of Wrath</center><p>
+
+Property rights are the most fundamental institution in any economy and society. Apart from economic gains that property ownership confers, individual owners are more confident, self-reliant, and entrepreneurial than non-property owners. In countries where property ownership is highly skewed and accessible only to elites, income inequality could lead to uncertainty and a lack of overall optimism among non-property owners.
+
+Our Capstone Project will attempt to determine if John Steinbeck is correct. Does property ownership lead to a better perception of oneself and greater optimism for the future?
+
+## Why is this important?
+
+The findings of this project may influence how policies are implemented in Indonesia. If home-ownership leads to greater optimism and entrepreneurship among its people, this could positively impact the economy and political stability.
+
+For our data science project, we activated the following packages, using the `Tidyverse` approach.
+
+
+```{r Load-Packages}
+# Load necessary packages
+pacman::p_load(tidyverse, lubridate ,glue, forcats, knitr, rmarkdown, gganimate, transformr,
+               scales, gridExtra, ggthemes, ggrepel, patchwork, DT, 
+               jtools, huxtable, broom, modelr, skimr, psych, Hmisc, 
+               gvlma, ggfortify, sandwich, car, ggstance, broom.mixed,
+               interactions)
+```
+
+We chose `theme_minimal()` as the default theme for our plots.
+
+```{r theme}
+theme_set(theme_minimal())
+```
+
+We wrote a function to make it easier to present results from our models. Let's load it here.
+
+```{r Regression-Analysis-Function, results = FALSE}
+
+# Function for model reporting (to make things look pretty)
+
+model_variable_true_regression_function <-
+  function(name_of_model)
+  {
+    model_name <-
+      glue("{name_of_model}_variables")
+    model_name <-
+      name_of_model %>%
+      jtools::summ() %>%
+      broom::tidy()
+
+    model_regression_name <-
+      glue("{name_of_model}_regression")
+
+    model_regression_name <-
+      model_name %>%
+      .[,1:3] %>%
+      rename(b = estimate,
+             SE = std.error) %>%
+      mutate(Z95_x_SE = 1.96 * SE,
+             CI_95_upper_bound = b+Z95_x_SE,
+             significance_95 = ifelse(abs(b) > Z95_x_SE,
+                                      "sig", "NULL")
+             )
+
+  }
+
+```
+## Data Source
+
+The RAND Indonesian Family Life Survey (IFLS) is an on-going longitudinal survey in Indonesia. The sample is representative of about 83% of the Indonesian population and contains over 30,000 individuals living in 13 of the 27 provinces in the country.
+
+The fifth wave, IFLS-5, where our Capstone Project draws data from, was fielded 2014-15. More information about the survey can be found at this [link](https://www.rand.org/well-being/social-and-behavioral-policy/data/FLS/IFLS.html).
+
+## Importing our Dataset
+
+Our dataset was imported in a two-step process:
+
+Step 1:  The IFLS contained over 150 separate datasets in Stata (DTA) format. Our variables were drawn from 7 datasets. As the process of importing, extracting, recoding (wrangling), and combining datasets is only necessary to be performed once, this process is detailed in a separate `Rmarkdown` document named `capstone_Import_data.Rmd`. Click [here](capstone_Import_data.html) for more details about this process.
+
+The final dataset for use in our analysis is saved as `capstone_data.csv`.
+
+Step 2: Here we import the dataset.
+
+```{r Import-Dataset}
+data_recoded<-
+  read_csv("capstone_data.csv")
+glimpse(data_recoded)
+```
+
+The `data_recoded` contained `r data_recoded %>% nrow()` observations.
+
+## Preparing the Data for Regression
+
+We prepare the data for regression by:
+
+1.  removing NA data,
+
+2.  renaming variables to more intuitive names (eg: employ vs tk01a for employment status),
+
+3.  using `mutate` to recode each variable,
+
+4.  using `cut` to create a new variable `generations` from `age`, to hopefully provide opportunity for deeper analysis.
+
+
+```{r Prep-for-Regression}
+
+# Here we produce the final data set for regression
+# There is an opportunity to rename variables here
+
+data_regression<-
+  data_recoded %>% 
+  drop_na() %>% 
+  rename(home_own = kr03, #home ownership
+         employ = tk01a, # employment
+         religion = tr11, #religion
+         health = kk01, # health
+         edu = dl06, # education
+         outlook = fo01, # future outlook
+         life_sat = sw00, # current life satisfaction
+         current_econ = sw01, # current economic step
+         future_econ = sw03, # future economic step expectation
+         ethnicity = dl01f # ethnicity
+         ) %>% 
+  mutate(ethnicity = as.factor(ethnicity), 
+         marstat = as.factor(marstat),
+         sex = as.factor(sex),
+         edu = as.factor(edu),
+         employ = as.factor(employ),
+         religion = as.factor(religion),
+         health = as.factor(health),
+         home_own = as.factor(home_own),
+         female = as.factor(female)
+         ) %>% 
+  mutate(birth_year = 2014 - age,
+         generations = cut(birth_year,
+                           breaks = c(1900, 1927, 1945, 1964, 1980, 1996, 2012, 2020),
+                           labels = c("Greatest Generation",
+                                      "Silent Generation",
+                                      "Baby Boomers",
+                                      "Gen X",
+                                      "Millenials",
+                                      "Gen Z",
+                                      "Gen Alpha")
+                           )
+
+         )%>% 
+  select(-hhid14_9, -pidlink, -birth_year) # removed hhid14_9 and pidlink
+
+```
+
+After wrangling and removal of missing data, it yielded `r data_regression %>%  nrow()` responses.
+
+## Response and Explanatory Variables
+
+The project attempts to answer the question "Does property ownership lead to a better perception of oneself and greater optimism for the future?". As a measure of each individual's outlook for the future, we extracted two variables from the survey:
+
+1.  sw01 (named current_econ): On which economic step do you consider yourself now? Respondents were asked to rate themselves on a scale of 1 (poorest) to 5 (richest).
+
+2.  sw03 (named future_econ): On which economic step do you consider yourself to be in 5 years? Respondents were again asked to rate themselves on a scale of 1 (poorest) to 5 (richest).
+
+From these 2 variables, we constructed a response variable Future Outlook (named outlook in the dataset), where:
+
+<center>**outlook = future_econ - current_econ**</center><p>
+
+A positive outlook score implies optimism about one's future, while a negative score implies pessimism.
+
+We explored the impact of 10 explanatory variables on one's outlook. They are:
+
+1.  home_own: Home ownership, where a response of 0 indicated that the respondent did not own a property, while a response of 1 indicated property ownership.This is our variable of interest, and serves to answer our research question on the impact of property ownership on our outcome variable. 
+
+2.  sex: Gender of respondents were coded 1 for male, and 3 for female.
+
+3.  marstat: Maritial status of respondents, coded 1 never married, 2 married, 3 separated, 4 divorced, 5 widow(er), 6 cohabitate
+
+4.  age/generations: responded as a numeric variable. In addition to age, we classified each respondent into his/her respective social generation using their year of birth. Greatest Generation (1900 to 1927), Silent Generation (1928 to 1945), Baby Boomers (1946 to 1964), Gen X (1965 to 1980), Millenials also known as Gen Y (1981 to 1996), Gen Z (1997 to 2012), and Generation Alpha (2020 to present). 
+
+5.  life_sat: Life Satisfaction, where responses ranged from 1 for "Not at all satisfied" to 5 for "completely satisfied".
+
+6.  edu: Education level of respondent, coded 0 for "don't know, no schooling, or school for the disabled", 1 for kindergarten, elementary, islamic elementary, 2 for junior high (normal, vocational and Islamic), 3 for senior hi(normal, vocational and Islamic), 4 for college and university (undergraduate, masters, doctorate), and 5 for adult education, open university and Islamic school. 
+
+7.  employ: Employment, coded 0 for "unemployed" or "prefer not to say" and 1 for "employed"
+
+8.  health:  Respondents were asked to rank their physical health status. Responses were recoded as 1 for "unhealthy", 2 "somewhat unhealthy", 3 "somewhat healthy" and 4 "healthy"
+
+9.  religion: Respondents were asked "how religious do they see themselves". Reponses were recoded as 0 "refused to say", 1 "not religious", 2 "somewhat religious", 3 "religious" and 4 "very religious".
+
+10. ethnicity: We attempted to perform the analysis using ethnicity as a variable. However, as there were over 20 different classifications and sometimes multiple classifications per individual (mixed ethnicity), and given our lack of familiarity with ethnicity in Indonesia, this variable was subsequently dropped.
+
+We use `skim()` from the `skimr` package to quickly provide a broad overview of the data.
+
+```{r skim-data-regression}
+skim(data_regression)
+```
+## Exploratory Data Analysis
+
+The mean age of our survey respondents is `r round(mean(data_regression$age), 1)` years old. The plot below shows the age distribution of these respondents.
+
+```{r plot-age-dist, layout="l-page", fig.cap="Age Distribution of Survey Respondents", warning = FALSE}
+age_dist<-
+  data_regression %>% 
+    ggplot(aes(x=age, fill = generations)
+           ) +
+  geom_histogram(binwidth = 1,
+                 alpha = 0.7)+
+  geom_vline(aes(xintercept = mean(age)
+                 ),
+              color = "blue")+
+  geom_text(aes(x = mean(age)-2, # add a text label for mean age
+                y = 500,
+                label = glue("Mean Age = {round(mean(age),1)}")
+                ),
+            color = "blue",
+            size = 3,
+            angle = 90)+ 
+  scale_x_continuous(name = "Age",
+                     limits = c(min(data_regression$age), max(data_regression$age)+5),
+                     breaks = seq(from = min(data_regression$age), to = max(data_regression$age)+5, by = 5)
+                     )+
+  labs(title = "Age Distribution of Survey Respondents",
+       y = "Number of Respondents")+
+  theme(legend.text = element_text(size = rel(0.6)),
+        legend.title = element_blank(),
+        legend.position = "bottom",
+        plot.title = element_text(size = rel(0.9)),
+        plot.subtitle = element_text(size = rel(0.8)),
+        axis.text.y = element_text(size = rel(0.6)),
+        axis.text.x = element_text(angle = 45, size = rel(0.6)),
+        axis.title = element_text(size = rel(0.7)
+                                  )
+        )+
+  guides(fill = guide_legend(nrow = 1))
+
+age_dist
+```
+
+Next, we explored respondent's outlook by current economic standing. 
+
+```{r plot-outlook-current-econ, layout="l-page", fig.cap="Future Outlook of Respondents by Perception of Current Economic Standing"}
+outlook_dist2<-
+  data_regression %>% 
+  ggplot(aes(x=outlook, fill = generations)
+         ) +
+  geom_histogram(binwidth = 1) +
+  geom_vline(aes(xintercept = 0),
+             color="black") +
+  facet_wrap(~current_econ,
+             nrow=2,
+             scale = "free_y") +
+  labs(title = "Future outlook by perception of current economic standing",
+       y = "Number of Respondents")+
+  theme(legend.text = element_text(size = rel(0.7)),
+        legend.title = element_blank(),
+        legend.position = "bottom",
+        plot.title = element_text(size = rel(0.9)),
+        plot.subtitle = element_text(size = rel(0.8)),
+        axis.text.y = element_text(size = rel(0.7)),
+        axis.text.x = element_text(angle = 45, size = rel(0.7)),
+        axis.title = element_text(size = rel(0.7)
+                                  )
+        )+
+  guides(fill = guide_legend(nrow = 1))
+
+outlook_dist2  
+
+```
+There are a couple of interesting observations. A majority of respondents who perceive themselves of low current economic standing (score 1 to 3) are optimistic about their future outlook (score > 0). On the other hand, respondents who perceive themselves of high current economic standing (score 5 and 6) are less optimistic of their future outlook.
+
+Lastly, we look at Outlook by Current Economic Standing, for each generation. Here we can see different slopes across some generations, implying that there are interaction effects between age and current_econ. This will be explored later in our model.
+
+```{r plot-outlook-generations, message = FALSE, layout="l-page", fig.cap="Future Outlook of Respondents (facet by Generations) by Perception of Current Economic Standing"}
+data_regression %>% 
+  ggplot(aes(x = current_econ,
+             y = outlook,
+             color = generations)
+         ) +
+  geom_point(position = "jitter",
+             alpha = 0.1)+
+  geom_smooth(method = "lm",
+              se = FALSE,
+              color = "black")+
+  facet_wrap(.~generations)+
+  labs(title = "Outlook by perception of current economic standing",
+       y = "Outlook",
+       x = "Current Economic Standing")+
+  theme(legend.text = element_text(size = rel(0.7)),
+        legend.title = element_blank(),
+        legend.position = "none",
+        plot.title = element_text(size = rel(0.9)),
+        plot.subtitle = element_text(size = rel(0.8)),
+        axis.text.y = element_text(size = rel(0.7)),
+        axis.text.x = element_text(angle = 45, size = rel(0.7)),
+        axis.title = element_text(size = rel(0.7)
+                                  )
+        )
+
+```
+
+## Correlation Analysis
+
+For the preparation of the model, we created and ran a correlational matrix, to see how our variables of interest (within the model) are related.
+
+```{r Correlation-Analysis}
+
+data_regression %>% 
+  select(-ethnicity, -generations) %>% 
+  as.matrix() %>% 
+  Hmisc::rcorr() %>% 
+  broom::tidy() %>% 
+  rename(variable_1 = column1,
+       variable_2 = column2,
+       corr = estimate) %>% 
+  mutate(abs_corr = round(abs(corr),3),
+         corr = round(corr,3),
+         p.value = round(p.value,3)
+         ) %>% 
+  relocate(abs_corr, .after = corr) %>% 
+  select(-n) %>% 
+  arrange(-abs_corr) %>% 
+  DT::datatable()
+
+```
+
+We noted that life satisfaction had positive correlation of around 0.241 with current economic status, there is reason to believe they capture roughly something similar. We will exclude life satisfaction to reduce multicollinearity in our model. 
+
+## Ordinary Least Square Model
+
+We ran four regression models. 
+
+### "Barebones" Base Model
+
+In our basic model, we regressed home ownership (home_own) onto outlook (`model1`), to see the 'barebones' relationship between home ownership and future outlook. 
+
+$$
+\begin{eqnarray}
+\widehat{outlook} = intercept + b_1home\_own + \epsilon
+\end{eqnarray}
+$$
+
+```{r Regression-Analysis-model1}
+
+model1 <-
+  lm(outlook ~ home_own,
+     data = data_regression)
+summary(model1)
+
+```
+The results of the regression analysis was contrary to our expectations (*John Steinbeck is WRONG*)! Outlook appears to diminish (`r round(model1 %>% tidy() %>% .[2,2] %>% as.numeric(),3)`) if you own a property. We will investigate if the direction and magnitude of this relationship will continue when control variables are added to the model. 
+
+### Model with Demographic Control Variables
+
+We went on to add demographic controls to the model--- such as age and gender. 
+
+$$
+\begin{eqnarray}
+\widehat{outlook} = intercept + b_1home\_own  + b_2age + b_3female + \epsilon
+\end{eqnarray}
+$$
+
+```{r Regression-Analysis-model2}
+
+model2 <-
+  lm(outlook ~ home_own + age + female,
+     data = data_regression)
+summary(model2)
+
+```
+As age and gender are statistically significant in predicting future economic outlook, it is a good thing we controlled for them. Controlling for these characteristics, the effect size of home ownership increased. Here we use the `model_variable_true_regression_function` function which we wrote to prepare the models for reporting.
+
+```{r Regression-Analysis-Comparison}
+# Prepare models for reporting
+model_used <- list(model1,
+                   model2
+                   )
+lapply(model_used,
+       model_variable_true_regression_function)
+
+export_summs(model1, 
+             model2,
+             model.names = c("Base Model",
+                             "Base Model with \nDemographic Controls"),
+             digits = 3)
+
+```
+
+Initially, we had included marital status but when this variable was explored, we noticed that there are very few observations in some of the categories, this would make its inclusion in the model difficult as there is too little variation within group for analysis to take place. 
+
+We also considered ethnicity but there were some complications in analysing this. Did you know Indonesia has >1000 ethnic groups? Though the Javanese are the largest ethnic group, they do not form the majority. While we considered merging some groups together to reduce the number of groups as well as to increase the number of respondents within each group (some groups were very sparse with only a handful of respondents), without understanding the historical and cultural nuance, it was difficult to merge groups together. In addition, there were individuals who identified as belonging to more than one ethnic group. 
+
+### Model with Current Economic Status
+
+In our next model (`model3`), we added current economic outlook to the model with our two demographic controls. This allows us to compare the effect of home ownership on outlook while controlling for individuals who may be at different economic statuses currently. 
+
+
+$$
+\begin{eqnarray}
+\widehat{outlook} = intercept + b_1home\_own + b_2current\_econ + b_3age + b_4female + \epsilon
+\end{eqnarray}
+$$
+```{r Regression-Analysis-model3}
+
+model3 <-
+  lm(outlook ~ home_own + current_econ + age + female,
+     data = data_regression)
+summary(model3)
+
+```
+### Model Substituting Age with Generations
+
+We took our final model one step further (`model3_gen`) by replacing age with generations, which allowed us to investigate if there were any changes to outlook by generations.
+
+```{r Regression-Analysis-model3_gen}
+
+model3_gen <-
+  lm(outlook ~ home_own + current_econ + generations + female,
+     data = data_regression)
+summary(model3_gen)
+
+```
+When analyzed across generations rather than age, we observe contrasting effects. Analyzing by generation is essentially a comparison across the means of each group. Grouping the age variable allows comparison across groups which may have experienced different economic conditions and are at different life stages. In this analysis, our reference group is the 'Greatest Generation.' This group consists of those born before 1927 and are the oldest group of respondents in the sample. 
+
+We see that the generations born after them are slightly more pessimistic about their future outlook (Silent Generation and Baby Boomers), though this is not statistically significant, hence it is possible that all those born before 1964 do not have notable differences in terms of future outlook. 
+
+However, when comparing the Greatest Generation with Millenials and Gen Z, we see that there are statistically significant differences. Compared to the Greatest Generation, Millenials are more optimistic about their future outlook. Similarly, Gen Zs are more optimistic than those in Greatest Generation. This may be expected, since younger generations have a longer way ahead of them and possess the energy to carve a road for themselves as compared to the Greatest Generation, who may be in their sunset years and do not see their outlook varying much in the coming years. 
+
+### Model with Interactions
+
+In our final model (`model4`), we consider the interaction effect of age on current economic status. Logically, there is reason to believe there is an interaction effect between these two terms. The effect of current economic status on future economic outlook is likely to differ by age. 
+
+For example, those who are in poorer current economic status may have a more pessimistic outlook, but those who are younger may be more optimistic than those who are older (maybe youthful vigor?). As such, we added this interaction term to capture these effects. 
+
+$$
+\begin{eqnarray}
+\widehat{outlook} = intercept + b_1home\_own + b_2current\_econ + b_3age + b_4female + b_5current\_econ * age + \epsilon  
+\end{eqnarray}
+$$
+```{r linear-regression-with-interactions-model4}
+
+model4 <-
+  lm(outlook ~ home_own + age*current_econ + female,
+     data = data_regression)
+summary(model4)
+```
+We find the interaction term to be statistically significant 😀
+
+We will take a deeper look into this interaction effect in a way that is easier to visualise. Since current economic status runs from 1 to 6, we will treat it as a continuous variable. 
+
+```{r plot-interact-age-current-econ, layout="l-page", fig.cap="Interaction Plot of Model 4", warning = FALSE}
+
+interact_plot(model = model4, 
+              pred= age, 
+              modx = current_econ,
+              interval = T, 
+              legend.main = "Current Economic Status",
+              main.title = "Interaction Plot for Model 4",
+              y.label = "Future Outlook",
+              x.label = "Age")+
+  theme(legend.position = "bottom")
+```
+
+We see that those whose current economic statuses are better, seem to report lower future outlook scores even when compared across the same age. Based on this interaction plot, we see that the interaction effect is strongest when the respondent is young. As they get older, the effect of economic status on future outlook seems to diminish. 
+
+### Simple Slopes Analysis
+
+We also ran Simple Slopes Analysis to get a greater understanding of interacting effects in `model4`, using the `sim_slopes()` function from the `interactions` package.
+
+```{r include = FALSE}
+sim_slopes(model = model4,
+          pred = age, 
+          modx = current_econ, 
+          johnson_neyman = F)
+```
+
+```{r sim-slopes-analysis}
+sim_slopes(model = model4,
+          pred = current_econ, 
+          modx = age, 
+          johnson_neyman = T)
+
+
+```
+Based on the result, interaction effect is not significant above the age of 103.
+
+## Reporting of Results
+
+Here is a summary of our four regression models:
+
+```{r Summary-Regression-Models, layout="l-page"}
+model_used <- list(model1,
+                   model2,
+                   model3,
+                   model4)
+
+lapply(model_used,
+       model_variable_true_regression_function)
+
+
+export_summs(model1, model2, model3, model4,
+             model.names = c("Base Model",
+                             "Base Model with Demographic Controls",
+                             "Base Model, Demographic Controls,\nCurrent Economic Outlook",
+                             "Base Model, Demographic Controls,\nCurrent Economic Outlook\nwith interactions"),
+             error_format = "[{conf.low}:{conf.high}]",
+             digits = 3)
+```
+
+
+The results of the models can also be shown visually. Here, we use `plot_summs` to show the estimates of models 1-4 visually.
+
+
+```{r model-report-visual, fig.cap="Comparing Models 1 to 4 Estimates", layout="l-page"}
+plot_summs(model1, model2, model3, model4,
+           plot.distributions = T,
+           scale = T,
+           model.names = c("Base Model",
+                             "Base Model with Demographic Controls",
+                             "Base Model, Demographic Controls,\nCurrent Economic Outlook",
+                             "Base Model, Demographic Controls,\nCurrent Economic Outlook\nwith interactions"),
+           point.size = 2)+
+  labs(title = "Comparing our Model Estimates : Models 1 to 4")+
+  theme(legend.position = "bottom",
+        legend.text = element_text(size = rel(0.6)),
+        legend.title = element_blank(),
+        plot.title = element_text(size = rel(0.9)),
+        axis.text.y = element_text(size = rel(0.7)),
+        axis.text.x = element_text(angle = 45, size = rel(0.7)),
+        axis.title = element_text(size = rel(0.7)
+                                  )
+        )
+```
+
+### Evaluating Models using ANOVA
+
+We analyzed the explanatory power of each model using the ANOVA function. The `anova()` function will take each model's objects as arguments, and return an ANOVA testing whether the more complex model is significantly better than the simpler model. If the resulting p-value is sufficiently low (usually less than 0.05), we conclude that the more complex model is significantly better than the simpler model, and thus favor the more complex model. If the p-value is not sufficiently low (usually greater than 0.05), we should favor the simpler model.
+
+We start by comparing between model1 and model2.
+```{r anova-test-1}
+anova(model1, model2) %>% 
+  tidy()
+
+```
+The ANOVA result has a very small p-value (<0.001), indicating that model2 (with addition of age and gender) *did* lead to a significantly improved fit over model1.
+
+Next we compare between model2 and model3.
+
+```{r anova-test-2}
+anova(model2, model3) %>% 
+  tidy()
+```
+Once again, the ANOVA result has a very small p-value (<0.001), indicating that model3 (with addition of current_econ) led to a *significantly improved* fit over model2.
+
+Lastly, we compare between model3 and model4, to ascertain whether adding interaction effects improved the model.
+
+```{r anova-test-3}
+anova(model3, model4) %>% 
+  tidy()
+
+```
+The ANOVA test result tells us that model4 (with interaction effects), improves on model3. We will report model4 as our final result.
+
+### Assumption Check using GVLMA
+
+We checked the linearity assumptions of `model4` using the *Global Validation of Linear Model Assumption* (`gvlma`) package. Unfortunately, the model failed global stats, skewness, kurtosis, link function and heteroskedasticity assumptions.
+
+```{r gvlma-test-model4}
+gvlma (model4) 
+
+```
+We tested `model3` using gvlma. There was some improvement with link function assumptions being acceptable.
+
+```{r gvlma-test-model3}
+gvlma (model3) 
+
+```
+
+We attempted to transform the data (squaring and log transformation), but it still resulted in "Assumptions not satisfied".
+
+We concluded that this is likely due to the fact that most of our variables are categorical variables. 
+
+Here is a visual representation of the core information of assumption checks for `model4`.
+
+```{r plot-gvlma}
+autoplot(gvlma(model4))
+```
+
+### Check Multicollinearity using VIF
+
+We perform a check for multicollinearity using the Variance Inflation Factor or `vif` from the `car` package. Multicollinearity occurs when there is a correlation between multiple independent variables in a multiple regression model. This can negatively impact the regression results. The VIF test measures the correlation and strength of correlation between the independent variables in a regression model.
+
+```{r vif-test, warning = FALSE}
+vif(model4,
+    type = "predictor")
+```
+Within model4, all 4 variables report a GVIF of close to 1, suggesting that multicollinearity does not exist within the model.
+
+## Interpretation of the Results
+
+From our data science project, we found the following findings:
+
+1.	The relationship between one's outlook and ownership of property, contrary to our expectations, appears to be a negative one. In our "barebones" `model1`, owning a property resulted in a decrease in outlook by `r round(model1 %>% tidy() %>% .[2,2] %>% as.numeric(),3)`.
+
+2.	The effects size of home ownership on outlook increased (`r round(model2 %>% tidy() %>% .[2,2] %>% as.numeric(),3)`) when we added demographic control variables, age and gender, to the model (`model2`). Age appeared to have a negative effect on outlook (`r round(model2 %>% tidy() %>% .[3,2] %>% as.numeric(),3)`), while females were marginally more positive than males (`r round(model2 %>% tidy() %>% .[4,2] %>% as.numeric(),3)`). These findings persisted across all models. 
+
+3.  The effect of home ownership on outlook improved further (`r round(model3 %>% tidy() %>% .[2,2] %>% as.numeric(),3)`) when we considered the respondent's current economic background. Interestingly, the model suggests that outlook decreased (`r round(model3 %>% tidy() %>% .[3,2] %>% as.numeric(),3)`) as one's current economic status increased. As discussed earlier, this makes sense as a respondent who is already leading a very successful and well life (and indicated it as the maximum score on the scale), would either see it remaining that way (0 change) or it getting worse (negative score). Adding current economic status to our model allows us to compare between groups of differing current economic status (i.e. those of the same baseline). 
+
+4.  Lastly, we concluded that there was an interaction effect between age and current economic status. The effect size of home ownership on outlook increased further (`r round(model4 %>% tidy() %>% .[2,2] %>% as.numeric(),3)`) and the estimated effect of interaction term age * current_econ is positive (`r round(model4 %>% tidy() %>% .[6,2] %>% as.numeric(),3)`) and significant, though it diminishes with age. Across the same age, those who are worse off now report a better future economic outlook. I guess when you are down, the only way is up :)
+
+## Threats to Causal Inference
+
+* `Confounders`: Demographic variables (age and gender) and current economic status were identified as ``confounders` that could influence both home ownership and outlook. These were controlled and included in the model. Additionally, the interacting effect between age and current economic status was identified and accounted for in our final `model4`. In spite of our best efforts, there may still be omitted variable bias in our model are likely unobservable variables which we failed to capture. For example, terminal illnesses and degree of autonomy are other factors that could affect future outlook. 
+
+* `Colliders`: Among the variables we have considered, we did not identify any colliders that we know of. Given that our predictor variable is home ownership, it could be that certain policies which are based on home ownership that could affect the future outlook of respondents are not captured.
+
+* `Counterfactuals`: The role of counterfactuals, ie: ***what would have happened to your unit of analysis if the treatment had not occurred***, could be explored through simulations.
+
+## Implications
+
+The results of our data science project was surprising, as we had expected home ownership to have a positive effect on outlook. The "barebones" `model1` rejected this hypothesis, but the effects decreased after the inclusion of age, gender, and current economic status.
+
+## Limitations and Future Directions
+
+Indonesia is a large country with a relatively small urban population of 58 percent (as a percentage of total population). It is ranked 126th in terms of urban population percentage by the World Bank.(https://data.worldbank.org/indicator/SP.URB.TOTL.IN.ZS)
+
+It would be interesting to expand the scope of this study to other countries or cities with greater urban population percentages. Would the findings be the same if survey respondents lived in land-scarce urbanized cities such as New York, Shanghai, or Singapore where housing is very expensive? The bar to owning a home in rural parts of Indonesia, where land is comparatively much cheaper, may be much lower than in urbanized cities, and hence not have much impact at all on one's outlook for the future.
+
+Singapore would be an ideal candidate to repeat this study. In recent years, property prices have skyrocketed and the younger generation are fretting over their ability to purchase their own home. We can already see the Government tweaking it policies to rein in property prices. A study done here could provide the Government with more information about how to further tweak its policies.
+
+*Grapes of Wrath* was published in 1939, while the IFLS was conducted in 2014-15. Perhaps attitudes towards property ownership might have changed over the course of 75 years? Maybe Steinbeck is correct after all, but in his era of 1930s-40s. Attitudes and importance of home ownership may likely have changed through the years.
+
+Lastly, 8,149 observations (22 percent) were "dropped" from the study due to incomplete data, or duplicate entries. This could have impacted the results of the study, or the statistical power of our models. However, we are limited in our ability to handle missing data as we are not involved in study design, data collection, or data entry.
+
+## References
+
+[RAND Indonesian Family Life Survey] (https://www.rand.org/well-being/social-and-behavioral-policy/data/FLS/IFLS.html).
+
+
+<!-- ## Contribution Statement -->
+
+<!-- <span style="text-decoration:underline">Mark's Contribution Statement:</span> I am excited to have worked on this project, as it allowed me the opportunity to further my learning in R. Dxxx and I complimented each other very well. She was the brains behind much of the complicated analysis, while I was the brawn behind the coding in R. -->
+
+<!-- I contributed to the study in the following areas: -->
+
+<!-- 1.  Preparing and importing of raw survey data, wrangling, tidy/transforming the data into `capstone_data.csv` and the corresponding rmarkdown document `DaraNg_MarkYeo_ImportData.Rmd`; -->
+
+<!-- 2.  evaluated several linear regression models for the final report; -->
+
+<!-- 3.  drafted parts of the final report `DaraNg_MarkYeo_IndonesiaLifeSurvey_Capstone.rmd`. -->
+<!-- <p> -->
+
+<!-- <span style="text-decoration:underline">Dara's Contribution Statement:</span> I am glad to have a reliable partner and a very inspiring professor in this jouRney. I have to thank Mark for doing a lot of heavy lifting and for agreeing to look at this very rich dataset together with me. I did the: EDA and parts of the write up on the regression models :) <p> -->
+
+## Run `sessionInfo()`
+
+```{r session-info}
+packages_utilized <-
+  sessionInfo()
+packages_utilized
+#save.image("capstone.RData")
+```
+
+

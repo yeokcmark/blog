@@ -1,0 +1,44 @@
+---
+title: "maRk's blog"
+site: distill::distill_website
+css: custom.css
+---
+
+<!-- Google tag (gtag.js) -->
+
+```{=html}
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6K2395F6YC"></script>
+```
+```{=html}
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6K2395F6YC');
+</script>
+```
+<hr>
+<center>
+
+![](images/me.jpg){width="30%"}
+
+Welcome! And thank you for stopping by. This blog was created using [Distill for R Markdown](https://rstudio.github.io/distill/) and written entirely in R Studio. Hopefully, it will be a growing showcase of all projects related to R which I embark on. <br> <br>
+
+2023 felt really hot in Singapore? Let's see if that's really true.
+
+<center>![](images/temp_diff_20232022.gif){width="600"}</center>
+
+See the code [here](temperature_spiral.html)
+
+Number of visitors since inception:
+
+<p>
+
+<a href="https://www.freecounterstat.com" title="hit counter widget"><img src="https://counter7.optistats.ovh/private/freecounterstat.php?c=n2knm64z231g5qgwelaxsr8z6x8m7ykp" title="hit counter widget" alt="hit counter widget" border="0"/></a>
+
+<p>
+
+This site is hosted FREE by Netlify.
+
+</center>
