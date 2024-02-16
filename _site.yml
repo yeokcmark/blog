@@ -1,4 +1,3 @@
-name: "maRk's blog"
 title: "maRk's blog"
 description: |
   my jouRney in R
@@ -53,15 +52,14 @@ output:
 collections:
   ml:
     categories: true
-    categories_metadata: false
+    categories_metadata: true
     authors_metadata: false
     citations: false
-    feed_items_max: 5
     share: [twitter, linkedin]
   posts:
     categories: true
-    categories_metadata: false
+    categories_metadata: true
     authors_metadata: false
     citations: false
-    feed_items_max: 5
     share: [twitter, linkedin]
+    

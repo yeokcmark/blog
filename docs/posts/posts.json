@@ -17,6 +17,23 @@
     "preview_height": 768
   },
   {
+    "path": "posts/2024-02-16-nikkei-225-option-report-2024-02-16/",
+    "title": "Nikkei 225 Option Report 2024-02-16",
+    "description": {},
+    "author": [],
+    "date": "2024-02-16",
+    "categories": [
+      "nikkei225",
+      "options"
+    ],
+    "contents": "\r\n\r\nContents\r\nTraded Volume:\r\nOpen Interest:\r\nChange in Open Interest:\r\nSpot Gamma Exposure:\r\nGamma Exposure Profile (All Months)\r\nGamma Exposure Profile (Excluding Front Month)\r\n\r\nTraded Volume:\r\nDate: 2024-02-16 Contract: Mar 2024\r\n\r\n\r\n\r\nContract: April & May 2024\r\n\r\n\r\n\r\nOpen Interest:\r\nDate: 2024-02-16Contract: Mar 2024\r\n\r\n\r\n\r\nContract: April & May 2024\r\n\r\n\r\n\r\nChange in Open Interest:\r\nDate: 2024-02-16 Contract: Mar 2024\r\n\r\n\r\n\r\nContract: April & May 2024\r\n\r\n\r\n\r\nSpot Gamma Exposure:\r\nDate: 2024-02-16\r\nNikkei 225 Closing Price: 3.8487^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (All Months)\r\nDate: 2024-02-16\r\nNikkei 225 Closing Price: 3.8487^{4}\r\n\r\n\r\n\r\nGamma Exposure Profile (Excluding Front Month)\r\nDate: 2024-02-16\r\nNikkei 225 Closing Price: 3.8487^{4}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+    "preview": "posts/2024-02-16-nikkei-225-option-report-2024-02-16/nikkei-225-option-report-2024-02-16_files/figure-html5/unnamed-chunk-9-1.png",
+    "last_modified": "2024-02-16T23:18:42+08:00",
+    "input_file": "nikkei-225-option-report-2024-02-16.knit.md",
+    "preview_width": 1248,
+    "preview_height": 768
+  },
+  {
     "path": "posts/2024-02-08-trading-participant-volume-2024-02-08/",
     "title": "Trading Participant Volume 2024-02-08",
     "description": {},
