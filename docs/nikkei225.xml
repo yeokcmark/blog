@@ -7,7 +7,17 @@
     <description>my jouRney in R
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Thu, 15 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 16 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Nikkei 225 Option Report 2024-02-16</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-02-16-nikkei-225-option-report-2024-02-16</link>
+      <description>Nikkei 225 Option Report 2024-02-16</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-02-16-nikkei-225-option-report-2024-02-16</guid>
+      <pubDate>Fri, 16 Feb 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-02-16-nikkei-225-option-report-2024-02-16/nikkei-225-option-report-2024-02-16_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
     <item>
       <title>Nikkei 225 Option Report 2024-02-15</title>
       <link>https://yeokcmark.netlify.app/posts/2024-02-15-nikkei-225-option-report-2024-02-15</link>
@@ -17,26 +27,6 @@
       <guid>https://yeokcmark.netlify.app/posts/2024-02-15-nikkei-225-option-report-2024-02-15</guid>
       <pubDate>Thu, 15 Feb 2024 00:00:00 +0000</pubDate>
       <media:content url="https://yeokcmark.netlify.app/posts/2024-02-15-nikkei-225-option-report-2024-02-15/nikkei-225-option-report-2024-02-15_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
-    </item>
-    <item>
-      <title>Nikkei 225 Option Report 2024-02-16</title>
-      <link>https://yeokcmark.netlify.app/posts/2024-02-16-nikkei-225-option-report-2024-02-16</link>
-      <description>Nikkei 225 Option Report 2024-02-16</description>
-      <category>nikkei225</category>
-      <category>options</category>
-      <guid>https://yeokcmark.netlify.app/posts/2024-02-16-nikkei-225-option-report-2024-02-16</guid>
-      <pubDate>Thu, 15 Feb 2024 00:00:00 +0000</pubDate>
-      <media:content url="https://yeokcmark.netlify.app/posts/2024-02-16-nikkei-225-option-report-2024-02-16/nikkei-225-option-report-2024-02-16_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
-    </item>
-    <item>
-      <title>Trading Participant Volume 2024-02-08</title>
-      <link>https://yeokcmark.netlify.app/posts/2024-02-08-trading-participant-volume-2024-02-08</link>
-      <description>Trading Participant Volume 2024-02-08</description>
-      <category>nikkei225</category>
-      <category>options</category>
-      <guid>https://yeokcmark.netlify.app/posts/2024-02-08-trading-participant-volume-2024-02-08</guid>
-      <pubDate>Thu, 08 Feb 2024 00:00:00 +0000</pubDate>
-      <media:content url="https://yeokcmark.netlify.app/posts/2024-02-08-trading-participant-volume-2024-02-08/trading-participant-volume-2024-02-08_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
       <title>Nikkei 225 Option Report 2024-02-08</title>
@@ -49,6 +39,16 @@
       <media:content url="https://yeokcmark.netlify.app/posts/2024-02-08-nikkei-225-option-report-2024-02-08/nikkei-225-option-report-2024-02-08_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
+      <title>Trading Participant Volume 2024-02-08</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-02-08-trading-participant-volume-2024-02-08</link>
+      <description>Trading Participant Volume 2024-02-08</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-02-08-trading-participant-volume-2024-02-08</guid>
+      <pubDate>Thu, 08 Feb 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-02-08-trading-participant-volume-2024-02-08/trading-participant-volume-2024-02-08_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
       <title>Nikkei 225 Option Report 2024-02-07</title>
       <link>https://yeokcmark.netlify.app/posts/2024-02-07-nikkei-225-option-report-2024-02-07</link>
       <description>Nikkei 225 Option Report 2024-02-07</description>
@@ -57,6 +57,968 @@
       <guid>https://yeokcmark.netlify.app/posts/2024-02-07-nikkei-225-option-report-2024-02-07</guid>
       <pubDate>Wed, 07 Feb 2024 00:00:00 +0000</pubDate>
       <media:content url="https://yeokcmark.netlify.app/posts/2024-02-07-nikkei-225-option-report-2024-02-07/nikkei-225-option-report-2024-02-07_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2024-02-07</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-02-07-trading-participant-volume-2024-02-07</link>
+      <description>Trading Participant Volume 2024-02-07</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-02-07-trading-participant-volume-2024-02-07</guid>
+      <pubDate>Wed, 07 Feb 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-02-07-trading-participant-volume-2024-02-07/trading-participant-volume-2024-02-07_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2024-02-06</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-02-06-nikkei-225-option-report-2024-02-06</link>
+      <description>Nikkei 225 Option Report 2024-02-06</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-02-06-nikkei-225-option-report-2024-02-06</guid>
+      <pubDate>Tue, 06 Feb 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-02-06-nikkei-225-option-report-2024-02-06/nikkei-225-option-report-2024-02-06_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2024-02-06</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-02-06-trading-participant-volume-2024-02-06</link>
+      <description>Trading Participant Volume 2024-02-06</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-02-06-trading-participant-volume-2024-02-06</guid>
+      <pubDate>Tue, 06 Feb 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-02-06-trading-participant-volume-2024-02-06/trading-participant-volume-2024-02-06_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Open Interest by Trading Participant 2024-02-02</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-02-05-nikkei-225-open-interest-by-trading-participant-2024-02-02</link>
+      <description>Nikkei 225 Open Interest by Trading Participant 2024-02-02</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-02-05-nikkei-225-open-interest-by-trading-participant-2024-02-02</guid>
+      <pubDate>Mon, 05 Feb 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-02-05-nikkei-225-open-interest-by-trading-participant-2024-02-02/nikkei-225-open-interest-by-trading-participant-2024-02-02_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1536" height="2304"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2024-02-05</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-02-05-nikkei-225-option-report-2024-02-05</link>
+      <description>Nikkei 225 Option Report 2024-02-05</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-02-05-nikkei-225-option-report-2024-02-05</guid>
+      <pubDate>Mon, 05 Feb 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-02-05-nikkei-225-option-report-2024-02-05/nikkei-225-option-report-2024-02-05_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2024-02-05</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-02-05-trading-participant-volume-2024-02-05</link>
+      <description>Trading Participant Volume 2024-02-05</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-02-05-trading-participant-volume-2024-02-05</guid>
+      <pubDate>Mon, 05 Feb 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-02-05-trading-participant-volume-2024-02-05/trading-participant-volume-2024-02-05_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2024-02-01</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-02-01-nikkei-225-option-report-2024-02-01</link>
+      <description>Nikkei 225 Option Report 2024-02-01</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-02-01-nikkei-225-option-report-2024-02-01</guid>
+      <pubDate>Thu, 01 Feb 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-02-01-nikkei-225-option-report-2024-02-01/nikkei-225-option-report-2024-02-01_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2024-02-01</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-02-01-trading-participant-volume-2024-02-01</link>
+      <description>Trading Participant Volume 2024-02-01</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-02-01-trading-participant-volume-2024-02-01</guid>
+      <pubDate>Thu, 01 Feb 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-02-01-trading-participant-volume-2024-02-01/trading-participant-volume-2024-02-01_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2024-01-31</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-31-nikkei-225-option-report-2024-01-31</link>
+      <description>Nikkei 225 Option Report 2024-01-31</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-31-nikkei-225-option-report-2024-01-31</guid>
+      <pubDate>Wed, 31 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-31-nikkei-225-option-report-2024-01-31/nikkei-225-option-report-2024-01-31_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2024-01-31</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-31-trading-participant-volume-2024-01-31</link>
+      <description>Trading Participant Volume 2024-01-31</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-31-trading-participant-volume-2024-01-31</guid>
+      <pubDate>Wed, 31 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-31-trading-participant-volume-2024-01-31/trading-participant-volume-2024-01-31_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2024-01-30</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-30-nikkei-225-option-report-2024-01-30</link>
+      <description>Nikkei 225 Option Report 2024-01-30</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-30-nikkei-225-option-report-2024-01-30</guid>
+      <pubDate>Tue, 30 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-30-nikkei-225-option-report-2024-01-30/nikkei-225-option-report-2024-01-30_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2024-01-30</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-30-trading-participant-volume-2024-01-30</link>
+      <description>Trading Participant Volume 2024-01-30</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-30-trading-participant-volume-2024-01-30</guid>
+      <pubDate>Tue, 30 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-30-trading-participant-volume-2024-01-30/trading-participant-volume-2024-01-30_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Open Interest by Trading Participant 2024-01-26</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-29-nikkei-225-open-interest-by-trading-participant-2024-01-26</link>
+      <description>Nikkei 225 Open Interest by Trading Participant 2024-01-26</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-29-nikkei-225-open-interest-by-trading-participant-2024-01-26</guid>
+      <pubDate>Mon, 29 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-29-nikkei-225-open-interest-by-trading-participant-2024-01-26/nikkei-225-open-interest-by-trading-participant-2024-01-26_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1536" height="2304"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2024-01-29</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-29-nikkei-225-option-report-2024-01-29</link>
+      <description>Nikkei 225 Option Report 2024-01-29</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-29-nikkei-225-option-report-2024-01-29</guid>
+      <pubDate>Mon, 29 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-29-nikkei-225-option-report-2024-01-29/nikkei-225-option-report-2024-01-29_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2024-01-29</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-29-trading-participant-volume-2024-01-29</link>
+      <description>Trading Participant Volume 2024-01-29</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-29-trading-participant-volume-2024-01-29</guid>
+      <pubDate>Mon, 29 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-29-trading-participant-volume-2024-01-29/trading-participant-volume-2024-01-29_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2024-01-26</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-26-nikkei-225-option-report-2024-01-26</link>
+      <description>Nikkei 225 Option Report 2024-01-26</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-26-nikkei-225-option-report-2024-01-26</guid>
+      <pubDate>Fri, 26 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-26-nikkei-225-option-report-2024-01-26/nikkei-225-option-report-2024-01-26_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2024-01-26</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-26-trading-participant-volume-2024-01-26</link>
+      <description>Trading Participant Volume 2024-01-26</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-26-trading-participant-volume-2024-01-26</guid>
+      <pubDate>Fri, 26 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-26-trading-participant-volume-2024-01-26/trading-participant-volume-2024-01-26_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2024-01-25</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-25-nikkei-225-option-report-2024-01-25</link>
+      <description>Nikkei 225 Option Report 2024-01-25</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-25-nikkei-225-option-report-2024-01-25</guid>
+      <pubDate>Thu, 25 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-25-nikkei-225-option-report-2024-01-25/nikkei-225-option-report-2024-01-25_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2024-01-25</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-25-trading-participant-volume-2024-01-25</link>
+      <description>Trading Participant Volume 2024-01-25</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-25-trading-participant-volume-2024-01-25</guid>
+      <pubDate>Thu, 25 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-25-trading-participant-volume-2024-01-25/trading-participant-volume-2024-01-25_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2024-01-24</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-24-nikkei-225-option-report-2024-01-24</link>
+      <description>Nikkei 225 Option Report 2024-01-24</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-24-nikkei-225-option-report-2024-01-24</guid>
+      <pubDate>Wed, 24 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-24-nikkei-225-option-report-2024-01-24/nikkei-225-option-report-2024-01-24_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2024-01-24</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-24-trading-participant-volume-2024-01-24</link>
+      <description>Trading Participant Volume 2024-01-24</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-24-trading-participant-volume-2024-01-24</guid>
+      <pubDate>Wed, 24 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-24-trading-participant-volume-2024-01-24/trading-participant-volume-2024-01-24_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2024-01-23</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-23-nikkei-225-option-report-2024-01-23</link>
+      <description>Nikkei 225 Option Report 2024-01-23</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-23-nikkei-225-option-report-2024-01-23</guid>
+      <pubDate>Tue, 23 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-23-nikkei-225-option-report-2024-01-23/nikkei-225-option-report-2024-01-23_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2024-01-23</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-23-trading-participant-volume-2024-01-23</link>
+      <description>Trading Participant Volume 2024-01-23</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-23-trading-participant-volume-2024-01-23</guid>
+      <pubDate>Tue, 23 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-23-trading-participant-volume-2024-01-23/trading-participant-volume-2024-01-23_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Open Interest by Trading Participant 2024-01-19</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-22-nikkei-225-open-interest-by-trading-participant-2024-01-19</link>
+      <description>Nikkei 225 Open Interest by Trading Participant 2024-01-19</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-22-nikkei-225-open-interest-by-trading-participant-2024-01-19</guid>
+      <pubDate>Mon, 22 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-22-nikkei-225-open-interest-by-trading-participant-2024-01-19/nikkei-225-open-interest-by-trading-participant-2024-01-19_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1536" height="2304"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2024-01-22</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-22-nikkei-225-option-report-2024-01-22</link>
+      <description>Nikkei 225 Option Report 2024-01-22</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-22-nikkei-225-option-report-2024-01-22</guid>
+      <pubDate>Mon, 22 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-22-nikkei-225-option-report-2024-01-22/nikkei-225-option-report-2024-01-22_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2024-01-22</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-22-trading-participant-volume-2024-01-22</link>
+      <description>Trading Participant Volume 2024-01-22</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-22-trading-participant-volume-2024-01-22</guid>
+      <pubDate>Mon, 22 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-22-trading-participant-volume-2024-01-22/trading-participant-volume-2024-01-22_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2024-01-18</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-19-nikkei-225-option-report-2024-01-18</link>
+      <description>Nikkei 225 Option Report 2024-01-18</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-19-nikkei-225-option-report-2024-01-18</guid>
+      <pubDate>Fri, 19 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-19-nikkei-225-option-report-2024-01-18/nikkei-225-option-report-2024-01-18_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2024-01-19</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-19-nikkei-225-option-report-2024-01-19</link>
+      <description>Nikkei 225 Option Report 2024-01-19</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-19-nikkei-225-option-report-2024-01-19</guid>
+      <pubDate>Fri, 19 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-19-nikkei-225-option-report-2024-01-19/nikkei-225-option-report-2024-01-19_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2024-01-18</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-19-trading-participant-volume-2024-01-18</link>
+      <description>Trading Participant Volume 2024-01-18</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-19-trading-participant-volume-2024-01-18</guid>
+      <pubDate>Fri, 19 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-19-trading-participant-volume-2024-01-18/trading-participant-volume-2024-01-18_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2024-01-19</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-19-trading-participant-volume-2024-01-19</link>
+      <description>Trading Participant Volume 2024-01-19</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-19-trading-participant-volume-2024-01-19</guid>
+      <pubDate>Fri, 19 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-19-trading-participant-volume-2024-01-19/trading-participant-volume-2024-01-19_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2024-01-17</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-17-nikkei-225-option-report-2024-01-17</link>
+      <description>Nikkei 225 Option Report 2024-01-17</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-17-nikkei-225-option-report-2024-01-17</guid>
+      <pubDate>Wed, 17 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-17-nikkei-225-option-report-2024-01-17/nikkei-225-option-report-2024-01-17_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2024-01-17</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-17-trading-participant-volume-2024-01-17</link>
+      <description>Trading Participant Volume 2024-01-17</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-17-trading-participant-volume-2024-01-17</guid>
+      <pubDate>Wed, 17 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-17-trading-participant-volume-2024-01-17/trading-participant-volume-2024-01-17_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2024-01-16</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-16-nikkei-225-option-report-2024-01-16</link>
+      <description>Nikkei 225 Option Report 2024-01-16</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-16-nikkei-225-option-report-2024-01-16</guid>
+      <pubDate>Tue, 16 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-16-nikkei-225-option-report-2024-01-16/nikkei-225-option-report-2024-01-16_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2024-01-16</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-16-trading-participant-volume-2024-01-16</link>
+      <description>Trading Participant Volume 2024-01-16</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-16-trading-participant-volume-2024-01-16</guid>
+      <pubDate>Tue, 16 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-16-trading-participant-volume-2024-01-16/trading-participant-volume-2024-01-16_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Open Interest by Trading Participant 2024-01-12</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-15-nikkei-225-open-interest-by-trading-participant-2024-01-12</link>
+      <description>Nikkei 225 Open Interest by Trading Participant 2024-01-12</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-15-nikkei-225-open-interest-by-trading-participant-2024-01-12</guid>
+      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-15-nikkei-225-open-interest-by-trading-participant-2024-01-12/nikkei-225-open-interest-by-trading-participant-2024-01-12_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1536" height="2304"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2024-01-15</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-15-nikkei-225-option-report-2024-01-15</link>
+      <description>Nikkei 225 Option Report 2024-01-15</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-15-nikkei-225-option-report-2024-01-15</guid>
+      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-15-nikkei-225-option-report-2024-01-15/nikkei-225-option-report-2024-01-15_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2024-01-15</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-15-trading-participant-volume-2024-01-15</link>
+      <description>Trading Participant Volume 2024-01-15</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-15-trading-participant-volume-2024-01-15</guid>
+      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-15-trading-participant-volume-2024-01-15/trading-participant-volume-2024-01-15_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2024-01-12</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-12-nikkei-225-option-report-2024-01-12</link>
+      <description>Nikkei 225 Option Report 2024-01-12</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-12-nikkei-225-option-report-2024-01-12</guid>
+      <pubDate>Fri, 12 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-12-nikkei-225-option-report-2024-01-12/nikkei-225-option-report-2024-01-12_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2024-01-12</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-12-trading-participant-volume-2024-01-12</link>
+      <description>Trading Participant Volume 2024-01-12</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-12-trading-participant-volume-2024-01-12</guid>
+      <pubDate>Fri, 12 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-12-trading-participant-volume-2024-01-12/trading-participant-volume-2024-01-12_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2024-01-10</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-10-nikkei-225-option-report-2024-01-10</link>
+      <description>Nikkei 225 Option Report 2024-01-10</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-10-nikkei-225-option-report-2024-01-10</guid>
+      <pubDate>Wed, 10 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-10-nikkei-225-option-report-2024-01-10/nikkei-225-option-report-2024-01-10_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2024-01-10</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-10-trading-participant-volume-2024-01-10</link>
+      <description>Trading Participant Volume 2024-01-10</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-10-trading-participant-volume-2024-01-10</guid>
+      <pubDate>Wed, 10 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-10-trading-participant-volume-2024-01-10/trading-participant-volume-2024-01-10_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Open Interest by Trading Participant 2024-01-05</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-09-nikkei-225-open-interest-by-trading-participant-2024-01-05</link>
+      <description>Nikkei 225 Open Interest by Trading Participant 2024-01-05</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-09-nikkei-225-open-interest-by-trading-participant-2024-01-05</guid>
+      <pubDate>Tue, 09 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-09-nikkei-225-open-interest-by-trading-participant-2024-01-05/nikkei-225-open-interest-by-trading-participant-2024-01-05_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1536" height="2304"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2024-01-09</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-09-nikkei-225-option-report-2024-01-09</link>
+      <description>Nikkei 225 Option Report 2024-01-09</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-09-nikkei-225-option-report-2024-01-09</guid>
+      <pubDate>Tue, 09 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-09-nikkei-225-option-report-2024-01-09/nikkei-225-option-report-2024-01-09_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2024-01-09</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-09-trading-participant-volume-2024-01-09</link>
+      <description>Trading Participant Volume 2024-01-09</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-09-trading-participant-volume-2024-01-09</guid>
+      <pubDate>Tue, 09 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-09-trading-participant-volume-2024-01-09/trading-participant-volume-2024-01-09_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2024-01-05</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-05-nikkei-225-option-report-2024-01-05</link>
+      <description>Nikkei 225 Option Report 2024-01-05</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-05-nikkei-225-option-report-2024-01-05</guid>
+      <pubDate>Fri, 05 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-05-nikkei-225-option-report-2024-01-05/nikkei-225-option-report-2024-01-05_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2024-01-05</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-05-trading-participant-volume-2024-01-05</link>
+      <description>Trading Participant Volume 2024-01-05</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-05-trading-participant-volume-2024-01-05</guid>
+      <pubDate>Fri, 05 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-05-trading-participant-volume-2024-01-05/trading-participant-volume-2024-01-05_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Open Interest by Trading Participant 2023-12-29</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-04-nikkei-225-open-interest-by-trading-participant-2023-12-29</link>
+      <description>Nikkei 225 Open Interest by Trading Participant 2023-12-29</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-04-nikkei-225-open-interest-by-trading-participant-2023-12-29</guid>
+      <pubDate>Thu, 04 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-04-nikkei-225-open-interest-by-trading-participant-2023-12-29/nikkei-225-open-interest-by-trading-participant-2023-12-29_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1536" height="2304"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2024-01-04</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-04-nikkei-225-option-report-2024-01-04</link>
+      <description>Nikkei 225 Option Report 2024-01-04</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-04-nikkei-225-option-report-2024-01-04</guid>
+      <pubDate>Thu, 04 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-04-nikkei-225-option-report-2024-01-04/nikkei-225-option-report-2024-01-04_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2024-01-04</title>
+      <link>https://yeokcmark.netlify.app/posts/2024-01-04-trading-participant-volume-2024-01-04</link>
+      <description>Trading Participant Volume 2024-01-04</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2024-01-04-trading-participant-volume-2024-01-04</guid>
+      <pubDate>Thu, 04 Jan 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2024-01-04-trading-participant-volume-2024-01-04/trading-participant-volume-2024-01-04_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2023-12-29</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-30-nikkei-225-option-report-2023-12-29</link>
+      <description>Nikkei 225 Option Report 2023-12-29</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-30-nikkei-225-option-report-2023-12-29</guid>
+      <pubDate>Sat, 30 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-30-nikkei-225-option-report-2023-12-29/nikkei-225-option-report-2023-12-29_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2023-12-29</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-30-trading-participant-volume-2023-12-29</link>
+      <description>Trading Participant Volume 2023-12-29</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-30-trading-participant-volume-2023-12-29</guid>
+      <pubDate>Sat, 30 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-30-trading-participant-volume-2023-12-29/trading-participant-volume-2023-12-29_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Open Interest by Trading Participant 2023-12-22</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-28-nikkei-225-open-interest-by-trading-participant-2023-12-22</link>
+      <description>Nikkei 225 Open Interest by Trading Participant 2023-12-22</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-28-nikkei-225-open-interest-by-trading-participant-2023-12-22</guid>
+      <pubDate>Thu, 28 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-28-nikkei-225-open-interest-by-trading-participant-2023-12-22/nikkei-225-open-interest-by-trading-participant-2023-12-22_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1536" height="2304"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2023-12-28</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-28-nikkei-225-option-report-2023-12-28</link>
+      <description>Nikkei 225 Option Report 2023-12-28</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-28-nikkei-225-option-report-2023-12-28</guid>
+      <pubDate>Thu, 28 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-28-nikkei-225-option-report-2023-12-28/nikkei-225-option-report-2023-12-28_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2023-12-28</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-28-trading-participant-volume-2023-12-28</link>
+      <description>Trading Participant Volume 2023-12-28</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-28-trading-participant-volume-2023-12-28</guid>
+      <pubDate>Thu, 28 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-28-trading-participant-volume-2023-12-28/trading-participant-volume-2023-12-28_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2023-12-26</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-27-nikkei-225-option-report-2023-12-26</link>
+      <description>Nikkei 225 Option Report 2023-12-26</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-27-nikkei-225-option-report-2023-12-26</guid>
+      <pubDate>Wed, 27 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-27-nikkei-225-option-report-2023-12-26/nikkei-225-option-report-2023-12-26_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2023-12-27</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-27-nikkei-225-option-report-2023-12-27</link>
+      <description>Nikkei 225 Option Report 2023-12-27</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-27-nikkei-225-option-report-2023-12-27</guid>
+      <pubDate>Wed, 27 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-27-nikkei-225-option-report-2023-12-27/nikkei-225-option-report-2023-12-27_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2023-12-26</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-27-trading-participant-volume-2023-12-26</link>
+      <description>Trading Participant Volume 2023-12-26</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-27-trading-participant-volume-2023-12-26</guid>
+      <pubDate>Wed, 27 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-27-trading-participant-volume-2023-12-26/trading-participant-volume-2023-12-26_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2023-12-27</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-27-trading-participant-volume-2023-12-27</link>
+      <description>Trading Participant Volume 2023-12-27</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-27-trading-participant-volume-2023-12-27</guid>
+      <pubDate>Wed, 27 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-27-trading-participant-volume-2023-12-27/trading-participant-volume-2023-12-27_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2023-12-25</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-25-nikkei-225-option-report-2023-12-25</link>
+      <description>Nikkei 225 Option Report 2023-12-25</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-25-nikkei-225-option-report-2023-12-25</guid>
+      <pubDate>Mon, 25 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-25-nikkei-225-option-report-2023-12-25/nikkei-225-option-report-2023-12-25_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2023-12-25</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-25-trading-participant-volume-2023-12-25</link>
+      <description>Trading Participant Volume 2023-12-25</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-25-trading-participant-volume-2023-12-25</guid>
+      <pubDate>Mon, 25 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-25-trading-participant-volume-2023-12-25/trading-participant-volume-2023-12-25_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2023-12-22</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-22-nikkei-225-option-report-2023-12-22</link>
+      <description>Nikkei 225 Option Report 2023-12-22</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-22-nikkei-225-option-report-2023-12-22</guid>
+      <pubDate>Fri, 22 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-22-nikkei-225-option-report-2023-12-22/nikkei-225-option-report-2023-12-22_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2023-12-22</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-22-trading-participant-volume-2023-12-22</link>
+      <description>Trading Participant Volume 2023-12-22</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-22-trading-participant-volume-2023-12-22</guid>
+      <pubDate>Fri, 22 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-22-trading-participant-volume-2023-12-22/trading-participant-volume-2023-12-22_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2023-12-21</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-21-nikkei-225-option-report-2023-12-21</link>
+      <description>Nikkei 225 Option Report 2023-12-21</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-21-nikkei-225-option-report-2023-12-21</guid>
+      <pubDate>Thu, 21 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-21-nikkei-225-option-report-2023-12-21/nikkei-225-option-report-2023-12-21_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2023-12-21</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-21-trading-participant-volume-2023-12-21</link>
+      <description>Trading Participant Volume 2023-12-21</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-21-trading-participant-volume-2023-12-21</guid>
+      <pubDate>Thu, 21 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-21-trading-participant-volume-2023-12-21/trading-participant-volume-2023-12-21_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2023-12-20</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-20-nikkei-225-option-report-2023-12-20</link>
+      <description>Nikkei 225 Option Report 2023-12-20</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-20-nikkei-225-option-report-2023-12-20</guid>
+      <pubDate>Wed, 20 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-20-nikkei-225-option-report-2023-12-20/nikkei-225-option-report-2023-12-20_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2023-12-20</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-20-trading-participant-volume-2023-12-20</link>
+      <description>Trading Participant Volume 2023-12-20</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-20-trading-participant-volume-2023-12-20</guid>
+      <pubDate>Wed, 20 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-20-trading-participant-volume-2023-12-20/trading-participant-volume-2023-12-20_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2023-12-19</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-19-nikkei-225-option-report-2023-12-19</link>
+      <description>Nikkei 225 Option Report 2023-12-19</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-19-nikkei-225-option-report-2023-12-19</guid>
+      <pubDate>Tue, 19 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-19-nikkei-225-option-report-2023-12-19/nikkei-225-option-report-2023-12-19_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2023-12-19</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-19-trading-participant-volume-2023-12-19</link>
+      <description>Trading Participant Volume 2023-12-19</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-19-trading-participant-volume-2023-12-19</guid>
+      <pubDate>Tue, 19 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-19-trading-participant-volume-2023-12-19/trading-participant-volume-2023-12-19_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Open Interest by Trading Participant 2023-12-15</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-18-nikkei-225-open-interest-by-trading-participant-2023-12-15</link>
+      <description>Nikkei 225 Open Interest by Trading Participant 2023-12-15</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-18-nikkei-225-open-interest-by-trading-participant-2023-12-15</guid>
+      <pubDate>Mon, 18 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-18-nikkei-225-open-interest-by-trading-participant-2023-12-15/nikkei-225-open-interest-by-trading-participant-2023-12-15_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2023-12-18</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-18-nikkei-225-option-report-2023-12-18</link>
+      <description>Nikkei 225 Option Report 2023-12-18</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-18-nikkei-225-option-report-2023-12-18</guid>
+      <pubDate>Mon, 18 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-18-nikkei-225-option-report-2023-12-18/nikkei-225-option-report-2023-12-18_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2023-12-18</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-18-trading-participant-volume-2023-12-18</link>
+      <description>Trading Participant Volume 2023-12-18</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-18-trading-participant-volume-2023-12-18</guid>
+      <pubDate>Mon, 18 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-18-trading-participant-volume-2023-12-18/trading-participant-volume-2023-12-18_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2023-12-15</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-15-nikkei-225-option-report-2023-12-15</link>
+      <description>Nikkei 225 Option Report 2023-12-15</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-15-nikkei-225-option-report-2023-12-15</guid>
+      <pubDate>Fri, 15 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-15-nikkei-225-option-report-2023-12-15/nikkei-225-option-report-2023-12-15_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2023-12-15</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-15-trading-participant-volume-2023-12-15</link>
+      <description>Trading Participant Volume 2023-12-15</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-15-trading-participant-volume-2023-12-15</guid>
+      <pubDate>Fri, 15 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-15-trading-participant-volume-2023-12-15/trading-participant-volume-2023-12-15_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2023-12-14</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-14-nikkei-225-option-report-2023-12-14</link>
+      <description>Nikkei 225 Option Report 2023-12-14</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-14-nikkei-225-option-report-2023-12-14</guid>
+      <pubDate>Thu, 14 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-14-nikkei-225-option-report-2023-12-14/nikkei-225-option-report-2023-12-14_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2023-12-14</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-14-trading-participant-volume-2023-12-14</link>
+      <description>Trading Participant Volume 2023-12-14</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-14-trading-participant-volume-2023-12-14</guid>
+      <pubDate>Thu, 14 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-14-trading-participant-volume-2023-12-14/trading-participant-volume-2023-12-14_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2023-12-13</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-13-nikkei-225-option-report-2023-12-13</link>
+      <description>Nikkei 225 Option Report 2023-12-13</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-13-nikkei-225-option-report-2023-12-13</guid>
+      <pubDate>Wed, 13 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-13-nikkei-225-option-report-2023-12-13/nikkei-225-option-report-2023-12-13_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2023-12-13</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-13-trading-participant-volume-2023-12-13</link>
+      <description>Trading Participant Volume 2023-12-13</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-13-trading-participant-volume-2023-12-13</guid>
+      <pubDate>Wed, 13 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-13-trading-participant-volume-2023-12-13/trading-participant-volume-2023-12-13_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2023-12-12</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-12-nikkei-225-option-report-2023-12-12</link>
+      <description>Nikkei 225 Option Report 2023-12-12</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-12-nikkei-225-option-report-2023-12-12</guid>
+      <pubDate>Tue, 12 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-12-nikkei-225-option-report-2023-12-12/nikkei-225-option-report-2023-12-12_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2023-12-12</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-12-trading-participant-volume-2023-12-12</link>
+      <description>Trading Participant Volume 2023-12-12</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-12-trading-participant-volume-2023-12-12</guid>
+      <pubDate>Tue, 12 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-12-trading-participant-volume-2023-12-12/trading-participant-volume-2023-12-12_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Open Interest by Trading Participant 2023-12-08</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-11-nikkei-225-open-interest-by-trading-participant-08-dec-2023</link>
+      <description>Nikkei 225 Open Interest by Trading Participant 2023-12-08</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-11-nikkei-225-open-interest-by-trading-participant-08-dec-2023</guid>
+      <pubDate>Mon, 11 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-11-nikkei-225-open-interest-by-trading-participant-08-dec-2023/nikkei-225-open-interest-by-trading-participant-08-dec-2023_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2023-12-11</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-11-nikkei-225-option-report-2023-12-11</link>
+      <description>Nikkei 225 Option Report 2023-12-11</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-11-nikkei-225-option-report-2023-12-11</guid>
+      <pubDate>Mon, 11 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-11-nikkei-225-option-report-2023-12-11/nikkei-225-option-report-2023-12-11_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2023-12-11</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-11-trading-participant-volume-2023-12-11</link>
+      <description>Trading Participant Volume 2023-12-11</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-11-trading-participant-volume-2023-12-11</guid>
+      <pubDate>Mon, 11 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-11-trading-participant-volume-2023-12-11/trading-participant-volume-2023-12-11_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2023-12-08</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-08-nikkei-225-option-report-2023-12-08</link>
+      <description>Japanese markets were reeling on Friday, with the Nikkei heading for its biggest weekly drop in a year while bonds have been battered and the yen is eyeing its largest weekly gain in five months, as investors rushed out of bets on Japan’s rates staying low. The yen leapt more than 2% on Thursday and was well-supported on Friday as short sellers fear that a long-awaited rally may have finally begun. Reporting from Reuters.</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-08-nikkei-225-option-report-2023-12-08</guid>
+      <pubDate>Fri, 08 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-08-nikkei-225-option-report-2023-12-08/nikkei-225-option-report-2023-12-08_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2023-12-08</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-08-trading-participant-volume-2023-12-08</link>
+      <description>Trading Participant Volume 2023-12-08</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-08-trading-participant-volume-2023-12-08</guid>
+      <pubDate>Fri, 08 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-08-trading-participant-volume-2023-12-08/trading-participant-volume-2023-12-08_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2023-12-07</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-07-nikkei-225-option-report-2023-12-07</link>
+      <description>Nikkei 225 Option Report 2023-12-07</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-07-nikkei-225-option-report-2023-12-07</guid>
+      <pubDate>Thu, 07 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-07-nikkei-225-option-report-2023-12-07/nikkei-225-option-report-2023-12-07_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2023-12-07</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-07-trading-participant-volume-2023-12-07</link>
+      <description>Trading Participant Volume 2023-12-07</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-07-trading-participant-volume-2023-12-07</guid>
+      <pubDate>Thu, 07 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-07-trading-participant-volume-2023-12-07/trading-participant-volume-2023-12-07_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2023-12-06</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-06-nikkei-225-option-report-2023-12-06</link>
+      <description>Japan's Nikkei share average rose sharply on Wednesday, erasing losses from the previous three sessions as investors bought back beaten-down chip-related stocks. The Nikkei index jumped 2.04% to close at 33,445.90, posting its biggest daily gains since Nov. 15. The broader Topix rose 1.9% to 2,387.20.</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-06-nikkei-225-option-report-2023-12-06</guid>
+      <pubDate>Wed, 06 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-06-nikkei-225-option-report-2023-12-06/nikkei-225-option-report-2023-12-06_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2023-12-06</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-06-trading-participant-volume-2023-12-06</link>
+      <description>Trading Participant Volume 2023-12-06</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-06-trading-participant-volume-2023-12-06</guid>
+      <pubDate>Wed, 06 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-06-trading-participant-volume-2023-12-06/trading-participant-volume-2023-12-06_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2023-12-05</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-06-trading-participant-volume-2023-12-05</link>
+      <description>Trading Participant Volume 2023-12-05</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-06-trading-participant-volume-2023-12-05</guid>
+      <pubDate>Tue, 05 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-06-trading-participant-volume-2023-12-05/trading-participant-volume-2023-12-05_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2023-12-04</title>
+      <dc:creator>Mark Y</dc:creator>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-04-nikkei-225-option-report-2023-12-04</link>
+      <description>Japan's Nikkei share average sank to a nearly three-week low on Monday as a stronger yen dented the earnings outlook for the nation's exporters, with automakers leading declines. The Nikkei closed down 0.6% at 33,231.27 after earlier sliding as much as 1.22% to reach 33,023.04 for the first time since Nov. 14. The broader Topix slumped 0.83%. (Reporting from Reuters)</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-04-nikkei-225-option-report-2023-12-04</guid>
+      <pubDate>Mon, 04 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-04-nikkei-225-option-report-2023-12-04/nikkei-225-option-report-2023-12-04_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2023-12-05</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-05-nikkei-225-option-report-2023-12-05</link>
+      <description>Japan's Nikkei share average touched a three-week low on Tuesday, as an overnight rise in U.S. Treasury yields drove a heavy sell-off in Advantest and other chip-related stocks. "Investors unwound high-technology stocks in today's session. Those shares had been bought amid declines of U.S. yields," said Naoki Fujiwara, senior fund manager at Shinkin Asset Management. Most of the Nikkei's top percentage losers were chip-related, with Advantest losing 5.41%, Tokyo Electron falling 3.5% and Screen Holdings slipping 4.5%. Renesas Electronics lost 4.55%. The broader Topix slipped 0.74% to 2,345.22. (Reporting from Reuters)</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-05-nikkei-225-option-report-2023-12-05</guid>
+      <pubDate>Mon, 04 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-05-nikkei-225-option-report-2023-12-05/nikkei-225-option-report-2023-12-05_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2023-12-04</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-06-trading-participant-volume-2023-12-04</link>
+      <description>Trading Participant Volume 2023-12-04</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-06-trading-participant-volume-2023-12-04</guid>
+      <pubDate>Mon, 04 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-06-trading-participant-volume-2023-12-04/trading-participant-volume-2023-12-04_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2023-12-01</title>
+      <dc:creator>Mark Y</dc:creator>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-01-nikkei-225-option-report-2023-12-01</link>
+      <description>A short description of the post.</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-01-nikkei-225-option-report-2023-12-01</guid>
+      <pubDate>Fri, 01 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-01-nikkei-225-option-report-2023-12-01/nikkei-225-option-report-2023-12-01_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Trading Participant Volume 2023-12-01</title>
+      <link>https://yeokcmark.netlify.app/posts/2023-12-06-trading-participant-volume-2023-12-01</link>
+      <description>Trading Participant Volume 2023-12-01</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-12-06-trading-participant-volume-2023-12-01</guid>
+      <pubDate>Fri, 01 Dec 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-12-06-trading-participant-volume-2023-12-01/trading-participant-volume-2023-12-01_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2023-11-30</title>
+      <dc:creator>Mark Y</dc:creator>
+      <link>https://yeokcmark.netlify.app/posts/2023-11-30-nikkei-225-option-report-2023-11-30</link>
+      <description>Nikkei 225 Option Report 2023-11-30</description>
+      <category>nikkei225</category>
+      <category>options</category>
+      <guid>https://yeokcmark.netlify.app/posts/2023-11-30-nikkei-225-option-report-2023-11-30</guid>
+      <pubDate>Thu, 30 Nov 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-11-30-nikkei-225-option-report-2023-11-30/nikkei-225-option-report-2023-11-30_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Nikkei 225 Option Report 2023-11-29</title>
+      <dc:creator>Mark Y</dc:creator>
+      <link>https://yeokcmark.netlify.app/posts/2023-11-29-nikkei-225-option-report-2023-11-29</link>
+      <description>Nikkei 225 Option Report 2023-11-29</description>
+      <guid>https://yeokcmark.netlify.app/posts/2023-11-29-nikkei-225-option-report-2023-11-29</guid>
+      <pubDate>Wed, 29 Nov 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/posts/2023-11-29-nikkei-225-option-report-2023-11-29/nikkei-225-option-report-2023-11-29_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
   </channel>
 </rss>

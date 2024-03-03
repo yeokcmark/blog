@@ -13,3 +13,6 @@ _files
 .txt
 hotel_cancellation_data.RData
 LLCP2022.XPT
+.RDataTmp
+condo_rental_data.RData
+diabete.RData

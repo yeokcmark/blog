@@ -1,8 +1,22 @@
 ---
 title: "maRk's blog"
 site: distill::distill_website
-css: custom.css
 ---
+```{css, echo = FALSE}
+h1 {
+  display: none;
+  margin:0;
+}
+description {
+  visibility: hidden;
+  margin:0;
+}
+date {
+  visibility: hidden;
+  margin:0;
+}
+
+```
 
 <!-- Google tag (gtag.js) -->
 

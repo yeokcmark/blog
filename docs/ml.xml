@@ -7,10 +7,25 @@
     <description>my jouRney in R
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Fri, 09 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 14 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>using machine learning to predict risk of type2 diabetes</title>
+      <dc:creator>Mark Y</dc:creator>
+      <link>https://yeokcmark.netlify.app/ml/2024-02-14-using-machine-learning-to-predict-risk-of-type2-diabetes</link>
+      <description>Type 2 diabetes is one of the most prevalent chronic diseases in the United States, affecting the health of millions of people, and putting an enormous financial burden on the US economy.</description>
+      <category>classification</category>
+      <category>logistic regression</category>
+      <category>LASSO regression</category>
+      <category>random forest</category>
+      <category>decision tree</category>
+      <category>naive bayes</category>
+      <category>knn</category>
+      <category>xgboost</category>
+      <guid>https://yeokcmark.netlify.app/ml/2024-02-14-using-machine-learning-to-predict-risk-of-type2-diabetes</guid>
+      <pubDate>Wed, 14 Feb 2024 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Hotel reservation cancellations</title>
-      <dc:creator>Mark Y</dc:creator>
       <link>https://yeokcmark.netlify.app/ml/2024-02-10-hotel-cancellation</link>
       <description>In this next exercise, we try and predict the probability that a hotel's reservations will eventually be cancelled, given information we have on hand, such as ADR, customer segment, and deposit type...</description>
       <category>classification</category>
@@ -22,13 +37,8 @@
       <category>knn</category>
       <category>xgboost</category>
       <guid>https://yeokcmark.netlify.app/ml/2024-02-10-hotel-cancellation</guid>
-<<<<<<< HEAD
       <pubDate>Sat, 10 Feb 2024 00:00:00 +0000</pubDate>
-      <media:content url="https://yeokcmark.netlify.app/ml/2024-02-10-hotel-cancellation/hotel-cancellation_files/figure-html5/unnamed-chunk-28-1.png" medium="image" type="image/png" width="1152" height="768"/>
-=======
-      <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
-      <media:content url="https://yeokcmark.netlify.app/ml/2024-02-10-hotel-cancellation/hotel-cancellation_files/figure-html5/unnamed-chunk-5-1.png" medium="image" type="image/png" width="1152" height="768"/>
->>>>>>> af75236245e98285df60126277780b59ee34c2ad
+      <media:content url="https://yeokcmark.netlify.app/ml/2024-02-10-hotel-cancellation/hotel-cancellation_files/figure-html5/unnamed-chunk-14-1.png" medium="image" type="image/png" width="1152" height="768"/>
     </item>
     <item>
       <title>HDB Rental Prices</title>
