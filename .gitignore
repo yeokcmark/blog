@@ -2,7 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
-_ml
 _posts
 _site
 .html
@@ -16,3 +15,4 @@ LLCP2022.XPT
 .RDataTmp
 condo_rental_data.RData
 diabete.RData
+base_rf_sim_anneal_result.Rds
