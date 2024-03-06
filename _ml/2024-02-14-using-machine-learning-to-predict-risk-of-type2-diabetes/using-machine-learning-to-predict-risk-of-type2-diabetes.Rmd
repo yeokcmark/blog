@@ -1,0 +1,492 @@
+---
+title: "Using machine learning to predict risk of type2 diabetes"
+description: |
+  Type 2 diabetes is one of the most prevalent chronic diseases in the United States, affecting the health of millions of people, and putting an enormous financial burden on the US economy.
+author:
+  - name: Mark Y
+date: 2024-02-14
+categories:
+  - classification
+  - logistic regression
+  - LASSO regression
+  - random forest
+  - decision tree
+  - naive bayes
+  - knn
+  - xgboost
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 6
+    toc_float: true    
+    self_contained: false
+    draft: true
+editor_options: 
+  chunk_output_type: console
+  markdown: 
+    wrap: 72
+---
+
+```{css, echo = FALSE}
+d-byline {
+  display: none;
+  margin:0;
+}
+
+```
+
+```{r, setup, include=FALSE}
+knitr::opts_chunk$set(results = FALSE, echo = TRUE, eval = FALSE, fig.width = 6, layout="l-body-outset")
+```
+
+### Introduction
+
+This "assignment" was inspired on the works of *Xie Z, Nikolayeva O, Luo
+J, Li D. Building Risk Prediction Models for Type 2 Diabetes Using
+Machine Learning Techniques*. Their paper can be accessed via this
+[link](https://www.cdc.gov/pcd/issues/2019/19_0109.htm).
+
+My objective is to practice and learn how to build predictive models
+using machine learning techniques, in the spirit of the original study,
+but using the most recent survey data (2022). It would be a bonus if my
+models came close to the performance of Dr Xie et al. 
+
+To recap, the original definition of an individual with Type 2 Diabetes adopted in the study is:
+- an individual aged 30 years or older (hence respondents younger than 30
+years old were excluded as they most likely had Type 1 diabetes),
+- an individual who had been told by a healthcare professional that he/she
+had Type 2 diabetes,
+- respondents who had pre-diabetes, or female respondents who had diabetes while pregnant, were excluded from the study.
+
+```{r, eval = TRUE}
+
+rm(list = ls())
+sessionInfo()
+# Set packages and dependencies
+pacman::p_load("tidyverse", #for tidy data science practice
+               "tidymodels", "workflows", "finetune",# for tidy machine learning
+               "pacman", #package manager
+               "devtools", #developer tools
+               "Hmisc", "skimr", "broom", "modelr",#for EDA
+               "jtools", "huxtable", "interactions", # for EDA
+               "ggthemes", "ggstatsplot", "GGally",
+               "scales", "gridExtra", "patchwork", "ggalt", "vip",
+               "ggstance", "ggfortify", # for ggplot
+               "DT", "plotly", #interactive Data Viz
+               # Lets install some ML related packages that will help tidymodels::
+               "usemodels", "poissonreg", "agua", "sparklyr", "dials",#load computational engines
+               "doParallel", # for parallel processing (speedy computation)
+               "ranger", "xgboost", "glmnet", "kknn", "earth", "klaR", "discrim", "naivebayes", "baguette", "kernlab",#random forest
+               "janitor", "lubridate", "haven")
+
+```
+
+### Data Source
+
+I obtained the latest available Behavioral Risk Factor Surveillance
+System (BRFSS 2022) data available from the [Centers for Disease Control
+and Prevention](https://www.cdc.gov/brfss/annual_data/annual_2022.html).
+
+The Behavioral Risk Factor Surveillance System (BRFSS) is the US’s
+premier system of health-related telephone surveys that collect state
+data about U.S. residents regarding their health-related risk behaviors,
+chronic health conditions, and use of preventive services. Established
+in 1984 with 15 states, BRFSS now collects data in all 50 states as well
+as the District of Columbia and three U.S. territories. BRFSS completes
+more than 400,000 adult interviews each year, making it the largest
+continuously conducted health survey system in the world.
+
+The BRFSS 2022 data from CDC was stored in an SAS (.XPT) file format.
+This was imported into R using `read_xpt` from the `haven` package. It
+had 445132 rows representing individual survey responses and 328 columns
+representing variables.
+
+I included most of the independent variables from the original study, as
+well as several new variables of interest. Below is a summary of
+dependent and independent variables used:
+
+<font size="-2">
+
+| Variable  | Description                                                                                                                                                                | Values                                                                                                                                                                                                                                      |
+|-----------------|------------------------|-------------------------------|
+| diabete4  | (Ever told) (you had) diabetes?                                                                                                                                            | yes, no                                                                                                                                                                                                                                     |
+| bmi5cat   | Four-categories of BMI (body mass index)                                                                                                                                   | 1\. underweight, 2. normal weight, 3. overweight, 4. obese                                                                                                                                                                                  |
+| smoker3   | Four-levels of smoker status                                                                                                                                               | 1. everyday smoker, 2. someday smoker, 3. former smoker, 4. non-smoker                                                                                                                                                                       |
+| cvdstrk3  | (Ever told) (you had) a stroke?                                                                                                                                            | 1. yes, 2. no                                                                                                                                                                                                                                |
+| cvdcrhd4  | (Ever told) (you had) angina or coronary heart disease?                                                                                                                    | 1. yes, 2. no                                                                                                                                                                                                                                |
+| cureci2   | Adults who are current e-cigarette users                                                                                                                                   | 1\. Not currently using e-cigarettes, 2. current e-cigarette users                                                                                                                                                                          |
+| ageg5yr   | Fourteen-level age category. We have included category 3 to 13                                                                                                             | 1. age 18 to 24, 2. 25 to 29, 3. 30 to 34, 4. 35 to 39, 5. 40 to 44, 6. 45 to 49, 7. 50 to 54, 8. 55 to 59, 9. 60 to 64, 10. 65 to 69, 11. 70 to 74, 12. 75 to 79, 13. Age 80 or older                                                       |
+| income3   | What is your annual household income from all sources?                                                                                                                     | 1. Less than \$10,000, 2. 10,000 to 15,000, 3. 15,000 to 20,000, 4.20,000 to 25,000, 5. 25,000 to 35,000, 6. 35,000 to 50,000, 7. 50,000 to 75,000, 8. 75,000 to 100,000, 9. 100,000 to 150,000, 10. 150,000 to 200,000, 11. 200,000 or more |
+| employ1   | Are you currently...?                                                                                                                                                      | 1. employed for wages, 2. self-employed, 3. out of work for 1 year or more, 4. out of work for less than 1 year, 5. a homemaker, 6. a student, 7. retired, 8. unable to work                                                                 |
+| sexvar    | Sex of respondent                                                                                                                                                          | 1. male, 2. female                                                                                                                                                                                                                           |
+| martial   | Are you (marital status)                                                                                                                                                   | 1. married, 2. divorced, 3. widowed, 4. separated, 5. never married, 6. a member of an unmarried couple                                                                                                                                      |
+| educag    | Level of education completed                                                                                                                                               | 1. did not graduate high school, 2. graduated high school, 3. attended college or technical school, 4. graduated from college or technical school                                                                                            |
+| renthom1  | Do you own or rent your home?                                                                                                                                              | 1. own, 2. rent, 3. other arrangements                                                                                                                                                                                                       |
+| chldcnt   | Number of children in household.                                                                                                                                           | 1. No children, 2. one child, 3. two children, 4. three children, 5. four children, 6. five or more children in household                                                                                                                    |
+| racepr1   | Which racial group do you belong to?                                                                                                                                       | 1. white only, 2. black-only, 3. american indian or alaskan native, 4. asian, 5. native hawaiian or pacific islander, 6. multicultural (mix race), 7. hispanic                                                                               |
+| genhlth   | Would you say that in general your health is:                                                                                                                              | 1. excellent, 2. very good, 3. good, 4. fair, 5. poor                                                                                                                                                                                        |
+| diffwalk  | Do you have serious difficulty walking or climbing stairs?                                                                                                                 | 1. yes, 2. no                                                                                                                                                                                                                                |
+| diffdress | Do you have difficulty dressing or bathing?                                                                                                                                | 1. yes, 2. no                                                                                                                                                                                                                                |
+| deaf      | Are you deaf or do you have serious difficulty hearing?                                                                                                                    | 1. yes, 2. no                                                                                                                                                                                                                                |
+| totinda   | Adults who reported doing physical activity or exercise during the past 30 days other than their regular job.                                                              | 1. had physical activity or exercise, 2. no physical activity or exercise in the last 30 days                                                                                                                                                |
+| exerany2  | During the past month, other than your regular job, did you participate in any physical activities or exercise such as running, calisthenics, golf, gardening, or walking? | 1. yes, 2. no                                                                                                                                                                                                                                |
+| drnkany6  | Adults who reported having at least one drink of alcohol in the past 30 days.                                                                                              | 1. yes, 2. no                                                                                                                                                                                                                                |
+| checkup1  | How long has it been since you last visited a doctor for a routine checkup?                                                                                                | 1. within past year, 2. within past 2 years, 3. within past 5 years, 4. 5 or more years ago.                                                                                                                                                 |
+| flushot7  | During the past 12 months, have you had either flu vaccine that was sprayed in your nose, or flu shot injected into your arm?                                              | 1. yes, 2. no                                                                                                                                                                                                                                |
+| chckdny2  | Not including kidney stones, bladder infection or incontinence, were you ever told you had kidney disease?                                                                 | 1. yes, 2. no                                                                                                                                                                                                                                |
+| addepev3  | (Ever told) (you had) a depressive disorder (including depression, major depression, dysthymia, or minor depression?                                                       | 1. yes, 2. no                                                                                                                                                                                                                                |
+| drdxar2   | Respondents                                                                                                                                                                |                                                                                                                                                                                                                                             |
+| asthma3   |                                                                                                                                                                            |                                                                                                                                                                                                                                             |
+| denvst3   |                                                                                                                                                                            |                                                                                                                                                                                                                                             |
+| bmi5      |                                                                                                                                                                            |                                                                                                                                                                                                                                             |
+| age80     |                                                                                                                                                                            |                                                                                                                                                                                                                                             |
+| menthlth  |                                                                                                                                                                            |                                                                                                                                                                                                                                             |
+| wtkg3     |                                                                                                                                                                            |                                                                                                                                                                                                                                             |
+| htm4      |                                                                                                                                                                            |                                                                                                                                                                                                                                             |
+| physhlth  |                                                                                                                                                                            |                                                                                                                                                                                                                                             |
+| sleptim1  |                                                                                                                                                                            |                                                                                                                                                                                                                                             |
+| drnkwk2   |                                                                                                                                                                            |                                                                                                                                                                                                                                             |
+
+</font>
+
+
+```{r}
+data <-
+  df %>% 
+  dplyr::select("DIABETE4", # response variable
+                # personal health
+                "_BMI5CAT", "_BMI5", #bmi cat, bmi numeric
+                "_SMOKER3", "CVDSTRK3", "CVDCRHD4", #smoke, stroke, heart disease
+                "_CURECI2", # e-cig
+                #demographics
+                # age, income cat, employ, gender, marital, education, home (rent/own)
+                "_AGEG5YR", "INCOME3", "EMPLOY1", "SEXVAR", "MARITAL", "_EDUCAG", "RENTHOM1",
+                # number children, age numeric, race
+                "_CHLDCNT", "_AGE80", "_RACEPR1",
+                #self assessment
+                "GENHLTH", "PRIMINSR", "MENTHLTH", "BLIND", "DECIDE", "_HLTHPLN", "WTKG3", "HTM4", 
+                "DIFFWALK", "DIFFDRES", "DEAF", "PHYSHLTH",
+                #habits
+                "SLEPTIM1", "_TOTINDA", "EXERANY2",  "_DRNKWK2", "DRNKANY6", 
+                #medical 
+                "CHECKUP1", "FLUSHOT7", "CVDCRHD4", "CHCKDNY2", "ADDEPEV3",
+                "_DRDXAR2", "ASTHMA3", "_DENVST3") %>% 
+  janitor::clean_names() %>% 
+  mutate(diabete4 = as.factor(case_when(diabete4 == 1 ~ "yes",
+                              diabete4 == 2 ~ "no",
+                              diabete4 == 3 ~ "no",
+                              diabete4 == 4 ~ "no")
+                              ),
+         bmi5cat = factor(bmi5cat),
+         bmi5 = as.numeric(bmi5/100),
+         smoker3 = as.factor(case_when(smoker3 == 1 ~ "smoker",
+                                       smoker3 == 2 ~ "smoker",
+                                       smoker3 == 3 ~ "former smoker",
+                                       smoker3 == 4 ~ "non-smoker")
+                             ),
+         cvdstrk3 = as.factor(case_when(cvdstrk3 == 7 ~ NA_character_,
+                                        cvdstrk3 == 9 ~ NA_character_,
+                                        .default = as.factor(cvdstrk3)
+                                      )
+                            ),
+         cvdcrhd4 = as.factor(case_when(cvdcrhd4 == 7 ~ NA_character_,
+                                        cvdcrhd4 == 9 ~ NA_character_,
+                                        .default = as.factor(cvdcrhd4)
+                                      )
+                            ),
+         cureci2 = as.factor(case_when(cureci2 == 9 ~ NA_character_,
+                                       .default = as.factor(cureci2)
+                                      )
+                            ),
+         ageg5yr = case_when(ageg5yr == 14 ~ NA_character_,
+                                       .default = as.character(ageg5yr)
+                                       ),
+         ageg5yr = as.numeric(ageg5yr),
+                             
+         income3 = as.factor(case_when(income3 == 77 ~ NA_character_,
+                                       income3 == 99 ~ NA_character_,
+                                       .default = as.factor(income3)
+                                       )
+                             ),
+         employ1 = as.factor(case_when(employ1 == 9 ~ NA_character_,
+                                       .default = as.factor(employ1)
+                                       )
+                             ),
+         sexvar = as.factor(sexvar),
+         marital = as.factor(case_when(marital == 9 ~ NA_character_,
+                                       .default = as.factor(marital)
+                                       )),
+         educag = as.factor(case_when(educag == 9 ~ NA_character_,
+                                      .default = as.factor(educag)
+                                      )
+                            ),
+         renthom1 = as.factor(case_when(renthom1 == 7 ~ NA_character_,
+                                        renthom1 == 9 ~ NA_character_,
+                                        .default = as.factor(renthom1)
+                                      )
+                            ),
+         chldcnt = as.factor(case_when(chldcnt == 1 ~ "0",
+                                       chldcnt == 2 ~ "1",
+                                       chldcnt == 3 ~ "2",
+                                       chldcnt == 4 ~ "3",
+                                       chldcnt == 5 ~ "4",
+                                       chldcnt == 6 ~ "5 or more",
+                                       chldcnt == 9 ~ NA_character_)
+                            ),
+         age80 = as.numeric(age80),
+         racepr1 = as.factor(racepr1),
+         genhlth = as.factor(case_when(genhlth == 9 ~ NA_character_,
+                                       .default = as.factor(genhlth)
+                                       )
+                             ),
+         priminsr = as.factor(case_when(priminsr == 88 ~ "11", # no coverage
+                                        priminsr == 77 ~ NA_character_,
+                                        priminsr == 99 ~ NA_character_,
+                                        .default = as.factor(priminsr)
+                                        )
+                              ),
+         menthlth = as.numeric(ifelse(menthlth == 88, 0, menthlth)), #filter out 77 and 99 later
+         blind = as.factor(case_when(blind == 7 ~ NA_character_,
+                                     blind == 9 ~ NA_character_,
+                                     .default = as.factor(blind)
+                                     )
+                           ),
+         decide = as.factor(case_when(decide == 7 ~ NA_character_,
+                                     decide == 9 ~ NA_character_,
+                                     .default = as.factor(decide)
+                                     )
+                            ),
+         hlthpln = as.factor(case_when(hlthpln == 9 ~ NA_character_,
+                                       .default = as.factor(hlthpln)
+                                       )
+                             ),
+         wtkg3 = as.numeric(wtkg3 / 100),
+         htm4 = as.numeric(htm4 / 100),
+         diffwalk = as.factor(case_when(diffwalk == 7 ~ NA_character_,
+                                     diffwalk == 9 ~ NA_character_,
+                                     .default = as.factor(diffwalk)
+                                     )
+                            ),
+         diffdres = as.factor(case_when(diffdres == 7 ~ NA_character_,
+                                     diffdres == 9 ~ NA_character_,
+                                     .default = as.factor(diffdres)
+                                     )
+                            ),
+         deaf = as.factor(case_when(deaf == 7 ~ NA_character_,
+                                     deaf == 9 ~ NA_character_,
+                                     .default = as.factor(deaf)
+                                     )
+                            ),
+         physhlth = as.numeric(ifelse(physhlth == 88, 0, physhlth)), #filter out 77 and 99 later
+
+         sleptim1 = as.numeric(sleptim1), # filter out 77 and 99
+         totinda = as.factor(case_when(totinda == 9 ~ NA_character_,
+                                       .default = as.factor(totinda)
+                                       )
+                             ),
+         exerany2 = as.factor(case_when(exerany2 == 9 ~ NA_character_,
+                                       .default = as.factor(exerany2)
+                                       )
+                             ),
+         drnkwk2 = as.numeric(ifelse(drnkwk2 == 99900, NA_character_, drnkwk2)
+                              ),
+         drnkany6 = as.factor(case_when(drnkany6 == 7 ~ NA_character_,
+                                        drnkany6 == 9 ~ NA_character_,
+                                        .default = as.factor(drnkany6)
+                                     )
+                            ),
+         checkup1 = as.factor(case_when(checkup1 == 7 ~ NA_character_,
+                                        checkup1 == 8 ~ NA_character_,
+                                        checkup1 == 9 ~ NA_character_,
+                                       .default = as.factor(checkup1)
+                                       )
+                             ),
+         flushot7 = as.factor(case_when(flushot7 == 7 ~ NA_character_,
+                                        flushot7 == 9 ~ NA_character_,
+                                        .default = as.factor(flushot7)
+                                     )
+                            ),
+         chckdny2 = as.factor(case_when(chckdny2 == 7 ~ NA_character_,
+                                        chckdny2 == 9 ~ NA_character_,
+                                        .default = as.factor(chckdny2)
+                                     )
+                            ),
+         addepev3 = as.factor(case_when(addepev3 == 7 ~ NA_character_,
+                                        addepev3 == 9 ~ NA_character_,
+                                        .default = as.factor(addepev3)
+                                     )
+                            ),
+         drdxar2 = as.factor(drdxar2),
+         asthma3 = as.factor(case_when(asthma3 == 7 ~ NA_character_,
+                                        asthma3 == 9 ~ NA_character_,
+                                        .default = as.factor(asthma3)
+                                     )
+                            ),
+         denvst3 = as.factor(case_when(denvst3 == 9 ~ NA_character_,
+                                       .default = as.factor(denvst3)
+                                     )
+                            )
+         )
+data <-
+  data %>% 
+  filter (ageg5yr > 2 & age80 >=30 & menthlth < 77 & physhlth < 77 & sleptim1 < 77) %>%  # filter for age >-30 years definition of type 2 diabetes
+  mutate(ageg5yr = as.factor(ageg5yr)
+         ) %>% 
+  na.omit()
+
+skim(data)
+
+#write_csv(data, "diabetes_cleaned_data.csv")
+
+```
+
+```{r, results = TRUE, eval = TRUE}
+# check correlation between numeric
+data <- read_csv("diabetes_cleaned_data.csv")
+data %>% 
+  select_if(is.numeric) %>% 
+  as.matrix(.) %>% 
+  rcorr() %>% 
+  tidy() %>% 
+  arrange(desc(abs(estimate)))
+```
+
+```{r}
+
+# split data
+set.seed(2024021401)
+data_split <-
+  data %>% 
+#  dplyr::sample_frac(size = 0.15, replace = FALSE) %>% #use 5% of data due to lack of computing power
+  initial_split(strata = diabete4) # strata by diabete4
+data_train <-
+  data_split %>% 
+  training()
+data_test <-
+  data_split %>% 
+  testing()
+data_fold <-
+  data_train %>% 
+  vfold_cv(v = 10, strata = diabete4)
+
+```
+
+```{r}
+
+base_rec <-
+  recipes::recipe(formula = diabete4 ~.,
+                  data = data_train) %>% 
+  step_zv(all_predictors()) %>% # remove zero variance
+  step_YeoJohnson(all_numeric_predictors()) %>% 
+  step_normalize(all_numeric_predictors())
+
+pca_rec <-
+  base_rec %>% 
+  step_pca(all_predictors())
+```
+
+```{r}
+
+# random forest
+rf_spec <-
+  rand_forest() %>% 
+  set_engine("ranger",
+             importance = "impurity") %>% 
+  set_mode("classification") %>% 
+  set_args(trees = tune(),
+           mtry = tune(),
+           min_n = tune())
+
+# xgboost
+xgb_spec <-
+  boost_tree() %>% 
+  set_engine("xgboost") %>% 
+  set_mode("classification") %>% 
+  set_args(trees = 1000L,
+           tree_depth = tune(),
+           min_n = tune(),
+           loss_reduction = tune(),
+           sample_size = tune(),
+           mtry = tune(),
+           learn_rate = tune(),
+           stop_iter = 10)
+
+# Logistic Regression Model
+logistic_spec <- 
+  logistic_reg() %>%
+  set_engine(engine = 'glm') %>%
+  set_mode('classification') 
+
+null_spec <-
+  null_model() %>% 
+  set_mode("classification") %>% 
+  set_engine("parsnip")
+
+```
+
+```{r}
+
+base_set <- 
+  workflow_set (
+    list(basic = base_rec,
+         pca = pca_rec), #preprocessor
+    list(rand_forest = rf_spec,
+         xgboost = xgb_spec,
+         logistic = logistic_spec,
+         null = null_spec), #model
+    cross = TRUE) #default is cross = TRUE
+
+```
+
+```{r}
+
+# first fit
+set.seed(2024030301)
+doParallel::registerDoParallel(cl=15, cores = 30)
+
+racing_results <-
+  workflow_map(base_set,
+               fn = "tune_race_anova",
+               resamples = data_fold,
+               metrics = metric_set(roc_auc, f_meas, accuracy, mn_log_loss),
+               control = control_race(verbose = TRUE,
+                                      verbose_elim = TRUE,
+                                      allow_par = TRUE,
+                                      save_workflow = FALSE,
+                                      parallel_over = "everything"))
+
+save(racing_results, file = "racing_results.Rda")
+butcher(racing_results, verbose = TRUE)
+```
+
+The top 3 performing models are xgboost, logistic regression, and random forest. I learnt how to run tuning as a "background job" within R, and the initial tune using only 15% of the data took approximately 36 hours.
+
+```{r, eval = TRUE}
+autoplot(racing_results) + theme_bw() + theme(legend.position = "bottom")
+```
+
+```{r, eval = TRUE, results = TRUE}
+
+# rank results
+racing_results %>% 
+  workflowsets::rank_results(rank_metric = "roc_auc") %>% 
+  filter(.metric == "roc_auc") %>% 
+  dplyr::select(wflow_id, mean, std_err, rank) %>% 
+  datatable() %>% 
+  formatRound(columns = c("mean", "std_err"),
+              digits = 3)
+```
+
+```{r}
+# extract best parameters
+rf_tuned_parameters <-
+  racing_results %>% 
+  #extract_workflow_set_result(id = "basic_rand_forest") %>% 
+  select_best(metric = "roc_auc")
+```
+
+
+```{r}
+save.image("diabete.RData")
+```
+

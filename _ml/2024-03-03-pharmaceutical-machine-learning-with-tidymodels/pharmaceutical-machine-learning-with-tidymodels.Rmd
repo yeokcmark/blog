@@ -1,0 +1,284 @@
+---
+title: "Pharmaceutical machine learning with tidymodels"
+description: |
+  Use Machine Learning to develop a model to determine if a proposed drug could be a mutage.
+date: 2024-03-03
+categories:
+  - classification
+  - logistic regression
+  - random forest
+  - xgboost
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 6
+    toc_float: true    
+    self_contained: false
+editor_options: 
+  chunk_output_type: console
+draft: True
+---
+```{css, echo = FALSE}
+d-byline {
+  display: none;
+  margin:0;
+}
+
+```
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(results = FALSE, echo = TRUE, eval = FALSE, fig.width = 6, layout="l-body-outset")
+```
+
+### Introduction
+
+I learnt about this dataset while watching [Ep. 7: End-to-end machine learning workflow with tidymodels & Posit Team](https://youtu.be/O0Dklq-IZhw?si=q_Gph6nE6jOBOx4a) on Posit's youtube channel. 
+
+This episode was hosted by [Simon Couch](https://www.simonpcouch.com/) whom I first learnt about while researching about tidymodel `stacks`. Here is a link to Simon's [github](https://github.com/simonpcouch/mutagen) page where you can obtain the dataset for practice.
+
+Here is a brief description of the project. A group of scientists investigate whether they can use drug information to predict if a proposed drug could be a mutagen (i.e., toxicity caused by damage to DNA). In pharmaceutical research, mutagenicity refers to a drug’s tendency to increase the rate of mutations due to the damage of genetic material, a key indicator that a drug may be a carcinogen. Mutagenicity can be evaluated using a lab test, though the test requires experienced scientists and time in the lab. A group of scientists are studying whether, instead, they can use known information to quickly predict the mutagenicity of new drugs.
+
+### Importing the data
+
+```{r, eval = TRUE}
+rm(list=ls())
+pacman::p_load("tidyverse", #for tidy data science practice
+               "tidymodels", "workflows", "finetune", "themis", "embed", "butcher",# for tidy machine learning
+               "pacman", #package manager
+               "devtools", #developer tools
+               "Hmisc", "skimr", "broom", "modelr",#for EDA
+               "jtools", "huxtable", "interactions", # for EDA
+               "ggthemes", "ggstatsplot", "GGally",
+               "scales", "gridExtra", "patchwork", "ggalt", "vip",
+               "ggstance", "ggfortify", # for ggplot
+               "DT", "plotly", #interactive Data Viz
+               # Lets install some ML related packages that will help tidymodels::
+               "usemodels", "poissonreg", "agua", "sparklyr", "dials",#load computational engines
+               "doParallel", # for parallel processing (speedy computation)
+               "ranger", "xgboost", "glmnet", "kknn", "earth", "klaR", "discrim", "naivebayes", "baguette", "kernlab",#random forest
+               "janitor", "lubridate")
+load("mutagen_results.RData")
+```
+
+```{r}
+df <-read_csv("mutagen.csv")
+df %>% count(outcome)
+data <-
+  df %>% 
+  dplyr::select(-1)
+# confirm no NA data
+table(is.na(data))
+```
+
+There are no missing fields. This is a "wide" data set, with 1581 columns. There is no missing data, so we do not have to address it in a recipe step. I will skip the EDA portion, and move straight into splitting the data.
+
+### Splitting the Data
+
+I split the data into a training and a test set, strata by outcome. I also create a cross validation dataset for tuning hyper-parameters.
+
+```{r}
+
+set.seed(2024030101)
+data_split <-
+  data %>% 
+  initial_split(strata = outcome)
+
+data_train <-
+  data_split %>% 
+  training()
+data_test <-
+  data_split %>% 
+  testing()
+
+data_fold <-
+  data_train %>% 
+  vfold_cv(v = 10, strata = outcome)
+
+```
+
+### Create recipes
+
+I will evaluate 2 recipes, a base recipe and another with PCA.
+
+```{r}
+base_rec <-
+  recipes::recipe(formula = outcome ~.,
+                  data = data_train) %>% 
+  step_zv(all_predictors()) %>% # remove zero variance
+  step_YeoJohnson(all_numeric_predictors()) %>% 
+  step_normalize(all_numeric_predictors())
+
+pca_rec <-
+  base_rec %>% 
+  step_pca(all_predictors())
+```
+
+### Specify models
+
+I will evaluate the performance of 3 models, random forest(I'm not sure why Simon didn't make use of a random forest model), xgboost, and logistic regression.
+
+```{r}
+
+# random forest
+rf_spec <-
+  rand_forest() %>% 
+  set_engine("ranger",
+             importance = "impurity") %>% 
+  set_mode("classification") %>% 
+  set_args(trees = tune(),
+           mtry = tune(),
+           min_n = tune())
+
+# xgboost
+xgb_spec <-
+  boost_tree() %>% 
+  set_engine("xgboost") %>% 
+  set_mode("classification") %>% 
+  set_args(trees = 1000L,
+           tree_depth = tune(),
+           min_n = tune(),
+           loss_reduction = tune(),
+           sample_size = tune(),
+           mtry = tune(),
+           learn_rate = tune(),
+           stop_iter = 10)
+
+# Logistic Regression Model
+logistic_spec <- 
+  logistic_reg() %>%
+  set_engine(engine = 'glm') %>%
+  set_mode('classification') 
+
+null_spec <-
+  null_model() %>% 
+  set_mode("classification") %>% 
+  set_engine("parsnip")
+
+```
+
+### Workflowset
+
+I created a workflowset, which will conveniently allow me to evaulate the models across both recipes.
+
+```{r}
+
+# workflow set
+
+base_set <- 
+  workflow_set (
+    list(basic = base_rec,
+         pca = pca_rec), #preprocessor
+    list(rand_forest = rf_spec,
+         xgboost = xgb_spec,
+         logistic = logistic_spec,
+         null = null_spec), #model
+    cross = TRUE) #default is cross = TRUE
+
+```
+
+### Tune hyper-parameters using `tune_race_anova`
+
+Let's tune hyper-parameters using `tune_race_anova`, setting `registerDoParallel` for speedy processing.
+
+```{r}
+set.seed(2024030302)
+doParallel::registerDoParallel(cl=15, cores = 30)
+
+racing_results <-
+  workflow_map(base_set,
+               fn = "tune_race_anova",
+               resamples = data_fold,
+               metrics = metric_set(roc_auc, f_meas, accuracy, mn_log_loss),
+               control = control_race(verbose = TRUE,
+                                      verbose_elim = TRUE,
+                                      allow_par = TRUE,
+                                      save_workflow = FALSE,
+                                      parallel_over = "everything"))
+
+```
+
+Once racing is done, we can use `autoplot` to see which was the "winning" model.
+
+```{r, eval = TRUE, preview = TRUE}
+autoplot(racing_results) + theme_bw() + theme(legend.position = "bottom")
+```
+
+Let's rank the results by "roc_auc".
+
+```{r, eval = TRUE}
+racing_results %>% 
+  workflowsets::rank_results(rank_metric = "roc_auc") %>% 
+  filter(.metric == "roc_auc") %>% 
+  dplyr::select(wflow_id, mean, std_err, rank) %>% 
+  datatable() %>% 
+  formatRound(columns = c("mean", "std_err"),
+              digits = 3)
+```
+We see that the best performing model is a random forest model with a base recipe. It has a roc_auc score of 0.901. Let's take a look at its hyper-parameters.
+
+```{r}
+rf_tuned_parameters <-
+  racing_results %>% 
+  extract_workflow_set_result(id = "basic_rand_forest") %>% 
+  select_best(metric = "roc_auc")
+```
+
+Hyper-parameters are mtry of 1146 and min_n of 14. Let's see if we can improve on these results by performing iterative search using `tune_sim_anneal`.
+
+```{r}
+# base recipe and rf workflow
+base_rf_wflow <-
+  workflow() %>% 
+  add_model(rf_spec) %>% 
+  add_recipe(base_rec)
+
+# set up new search grid
+rf_grid <-
+  extract_parameter_set_dials(rf_spec) %>% 
+  update(trees = trees(c(500L,2000L)),
+         mtry = mtry(c(1000L,1500L)),
+         min_n = min_n(c(5L,20L)
+                       )
+         )
+
+rf_metrics <-
+  metric_set(roc_auc, f_meas, accuracy, mn_log_loss)
+```
+
+Let's search!
+
+### Iterative search using `tune_sim_anneal`
+
+```{r}
+# tune_sim_anneal
+
+set.seed(2024030303)
+doParallel::registerDoParallel(cl=15, cores = 30)
+
+base_rf_sim_anneal_result <-
+  tune_sim_anneal(
+    object = base_rf_wflow,
+    resamples = data_fold,
+    iter = 25,
+    metrics = rf_metrics,
+    param_info = rf_grid,
+    initial = 1,
+    control = control_sim_anneal(verbose = TRUE,
+                                 verbose_iter = TRUE,
+                                 allow_par = TRUE,
+                                 parallel_over = "everything")
+  )
+```
+
+The search is done, let's take a look at the results
+
+```{r eval = TRUE}
+base_rf_sim_anneal_result %>% 
+  collect_metrics(summarize = FALSE) %>% 
+  filter(.metric =="roc_auc") %>% 
+  arrange(desc(.estimate)) %>% 
+  datatable()
+```
+
+Yes! I have been able to improve the model performance, achieving an `roc_auc` of 0.917 with hyper-parameters: 791 trees, mtry 1329 and min_n 9. Let's finalize the workflow
+
+
