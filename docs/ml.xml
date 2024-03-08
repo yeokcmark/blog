@@ -7,7 +7,21 @@
     <description>my jouRney in R
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Wed, 14 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 07 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Using ML to predict customer attrition</title>
+      <link>https://yeokcmark.netlify.app/ml/2024-03-07-using-ml-to-predict-customer-attrition</link>
+      <description>This short exercise was assigned as homework. Let's practice my ML skills and try and predict customer attrition from this dataset.</description>
+      <category>classification</category>
+      <category>logistic regression</category>
+      <category>random forest</category>
+      <category>lightgbm</category>
+      <category>knn</category>
+      <category>xgboost</category>
+      <guid>https://yeokcmark.netlify.app/ml/2024-03-07-using-ml-to-predict-customer-attrition</guid>
+      <pubDate>Thu, 07 Mar 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/ml/2024-03-07-using-ml-to-predict-customer-attrition/using-ml-to-predict-customer-attrition_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1152" height="768"/>
+    </item>
     <item>
       <title>using machine learning to predict risk of type2 diabetes</title>
       <dc:creator>Mark Y</dc:creator>
@@ -37,7 +51,7 @@
       <category>knn</category>
       <category>xgboost</category>
       <guid>https://yeokcmark.netlify.app/ml/2024-02-10-hotel-cancellation</guid>
-      <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 10 Feb 2024 00:00:00 +0000</pubDate>
       <media:content url="https://yeokcmark.netlify.app/ml/2024-02-10-hotel-cancellation/hotel-cancellation_files/figure-html5/unnamed-chunk-14-1.png" medium="image" type="image/png" width="1152" height="768"/>
     </item>
     <item>
