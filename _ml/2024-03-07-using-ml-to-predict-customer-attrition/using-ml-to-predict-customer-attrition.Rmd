@@ -272,7 +272,7 @@ I am surprised indeed, a simple Logistic Regression model performed the best, fo
 
 Let's see if we can further improve on the xgboost model by fine-tuning hyper-parameters even further. I start by examining the hyper-parameters.
 
-```{r}
+```{r, eval = TRUE, results = TRUE}
 first_tune_results %>% 
   extract_workflow_set_result("base_recipe_xgboost") %>% 
   autoplot()

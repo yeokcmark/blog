@@ -7,7 +7,7 @@
     <description>my jouRney in R
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Thu, 07 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 06 Mar 2024 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Using ML to predict customer attrition</title>
       <link>https://yeokcmark.netlify.app/ml/2024-03-07-using-ml-to-predict-customer-attrition</link>
@@ -19,7 +19,7 @@
       <category>knn</category>
       <category>xgboost</category>
       <guid>https://yeokcmark.netlify.app/ml/2024-03-07-using-ml-to-predict-customer-attrition</guid>
-      <pubDate>Thu, 07 Mar 2024 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 06 Mar 2024 00:00:00 +0000</pubDate>
       <media:content url="https://yeokcmark.netlify.app/ml/2024-03-07-using-ml-to-predict-customer-attrition/using-ml-to-predict-customer-attrition_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1152" height="768"/>
     </item>
     <item>
