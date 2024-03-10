@@ -56,7 +56,8 @@ pacman::p_load("tidyverse", #for tidy data science practice
                "doParallel", # for parallel processing (speedy computation)
                "ranger", "xgboost", "glmnet", "kknn", "earth", "klaR", "discrim", "naivebayes", "baguette", "kernlab",#random forest
                "janitor", "lubridate")
-#load("mutagen_results.RData")
+load("first_tune.Rda")
+load("bayes_tune.Rda")
 ```
 
 ```{r}
@@ -242,7 +243,7 @@ first_tune <-
                control = control_grid(verbose = TRUE,
                                       allow_par = TRUE,
                                       parallel_over = "everything"))
-
+save(first_tune, file = "first_tune.Rda")
 ```
 
 Once tuning is done, we can use `autoplot` to view the results.
@@ -263,7 +264,7 @@ first_tune %>%
               digits = 3)
 ```
 
-We see that the best performing model is a random forest model with a base recipe. It has a roc_auc score of 0.901. Let's take a look at its hyper-parameters.
+We see that the best performing model is a random forest model with a base recipe. It has a roc_auc score of 0.900. Let's take a look at its hyper-parameters. I'm surprised that none of the other recipes made in into the top 10 positions. The best recipe rf combination was `pca_rf` with a roc_auc score of 0.87.
 
 ```{r}
 first_tune_param <-
@@ -272,26 +273,32 @@ first_tune_param <-
   select_best(metric = "roc_auc")
 ```
 
-Hyper-parameters are mtry of 1146 and min_n of 14. Let's see if we can improve on these results by performing iterative search using `tune_bayes`.
+Hyper-parameters are mtry of 1546 and min_n of 31. Let's see if we can improve on these results by performing iterative search using `tune_bayes`.
 
 ```{r}
 # base recipe and rf workflow
-pca_rf_res <-
+basic_rf_res <-
   first_tune %>% 
-  extract_workflow_set_result(id = "pca_rf")
-pca_rf_wflow <-
+  extract_workflow_set_result(id = "basic_rf")
+basic_rf_wflow <-
   workflow() %>% 
-  add_recipe(rec_pca) %>% 
+  add_recipe(rec_base) %>% 
   add_model(spec_rf)
 
+set.seed(2024030303)
+cl <- (detectCores()/2) - 1
+cores <- cl*2
+
+doParallel::registerDoParallel(cl, cores)
+
 bayes_tune <-
-  pca_rf_wflow %>% 
+  basic_rf_wflow %>% 
   tune_bayes(
   resamples = data_fold,
   metrics = metric_set(roc_auc, accuracy),
-  initial = pca_rf_res,
-  iter = 50,
-  param_info = param_pca,
+  initial = basic_rf_res,
+  iter = 25,
+  param_info = param_basic,
   control = control_bayes(verbose = TRUE,
                           verbose_iter = TRUE,
                           no_improve = 10L,
@@ -299,6 +306,7 @@ bayes_tune <-
                           parallel_over = "everything")
 )
 
+save(bayes_tune, file = "bayes_tune.Rda")
 ```
 
 The search is done, let's take a look at the results
@@ -308,9 +316,103 @@ bayes_tune %>%
   collect_metrics(summarize = FALSE) %>% 
   filter(.metric =="roc_auc") %>% 
   arrange(desc(.estimate)) %>% 
-  datatable()
+  datatable() %>% 
+  formatRound(columns = ".estimate",
+              digits = 3)
 ```
 
-Yes! I have been able to improve the model performance, achieving an `roc_auc` of 0.917 with hyper-parameters: 791 trees, mtry 1329 and min_n 9. Let's finalize the workflow
+Yes! I have been able to improve the model performance, achieving an `roc_auc` of 0.918 with hyper-parameters: 1962 trees, mtry 826 and min_n 2. Let's finalize the workflow
 
+### Last_fit and collect predictions
+
+Let's extract the workflow and `last_fit` to `data_split`.
+
+```{r}
+base_rf_tuned_workflow <-
+  basic_rf_wflow %>% 
+  finalize_workflow(bayes_tune %>% select_best(metric = "roc_auc"))
+
+base_rf_fit <-
+  base_rf_tuned_workflow %>% 
+  last_fit(data_split)
+```
+
+Let's compare it's metrics on the test set vs training set.
+
+```{r eval = TRUE, results = TRUE}
+base_rf_fit %>% collect_metrics()
+```
+
+We can also collect predictions and plot a roc_auc curve.
+
+```{r}
+pred_rf <-
+  base_rf_fit %>% 
+  collect_predictions()
+
+```
+
+```{r, results = TRUE, eval = TRUE}
+pred_rf %>% 
+  roc_curve(outcome, .pred_mutagen) %>% 
+  autoplot()
+```
+
+### Which features were important?
+
+Let's view the features by importance using `extract_fit_parsnip` and `vip`
+
+```{r, results = TRUE, eval = TRUE}
+base_rf_fit %>% 
+  extract_fit_parsnip() %>% 
+  vip(geom = "col",
+      num_features = 20L) +
+  labs(x = "Importance",
+       y = "Features",
+       title = "Features of Importance - Basic Recipe Random Forest Model") +
+  theme_bw()
+```
+
+### Material added 10 March 2024
+
+In a piece of homework completed recently [Using ML to predict customer attrition](https://yeokcmark.netlify.app/ml/2024-03-07-using-ml-to-predict-customer-attrition/), a simple Logistic Regression model was able to outperform an xgboost and K-nearest neighbor model when tested against training data.
+
+I wonder how a Logistic Regression model would perform here? Let's investigate.
+
+```{r}
+# Logistic Regression Model
+logistic_spec <- 
+  logistic_reg() %>%
+  set_engine(engine = 'glm') %>%
+  set_mode('classification') 
+
+logistic_set <-
+    workflow_set (
+    list(ica = rec_ica,
+         pca = rec_pca,
+         #PLS = rec_pls,
+         umap = rec_umap,
+         basic = rec_base), #preprocessor
+    list(logistic = logistic_spec
+    ), #model
+    cross = TRUE) #default is cross = TRUE
+
+set.seed(2024030304)
+cl <- (detectCores()/2) - 1
+cores <- cl*2
+doParallel::registerDoParallel(cl, cores)
+
+logistic_tune <-
+  workflow_map(logistic_set,
+               fn = "tune_grid",
+               verbose = TRUE,
+               seed = 2024030302,
+               grid = 11,
+               resamples = data_fold,
+               metrics = metric_set(roc_auc, accuracy),
+               control = control_grid(verbose = TRUE,
+                                      allow_par = TRUE,
+                                      parallel_over = "everything"))
+save(logistic_tune, file = "logistic_tune.Rda")
+```
 

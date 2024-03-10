@@ -422,6 +422,10 @@ metrics_all <-
 
 ```
 
+```{r, eval = TRUE, results = TRUE}
+metrics_all
+```
+
 Interestingly, although the Logistic Regression model performed better on the training data, xgboost was able to trump it on the test data. In this case, both models performed better on the test data. Let's collect predictions and plot an roc_auc curve.
 
 ```{r}
