@@ -1,13 +1,13 @@
 ---
 title: "Pharmaceutical machine learning with tidymodels"
 description: |
-  Use Machine Learning to develop a model to determine if a proposed drug could be a mutage.
+  Use Machine Learning to develop a model to determine if a proposed drug could be a mutagen.
 date: 2024-03-03
 categories:
   - classification
-  - logistic regression
   - random forest
-  - xgboost
+  - tune_grid
+  - tune_bayes
 output:
   distill::distill_article:
     toc: true
@@ -31,7 +31,7 @@ knitr::opts_chunk$set(results = FALSE, echo = TRUE, eval = FALSE, fig.width = 6,
 
 ### Introduction
 
-I learnt about this dataset while watching [Ep. 7: End-to-end machine learning workflow with tidymodels & Posit Team](https://youtu.be/O0Dklq-IZhw?si=q_Gph6nE6jOBOx4a) on Posit's youtube channel. 
+I learnt about this dataset while watching [Ep. 7: End-to-end machine learning workflow with tidymodels & Posit Team](https://youtu.be/O0Dklq-IZhw?si=q_Gph6nE6jOBOx4a) on Posit's youtube channel. You can also read about it on Posit's [blogpost](https://posit.co/blog/pharmaceutical-machine-learning-with-tidymodels-and-posit-connect/).
 
 This episode was hosted by [Simon Couch](https://www.simonpcouch.com/) whom I first learnt about while researching about tidymodel `stacks`. Here is a link to Simon's [github](https://github.com/simonpcouch/mutagen) page where you can obtain the dataset for practice.
 
@@ -42,7 +42,7 @@ Here is a brief description of the project. A group of scientists investigate wh
 ```{r, eval = TRUE}
 rm(list=ls())
 pacman::p_load("tidyverse", #for tidy data science practice
-               "tidymodels", "workflows", "finetune", "themis", "embed", "butcher",# for tidy machine learning
+               "tidymodels", "workflows", "finetune", "themis", "embed", "fastICA", "dimRed", "uwot", "butcher", # for tidy machine learning
                "pacman", #package manager
                "devtools", #developer tools
                "Hmisc", "skimr", "broom", "modelr",#for EDA
@@ -56,7 +56,7 @@ pacman::p_load("tidyverse", #for tidy data science practice
                "doParallel", # for parallel processing (speedy computation)
                "ranger", "xgboost", "glmnet", "kknn", "earth", "klaR", "discrim", "naivebayes", "baguette", "kernlab",#random forest
                "janitor", "lubridate")
-load("mutagen_results.RData")
+#load("mutagen_results.RData")
 ```
 
 ```{r}
@@ -64,22 +64,29 @@ df <-read_csv("mutagen.csv")
 df %>% count(outcome)
 data <-
   df %>% 
-  dplyr::select(-1)
+  dplyr::select(-1) %>% 
+  mutate(outcome = fct_relevel(outcome, "mutagen")) %>% 
+  janitor::clean_names()
 # confirm no NA data
 table(is.na(data))
 ```
 
-There are no missing fields. This is a "wide" data set, with 1581 columns. There is no missing data, so we do not have to address it in a recipe step. I will skip the EDA portion, and move straight into splitting the data.
+This is a "wide" data set, with `r ncol(data)` columns and `r nrow(data)` rows. It appears to be an ideal dataset to investigate dimensionality reduction and feature extraction, which I will be learning about next week in Module 3 of my class.
+
+There is no missing data, so we do not have to address it in a recipe step. I will skip the EDA portion, and move straight into splitting the data.
 
 ### Splitting the Data
 
 I split the data into a training and a test set, strata by outcome. I also create a cross validation dataset for tuning hyper-parameters.
+
+As this dataset is quite large, and I do not have sufficient computing resources to tune it, I will use `slice_sample` and work on only 20 percent of the dataset.
 
 ```{r}
 
 set.seed(2024030101)
 data_split <-
   data %>% 
+  #slice_sample(prop = 0.2) %>% 
   initial_split(strata = outcome)
 
 data_train <-
@@ -88,38 +95,68 @@ data_train <-
 data_test <-
   data_split %>% 
   testing()
-
 data_fold <-
   data_train %>% 
   vfold_cv(v = 10, strata = outcome)
 
 ```
 
+### Modeling approach
+
+Simon approached this problem by evaluating several models, then fine-tuning the chosen model, xgboost, using `tune_sim_anneal`. Random Forest wasn't among the models he evaluated. 
+I will approach this problem slightly differently. I will evaluate 4 recipes: the first is a "basic" `rec_base` with all features. Then, I will create 3 other recipes which use different methods for dimension reduction and feature extraction. They are: 
+-   `rec_pca` where I will use `step_pca` for principal component analysis method,
+-   `rec_ica` where I will use `step_ica` for independent component analysis method,
+-   `rec_umap` where I will use `step_umap` for uniform manifold approximation and projection method.
+
+I also also evaluate only one model, the random forest model, and tune its hyper-parameters using `tune_grid`.
+
+Finally, I will fine-tune the hyper-parameters further using `tune_bayes`.
+
 ### Create recipes
 
-I will evaluate 2 recipes, a base recipe and another with PCA.
+Let's create the 4 recipes.
 
 ```{r}
-base_rec <-
+rec_base <-
   recipes::recipe(formula = outcome ~.,
                   data = data_train) %>% 
   step_zv(all_predictors()) %>% # remove zero variance
   step_YeoJohnson(all_numeric_predictors()) %>% 
   step_normalize(all_numeric_predictors())
 
-pca_rec <-
-  base_rec %>% 
-  step_pca(all_predictors())
+rec_pca <-
+  rec_base %>% 
+  step_pca(all_numeric_predictors(), num_comp = tune(), threshold = tune())
+# 
+# rec_pls <-
+#   rec_base %>% 
+#   step_pls(all_numeric_predictors(), outcome = "outcome", num_comp = tune())
+
+rec_ica <-
+  rec_base %>% 
+  step_ica(all_numeric_predictors(), num_comp = tune())
+
+rec_umap <-
+  rec_base %>% 
+  step_umap(all_numeric_predictors(),
+            outcome = "outcome",
+            num_comp = tune(),
+            neighbors = tune(),
+            min_dist = tune(),
+            learn_rate = tune(),
+            epochs = tune())
+
 ```
 
 ### Specify models
 
-I will evaluate the performance of 3 models, random forest(I'm not sure why Simon didn't make use of a random forest model), xgboost, and logistic regression.
+I will evaluate the performance of the random forest model.
 
 ```{r}
 
 # random forest
-rf_spec <-
+spec_rf <-
   rand_forest() %>% 
   set_engine("ranger",
              importance = "impurity") %>% 
@@ -128,84 +165,96 @@ rf_spec <-
            mtry = tune(),
            min_n = tune())
 
-# xgboost
-xgb_spec <-
-  boost_tree() %>% 
-  set_engine("xgboost") %>% 
-  set_mode("classification") %>% 
-  set_args(trees = 1000L,
-           tree_depth = tune(),
-           min_n = tune(),
-           loss_reduction = tune(),
-           sample_size = tune(),
-           mtry = tune(),
-           learn_rate = tune(),
-           stop_iter = 10)
-
-# Logistic Regression Model
-logistic_spec <- 
-  logistic_reg() %>%
-  set_engine(engine = 'glm') %>%
-  set_mode('classification') 
-
-null_spec <-
-  null_model() %>% 
-  set_mode("classification") %>% 
-  set_engine("parsnip")
-
 ```
 
 ### Workflowset
 
-I created a workflowset, which will conveniently allow me to evaulate the models across both recipes.
+I created a workflowset, which will conveniently allow me to evaluate the rf model across both 2 recipes.
 
 ```{r}
 
 # workflow set
-
 base_set <- 
   workflow_set (
-    list(basic = base_rec,
-         pca = pca_rec), #preprocessor
-    list(rand_forest = rf_spec,
-         xgboost = xgb_spec,
-         logistic = logistic_spec,
-         null = null_spec), #model
+    list(ica = rec_ica,
+         pca = rec_pca,
+         #PLS = rec_pls,
+         umap = rec_umap,
+         basic = rec_base), #preprocessor
+    list(rf = spec_rf), #model
     cross = TRUE) #default is cross = TRUE
+
+# set parameters
+
+param_basic <-
+  base_set %>%
+  extract_workflow(id = "basic_rf") %>% 
+  extract_parameter_set_dials() %>% 
+  finalize(data_train)
+
+param_ica <-
+  base_set %>%
+  extract_workflow(id = "ica_rf") %>% 
+  extract_parameter_set_dials() %>% 
+  finalize(data_train)
+
+param_pca <-
+  base_set %>%
+  extract_workflow(id = "pca_rf") %>% 
+  extract_parameter_set_dials() %>% 
+  finalize(data_train)
+
+param_umap <-
+  base_set %>%
+  extract_workflow(id = "umap_rf") %>% 
+  extract_parameter_set_dials() %>% 
+  finalize(data_train)
+
+base_set <-
+  base_set %>% 
+  option_add(param_info = param_basic, id = "basic_rf") %>% 
+  option_add(param_info = param_ica, id = "ica_rf") %>% 
+  option_add(param_info = param_pca, id = "pca_rf") %>% 
+  option_add(param_info = param_umap, id = "umap_rf")
+
 
 ```
 
-### Tune hyper-parameters using `tune_race_anova`
+### Tune hyper-parameters using `tune_grid`
 
-Let's tune hyper-parameters using `tune_race_anova`, setting `registerDoParallel` for speedy processing.
+Let's tune hyper-parameters using `tune_grid`, setting `registerDoParallel` for speedy processing.
 
 ```{r}
 set.seed(2024030302)
-doParallel::registerDoParallel(cl=15, cores = 30)
+cl <- (detectCores()/2) - 1
+cores <- cl*2
 
-racing_results <-
+doParallel::registerDoParallel(cl, cores)
+
+first_tune <-
   workflow_map(base_set,
-               fn = "tune_race_anova",
+               fn = "tune_grid",
+               verbose = TRUE,
+               seed = 2024030302,
+               grid = 11,
                resamples = data_fold,
-               metrics = metric_set(roc_auc, f_meas, accuracy, mn_log_loss),
-               control = control_race(verbose = TRUE,
-                                      verbose_elim = TRUE,
+               metrics = metric_set(roc_auc, accuracy),
+               control = control_grid(verbose = TRUE,
                                       allow_par = TRUE,
-                                      save_workflow = FALSE,
                                       parallel_over = "everything"))
 
 ```
 
-Once racing is done, we can use `autoplot` to see which was the "winning" model.
+Once tuning is done, we can use `autoplot` to view the results.
 
 ```{r, eval = TRUE, preview = TRUE}
-autoplot(racing_results) + theme_bw() + theme(legend.position = "bottom")
+autoplot(first_tune) + theme_bw() + theme(legend.position = "bottom")
 ```
 
 Let's rank the results by "roc_auc".
 
 ```{r, eval = TRUE}
-racing_results %>% 
+first_tune %>% 
   workflowsets::rank_results(rank_metric = "roc_auc") %>% 
   filter(.metric == "roc_auc") %>% 
   dplyr::select(wflow_id, mean, std_err, rank) %>% 
@@ -213,66 +262,49 @@ racing_results %>%
   formatRound(columns = c("mean", "std_err"),
               digits = 3)
 ```
+
 We see that the best performing model is a random forest model with a base recipe. It has a roc_auc score of 0.901. Let's take a look at its hyper-parameters.
 
 ```{r}
-rf_tuned_parameters <-
-  racing_results %>% 
-  extract_workflow_set_result(id = "basic_rand_forest") %>% 
+first_tune_param <-
+  first_tune %>% 
+  extract_workflow_set_result(id = "pca_rf") %>% 
   select_best(metric = "roc_auc")
 ```
 
-Hyper-parameters are mtry of 1146 and min_n of 14. Let's see if we can improve on these results by performing iterative search using `tune_sim_anneal`.
+Hyper-parameters are mtry of 1146 and min_n of 14. Let's see if we can improve on these results by performing iterative search using `tune_bayes`.
 
 ```{r}
 # base recipe and rf workflow
-base_rf_wflow <-
+pca_rf_res <-
+  first_tune %>% 
+  extract_workflow_set_result(id = "pca_rf")
+pca_rf_wflow <-
   workflow() %>% 
-  add_model(rf_spec) %>% 
-  add_recipe(base_rec)
+  add_recipe(rec_pca) %>% 
+  add_model(spec_rf)
 
-# set up new search grid
-rf_grid <-
-  extract_parameter_set_dials(rf_spec) %>% 
-  update(trees = trees(c(500L,2000L)),
-         mtry = mtry(c(1000L,1500L)),
-         min_n = min_n(c(5L,20L)
-                       )
-         )
+bayes_tune <-
+  pca_rf_wflow %>% 
+  tune_bayes(
+  resamples = data_fold,
+  metrics = metric_set(roc_auc, accuracy),
+  initial = pca_rf_res,
+  iter = 50,
+  param_info = param_pca,
+  control = control_bayes(verbose = TRUE,
+                          verbose_iter = TRUE,
+                          no_improve = 10L,
+                          allow_par = TRUE,
+                          parallel_over = "everything")
+)
 
-rf_metrics <-
-  metric_set(roc_auc, f_meas, accuracy, mn_log_loss)
-```
-
-Let's search!
-
-### Iterative search using `tune_sim_anneal`
-
-```{r}
-# tune_sim_anneal
-
-set.seed(2024030303)
-doParallel::registerDoParallel(cl=15, cores = 30)
-
-base_rf_sim_anneal_result <-
-  tune_sim_anneal(
-    object = base_rf_wflow,
-    resamples = data_fold,
-    iter = 25,
-    metrics = rf_metrics,
-    param_info = rf_grid,
-    initial = 1,
-    control = control_sim_anneal(verbose = TRUE,
-                                 verbose_iter = TRUE,
-                                 allow_par = TRUE,
-                                 parallel_over = "everything")
-  )
 ```
 
 The search is done, let's take a look at the results
 
 ```{r eval = TRUE}
-base_rf_sim_anneal_result %>% 
+bayes_tune %>% 
   collect_metrics(summarize = FALSE) %>% 
   filter(.metric =="roc_auc") %>% 
   arrange(desc(.estimate)) %>% 
