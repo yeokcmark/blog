@@ -56,8 +56,8 @@ pacman::p_load("tidyverse", #for tidy data science practice
                "doParallel", # for parallel processing (speedy computation)
                "ranger", "xgboost", "glmnet", "kknn", "earth", "klaR", "discrim", "naivebayes", "baguette", "kernlab",#random forest
                "janitor", "lubridate")
-load("first_tune.Rda")
-load("bayes_tune.Rda")
+load("mutagen_results.RData")
+
 ```
 
 ```{r}
@@ -254,7 +254,7 @@ autoplot(first_tune) + theme_bw() + theme(legend.position = "bottom")
 
 Let's rank the results by "roc_auc".
 
-```{r, eval = TRUE}
+```{r, eval = TRUE, results = TRUE}
 first_tune %>% 
   workflowsets::rank_results(rank_metric = "roc_auc") %>% 
   filter(.metric == "roc_auc") %>% 
@@ -311,9 +311,10 @@ save(bayes_tune, file = "bayes_tune.Rda")
 
 The search is done, let's take a look at the results
 
-```{r eval = TRUE}
+```{r, eval = TRUE, results = TRUE}
 bayes_tune %>% 
   collect_metrics(summarize = FALSE) %>% 
+  dplyr::select(-.estimator) %>% 
   filter(.metric =="roc_auc") %>% 
   arrange(desc(.estimate)) %>% 
   datatable() %>% 
@@ -348,7 +349,8 @@ We can also collect predictions and plot a roc_auc curve.
 ```{r}
 pred_rf <-
   base_rf_fit %>% 
-  collect_predictions()
+  collect_predictions() %>% 
+  mutate(algo = "Basic RF")
 
 ```
 
@@ -414,5 +416,59 @@ logistic_tune <-
                                       allow_par = TRUE,
                                       parallel_over = "everything"))
 save(logistic_tune, file = "logistic_tune.Rda")
+
+
+```
+
+```{r, eval = TRUE, results = TRUE}
+logistic_tune %>% 
+  collect_metrics(summarize = FALSE) %>% 
+  dplyr::select(-.estimator) %>% 
+  filter(.metric =="roc_auc") %>% 
+  arrange(desc(.estimate)) %>% 
+  datatable() %>% 
+  formatRound(columns = ".estimate",
+              digits = 3)
+```
+
+```{r}
+pca_logistic_tuned_workflow <-
+  workflow() %>% 
+  add_recipe(rec_pca) %>% 
+  add_model(logistic_spec) %>% 
+  finalize_workflow(logistic_tune %>%
+                      extract_workflow_set_result("pca_logistic") %>%
+                      select_best(metric = "roc_auc"))
+
+pca_logistic_fit <-
+  pca_logistic_tuned_workflow %>% 
+  last_fit(data_split)
+
+pca_logistic_fit %>% collect_metrics()
+
+pred_logistic <-
+  pca_logistic_fit %>% 
+  collect_predictions() %>% 
+  mutate(algo = "PCA Logistic")
+
+pred_logistic %>% 
+  roc_curve(outcome, .pred_mutagen) %>% 
+  autoplot()
+
+```
+
+
+```{r}
+results <-
+  bind_rows(pred_rf, pred_logistic)
+```
+
+```{r, eval = TRUE, results = TRUE, preview = TRUE}
+results %>% 
+  group_by(algo) %>% 
+  roc_curve(outcome, .pred_mutagen) %>% 
+  autoplot() +
+  theme(legend.position = "bottom") +
+  theme_bw()
 ```
 
