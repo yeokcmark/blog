@@ -420,6 +420,8 @@ save(logistic_tune, file = "logistic_tune.Rda")
 
 ```
 
+The performance on training data isnt too shabby.
+
 ```{r, eval = TRUE, results = TRUE}
 logistic_tune %>% 
   collect_metrics(summarize = FALSE) %>% 
