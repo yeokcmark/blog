@@ -76,18 +76,17 @@ This is a "wide" data set, with `r ncol(data)` columns and `r nrow(data)` rows. 
 
 There is no missing data, so we do not have to address it in a recipe step. I will skip the EDA portion, and move straight into splitting the data.
 
+A note for those who intend to follow along, or make use of this dataset. It is computationally intensive. My desktop running a ryzen 3950X with 64gb ram ran `first_tune` in approx 4 hours. Subsequently, 10 iterations of `tune_bayes` took approx 12 hours.
+
 ### Splitting the Data
 
 I split the data into a training and a test set, strata by outcome. I also create a cross validation dataset for tuning hyper-parameters.
-
-As this dataset is quite large, and I do not have sufficient computing resources to tune it, I will use `slice_sample` and work on only 20 percent of the dataset.
 
 ```{r}
 
 set.seed(2024030101)
 data_split <-
   data %>% 
-  #slice_sample(prop = 0.2) %>% 
   initial_split(strata = outcome)
 
 data_train <-
@@ -170,7 +169,7 @@ spec_rf <-
 
 ### Workflowset
 
-I created a workflowset, which will conveniently allow me to evaluate the rf model across both 2 recipes.
+I created a workflowset, which will conveniently allow me to evaluate the random forest model across both 4 recipes. It was necessary to set parameter ranges for the various hyper-parameters that were going to be tuned. I ran into errors without this step.
 
 ```{r}
 
@@ -264,7 +263,7 @@ first_tune %>%
               digits = 3)
 ```
 
-We see that the best performing model is a random forest model with a base recipe. It has a roc_auc score of 0.900. Let's take a look at its hyper-parameters. I'm surprised that none of the other recipes made in into the top 10 positions. The best recipe rf combination was `pca_rf` with a roc_auc score of 0.87.
+We see that the best performing model is a random forest model with a base recipe. It has a roc_auc score of 0.900. Let's take a look at its hyper-parameters. I'm surprised that none of the other recipes made in into the top 10 positions. The next best recipe rf combination was `pca_rf` with a roc_auc score of 0.87.
 
 ```{r}
 first_tune_param <-
@@ -309,7 +308,7 @@ bayes_tune <-
 save(bayes_tune, file = "bayes_tune.Rda")
 ```
 
-The search is done, let's take a look at the results
+The search is "done". Well, I actually ended it early as I got tired of waiting. My PC had already been on for over 36 hours and electricity is expensive! Let's take a look at the results.
 
 ```{r, eval = TRUE, results = TRUE}
 bayes_tune %>% 
@@ -420,7 +419,7 @@ save(logistic_tune, file = "logistic_tune.Rda")
 
 ```
 
-The performance on training data isnt too shabby.
+The performance on training data isnt too shabby, and it actually favored the `rec_pca` recipe. It achieved a roc_auc of 0.912.
 
 ```{r, eval = TRUE, results = TRUE}
 logistic_tune %>% 
@@ -432,6 +431,8 @@ logistic_tune %>%
   formatRound(columns = ".estimate",
               digits = 3)
 ```
+
+Next, I for the model and evaulated its performance on the test data.
 
 ```{r}
 pca_logistic_tuned_workflow <-
@@ -459,6 +460,7 @@ pred_logistic %>%
 
 ```
 
+Similar to the previous exercise, the Logistic Regression model didn't perform as well on test data. Here's a plot of both roc_auc curves.
 
 ```{r}
 results <-
