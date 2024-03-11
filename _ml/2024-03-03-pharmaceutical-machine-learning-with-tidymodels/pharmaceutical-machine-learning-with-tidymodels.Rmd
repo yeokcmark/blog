@@ -6,17 +6,17 @@ date: 2024-03-03
 categories:
   - classification
   - random forest
+  - logistic regression
   - tune_grid
   - tune_bayes
+  - pca
 output:
   distill::distill_article:
     toc: true
     toc_depth: 6
     toc_float: true    
     self_contained: false
-editor_options: 
-  chunk_output_type: console
-draft: True
+
 ---
 ```{css, echo = FALSE}
 d-byline {
