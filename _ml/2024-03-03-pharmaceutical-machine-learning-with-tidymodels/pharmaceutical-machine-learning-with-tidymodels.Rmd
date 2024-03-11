@@ -432,7 +432,7 @@ logistic_tune %>%
               digits = 3)
 ```
 
-Next, I for the model and evaulated its performance on the test data.
+Next, I evaluated its performance on the test data.
 
 ```{r}
 pca_logistic_tuned_workflow <-
