@@ -1,5 +1,18 @@
-pacman::p_load("tidyverse", "tidymodels", "broom", 
-               "highcharter", "psych", "factoextra")
+pacman::p_load("tidyverse", #for tidy data science practice
+               "tidymodels", "workflows", "finetune", "themis", "embed", "fastICA", "dimRed", "uwot", "butcher", # for tidy machine learning
+               "pacman", #package manager
+               "devtools", #developer tools
+               "Hmisc", "skimr", "broom", "modelr",#for EDA
+               "jtools", "huxtable", "interactions", # for EDA
+               "ggthemes", "ggstatsplot", "GGally",
+               "scales", "gridExtra", "patchwork", "ggalt", "vip",
+               "ggstance", "ggfortify", # for ggplot
+               "DT", "plotly", #interactive Data Viz
+               # Lets install some ML related packages that will help tidymodels::
+               "usemodels", "poissonreg", "agua", "sparklyr", "dials",#load computational engines
+               "doParallel", # for parallel processing (speedy computation)
+               "ranger", "xgboost", "glmnet", "kknn", "earth", "klaR", "discrim", "naivebayes", "baguette", "kernlab",#random forest
+               "janitor", "lubridate")
 
 df <- read_csv("mutagen.csv")
 skim(data)
