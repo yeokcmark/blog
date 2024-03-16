@@ -20,7 +20,7 @@ output:
     toc_depth: 6
     toc_float: true    
     self_contained: false
-    draft: true
+draft: true
 editor_options: 
   chunk_output_type: console
   markdown: 

@@ -7,7 +7,7 @@
     <description>my jouRney in R
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Wed, 06 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 07 Mar 2024 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Using ML to predict customer attrition</title>
       <link>https://yeokcmark.netlify.app/ml/2024-03-07-using-ml-to-predict-customer-attrition</link>
@@ -19,8 +19,22 @@
       <category>knn</category>
       <category>xgboost</category>
       <guid>https://yeokcmark.netlify.app/ml/2024-03-07-using-ml-to-predict-customer-attrition</guid>
-      <pubDate>Wed, 06 Mar 2024 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 07 Mar 2024 00:00:00 +0000</pubDate>
       <media:content url="https://yeokcmark.netlify.app/ml/2024-03-07-using-ml-to-predict-customer-attrition/using-ml-to-predict-customer-attrition_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1152" height="768"/>
+    </item>
+    <item>
+      <title>Pharmaceutical machine learning with tidymodels</title>
+      <link>https://yeokcmark.netlify.app/ml/2024-03-03-pharmaceutical-machine-learning-with-tidymodels</link>
+      <description>Use Machine Learning to develop a model to determine if a proposed drug could be a mutagen.</description>
+      <category>classification</category>
+      <category>random forest</category>
+      <category>logistic regression</category>
+      <category>tune_grid</category>
+      <category>tune_bayes</category>
+      <category>pca</category>
+      <guid>https://yeokcmark.netlify.app/ml/2024-03-03-pharmaceutical-machine-learning-with-tidymodels</guid>
+      <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/ml/2024-03-03-pharmaceutical-machine-learning-with-tidymodels/pharmaceutical-machine-learning-with-tidymodels_files/figure-html5/unnamed-chunk-9-1.png" medium="image" type="image/png" width="1152" height="768"/>
     </item>
     <item>
       <title>using machine learning to predict risk of type2 diabetes</title>
