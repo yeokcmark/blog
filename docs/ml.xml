@@ -7,7 +7,18 @@
     <description>my jouRney in R
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Thu, 07 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 25 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Exploring Principal Component Analysis with tidymodels and prcomp</title>
+      <link>https://yeokcmark.netlify.app/ml/2024-03-26-exploring-principal-component-analysis-with-tidymodels-and-prcomp</link>
+      <description>We ran out of time during class due to the immense amount of material that needed to be covered. Hence, these assessment questions became homework assignments. Within, you will find explorations of PCA using the tidymodel way, as well as using prcomp from Base R.</description>
+      <category>PCA</category>
+      <category>tidymodels</category>
+      <category>prcomp</category>
+      <guid>https://yeokcmark.netlify.app/ml/2024-03-26-exploring-principal-component-analysis-with-tidymodels-and-prcomp</guid>
+      <pubDate>Mon, 25 Mar 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/ml/2024-03-26-exploring-principal-component-analysis-with-tidymodels-and-prcomp/exploring-principal-component-analysis-with-tidymodels-and-prcomp_files/figure-html5/unnamed-chunk-4-1.png" medium="image" type="image/png" width="1152" height="768"/>
+    </item>
     <item>
       <title>Using ML to predict customer attrition</title>
       <link>https://yeokcmark.netlify.app/ml/2024-03-07-using-ml-to-predict-customer-attrition</link>
