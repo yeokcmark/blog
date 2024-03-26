@@ -398,7 +398,7 @@ housing_PCA %>%
 
 Not sure how much I can see from the above plot :( Let's try something else
 
-```{r}
+```{r, preview = TRUE}
 housing_PCA %>% 
   tidy(matrix = "scores") %>% 
   filter(PC <= 2) %>% 

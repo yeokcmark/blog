@@ -7,7 +7,7 @@
     <description>my jouRney in R
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Mon, 25 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 26 Mar 2024 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Exploring Principal Component Analysis with tidymodels and prcomp</title>
       <link>https://yeokcmark.netlify.app/ml/2024-03-26-exploring-principal-component-analysis-with-tidymodels-and-prcomp</link>
@@ -16,8 +16,8 @@
       <category>tidymodels</category>
       <category>prcomp</category>
       <guid>https://yeokcmark.netlify.app/ml/2024-03-26-exploring-principal-component-analysis-with-tidymodels-and-prcomp</guid>
-      <pubDate>Mon, 25 Mar 2024 00:00:00 +0000</pubDate>
-      <media:content url="https://yeokcmark.netlify.app/ml/2024-03-26-exploring-principal-component-analysis-with-tidymodels-and-prcomp/exploring-principal-component-analysis-with-tidymodels-and-prcomp_files/figure-html5/unnamed-chunk-4-1.png" medium="image" type="image/png" width="1152" height="768"/>
+      <pubDate>Tue, 26 Mar 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/ml/2024-03-26-exploring-principal-component-analysis-with-tidymodels-and-prcomp/exploring-principal-component-analysis-with-tidymodels-and-prcomp_files/figure-html5/unnamed-chunk-16-1.png" medium="image" type="image/png" width="1152" height="768"/>
     </item>
     <item>
       <title>Using ML to predict customer attrition</title>
