@@ -105,10 +105,11 @@ spec_rf <-
 base_set <- 
   workflow_set (
     list(rec_pc4 = rec_pc4,
-         rec_pc8 = rec_pc8,
-         rec_pc20 = rec_pc20,
-         rec_pc50 = rec_pc50,
-         rec_pc124 = rec_pc124), #preprocessor
+         rec_pc8 = rec_pc8),
+         # ,
+         # rec_pc20 = rec_pc20,
+         # rec_pc50 = rec_pc50,
+         # rec_pc124 = rec_pc124), #preprocessor
     list(rf = spec_rf), #model
     cross = TRUE) #default is cross = TRUE
 
@@ -148,10 +149,11 @@ param_pc124 <-
 base_set <-
   base_set %>% 
   option_add(param_info = param_pc4, id = "rec_pc4_rf") %>% 
-  option_add(param_info = param_pc8, id = "rec_pc8_rf") %>% 
-  option_add(param_info = param_pc20, id = "rec_pc20_rf") %>% 
-  option_add(param_info = param_pc50, id = "rec_pc50_rf") %>% 
-  option_add(param_info = param_pc124, id = "rec_pc124_rf")
+  option_add(param_info = param_pc8, id = "rec_pc8_rf")
+# %>% 
+#   option_add(param_info = param_pc20, id = "rec_pc20_rf") %>% 
+#   option_add(param_info = param_pc50, id = "rec_pc50_rf") %>% 
+#   option_add(param_info = param_pc124, id = "rec_pc124_rf")
 
 
 set.seed(2024030302)
@@ -172,7 +174,7 @@ first_tune <-
                                       allow_par = TRUE,
                                       parallel_over = "everything"))
 
-
+first_tune %>% extract_workflow_set_result()
 
 
 

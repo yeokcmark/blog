@@ -351,6 +351,8 @@ data %>%
   arrange(desc(abs(estimate)))
 ```
 
+A number of features are highly correlated. This will have to be addressed in a recipe step.
+
 ```{r}
 
 # split data
