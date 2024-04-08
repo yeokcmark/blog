@@ -1,0 +1,426 @@
+---
+title: "Exploring Principal Component Analysis with tidymodels and prcomp"
+description: |
+  We ran out of time during class due to the immense amount of material that needed to be covered. Hence, these assessment questions became homework assignments. Within, you will find explorations of PCA using the tidymodel way, as well as using prcomp from Base R.
+date: 2024-03-26
+categories:
+  - PCA
+  - tidymodels
+  - prcomp
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 6
+    toc_float: true    
+    self_contained: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{css, echo = FALSE}
+d-byline {
+  display: none;
+  margin:0;
+}
+
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(results = TRUE, echo = TRUE, eval = TRUE, fig.width = 6, layout="l-body-outset")
+```
+
+### Introduction
+
+There are 4 questions to be answered. I didn't list them here, but if you follow along, I've explored most concepts of PCA using the `tidymodel` way, as well as using `prcomp` from Base R.
+Note that aesthetics were NOT a priority for me - hence most of the plots could definitely be improved upon.
+
+### Set Dependencies and Import Data
+
+Let's begin by importing the necessary packages and data.
+
+```{r, eval = TRUE}
+rm(list = ls())
+pacman::p_load(tidyverse, # tidy DS
+               tidymodels, # tidy ML
+               skimr, GGally, Hmisc, broom, modelr, ggstatsplot, # EDA 1
+               scales, ggthemes, gridExtra, # ggplot2::
+               DT, # for interactive data display
+               janitor, themis # recipes::
+)
+```
+
+### Question 1:
+
+Load the data. We see that "Type" is probably an encoding for different types of wine with 3 levels. Change to a factor.
+
+
+```{r}
+wine <- read_csv("wine.csv")
+skim(wine)
+wine <-
+  wine %>% 
+  mutate(Type = as.factor(Type))
+
+```
+
+For the EDA portion, let's do a histogram to see the distribution of wine by alcalinity. I will also do a scatter plot to explore the relationship between alcalinity and color.
+
+```{r}
+wine %>% 
+  ggplot(aes(x = Alcalinity)) +
+  geom_histogram()
+
+# probably no relationship
+wine %>% 
+  ggplot(aes(x = Color,
+             y = Alcalinity)
+         ) +
+  geom_smooth(method = "lm",
+              formula = y~x,
+              color = "grey70",
+              se = F
+              ) +
+  geom_point(aes(color = Alcohol),
+             alpha = 0.7) +
+  theme_bw()
+
+```
+
+Normalize the dataset and execute PCA using the `tidymodels` framework.
+
+```{r}
+# tidy models way
+rec_wine <-
+  recipe(formula = ~.,
+         data = wine) %>% 
+  # change roles to "id", instead could use step_rm to completely remove
+  update_role(Type,
+              new_role = "id") %>% 
+  step_zv(all_predictors()) %>% 
+  step_normalize(all_predictors()) %>% 
+  step_pca(all_predictors(), id="pca_wine", threshold = 0.9)
+
+prep_wine <- # note that PCA is step 3
+  rec_wine %>% 
+  prep(verbose = T)
+
+prep_wine %>% 
+  tidy(id = "pca_wine", type = "variance") %>% 
+  print(n = nrow(.))
+
+```
+
+For the wine dataset, PC1 captures 36.2% of the variance and PC2 captures 19.2 percent of the variance in the dataset. Cumulative, that's 55.4 percent of the dataset. It looks like we will need more PCs. To achieve 90% data "coverage", we will need 8 principal components.
+
+```{r}
+tidy_wine_pca_loadings <-
+  prep_wine %>% 
+  tidy(id = "pca_wine")
+
+# plot the loadings for first 8 PCs
+tidy_wine_pca_loadings %>% 
+  filter(component %in% c(paste0("PC", 1:8))) %>% 
+  ggplot (aes(x = value,
+              y = terms,
+              fill = terms
+              )
+          ) +
+  geom_col(show.legend = F) +
+  facet_wrap(.~ component,
+             ncol = 2) +
+  theme_bw()
+
+```
+
+### Question 2:
+Load the bc dataset and check for any missing values.
+
+Exclude the categorical variable, normalize the remaining data, and run PCA using tidymodels::.
+
+Interpret the loadings of the first two principal components. What do these loadings tell us about the data?
+
+Visualize the PCA results, with points colored by Class. Can PCA help differentiate between benign and malignant samples based on the first two principal components?
+
+Load the data.
+
+```{r}
+bc <- read_csv("bc.csv")
+skim(bc)
+
+```
+
+16 missing values in feature `Bare.nucleoi`. I will use `step_impute_knn` to impute the missing values.
+
+```{r}
+rec_bc <-
+  recipe(formula = ~.,
+         data = bc) %>% 
+  # change roles to "id", instead could use step_rm to completely remove
+  update_role(Class, Id,
+              new_role = "id") %>% 
+  step_zv(all_predictors()) %>% 
+  step_impute_knn(Bare.nuclei) %>% 
+  step_normalize(all_predictors()) %>% 
+  step_pca(all_predictors(), id="pca_bc", threshold = 0.9)
+
+prep_bc <-
+  rec_bc %>% 
+  prep(verbose = T)
+
+tidy_bc_pca_loadings <-
+  prep_bc %>% 
+  tidy(id = "pca_bc")
+
+# lets make a plot of PC1 and PC2
+tidy_bc_pca_loadings %>% 
+  filter(component %in% c(paste0("PC", 1:2))) %>% 
+  ggplot (aes(x = value,
+              y = terms,
+              fill = terms
+              )
+          ) +
+  geom_col(show.legend = F) +
+  facet_wrap(.~ component,
+             ncol = 2) +
+  theme_bw()
+
+```
+
+In PC1, all terms have negative loading values. In PC2, "Mitoses" is dominant in its effects. That's interesting, lets examine a scatter plot. This is "extra credit".
+
+```{r}
+prep_bc %>% 
+  juice() %>% 
+  ggplot(aes(x = PC1,
+         y = PC2,
+         color = Class)) + # can change to cut, or color as well
+  geom_point(alpha = 0.3)+
+  labs(caption = "Benign tumors tend to have positive PC1 loadings, and are centered close to 0 on PC2 loadings")+
+  theme(legend.position = "bottom") +
+  theme_bw()
+
+```
+
+
+### Question 3:
+
+Load the diamonds dataset and check the summary statistics of each variable.
+
+Select only the numeric variables, normalize the data, and then perform PCA using tidymodels::.
+
+How do you interpret the number of principal components? Do you think two principal components are sufficient to capture the major patterns in this dataset?
+
+Generate a scatter plot of the first two principal components. Can you identify any clusters or outliers in the data?
+
+
+Import the data and conduct brief EDA.
+
+```{r}
+diamonds <- read_csv("diamonds.csv")
+
+# change character to factor
+diamonds <-
+  diamonds %>% 
+  mutate_if(is.character, as.factor)
+
+# both summary and skim provide summary statistics
+summary(diamonds)
+skim(diamonds)
+
+```
+
+Perform PCA the `tidymodel` way. As we can see from the summary table, 2 PCs cover about 86.4% of the data, while 3 PCs cover about 96.3%. Hence, if we use 90% as the threshold, 3 PCs would be sufficient.
+
+
+```{r}
+# tidy models way
+rec_diamonds <-
+  recipe(formula = ~.,
+         data = diamonds) %>% 
+  # change roles to "id", instead could use step_rm to completely remove
+  update_role(cut, color, clarity,
+              new_role = "id") %>% 
+  step_zv(all_predictors()) %>% 
+  step_normalize(all_predictors()) %>% 
+  step_pca(all_predictors(), id="pca", threshold = 0.9)
+
+prep_diamond <- # note that PCA is step 3
+  rec_diamonds %>% 
+  prep(verbose = T)
+
+# to obtain loadings. Here you're telling tidy to tidy the step of recipe with id=pca
+tidy_diamond_pca_loadings <-
+  prep_diamond %>% 
+  tidy(id = "pca") %>% 
+  pivot_wider(id_cols = c(terms, id),
+              names_from = component,
+              values_from = value)
+
+# this also obtains loadings. Here you are tidy-ing the 3rd step of the recipe
+prep_diamond %>% tidy(3)
+
+# this is how you "extract" standard deviation, variance, and cumulative from a prep recipe using the tidymodels way
+# info is stored in a list, so you need to go inside and "dig" for it
+prep_diamond$steps[[3]]$res %>% summary()
+
+#this will get you similar information, as a tibble, so you can make a screeplot
+diamond_variance <-
+  prep_diamond %>% 
+  tidy(id = "pca", type = "variance") %>% 
+  print(n = nrow(.))
+
+## basic scree plot
+diamond_variance %>% 
+  filter(terms == "percent variance") %>% 
+  ggplot(aes(x = component,
+             y = value)
+         ) +
+  geom_col() +
+  theme_bw()
+
+```
+
+Scatter plot of PC1 and PC2.  We can see that outliers exist.
+
+```{r}
+# when you juice a prep recipe, you get the individual data and their values on the principal components. You can use this to  make a scatter plot
+juice_diamonds <-
+  prep_diamond %>% 
+  juice()
+
+# this plot shows individual diamonds plotted on the new scale PC1, PC2
+juice_diamonds %>% 
+  ggplot(aes(x = PC1,
+         y = PC2,
+         color = clarity)) + # can change to cut, or color as well
+  geom_point(alpha = 0.3)+
+  # here we use geom text to label potential outliers by color
+  geom_text(data = juice_diamonds %>% 
+              filter(PC1 > 10 | PC1 < -5 | PC2 > 7 | PC2 < -7),
+            aes(label = color),
+            check_overlap = T, 
+            color = "black",
+            size = 2) +
+  theme_bw()+
+  theme(legend.position = "bottom") 
+```
+
+### Question 4:
+
+Load the housing dataset and investigate its correlations.
+
+```{r}
+housing <- read_csv("housing.csv")
+skim(housing)
+## chas appears to be a binary feature. Will exclude in correlation analysis
+
+housing %>% 
+  dplyr::select(-chas) %>% 
+  as.matrix(.) %>% 
+  Hmisc::rcorr(.) %>% 
+  tidy() %>% 
+  mutate(absCorr = abs(estimate)) %>% 
+  dplyr::select(column1, column2, absCorr) %>% 
+  datatable() %>% 
+  formatRound(columns = "absCorr",
+              digits = 3)
+```
+
+Since I've already done 3 examples using `tidymodels` method, for Question 4, I will practice using `prcomp` for the PCA explorations.
+
+```{r}
+##check for NA
+housing %>% 
+  map_dbl(
+    function (x) sum(is.na(x))
+  )
+housing_PCA <-
+  housing %>% 
+  prcomp(scale = T)
+
+# we can use tidy(matrix = "xxxx") to get some useful info
+
+# self explanatory, we obtain loadings
+housing_PCA %>% 
+  tidy(matrix = "loadings")
+
+# self explanatory again, except you need to square the std.dev to get eigenvalues
+
+scale <- 10
+housing_PCA %>% 
+  tidy(matrix = "eigenvalues") %>% 
+  mutate(eigenvalues = std.dev^2) %>% 
+#we can continue to do a scree plot. Lets put in some effort and do a SUPER nice one
+  slice_max(order_by = percent, n = 10) %>% 
+  ggplot(aes(x = PC)
+         ) +
+  geom_point(aes(y = eigenvalues,
+                 size = eigenvalues),
+             color = "dodgerblue",
+             show.legend = F
+             ) +
+  geom_line(aes(y = eigenvalues),
+            color = "tomato3",
+            linewidth = 1)+ 
+  geom_col(aes(y = percent*scale)
+           ) +
+  scale_y_continuous(sec.axis = sec_axis(~./scale, name="percent")) +
+  theme_bw()+
+  labs(title = "A nicer scree plot - Housing PCA")
+  theme(legend.position = "none") 
+  
+
+# Same as doing this
+housing_PCA %>% 
+  tidy(matrix = "scores")
+
+```
+
+In order to achieve a threshold of 90%, I will need 8 principal components.
+PC1 explains 46.8 percent of the variance, while PC2 explains 11.8 percent. Cumulatively, PC1 and PC2 explain about 58.5% of the variance.
+
+Let's visualize the PCA results.
+
+```{r}
+housing_PCA %>% 
+  tidy(matrix = "loadings") %>%
+  filter(PC %in% c(1:8)) %>% 
+  ggplot (aes(x = value,
+              y = column,
+              fill = column
+              )
+          ) +
+  geom_col(show.legend = F) +
+  facet_wrap(.~ PC,
+             ncol = 2) +
+  theme_bw()
+```
+
+Not sure how much I can see from the above plot :( Let's try something else
+
+```{r, preview = TRUE}
+housing_PCA %>% 
+  tidy(matrix = "scores") %>% 
+  filter(PC <= 2) %>% 
+  pivot_wider(id_cols = "row",
+              names_from = PC,
+              names_prefix = "PC",
+              values_from = value) %>% 
+  cbind(housing) %>% 
+  ggplot(aes(x = PC1,
+             y = PC2,
+             color = age)) +
+  geom_point() +
+  guides(color = guide_colourbar(barwidth = 1,
+                                barheight = 10))+
+  labs(caption = "Older properties tend to have positive loadings in PC1,\n
+       while newer properties tend to have negative PC1 & PC2 loadings")+
+  theme_bw()
+```
+
+This is the end of the homework assignment.
+```{r}
+save.image("group_assignment3.RData")
+```
+
+
