@@ -1,7 +1,7 @@
 ---
 title: "predicting network attacks using machine learning"
 description: |
-  A short description of the post.
+  In this exercise, I try and predict network attacks using machine learning algorithm. Since I am also learning about PCA, I've included some work on principal component analysis as well.
 date: 2024-03-21
 categories:
   - classification
@@ -69,10 +69,10 @@ pacman::p_load("tidyverse", "tidyclust", "factoextra",#for tidy data science pra
                "doParallel", # for parallel processing (speedy computation)
                "ranger", "xgboost", "glmnet", "kknn", "earth", "klaR", "discrim", "naivebayes", "baguette", "kernlab", "lightgbm",#random forest
                "janitor", "lubridate")
+load("network.RData")
 ```
 
 ```{r}
-
 # import  data
 #data <- read_csv("network_data.csv")
 set.seed(2024032101)
@@ -184,13 +184,13 @@ data_PCA <-
 
 Let's use plot() to take a look at the scree plot.
 
-```{r}
+```{r, eval = TRUE}
 plot (data_PCA, main = "")
 ```
 
 That doesn't look very informative. How's about we make our own scree plot using ggplot?
 
-```{r}
+```{r, eval = TRUE}
 scale<-50
 data_PCA %>% 
   tidy(matrix = "eigenvalues") %>% 
@@ -215,7 +215,7 @@ data_PCA %>%
 
 We can also print a summary table of the eigenvalues.
 
-```{r}
+```{r, eval = TRUE}
 data_PCA %>% 
   tidy(matrix = "eigenvalues") %>% 
   mutate(eigenvalues = std.dev^2) %>% 
@@ -229,7 +229,7 @@ We can see that if we reduce the data to 9 principal components, it would be rep
 
 Let's examine what each feature contributed to the top 5 principal components.
 
-```{r}
+```{r, eval = TRUE}
 data_PCA %>% 
   tidy(matrix = "loadings") %>% 
   filter(PC < 6) %>% 
@@ -245,7 +245,7 @@ data_PCA %>%
 
 Finally, let's make a plot of PC1 vs PC2.
 
-```{r}
+```{r, eval = TRUE}
 
 data_PCA %>% 
   tidy(matrix = "loadings") %>% 
@@ -449,8 +449,6 @@ base_set <-
 
 ```
 
-
-
 ### Tune hyper-parameters using `tune_grid`
 
 ```{r}
@@ -474,7 +472,6 @@ first_tune <-
 save(first_tune, file = "first_tune.Rda")
 ```
 
-
 Once tuning is done, we can use `autoplot` to view the results.
 
 ```{r, eval = TRUE, preview = TRUE}
@@ -484,7 +481,7 @@ autoplot(first_tune, select_best = F
 
 Since this is a multi-classification problem, we are interested in `accuracy` as a metric. Let's rank the workflows by accuracy, and use `geom_text` to label their  `wflow_id`.
 
-```{r}
+```{r, eval = TRUE}
 autoplot(
    first_tune,
    rank_metric = "accuracy",  # <- how to order models
@@ -499,7 +496,7 @@ autoplot(
 
 We can also view the results in a table.
 
-```{r, eval = TRUE, results = TRUE}
+```{r, eval = TRUE, results=TRUE}
 first_tune %>% 
   workflowsets::rank_results(rank_metric = "accuracy", select_best = T) %>% 
   filter(.metric == "accuracy") %>% 
@@ -511,35 +508,39 @@ first_tune %>%
 
 The results are very close, with base recipe random forest and lightgbm models performing almost on par. PCA recipe based models came in fourth. Let's visualize what tuning parameters were used for the base_recipe_rf model.
 
-```{r}
+```{r, eval = TRUE}
 autoplot(first_tune, id = "base_recipe_rf", metric = "accuracy")
 ```
 
 We can also extract this set of hyper-parameters for use later. First, you `extract_workflow_set_result` and specify the `id` using wflow_if. Then, use `select_best` with metric = "accuracy" to extract tuned parameters.
 
-```{r}
+```{r, eval = TRUE, results=TRUE}
 tparam_base_rf <-
   first_tune %>% 
   # extract the workflow_set results by specifying its id
   extract_workflow_set_result(id = "base_recipe_rf") %>% 
   select_best(metric = "accuracy")
+
+tparam_base_rf
 ```
 
 I wonder how many principal components were chosen as a result of tuning. Let's find out. First, we visualize the results
 
-```{r}
+```{r, eval = TRUE}
 autoplot(first_tune, id = "PCA_recipe_rf", metric = "accuracy")
 
 ```
 
 We can always extract the parameters as well.
 
-```{r}
+```{r, eval = TRUE, results=TRUE}
 tparam_PCA_rf <-
   first_tune %>% 
   # extract the workflow_set results by specifying its id
   extract_workflow_set_result(id = "PCA_recipe_rf") %>% 
   select_best(metric = "accuracy")
+
+tparam_PCA_rf
 ```
 
 6 principal components were chosen as being able to achieve the best results.
@@ -659,14 +660,17 @@ pred_all <-
 
 We can draw a confusion matrix using the predictions we've gathered, using `conf_mat` and `autoplot`. Alternatively, we can easily make a plot using `ggplot`.
 
-
-```{r}
+```{r, eval = TRUE}
 pred_all %>% 
   filter(algo == "Base RF") %>% 
   conf_mat(estimate = .pred_class, # y-hat
            truth = attack_type) %>% 
   autoplot(type = "heatmap") +
   coord_equal()
+
+```
+
+```{r, eval = TRUE}
 
 pred_all %>% 
   filter(algo == "Base RF") %>% 
@@ -687,15 +691,15 @@ pred_all %>%
             )+
   coord_equal() +
   guides(fill = guide_colourbar(barwidth = 1,
-                                barheight = 20)) +
-  theme(axis.text.x = element_text(size=rel(0.6)),
-        axis.text.y = element_text(size=rel(0.8)))
-  
+                                barheight = 10)) +
+  theme(axis.text.x = element_text(size=rel(0.6), angle = 90),
+        axis.text.y = element_text(size=rel(0.6)))
 ```
+
 
 It is also possible to plot `roc_auc` curves for each class.
 
-```{r}
+```{r, eval = TRUE}
 
 pred_all %>% 
   filter(algo == "Base RF") %>% 
@@ -712,7 +716,7 @@ pred_all %>%
 
 Which features were important in helping our algorithm determine if the network was likely under attack? Let's examine this.
 
-```{r}
+```{r, eval = TRUE, results = TRUE}
 vipplot_base_lgb <-
   model_base_lgb %>% 
   extract_fit_parsnip() %>% 
@@ -722,6 +726,11 @@ vipplot_base_lgb <-
        y = "Features of Importance",
        title = "Features of Importance - Base Recipe LGB") +
   theme_bw()
+
+vipplot_base_lgb
+```
+
+```{r, eval = TRUE, results = TRUE}
 
 vipplot_base_rf <-
   model_base_rf %>% 
@@ -733,7 +742,9 @@ vipplot_base_rf <-
        title = "Features of Importance - Base Recipe RF") +
   theme_bw()
 
+vipplot_base_rf
 ```
+
 
 The model based on base recipe Light GBM identified `fwd_pkts_payload_min`, `flow_iat_min`, `service`, `fwd_last_window_size` and `service_dns` as the top 5 important features used in determining attack type. Base RF was heavily dependent on features that were "payload" dependent, as well as `fwd_subflow_bytes`.
 
@@ -781,7 +792,6 @@ wf_km <-
   add_recipe(rec_km) %>% 
   add_model(spec_kmeans)
 
-  
 ```
 
 Let's use `tune_cluster` to determine the optimal number of clusters.
@@ -790,7 +800,6 @@ Let's use `tune_cluster` to determine the optimal number of clusters.
 set.seed(2024032104)
 
 # set up a grid for clusters
-# grid_num_clusters <- grid_regular(num_clusters(),levels = 10)
 grid_num_clusters <- tibble(num_clusters =  1L:20L)
 
 cl <- (detectCores()/2) - 1
@@ -805,6 +814,10 @@ tune_km <- tune_cluster(
   metrics = cluster_metric_set(sse_within_total, sse_total, sse_ratio)
 )
 
+
+```
+
+```{r, eval = TRUE}
 tune_km %>%
   collect_metrics() %>% 
   filter(.metric == "sse_ratio") %>%
@@ -815,22 +828,44 @@ tune_km %>%
   ylab("mean WSS/TSS ratio, over 10 folds") +
   xlab("Number of clusters") +
   scale_x_continuous(breaks = 1:20)
+```
 
+```{r, eval = TRUE, results = TRUE}
 tune_km %>% select_best(metric = "sse_ratio")
 ```
 
-Alternatively, we can do it the Base R way.
+Alternatively, we can do it the Base R way. Well, with a little help from "helper functions" from the `factoextra` package. There are 3 popular ways to determine optimal clusters. They are the Elbow method, Silhouette method, and Gap static. Let's explore all 3. We start by preparing the data.
 
 
-```{r}
-# rec_km <-
-#   recipe(formula = ~ fwd_pkts_payload_min + flow_iat_min + service + 
-#            fwd_subflow_bytes + fwd_last_window_size,
-#          data = data) %>% 
-#   # update_role(id, network_attack, proto, service, attack_type,
-#   #             id_orig_p, id_resp_p, new_role = "id") %>% 
-#   step_nzv(all_predictors())
+```{r, eval = TRUE}
+data_kmeans <-
+  data_train_juice %>% 
+  dplyr::select(-id, -network_attack, -proto, -service, -attack_type, -id_orig_p, -id_resp_p)
 
+fviz_nbclust(slice_sample(data_kmeans, prop = 0.2), kmeans, method = "wss")
+```
+
+My laptop ran out of memory when I ran `fviz_nbclust` with the full data, hence the next best option would be to try it with a random slice of the data. I tried 20 percent, and it still took over 15 minutes to run. The results show that 4 clusters is probably optimal.
+
+
+```{r, eval = TRUE}
+fviz_nbclust(slice_sample(data_kmeans, prop = 0.2), kmeans, method = "silhouette")
+```
+
+Using the Silhouette method, it was determined that 7 clusters were optimal.
+
+```{r, eval = TRUE}
+# compute gap statistic
+set.seed(2024032901)
+library(cluster)
+gap_stat <- clusGap(slice_sample(data_kmeans, prop = 0.2), FUN = kmeans, nstart = 25,
+                    K.max = 20, B = 50)
+
+fviz_gap_stat(gap_stat)
+```
+
+
+```{r, eval = TRUE}
 data_kmeans <-
   data_train_juice %>% 
   dplyr::select(-id, -network_attack, -proto, -service, -attack_type, -id_orig_p, -id_resp_p)
