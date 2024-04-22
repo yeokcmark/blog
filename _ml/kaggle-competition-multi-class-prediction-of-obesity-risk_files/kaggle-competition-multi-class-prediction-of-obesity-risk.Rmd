@@ -1,0 +1,580 @@
+---
+title: "Kaggle competition: Multi-Class Prediction of Obesity Risk"
+description: |
+  My first Kaggle competition. Wish me luck.
+date: 2024-04-17
+categories:
+  - PCA
+  - tidymodels
+  - classification
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 6
+    toc_float: true    
+    self_contained: false
+editor_options: 
+  chunk_output_type: console
+draft: False
+---
+
+```{css, echo = FALSE}
+d-byline {
+  display: none;
+  margin:0;
+}
+
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(results = FALSE, echo = TRUE, eval = FALSE, fig.width = 6, layout="l-body-outset")
+```
+
+### Introduction
+
+I'm currently in between Module 4 and Module 5 of my course. We've passed half way. Done with week 1's homework, and have about 2-3 weeks free before Module 5 in May. Looked around in Kaggle and came across this interesting dataset.
+
+The competition deadline closed on 1 Feb, so I will give it a shot to see how high up the leader-board I rank. This is my first Kaggle competition, wish me luck. The goal of this competition is to use various factors to predict obesity risk in individuals, which is related to cardiovascular disease. More information can be found by following this [link](https://www.kaggle.com/competitions/playground-series-s4e2/overview/abstract).
+
+### Set dependencies and import data
+```{r, eval = TRUE}
+rm(list=ls())
+pacman::p_load("tidyverse", #for tidy data science practice
+               "tidymodels", "workflows", "finetune", "themis", "embed", # for tidy machine learning
+               "pacman", #package manager
+               "devtools",#developer tools
+               "Hmisc", "skimr", "broom", "modelr",#for EDA
+               "jtools", "huxtable", "interactions", # for EDA
+               "ggthemes", "ggstatsplot", "GGally",
+               "scales", "gridExtra", "patchwork", "ggalt", "vip",
+               "ggstance", "ggfortify", # for ggplot
+               "DT", "plotly", #interactive Data Viz
+               # Lets install some ML related packages that will help tidymodels::
+               "usemodels", "poissonreg", "agua", "sparklyr", "dials", "bonsai",#load computational engines
+               "doParallel", # for parallel processing (speedy computation)
+               "ranger", "xgboost", "glmnet", "kknn", "earth", "klaR", "discrim", "naivebayes", "baguette", "kernlab", "lightgbm",#random forest
+               "janitor", "lubridate")
+
+## Load functions written by me ----
+# function to define model parameters----
+my_function_define_model_parameters <-
+  function(my_workflowset, my_data)
+  {
+    result_df <- list()
+    
+    for (i in 1:length(my_workflowset$wflow_id))
+    {
+      param_name <- paste0("param_", my_workflowset$wflow_id[i])
+      param <- 
+        my_workflowset %>% 
+        extract_workflow(id = my_workflowset$wflow_id[i]) %>% 
+        extract_parameter_set_dials() %>% 
+        finalize(my_data)
+      result_df[[i]] <-list(param_name, param)
+    }
+    return(result_df)
+  }
+
+# function to insert model parameters into workflowset
+
+my_function_insert_parameters <-
+  function (my_workflowset, list_of_parameters)
+  {
+    for (i in 1:length(my_workflowset$wflow_id))
+    {
+      my_workflowset <-
+        my_workflowset %>% 
+        option_add(param_info = pluck(list_of_parameters[[i]][2],1),
+                   id = my_workflowset$wflow_id[i])
+    }
+    
+    return (my_workflowset)
+    
+  }
+
+#### function to collect predictions
+my_function_collect_predictions <-
+  function(tune_workflowset, wflow_id_tbl)
+  {
+    pred_summary <- tibble()
+    
+    for (i in 1:nrow(wflow_id_tbl))
+    {
+      last_fit_pred <-
+        tune_workflowset %>% 
+        extract_workflow(id = as.character(wflow_id_tbl[i,1])) %>% 
+        finalize_workflow(tune_workflowset %>%
+                            extract_workflow_set_result(id = as.character(wflow_id_tbl[i,1])) %>% 
+                            select_best(metric = "roc_auc")) %>% 
+        last_fit(data_split) %>% 
+        collect_predictions() %>% 
+        dplyr::select(.pred_Yes,
+                      turnover) %>% 
+        mutate(algorithm = wflow_id_tbl[i,1])
+      
+      pred_summary<-bind_rows(pred_summary, last_fit_pred)
+      
+    }
+    return(pred_summary)
+  }
+```
+
+Start by importing the training data, check for missing values, check for imbalance. Thereafter, I get the data into the correct format (ie: change characters to factors), and check for correlation.
+
+```{r}
+
+# import split data
+set.seed(2024041701)
+data_train <- read_csv("train.csv")
+
+# check missing data
+table(is.na(data_train))
+
+# check imbalance
+data_train %>% count(NObeyesdad) %>% mutate(prop = n/sum(n))
+
+# get variables into correct class
+data_train <-
+  data_train %>% 
+  mutate_if(is.character, as.factor)
+
+# check correlation
+data_train %>%
+  select_if(is.numeric) %>%
+  as.matrix(.) %>%
+  rcorr() %>%
+  tidy() %>%
+  mutate(absCorr = abs(estimate)) %>%
+  arrange(desc(absCorr)) %>% 
+  dplyr::select(-estimate, -n, - p.value) %>% 
+  DT::datatable() %>% 
+  formatRound("absCorr", digits = 3)
+```
+
+Since there data is already split into training and test sets, there is no need to create an `initial_split`. Instead, we can create `v_folds`.
+
+```{r}
+data_fold <-
+  data_train %>% 
+  vfold_cv(v = 10, strata = NObeyesdad)
+```
+
+### Create recipes and models
+
+Next, we create a 2 recipes, a base recipe with Yeo Johnson transformation, normalizing numeric predictors, and "dummifying" nominal predictors, and a recipe for PCA,  and 5 models.
+
+```{r}
+rec_base <-
+  recipes::recipe(formula = NObeyesdad ~.,
+                  data = data_train) %>% 
+  update_role(id, new_role = "id") %>% 
+  step_nzv(all_predictors()) %>%  # near zero variance filter
+  step_YeoJohnson(all_numeric_predictors()) %>% 
+  step_normalize(all_numeric_predictors()) %>% 
+  step_dummy(all_nominal_predictors())
+
+rec_pca_threshold <-
+  recipes::recipe(formula = NObeyesdad ~.,
+                  data = data_train) %>% 
+  update_role(id, new_role = "id") %>% 
+  step_nzv(all_predictors()) %>%  # near zero variance filter
+  step_normalize(all_numeric_predictors()) %>% 
+  step_pca(all_numeric_predictors(), threshold = tune("pca_threshold")) %>% 
+  step_dummy(all_nominal_predictors())
+
+```
+
+```{r}
+
+# random forest
+spec_rf <-
+  rand_forest() %>% 
+  set_engine("ranger",
+             importance = "impurity") %>% 
+  set_mode("classification") %>% 
+  set_args(trees = tune("rf_trees"),
+           mtry = tune("rf_mtry"),
+           min_n = tune("rf_min_n"))
+
+# xgboost
+spec_xgb <-
+  boost_tree() %>% 
+  set_engine("xgboost") %>% 
+  set_mode("classification") %>% 
+  set_args(trees = tune("xgb_trees"),
+           tree_depth = tune("xgb_tree_depth"),
+           min_n = tune("xgb_min_n"),
+           loss_reduction = tune("xgb_loss_red"),
+           sample_size = tune("xgb_sample"),
+           mtry = tune("xgb_mtry"),
+           learn_rate = tune("xgb_learn"),
+           stop_iter = 10)
+
+## nnet
+spec_nnet <- 
+  mlp() %>% 
+  set_engine("nnet", MaxNWts = 2600) %>% 
+  set_mode("classification") %>% 
+  set_args(hidden_units = tune("nn_hidden"),
+           penalty = tune("nn_penalty"),
+           epochs = tune("nn_epochs")
+           )
+
+# lightgbm
+spec_lgb <-
+  boost_tree() %>%
+  set_engine("lightgbm") %>%
+  set_mode("classification") %>% 
+  set_args(trees = tune("lgbm_trees"),
+           min_n = tune("lgbm_min_n"),
+           tree_depth = tune("lgbm_tree_depth"),
+           learn_rate = tune("lgbm_learn"),
+           stop_iter = 10)
+
+#null
+spec_null <-
+  null_model() %>% 
+  set_mode("classification") %>% 
+  set_engine("parsnip")
+
+```
+
+### Define Metrics set
+
+The competition will be evaluated based on accuracy. In addition to that, I've added `roc_auc` and `f_meas`as part of the metric set.
+
+```{r}
+metric_model <-
+  metric_set(roc_auc,
+             f_meas,
+             accuracy)
+
+```
+
+### Create worflowset to evaluate recipes and models
+
+Tidymodels and workflowsets makes it easy to evalue multiple recipes and models at once.
+
+```{r}
+base_set <- 
+  workflow_set (
+    # list pre-processor recipes
+    list(base = rec_base,
+         pca_thresh = rec_pca_threshold
+         ),
+    # list models under evaluation
+    list(null = spec_null,
+         lgb = spec_lgb,
+         nn = spec_nnet,
+         rf = spec_rf,
+         xgb = spec_xgb
+         ),
+    cross = TRUE)
+
+model_parameters <-
+  my_function_define_model_parameters(base_set, data_train)
+
+base_set <-
+  my_function_insert_parameters(base_set, model_parameters)
+
+```
+
+### Tuning hyper-parameters
+
+Here is the fun part where you tune hyper-parameters. Sit back, relax, have a beverage of your choice. This could take a while.
+
+```{r}
+set.seed(2024041702)
+cl <- (detectCores()/2) - 1
+cores <- cl*2
+
+doParallel::registerDoParallel(cl, cores)
+
+first_tune <-
+  workflow_map(base_set,
+               fn = "tune_grid",
+               verbose = TRUE,
+               seed = 2024041702,
+               grid = 11,
+               resamples = data_fold,
+               metrics = metric_model,
+               control = control_grid(verbose = TRUE,
+                                      allow_par = TRUE,
+                                      parallel_over = "everything"))
+
+
+```
+I wonder which recipe-model combination gives the best results. I don't expect to be anywhere near the top 100, since I didn't put too much thought into the creation of recipes. But let's see...
+
+We can visualize the tuning results, as well as summarize it in a table.
+
+```{r}
+
+# Use autoplot to visualize results ----
+autoplot(first_tune, select_best = T) + 
+  theme_bw() + 
+  theme(legend.position = "bottom")
+
+first_tune %>% 
+  autoplot("accuracy", summarize = T) + 
+  theme(legend.position = "bottom")
+
+autoplot(
+  first_tune,
+  rank_metric = "accuracy",  # <- how to order models
+  metric = "accuracy",       # <- which metric to visualize
+  select_best = T     # <- one point per workflow
+) +
+  geom_text(aes(y = mean - 0.001, label = wflow_id), angle = 90, hjust = 1, check_overlap = T, size = 4) +
+  lims(x = c(1, 10),
+       y = c(0.15, 0.99)) +
+  theme(legend.position = "none")
+
+# Table of tune results ----
+first_tune %>% 
+  workflowsets::rank_results(rank_metric = "accuracy", select_best = T) %>% 
+  filter(.metric == "accuracy") %>% 
+  dplyr::select(wflow_id, mean, std_err, rank) %>% 
+  datatable() %>% 
+  formatRound(columns = c("mean", "std_err"),
+              digits = 5)
+
+```
+
+xgboost using the base recipe was the best model, with a mean accuracy score of 0.90794. Let's take a look at its hyper-parameters.
+
+```{r}
+first_tune %>% 
+  extract_workflow_set_result(id = "base_xgb") %>% 
+  select_best(metric = "accuracy")
+
+# autoplot of metrics vs tunable variables
+first_tune %>% 
+  extract_workflow_set_result(id = "base_xgb") %>% 
+  autoplot()
+```
+
+Let's see if the results can be improved with better hyper-parameter ranges. So far, we have a mean accuracy of 0.90794 with a standard error of 0.00125. That would rank me #592nd on the leader-board. :( Wow, this is a tough crowd. I clearly have lots to learn.
+
+```{r}
+wflow_xgb <-
+  first_tune %>% 
+  extract_workflow(id = "base_xgb")
+
+param_xgb <-
+  wflow_xgb %>% 
+  extract_parameter_set_dials() %>% 
+  finalize(data_train) %>% 
+  update(xgb_mtry = mtry(c(10L,25L)),
+         xgb_trees = trees(c(100L,2000L)),
+         xgb_min_n = min_n(c(20L,45L)),
+         xgb_tree_depth = tree_depth(c(2L,12L)),
+         xgb_learn = learn_rate(c(-1.6,-0.1)),
+         xgb_loss_red = loss_reduction(c(-5,2.5)),
+         xgb_sample = sample_prop(c(0.25, 0.9))
+         )
+
+grid_xgb <- grid_latin_hypercube(param_xgb, size = 20)
+```
+
+Let's tune again and see if the score improves.
+
+```{r}
+set.seed(2024041702)
+cl <- (detectCores()/2) - 1
+cores <- cl*2
+doParallel::registerDoParallel(cl, cores)
+
+xgb_tune <-
+  tune_grid(
+    object = wflow_xgb,
+    resamples = data_fold,
+    metrics = metric_model,
+    grid = grid_xgb,
+    control = control_grid(verbose = TRUE,
+                           allow_par = TRUE,
+                           parallel_over = "everything")
+    )
+
+xgb_tune %>% 
+  collect_metrics(summarize = TRUE) %>% 
+  filter(.metric == "accuracy") %>% 
+  arrange(-mean) %>% 
+  relocate(mean) %>% 
+  datatable() %>% 
+  formatRound(columns = c("mean", "std_err"),
+              digits = 5)
+```
+
+`accuracy` decreased to 0.90780. Let's see if we can improve the score further with simulated annealing.
+
+```{r}
+set.seed(2024041702)
+cl <- (detectCores()/2) - 1
+cores <- cl*2
+doParallel::registerDoParallel(cl, cores)
+
+xgboost_sim_anneal <-
+  tune_sim_anneal(
+    object = wflow_xgb,
+    resamples = data_fold,
+    iter = 500,
+    initial = xgb_tune,
+    metrics = metric_set(accuracy),
+    param_info = param_xgb,
+    control = control_sim_anneal(verbose = TRUE,
+                                 verbose_iter = TRUE,
+                                 no_improve = 50L,
+                                 allow_par = TRUE,
+                                 restart = 10L,
+                                 parallel_over = "everything")
+  )
+
+xgboost_sim_anneal %>%
+  collect_metrics() %>% 
+  filter(.metric == "accuracy") %>% 
+  arrange(-mean) %>% 
+  relocate(mean) %>% 
+  datatable() %>% 
+  formatRound(columns = c("mean", "std_err"),
+              digits = 5)
+```
+
+Simulated annealing was not able to find better results. I terminated tuning after 58 tries to save electricity. I don't think any further tuning will improve the current model. 
+
+Let's fit the model that we have onto the test data, and see if accuracy score improves. I'm not hopeful, I fear I might fall further down the leader board.
+
+```{r}
+data_test <-
+  read_csv("test.csv") %>% 
+  mutate_if(is.character, as.factor)
+
+model_xgb <-
+  workflow() %>% 
+  add_model(spec_xgb) %>% 
+  add_recipe(rec_base) %>% 
+  finalize_workflow(first_tune %>% 
+                      extract_workflow_set_result(id = "base_xgb") %>% 
+                      select_best(metric = "accuracy"))
+
+
+fit_xgb <-
+  model_xgb %>% 
+  fit(data_train)
+
+predict_xgb <-
+  fit_xgb %>% 
+  predict(data_test, type = c("class"))
+
+submission <-
+  cbind(
+    data_test %>% dplyr::select(id),
+    predict_xgb
+  ) %>% 
+  mutate(NObeyesdad = .pred_class) %>% 
+  dplyr::select(-.pred_class)
+
+write_csv(submission, "final_submission.csv")
+```
+
+Wow, my first submission got a score of 0.90895, ranking #342.
+
+For the fun of it, let's do something different. I shall create a new training set `data_train2` where I will create new features, rather than doing it the tidymodel way with `step_***`. For age, let's create a categorical variable, cutting by 10 year segments. In addition, rather than apply Yeo_Johnson transformation to all numeric variables in the recipe step, I will apply log10 transformation to age, interaction features `Age*Weight` and `Age*bmi`. Using height and weight, I created a new feature BMI. 
+
+I will also create a new recipe: `rec_basic` with only a few steps: step_nzv, step_normalize, and _step_dummy.
+
+
+```{r}
+data_train2 <-
+  data_train %>% 
+  mutate(bmi = Weight / (Height^2),
+         age_cat = cut(Age,
+                       breaks = c(0, 10, 20,30,40,50,60,70,80, Inf),
+                       include.lowest = TRUE,
+                       labels = c("1 to 10", "10 to 20", "20 to 30",
+                                  "30 to 40", "40 to 50", "50 to 60",
+                                  "60 to 70", "70 to 80", "80 and above"),
+                       ordered_result = TRUE),
+         age2 = Age^2,
+         log10_age = log10(Age),
+         age_weight = Age * Weight,
+         log10_age_weight = log10(age_weight),
+         age_bmi = Age * bmi,
+         log10_age_bmi = log10(age_bmi)
+         )
+
+rec_basic <-
+  recipes::recipe(formula = NObeyesdad ~.,
+                  data = data_train2) %>% 
+  update_role(id, new_role = "id") %>% 
+  step_nzv(all_predictors()) %>%  # near zero variance filter
+  step_normalize(all_numeric_predictors()) %>% 
+  step_dummy(all_nominal_predictors())
+
+
+```
+
+```{r}
+set.seed(2024041901)
+data_fold2 <-
+  #slice_sample(data_train2, prop = 0.001) %>% 
+  data_train2 %>% 
+  vfold_cv(v = 10, strata = NObeyesdad)
+
+base_set2 <- 
+  workflow_set (
+    # list pre-processor recipes
+    list(basic = rec_basic),
+    # list models under evaluation
+    list(null = spec_null,
+         xgb = spec_xgb,
+         lgb = spec_lgb,
+         nn = spec_nnet,
+         rf = spec_rf
+         ),
+    cross = TRUE)
+
+model_parameters2 <-
+  my_function_define_model_parameters(base_set2, data_train2)
+
+base_set2 <-
+  my_function_insert_parameters(base_set2, model_parameters2)
+
+cl <- (detectCores()/2) - 1
+cores <- cl*2
+
+doParallel::registerDoParallel(cl, cores)
+
+first_tune2 <-
+  workflow_map(base_set2,
+               fn = "tune_grid",
+               verbose = TRUE,
+               seed = 2024041901,
+               grid = 11,
+               resamples = data_fold2,
+               metrics = metric_model,
+               control = control_grid(verbose = TRUE,
+                                      allow_par = TRUE,
+                                      parallel_over = "everything"))
+
+first_tune2 %>% 
+    workflowsets::rank_results(rank_metric = "accuracy", select_best = T) %>% 
+  filter(.metric == "accuracy") %>% 
+  dplyr::select(wflow_id, mean, std_err, rank) %>% 
+  datatable() %>% 
+  formatRound(columns = c("mean", "std_err"),
+              digits = 5)
+
+
+
+```
+
+Despite creating additional features, my mean accuracy score did not improve. At this point, I'm not sure what else to do to improve my score. I know better feature engineering should help, but I do not have the experience to know what else I could do with the current dataset to get better features.
+
+Stay tuned, class next week. 
+
+```{r}
+#save.image("kaggle_obesity.RData")
+```
+
+
