@@ -8,8 +8,8 @@ pacman::p_load(tidyverse, # tidy DS
                scales, ggthemes, gridExtra, # ggplot2::
                DT, # for interactive data display
                janitor, themis, # recipes::
-               factoextra, cluster, NbClust, clevr, fossil,
-               tidyclust, ggradar)
+               factoextra, cluster, NbClust, clevr, fossil, dbscan,
+               tidyclust)
 
 
 # import split data
@@ -19,8 +19,12 @@ skim(data_train)
 # check missing data
 table(is.na(data_train))
 
+# 7 levels of obesity levels ie: 7 clusters
+unique(data_train$NObeyesdad)
+
+
 # lets try and do things outside tidymodels framework
-data <-
+df <-
   data_train %>% 
   # use dplyr way to create numeric data from character labels
   dplyr::mutate(Gender = case_when(Gender == "Female" ~ 0,
@@ -47,8 +51,18 @@ data <-
                                    MTRANS == "Bike" ~ 2,
                                    MTRANS == "Motorbike" ~ 3,
                                    MTRANS == "Automobile" ~ 4,
-                                   .default = as.integer(5))
-  ) %>% 
+                                   .default = as.integer(5)),
+                NObeyesdad = case_when(NObeyesdad == "Insufficient_Weight" ~ 0,
+                                       NObeyesdad == "Normal_Weight" ~ 1,
+                                       NObeyesdad == "Overweight_Level_I" ~ 2,
+                                       NObeyesdad == "Overweight_Level_II" ~ 3,
+                                       NObeyesdad == "Obesity_Type_I" ~ 4,
+                                       NObeyesdad == "Obesity_Type_II" ~ 5,
+                                       NObeyesdad == "Obesity_Type_III" ~ 6,
+                                       .default = as.integer(7)))
+
+data <-
+  df %>% 
   # remove ground truth. See if clustering algorithm can correctly "predict" these labelled clusters 
   # using unsupervised learning
   dplyr::select(-id, -NObeyesdad) %>% 
@@ -58,11 +72,9 @@ data <-
 
 # ground truth
 ground_truth <-
-  data_train %>% 
+  df %>% 
   dplyr::select(NObeyesdad)
 
-# 7 levels of obesity levels ie: 7 clusters
-distinct(ground_truth)
 
 # Lets investigate if k-means algorithm can correctly predict how many clusters there are
 
@@ -97,7 +109,7 @@ res_cluster <-
 
 
 data_with_cluster <-
-  cbind(data_train, res_cluster)
+  cbind(df, res_cluster)
 
 
 ground_truth_cluster <-
@@ -110,5 +122,9 @@ v_measure(ground_truth_cluster$NObeyesdad, ground_truth_cluster$cluster_assign,
 
 ## there is also rand index
 rand.index(ground_truth_cluster$NObeyesdad, ground_truth_cluster$cluster_assign)
+
+### try clustering with a different algo HDBSCAN
+res_hbd <- hdbscan(data, minPts = 250, verbose = TRUE)
+
 
 save.image("clustering_obesity.RData")
