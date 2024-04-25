@@ -7,7 +7,17 @@
     <description>my jouRney in R
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Tue, 26 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 17 Apr 2024 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Kaggle competition: Multi-Class Prediction of Obesity Risk</title>
+      <link>https://yeokcmark.netlify.app/ml/kaggle-competition-multi-class-prediction-of-obesity-risk_files</link>
+      <description>My first Kaggle competition. Wish me luck.</description>
+      <category>PCA</category>
+      <category>tidymodels</category>
+      <category>classification</category>
+      <guid>https://yeokcmark.netlify.app/ml/kaggle-competition-multi-class-prediction-of-obesity-risk_files</guid>
+      <pubDate>Wed, 17 Apr 2024 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Exploring Principal Component Analysis with tidymodels and prcomp</title>
       <link>https://yeokcmark.netlify.app/ml/2024-03-26-exploring-principal-component-analysis-with-tidymodels-and-prcomp</link>
