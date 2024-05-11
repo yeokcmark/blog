@@ -119,12 +119,18 @@ ground_truth_cluster <-
 ## use v_measure to assess ground truth vs clustering
 v_measure(ground_truth_cluster$NObeyesdad, ground_truth_cluster$cluster_assign,
           beta = 1)
+# obtained a v_measure of 0.3528882
 
 ## there is also rand index
 rand.index(ground_truth_cluster$NObeyesdad, ground_truth_cluster$cluster_assign)
+# obtained a rand index score of 0.8096455
 
-### try clustering with a different algo HDBSCAN
-res_hbd <- hdbscan(data, minPts = 250, verbose = TRUE)
+adj.rand.index(ground_truth_cluster$NObeyesdad, ground_truth_cluster$cluster_assign)
+# Adj rand index of 0.3952216
+
+### try clustering with a different algo HDBSCAN. Unfortunately there is no tune function
+res_hbd <- hdbscan(data, minPts = 100, verbose = TRUE)
+
 
 
 save.image("clustering_obesity.RData")
