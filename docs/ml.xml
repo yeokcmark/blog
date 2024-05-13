@@ -7,7 +7,19 @@
     <description>my jouRney in R
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Wed, 17 Apr 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 11 May 2024 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>text analysis in R: tidytext, stm, quanteda</title>
+      <link>https://yeokcmark.netlify.app/ml/2024-05-11-text-analysis-in-r-tidytext-stm-quanteda</link>
+      <description>I completed Module 5 of my course, which was about Text Classification and Topic Modeling. I wanted to get some practice with what I learnt in class, as well as explore more about the quanteda package.</description>
+      <category>LDA</category>
+      <category>stm</category>
+      <category>quanteda</category>
+      <category>tidytext</category>
+      <guid>https://yeokcmark.netlify.app/ml/2024-05-11-text-analysis-in-r-tidytext-stm-quanteda</guid>
+      <pubDate>Sat, 11 May 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://yeokcmark.netlify.app/ml/2024-05-11-text-analysis-in-r-tidytext-stm-quanteda/text-analysis-in-r-tidytext-stm-quanteda_files/figure-html5/unnamed-chunk-27-1.png" medium="image" type="image/png" width="1152" height="768"/>
+    </item>
     <item>
       <title>Kaggle competition: Multi-Class Prediction of Obesity Risk</title>
       <link>https://yeokcmark.netlify.app/ml/kaggle-competition-multi-class-prediction-of-obesity-risk_files</link>

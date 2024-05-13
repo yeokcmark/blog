@@ -1,0 +1,563 @@
+---
+title: "text analysis in R: tidytext, stm, quanteda"
+description: |
+  I completed Module 5 of my course, which was about Text Classification and Topic Modeling. I wanted to get some practice with what I learnt in class, as well as explore more about the quanteda package.
+date: 2024-05-11
+categories:
+  - LDA
+  - stm
+  - quanteda
+  - tidytext
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 6
+    toc_float: true    
+    self_contained: false
+editor_options: 
+  chunk_output_type: console
+
+---
+
+```{css, echo = FALSE}
+d-byline {
+  display: none;
+  margin:0;
+}
+
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(results = FALSE, echo = TRUE, eval = FALSE, fig.width = 6, layout="l-body-outset")
+```
+
+### Introduction
+
+It's been a while since I updated this blog. And I must admit, the previous article featuring what I did for my first Kaggle competition was a "half-hearted" effort at best.
+
+I completed Module 5 of my coursework at SMU, where we learnt about Text Classification and Topic Modeling. As usual, there was so much to learn over the 4 sessions and so much information to process. However, of late, I've had this nagging feeling that I'm only scratching the surface in terms of knowledge - the more I learn, the less I know - what a strange way to feel.
+
+So, I decided to supplement my knowledge by learning more about `stm` and `quanteda`. As part of Module 5, we had to complete a group assignment. I shall replicate solutions to one of those questions using `lda`, `stm` and `quanteda`.
+
+### Group Assignment Question
+
+*Now imagine you work as a data scientist for a hotel chain. You receive a dataset from hotels in the US. Your job is to identify the major discussion pointers in customer reviews of the hotel. Find a reliable and valid set of topics, based on prevalence and coherence metrics.*
+
+That was Question 3 of the group assignment. Now let's begin by importing the necessary packages and dependencies.
+
+### Set dependencies and import data
+```{r, eval = TRUE}
+rm(list = ls())
+pacman::p_load(tidyverse, stringi,# tidy DS
+               skimr, Hmisc, broom, modelr, # EDA 1
+               scales, ggthemes, gridExtra, # ggplot2::
+               DT, # for interactive data display
+               doParallel,
+               tidytext, textrecipes, lubridate, tokenizers, textmineR,
+               stm, igraph, stmCorrViz, huge,
+               quanteda, readtext, spacyr, seededlda)
+load("hotel_reviews.Rdata")
+```
+
+### Import text data
+
+Let's begin by importing our text data.
+
+```{r}
+df <- read_csv("hotel_reviews.csv")
+
+```
+
+The dataset consists of `r df %>% nrow()` customer reviews, with 2 columns: `date` and `review`. Let's proceed by working on the text using Latent Dirichlet Allocation (LDA). I will use the tidymodels framework for "cleaning" and tokenizing the review data.
+
+### Topic Modeling (LDA) using Tidymodels and textmineR
+
+I will use the tidymodels framework for "cleaning" the text. Let's start by removing stopword and punctuation. In `step_tokenize` punctuation and lowercase conversions are default. But for good practice, I will specify them anyway.
+
+```{r}
+text_lda <-
+  recipe(formula = ~.,
+         data = df) %>% 
+  step_tokenize(review,
+                options = list(strip_punct = TRUE,
+                               lowercase = TRUE),
+                token = "words" # this is the default
+                ) %>% 
+  step_stopwords(review)
+  
+```
+
+Let's take a look at the output.
+
+```{r, results = TRUE, eval = TRUE}
+output_text_lda<-
+  text_lda %>% prep() %>% juice()
+output_text_lda
+```
+
+We see that "document" or review 1 has 34 tokens, while document 2 has 117 tokens. Let's compare the actual review to the tokenized output for document 3.
+
+```{r, results = TRUE, eval = TRUE}
+df$review[3];text_lda %>% prep() %>% juice() %>% .[3,2] %>% unlist()
+```
+
+We see that stopword such as "and", "is" as well as punctuations such as "." and "," have been removed. Notice that token#26 "so.e" is likely a spelling mistake; its probably meant to be "some".
+
+Let's combine the tokens back into sentences without stopword and punctuation, before passing it to `CreateDtm` from the `textmineR` package.
+
+```{r, results = TRUE, eval = TRUE}
+text_lda<-
+  text_lda %>% 
+  step_untokenize(review) %>% 
+  prep() %>% 
+  juice() %>% 
+  rowid_to_column("id")
+
+text_lda %>% print(n=5)
+```
+
+Now, we have reviews without stopword and punctuation. CreateDtm is a function within the textmineR package that creates a document term matrix from a character vector. Let's create a document term matrix for our reviews.
+
+```{r}
+lda_dtm <-
+  text_lda %>% 
+  textmineR::CreateDtm(doc_name = text_lda$id,
+                       doc_vec = text_lda$review,
+                       ngram_window = c(1,2), # we will create bi-grams, save computational resource
+                       verbose = TRUE)
+```
+
+Let's fit and LDA model using `FitLdaModel` from the textmineR package. Let's choose 10 topics to start with.
+
+```{r}
+
+doParallel::registerDoParallel()
+set.seed(240511)
+
+lda_model <-
+  FitLdaModel(dtm = lda_dtm,
+              k = 10, # the number of topics
+              iterations = 1000, # number of iterations
+              calc_r2 = T, # goodness of fit(r square)
+              beta = 0.05,
+              alpha = 0.10,
+              optimize_alpha = T,
+              # print performance metrics
+              calc_coherence = T,
+              calc_likelihood = T,
+              burnin = 200
+  )
+
+
+```
+
+The lda_model took about 60 minutes to train. That's slow! Let's take a look at the top 10 terms for each topic. *phi* denotes word(term) distribution for each topic.
+
+```{r, results = TRUE, eval = TRUE}
+lda_model$top10_terms <-
+  GetTopTerms(phi = lda_model$phi,  M = 10)
+lda_model$top10_terms
+```
+
+We can also take a look at *theta*, which gives you an understanding of the topic distribution for each document.
+
+```{r, results = TRUE, eval = TRUE}
+lda_model$theta %>% head()
+```
+
+If we take a `Colsum` along each topic, we can get an understanding of the distribution of each topic across all documents. ie: prevalence
+
+```{r, results = TRUE, eval = TRUE}
+lda_model$prevalence <-
+  colSums(lda_model$theta / sum(lda_model$theta) *100)
+lda_model$prevalence
+```
+
+We can use ggplot to take a look at this distribution.
+
+```{r, results = TRUE, eval = TRUE}
+lda_model$prevalence %>% 
+  as_tibble() %>% 
+  rowid_to_column() %>% 
+  ggplot(aes(x = as.factor(rowid),
+             y = value)
+         ) +
+  geom_col(fill = "deepskyblue")+
+  geom_text(aes(label = round(value,1)),
+            size = 3)+
+  labs(x = "Topics 1 to 10",
+       y = "Prevalence",
+       title = "Prevalence by Topic")+
+  theme_bw()
+```
+
+We can see that topics 3 and 6 are popularly discussed among all reviews. Let's see the top 10 terms for topic 3 and 6 again.
+
+```{r, results = TRUE, eval = TRUE}
+lda_model$top10_terms[,3];lda_model$top10_terms[,6]
+```
+
+From my guess, the Hilton hotel in Waikiki, Hawaii is a beautiful resort hotel, with great, friendly staff. The guests enjoyed its restaurants, pool, and shopping during their stay.
+
+There is still a lot more that we can explore, but I'm going to leave LDA for now, and process the same text using `stm` and see what insights we can discover.
+
+### Topic Modeling using stm::
+
+The stm package has its own text processor, aptly named textProcessor(). I will make use of it to process the text. Thereafter, let's examine the output for document 3 again. I will also create a new feature "month" for use as metadata.
+
+```{r}
+
+# engineer a new feature month_name.
+df_stm <-
+  df %>% 
+  mutate(date = as.Date(date, format = "%d-%b-%y"),
+         month_name = month(date, label = FALSE))
+text_stm <-
+  stm::textProcessor(documents = df_stm$review,
+                meta = df_stm,
+                removestopwords = TRUE,
+                removepunctuation = TRUE,
+                removenumbers = TRUE,
+                ucp = FALSE,
+                lowercase = TRUE,
+                stem = TRUE,
+                wordLengths = c(1,Inf),
+                sparselevel = 1
+                ) 
+```
+
+```{r, results = TRUE, eval = TRUE}
+text_stm$documents[[3]]
+```
+
+Processing the text using `textProcessor()` resulted in a different type of output. Rather than showing the words in document 3, we get an index reference to a list of vocab, and the number of times that word occurs in the document.
+
+```{r}
+prepped_text_stm <-
+  prepDocuments(documents = text_stm$documents,
+                vocab = text_stm$vocab,
+                meta = text_stm$meta)
+```
+
+Next, we proceed to fit the structural topic model using stm().
+
+```{r}
+doParallel::registerDoParallel()
+set.seed(240511)
+stm_model <-
+  stm(data = prepped_text_stm$meta,
+      documents = prepped_text_stm$documents,
+      vocab = prepped_text_stm$vocab,
+      K = 10, # choose number of topics = 10
+      prevalence = ~ month_name,
+      seed = 240511,
+      max.em.its = 200,
+      init.type = "Spectral"
+  )
+
+```
+
+stm:: has a number of useful functions and plots we can explore. Let's start with `labelTopics`.
+
+```{r, results = TRUE, eval = TRUE}
+labelTopics(stm_model, n = 10)
+```
+
+Four different types of word weightings are printed with `labelTopics`: Highest Probability, FREX (words that are frequent and exclusive), Lift and Score.
+
+We can also plot a summary of the 10 topics.
+
+```{r, results = TRUE, eval = TRUE}
+plot(stm_model,
+     type = "summary",
+     n = 10)
+```
+
+Topic 1 has the highest expected topic proportions, and is somewhat similar to topics identified by LDA. Its highest probability words include: great, stay, hotel, beach, resort, restaur, shop, staff, locat, villag.
+
+By changing type can take on 4 "settings" to see different plots: summary, labels, perspective and hist. Let's explore all of them.
+
+```{r, results = TRUE, eval = TRUE}
+plot(stm_model,
+     type = "labels",
+     n = 5)
+```
+
+type="labels" plots the top words selected according to the chosen criteria for each selected topics.
+
+```{r, results = TRUE, eval = TRUE}
+plot(stm_model,
+     type = "perspective",
+     topics = c(1,3)
+)
+```
+
+type="perspective" results in something that looks like a wordcloud, but it isnt. Instead, it plots two topic or topic-covariate combinations. Words are sized proportional to their use within the plotted topic-covariate combinations and oriented along the X-axis based on how much they favor one of the two configurations. 
+
+```{r, results = TRUE, eval = TRUE}
+plot(stm_model,
+     type = "hist",
+     topics = c(1,3, 5, 7),
+     n = 5)
+```
+
+type = "hist" plots a histogram of the MAP estimates of the document-topic loadings across all documents. The median is also denoted by a dashed red line.
+
+We can use the function `topicCorr` to generate a topic correlation matrix. Then, use plot() to visualize. There are 2 estimation procedures for producing correlation matrices: simple and huge. Let's explore both.
+
+```{r, results = TRUE, eval = TRUE}
+topic_corr_simple <-
+  topicCorr(stm_model, 
+          method = "simple",
+          cutoff = 0.01,
+          verbose = TRUE)
+
+plot(topic_corr_simple)
+```
+
+```{r, results = TRUE, eval = TRUE}
+topic_corr_huge <-
+  topicCorr(stm_model, 
+          method = "huge",
+          cutoff = 0.01,
+          verbose = TRUE)
+
+plot(topic_corr_huge)
+```
+
+There is only a slight difference between both plots. That's likely because we have chosen K=10 for 10 topics. I suspect if we had a greater number of topics, the plots would look different.
+
+On that note, stm also has a `searchK` function that computes diagnostic properties for a range of user-specified number of topics. We can use `plot` to "visualize" the "best" number of topics to use.
+
+```{r}
+stm_search_for_k <-
+  searchK(documents = prepped_text_stm$documents,
+          vocab = prepped_text_stm$vocab,
+          K = c(5,10,15,20,25,30,35,40,45,50),
+          init.type = "Spectral")
+
+```
+
+```{r, results = TRUE, eval = TRUE, preview = TRUE}
+plot(stm_search_for_k)
+```
+
+
+It would appear that K=25, or 25 topics is the "best" choice.
+
+Another way of getting stm to "search" for the number of topics is by setting K=0 and init.type = "Spectral". The document calls this "a more preliminary selection strategy based on work by Lee and Mimno (2014)". It goes further to emphasize that this is by no means the "true" number of topics.
+
+I have appended the code below for reference, but have not executed it as it is "computationally expensive".
+
+```{r}
+doParallel::registerDoParallel()
+set.seed(240511)
+stm_model_chooseK <-
+  stm(documents = prepped_text_stm$documents,
+      vocab = prepped_text_stm$vocab,
+      K = 0, # choose number of topics = 10
+      seed = 240511,
+      max.em.its = 200,
+      init.type = "Spectral"
+  )
+```
+
+stm is particularly useful in estimating a relationship between features found in meta-data and topics. In our example, we did not have many features apart from date. Yet, we can still engineer an additional feature `month_name` and use the function `estimateEffect()` to see the relationship between month and topics.
+
+
+```{r}
+
+### Main Effects
+
+stm_main_effects <-
+  estimateEffect(1:10 ~ month_name,
+                 stm_model,
+                 meta = prepped_text_stm$meta,
+                 uncertainty = "Global") 
+
+```
+
+```{r, results = TRUE, eval = TRUE}
+# we can plot this
+plot(stm_main_effects,
+     covariate = "month_name",
+     model = stm_model,
+     topics = c(2,3),
+     method = "continuous",
+     xlab = "Months: January to December",
+     main = "How effects of Topic 2 and 3 changes by month")
+```
+
+
+Interesting, the effects of Topic 2 increases as we move from January to December, while the effects of Topic 3 decreases. Let's see what Topic 2 and 3 are again.
+
+```{r, results = TRUE, eval = TRUE}
+labelTopics(stm_model, n = 10, topics = c(2,3))
+```
+
+What's your interpretation? stm:: is an extensive package with lots more to explore. But, we need to move on to `quanteda`. If you need more information on stm:: visit this [link](https://cran.r-project.org/web/packages/stm/vignettes/stmVignette.pdf).
+
+### Topic Modeling using quanteda
+
+We did not learn about quanteda in Module 5. There is an excellent [tutorial](https://tutorials.quanteda.io/) which I am using to learn about the functionalities of the package. There is so much to unpack -  I think I will need to write up another blog post about `quanteda`.
+
+`quanteda` has a simple and powerful companion package for loading texts: readtext. Let's make use of it.
+
+```{r}
+df_quanteda <-readtext::readtext("hotel_reviews.csv")
+```
+
+Wow, it even created a doc_id for each document. Nicely done. However, I notice some errors. For example "'" is being replaced by "\u2019". I'm not sure what other errors exist. Perhaps I shall just make use of read_csv for now?
+
+```{r}
+df_quanteda <-
+  df %>% 
+  mutate(date = as.Date(date, format = "%d-%b-%y"),
+         month_name = month(date, label = FALSE))
+```
+
+Next, I will use `corpus()` to build a corpus of text. Covariates, such as date and month, can be added using `docvars()`. quanteda calls these document variables.
+
+```{r}
+text_quanteda <-corpus(df_quanteda$review)
+docvars(text_quanteda, "date") <- df_quanteda$date
+docvars(text_quanteda, "month_name") <- df_quanteda$month_name
+```
+
+Let's take a look at a `summary()` of `text_quanteda`.
+
+```{r, results = TRUE, eval = TRUE}
+summary(text_quanteda, n=10) %>% print()
+```
+
+That's pretty cool. Not to mention FAST! Using the corpus function, we already have some preliminary information on the number of tokens and sentences from each document. Perhaps we would like to find the "most wordy" review. Or the least wordy review. Can that be done? Yes!
+
+```{r}
+token_info <-
+  text_quanteda %>% 
+  summary() %>% 
+  as_tibble()
+
+```
+
+
+```{r, results = TRUE, eval = TRUE}
+
+token_info[which.max(token_info$Tokens),] # document or review 82 is the most wordy
+token_info[which.min(token_info$Tokens),] # document or review 28 is the least wordy
+```
+
+Perhaps we only want to take a look at documents in February.
+
+```{r, results = TRUE, eval = TRUE}
+text_quanteda %>% 
+  corpus_subset(month_name == 2) %>% 
+  summary(n=10)
+```
+
+There are many more corpus_* related functions to explore. But for now, let's move on to the next step of tokenizing the text. For that, we can use the function `tokens()`.
+
+```{r}
+tokens_quanteda <-
+  text_quanteda %>% 
+  tokens(
+    what = "word",
+    remove_punct = TRUE,
+    remove_numbers = TRUE,
+    remove_separators = TRUE,
+    verbose = TRUE
+  )
+```
+
+Next, we can remove stopwords using `tokens_remove()` function. Thereafter, let's take a look at document 3.
+
+```{r}
+tokens_quanteda_no_stopwords <-
+  tokens_remove(tokens_quanteda, stopwords("english"))
+
+```
+
+```{r, results = TRUE, eval = TRUE}
+
+tokens_quanteda_no_stopwords[3]
+```
+
+`quanteda` has many more functions to explore. For example, `kwic()` allows you to search for keywords and see what context they are being used. Let's do a search for "food" and "expensive"
+
+```{r, results = TRUE, eval = TRUE}
+kwic(tokens_quanteda_no_stopwords,
+     pattern = "food") %>% 
+  head()
+
+kwic(tokens_quanteda_no_stopwords,
+     pattern = "expensive") %>% 
+  head()
+```
+
+You can also search by phrases. Let's try "expensive food".
+
+```{r, results = TRUE, eval = TRUE}
+kwic(tokens_quanteda_no_stopwords,
+     pattern = phrase("expensive food"),
+     window = 5) %>% 
+  head()
+```
+
+Lastly, you can use `token_ngrams()` to generate "ngrams".
+
+```{r, results = TRUE, eval = TRUE}
+tokens_quanteda_ngrams <-
+  tokens_ngrams(tokens_quanteda_no_stopwords, n = c(1:3))
+head(tokens_quanteda_ngrams[[3]], 10)
+```
+
+Within quanteda, what we commonly reference as a document term matrix is called a document feature matrix. Quite aptly, the function `dfm()` is used to generate a document feature matrix from a tokens object.
+
+```{r}
+quanteda_dfm <-
+  dfm(tokens_quanteda_no_stopwords,
+      tolower = TRUE,
+      verbose = TRUE)
+```
+
+Wow, that was blazing fast. It was done in 0.26 seconds. We can use `topfeatures` to examine the top features.
+
+```{r, results = TRUE, eval = TRUE}
+topfeatures(quanteda_dfm, n=10)
+```
+
+"Room" is a top feature with 16,478 occurrences. What if we wanted to know how in how many documents does it occur? 
+
+```{r, results = TRUE, eval = TRUE}
+topfeatures(quanteda_dfm, n=10, scheme = "docfreq")
+```
+
+As `quanteda` doesn't implement LDA, we need to install the `seededlda::` package to implement LDA.
+
+```{r}
+quanteda_lda_model <-
+  textmodel_lda(quanteda_dfm, k = 10, verbose = TRUE, max_iter = 1000)
+```
+
+You can use `terms()` to extract the top terms for each topic.
+
+```{r, results = TRUE, eval = TRUE}
+terms(quanteda_lda_model, n =10)
+```
+
+The function `topic()` allows you to see the likelihood that each document "talks about" which topic. For exmaple, document or text1 most likely "talks about" topic1.
+
+```{r, results = TRUE, eval = TRUE}
+topics(quanteda_lda_model) %>% head(20)
+```
+
+`quanteda` is also able to perform naive bayes classification and regression classification. However, the data that we have is not suitable for this purpose.
+
+Wow, that was a very very long post. quanteda is quite interesting. I think I'm going to look for a dataset where I can use it to make some predictions. It is also able to perform sentiment analysis - perhaps use to to analyze my Whatsapp messages. That would be kinda cool.
+
+Thanks for reading!
+
+```{r}
+#save.image("hotel_reviews.RData")
+```
+
