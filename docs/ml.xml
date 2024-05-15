@@ -7,7 +7,18 @@
     <description>my jouRney in R
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Sat, 11 May 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 13 May 2024 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Kaggle Competition: Natural Language Processing with Disaster Tweets using quanteda</title>
+      <link>https://yeokcmark.netlify.app/ml/2024-05-13-kaggle-competition-natural-language-processing-with-disaster-tweets-using-quanteda</link>
+      <description>Trying my hand at my second Kaggle competition using quanteda. I wonder how I will perform. Wish me luck!</description>
+      <category>quanteda</category>
+      <category>classification</category>
+      <category>SVM</category>
+      <category>LASSO</category>
+      <guid>https://yeokcmark.netlify.app/ml/2024-05-13-kaggle-competition-natural-language-processing-with-disaster-tweets-using-quanteda</guid>
+      <pubDate>Mon, 13 May 2024 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>text analysis in R: tidytext, stm, quanteda</title>
       <link>https://yeokcmark.netlify.app/ml/2024-05-11-text-analysis-in-r-tidytext-stm-quanteda</link>
