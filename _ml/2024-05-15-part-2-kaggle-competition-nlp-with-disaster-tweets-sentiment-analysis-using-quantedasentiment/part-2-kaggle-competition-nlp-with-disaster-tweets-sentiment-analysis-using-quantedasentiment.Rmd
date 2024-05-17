@@ -1,0 +1,344 @@
+---
+title: "Part 2: Kaggle Competition: NLP with Disaster Tweets - Sentiment Analysis using quantedasentiment"
+description: |
+  This is a continuation from the previous post, where I will try to improve my f_meas score further. The goal is to get above 0.8 for now.
+date: 2024-05-15
+categories:
+  - quanteda
+  - classification
+  - SVM
+  - LASSO
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 6
+    toc_float: true    
+    self_contained: false
+editor_options: 
+  chunk_output_type: console
+draft: true
+---
+
+```{css, echo = FALSE}
+d-byline {
+  display: none;
+  margin:0;
+}
+
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(results = FALSE, echo = TRUE, eval = FALSE, fig.width = 6, layout="l-body-outset")
+```
+
+### Introduction
+
+A brief recap from where we left off in the previous article, my f_meas score was 0.79221 and I ranked #581. This was off a Naive Bayes model, pre-processing using "recipe 4". So far, I'm enjoying the quanteda package. I find it very very fast, yet I do miss tidymodel's ability to evaluate multiple recipes and models using workflow_sets.
+
+
+### Setting dependencies and importing data
+
+```{r, eval = TRUE}
+
+rm(list = ls())
+pacman::p_load(tidyverse, stringi,# tidy DS
+               skimr, 
+               doParallel,lubridate, 
+               quanteda, readtext, quanteda.textmodels, caret, glmnet,
+               quanteda.classifiers, quanteda.sentiment, spacyr)
+load("disaster_tweets.RData")
+```
+
+### Importing and Pre-processing
+
+```{r}
+# Read in data
+df_train <- read_csv("train.csv")
+df_test <- read_csv("test.csv")
+
+# make corpus
+corp_train <- corpus(df_train, text_field = "text")
+corp_test <- corpus(df_test, text_field = "text")
+
+# tokenize based on recipe 4
+tokens_rec4_train <-
+  tokens(corp_train,
+         remove_punct = FALSE,
+         remove_symbols = FALSE,
+         remove_numbers = FALSE,
+         remove_url = TRUE,
+         remove_separators = TRUE)
+
+tokens_rec4_test <-
+  tokens(corp_test,
+         remove_punct = FALSE,
+         remove_symbols = FALSE,
+         remove_numbers = FALSE,
+         remove_url = TRUE,
+         remove_separators = TRUE)
+
+# make dfm matrix
+dfmat_rec4_train <-
+  dfm(tokens_rec4_train) %>% 
+  dfm_wordstem(language = "en") %>% 
+  dfm_select(pattern = stopwords("english"),
+             selection = "remove",
+             valuetype = "fixed",
+             case_insensitive = TRUE)
+  
+dfmat_rec4_test <-
+  dfm(tokens_rec4_test) %>%
+  dfm_wordstem(language = "en") %>% 
+  dfm_select(pattern = stopwords("english"),
+             selection = "remove",
+             valuetype = "fixed",
+             case_insensitive = TRUE)
+
+```
+
+`quanteda.sentiment` is not yet on CRAN. In order to use it, you will need to download it from github.
+
+```{r}
+remotes::install_github("quanteda/quanteda.sentiment")
+```
+
+`quanteda.sentiment` extends the quanteda package with functions for computing sentiment on text. It has two main functions: `textstat_polarity()` for calculating polarity-based sentiment, and textstat_valence() for calculating valence-based sentiment. The [package](https://github.com/quanteda/quanteda.sentiment) comes with a number of built-in dictionaries for polarity and valence sentiment.
+
+I will use 4 dictionaries (1 valence, 3 polarity) to try and calculate a sentiment score for each document, and use these as additional engineered features. Hopefully, it will improve my predictions. Let's take a look at a some words from the AFINN dictionary.
+
+```{r}
+# print 20 random words from the AFINN dictoronary
+data_dictionary_AFINN[[1]] %>% as_tibble() %>% slice_sample(n = 20)
+
+```
+
+"Apply" valence to each word in the dictionary. Valence ranges from -5 to 5. Let's check
+
+```{r}
+valence(data_dictionary_AFINN) %>% range()
+
+```
+
+Next, let's calculate sentiment scores using each dictionary for the training and test set.
+
+```{r}
+# Training set
+df_AFINN <-
+  dfmat_rec4_train %>% 
+  textstat_valence(dictionary = data_dictionary_AFINN) %>%
+  rename(AFINN = sentiment) %>% 
+  dplyr::select(AFINN)
+
+df_HuLiu <-
+  dfmat_rec4_train %>% 
+  textstat_polarity(dictionary = data_dictionary_HuLiu) %>% 
+  rename(HuLiu = sentiment) %>% 
+  dplyr::select(HuLiu)
+
+df_LSD <-
+  dfmat_rec4_train %>% 
+  textstat_polarity(dictionary = data_dictionary_LSD2015) %>% 
+  rename(LSD = sentiment) %>% 
+  dplyr::select(LSD)
+
+df_NRC <-
+  dfmat_rec4_train %>% 
+  textstat_polarity(dictionary = data_dictionary_NRC) %>% 
+  rename(NRC = sentiment) %>% 
+  dplyr::select(NRC)
+
+# assign document features
+dfmat_rec4_train$AFINN <-df_AFINN
+dfmat_rec4_train$HuLiu <-df_HuLiu
+dfmat_rec4_train$LSD <-df_LSD
+dfmat_rec4_train$NRC <-df_NRC
+docvars(dfmat_rec4_train) # check docvars
+# Test Set
+dfmat_rec4_test$AFINN <-
+  dfmat_rec4_test %>% 
+  textstat_valence(dictionary = data_dictionary_AFINN) %>%
+  rename(AFINN = sentiment) %>% 
+  dplyr::select(AFINN)
+
+dfmat_rec4_test$HuLiu <-
+  dfmat_rec4_test %>% 
+  textstat_polarity(dictionary = data_dictionary_HuLiu) %>% 
+  rename(HuLiu = sentiment) %>% 
+  dplyr::select(HuLiu)
+
+dfmat_rec4_test$LSD <-
+  dfmat_rec4_test %>% 
+  textstat_polarity(dictionary = data_dictionary_LSD2015) %>% 
+  rename(LSD = sentiment) %>% 
+  dplyr::select(LSD)
+
+dfmat_rec4_test$NRC <-
+  dfmat_rec4_test %>% 
+  textstat_polarity(dictionary = data_dictionary_NRC) %>% 
+  rename(NRC = sentiment) %>% 
+  dplyr::select(NRC)
+docvars(dfmat_rec4_test) # check docvars
+```
+
+Let's fit the model and make predictions. Keeping my fingers crossed.
+
+```{r}
+
+tmod_rec4sent_nb <-
+  textmodel_nb(x = dfmat_rec4_train,
+               y = dfmat_rec4_train$target)
+summary(tmod_rec4sent_nb)
+
+dfmat_rec4_matched <-
+  dfm_match(dfmat_rec4_test, features = featnames(dfmat_rec4_train))
+
+predicted_class_rec4sent_nb <-
+  predict(tmod_rec4sent_nb, newdata = dfmat_rec4_matched) %>% 
+  as_tibble()
+
+submission_rec4sent_nb <-
+  cbind(df_test$id, predicted_class_rec4sent_nb) %>% 
+  rename(id = `df_test$id`,
+         target = value)
+
+write_csv(submission_rec4sent_nb, "submission_rec4sent_nb.csv")
+```
+
+0.79221. :( no change in performance. Let's try and remove docvars: keyword and location since there are multiple NAs. I wonder if that will make a difference. Let's call this rec5.
+
+
+```{r}
+docvars(dfmat_rec4_train, "keyword") <- NULL
+docvars(dfmat_rec4_train, "location") <- NULL
+docvars(dfmat_rec4_test, "keyword") <- NULL
+docvars(dfmat_rec4_test, "location") <- NULL
+
+
+tmod_rec5sent_nb <-
+  textmodel_nb(x = dfmat_rec4_train,
+               y = dfmat_rec4_train$target)
+summary(tmod_rec5sent_nb)
+
+dfmat_rec5_matched <-
+  dfm_match(dfmat_rec4_test, features = featnames(dfmat_rec4_train))
+
+predicted_class_rec5sent_nb <-
+  predict(tmod_rec5sent_nb, newdata = dfmat_rec5_matched) %>% 
+  as_tibble()
+
+submission_rec5sent_nb <-
+  cbind(df_test$id, predicted_class_rec5sent_nb) %>% 
+  rename(id = `df_test$id`,
+         target = value)
+
+write_csv(submission_rec5sent_nb, "submission_rec5sent_nb.csv")
+
+```
+
+That made no difference. Still stuck at 0.79211. Let's try a different model.
+
+```{r}
+df_sentiment_train <-
+  cbind(dfmat_rec4_train %>%
+          textstat_valence(dictionary = data_dictionary_AFINN) %>%
+          rename(AFINN = sentiment) %>% 
+          dplyr::select(AFINN), 
+        dfmat_rec4_train %>% 
+          textstat_polarity(dictionary = data_dictionary_HuLiu) %>% 
+          rename(HuLiu = sentiment) %>% 
+          dplyr::select(HuLiu),
+        dfmat_rec4_train %>% 
+          textstat_polarity(dictionary = data_dictionary_LSD2015) %>% 
+          rename(LSD = sentiment) %>% 
+          dplyr::select(LSD),
+        dfmat_rec4_train %>% 
+          textstat_polarity(dictionary = data_dictionary_NRC) %>% 
+          rename(NRC = sentiment) %>% 
+          dplyr::select(NRC)
+        ) %>% 
+  as_tibble()
+
+df_rec5_train <-
+  dfmat_rec4_train %>% 
+  convert(to = "data.frame") %>% 
+  as_tibble() %>% 
+  cbind(df_sentiment_train) %>% 
+  mutate(target = as.factor(target),
+         target = fct_relevel(target, "1"))
+
+```
+
+
+ 
+```{r}
+library(tidymodels)
+library(tidytext)
+
+data_fold <- vfold_cv(data = df_rec5_train, v = 10, strata = "target")
+
+xgb_spec <-
+  boost_tree(trees = tune(),
+             mtry = tune(),
+             min_n = tune(),
+             tree_depth = tune(),
+             learn_rate = tune(),
+             loss_reduction = tune(),
+             sample_size = tune(),
+             stop_iter = 10L) %>% 
+  set_engine("xgboost") %>% 
+  set_mode("classification")
+
+param_xgb <-
+  xgb_spec %>%
+  extract_parameter_set_dials() %>%
+  finalize(df_rec5_train)
+
+xgb_grid = grid_latin_hypercube(param_xgb, size = 10)
+
+
+wflow_xgb <-
+  workflow() %>% 
+  add_model(xgb_spec) %>% 
+  add_formula(formula = target ~.)
+
+set.seed(20240516)
+cl <- (detectCores()/2) - 1
+cores <- cl*2
+doParallel::registerDoParallel(cl, cores)
+
+xgb_tune <-
+  tune_grid(wflow_xgb,
+            resamples = data_fold,
+            grid = xgb_grid,
+            metrics = metric_set(f_meas, roc_auc),
+            control = control_grid(verbose = TRUE,
+                                   allow_par = TRUE,
+                                   parallel_over = "everything")
+  )
+
+```
+
+Let's take a look at the top 5 results.
+
+```{r}
+xgb_tune %>% show_best(metric = "f_meas")
+```
+
+Select the best result and finalize the model.
+
+```{r}
+best_xgb <-
+  xgb_tune %>% 
+  select_best(metric = "f_meas")
+
+wflow_xgb_finalized <-
+  wflow_xgb %>% 
+  finalize_workflow(best_xgb)
+```
+
+The above code was still "tuning" at the end of 36 hours. I stopped the process, but included the code since I already typed it up. 
+
+```{r}
+save.image("disaster_tweets_sentiment.RData")
+```
+
