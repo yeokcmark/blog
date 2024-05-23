@@ -1,0 +1,153 @@
+---
+title: "Time Series forecasting using Prophet in R"
+description: |
+  I'm so excited to write this post. Time series forecasting was something that I thought was missing from the classes I took at SMU. Prof Roh pointed me in the direction of learning Prophet from Meta.
+date: 2024-05-23
+categories:
+  - prophet
+  - time series
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 6
+    toc_float: true    
+    self_contained: false
+editor_options: 
+  chunk_output_type: console
+
+---
+
+```{css, echo = FALSE}
+d-byline {
+  display: none;
+  margin:0;
+}
+
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(results = FALSE, echo = TRUE, eval = FALSE, fig.width = 6, layout="l-body-outset")
+```
+
+### Introduction
+
+Time series foreasting was something that I was very keen to learn. However, it wasn't among any of the modules I was taking at SMU. I read up about ARIMA but Prof Roh pointed me towards `prophet` desiged by the folks at meta.
+
+There is great documentation available [here](https://facebook.github.io/prophet/), which got me up and running within 15 minutes.
+
+This problem set comes from an ongoing Kaggle [competition](https://www.kaggle.com/competitions/store-sales-time-series-forecasting), and involves forecasting multiple items, across numerous stores. I am given about 2 years of daily historical data, and the requirement is to forecast sales for the next 2 weeks.
+
+Let's get started!
+
+### Setting dependencies and importing data
+
+```{r, eval = TRUE}
+
+rm(list = ls())
+pacman::p_load(tidyverse, lubridate, prophet, skimr)
+load("store_sales.RData")
+```
+
+I start by importing the training and testing data.
+
+```{r}
+df <- read_csv("train.csv")
+glimpse(df)
+```
+
+There is information about `store_nbr` which is an id for each store within the "chain", and `sales` which is the variable that I am required to forecast. Within the competition, there is more information provided, such as dates of holiday, oil prices, location of stores, which "cluster" it belongs to, and the number of daily transactions. For simplicity, and since this is my first experience using prophet, I decided to keep things simple and make a forecast using only the variables available in the training set.
+
+Prophet requires that you rename the date column as `ds` and the variable that you're trying to predict as `y`. Let's do that.
+
+```{r}
+data_train <-
+  df %>% 
+  dplyr::select(-onpromotion, -id) %>% 
+  rename(ds = date,
+         y = sales)
+```
+
+Next, I will `group_by` store_nbr and family, and `nest()` ds and y. This will give me a new column `data` which contains a list of dates and sales for each store, by item. Next, I can use `mutate` and `map` to fit the prophet model. Additional arguments to "tune" the model can be included as well. For example, I have set daily seasonality to False, and weekly/yearly seasonality to True.
+
+There is a lot to explore. Refer to the documentation on [CRAN](https://cran.r-project.org/web/packages/prophet/prophet.pdf).
+
+```{r}
+fit_prophet_data_train <-
+  data_train %>% 
+  group_by (store_nbr, family) %>% 
+  nest() %>% 
+  mutate(model_p = map(.x = data,
+                       .f = prophet,
+                       yearly.seasonality = TRUE,
+                       weekly.seasonality = TRUE,
+                       daily.seasonality = FALSE)
+  )
+```
+
+Prophet has the ability to do cross-validation as well. I will leave that out for today, and see how the model performs "out of the box".
+
+Next, I will prepare the test dataset in the same way.
+
+```{r}
+data_test <-
+  read_csv("test.csv") %>% 
+  dplyr::select(-onpromotion, -id) %>% 
+  rename(ds = date) %>% 
+  group_by (store_nbr, family) %>% 
+  nest()
+```
+
+Next, I bind the test data by store_nbr and family and rename it "future". Note that date has to be renamed to ds for prophet to work. This provides the basis for the fitted model to make a prediction.
+
+```{r}
+prophet_data_all <-
+  dplyr::left_join(fit_prophet_data_train, data_test, by = c("store_nbr", "family")) %>% 
+  rename(future = data.y)
+```
+
+We are ready to make a forecast using `predict`.
+
+```{r}
+prophet_forecast_data_all <-
+  prophet_data_all %>% 
+  mutate(forecast = map2(.x = model_p,
+                         .y = future,
+                         .f = predict)
+  )
+```
+
+Once its done, we can `unnest()` the `forecast` column. There is a lot of information that prophet "spits out", and there bare built-in `plot` functions to visualize what's going on. For simplicity, I will extract what I need for the competition: store_nbr, family, ds, yhat.
+
+```{r}
+prophet_forecast <-
+  prophet_forecast_data_all %>%
+  unnest(forecast) %>% 
+  dplyr::select(store_nbr, family, ds, yhat) %>% 
+  mutate(date = ymd(ds))
+```
+
+Lastly, let's prepare a submission for Kaggle.
+
+```{r}
+
+data_test_id <-
+  read_csv("test.csv") %>% 
+  dplyr::select(-onpromotion)
+
+submission_prophet2 <-
+  dplyr::left_join(data_test_id, prophet_forecast,
+                   by = c("date", "store_nbr", "family")) %>% 
+  mutate(sales = round(yhat, digits = 0)) %>% 
+  dplyr::select(id, sales)
+
+write_csv(submission_prophet2, "submission_prophet2.csv")
+```
+
+A Root Mean Squared Logarithmic Error (RMSEL) score of 0.51606, ranking me at #436. Not too bad considering I didn't use all the data available, nor did I do any cross-validation or "tuning".
+
+Thank you for reading.
+
+```{r}
+save.image("store_sales.RData")
+```
+

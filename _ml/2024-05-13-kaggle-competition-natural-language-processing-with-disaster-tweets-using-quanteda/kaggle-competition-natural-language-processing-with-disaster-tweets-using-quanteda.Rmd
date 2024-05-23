@@ -1,0 +1,538 @@
+---
+title: "Kaggle Competition: Natural Language Processing with Disaster Tweets using quanteda"
+description: |
+  Trying my hand at my second Kaggle competition using quanteda. I wonder how I will perform. Wish me luck!
+date: 2024-05-13
+categories:
+  - quanteda
+  - classification
+  - SVM
+  - LASSO
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 6
+    toc_float: true    
+    self_contained: false
+editor_options: 
+  chunk_output_type: console
+
+---
+
+```{css, echo = FALSE}
+d-byline {
+  display: none;
+  margin:0;
+}
+
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(results = FALSE, echo = TRUE, eval = FALSE, fig.width = 6, layout="l-body-outset")
+```
+
+### Introduction
+
+Onto my second Kaggle Competition we go! I just learnt some basic functionalities within the `quanteda` package. I was quite impressed with its speed. Within the package, there is a Naive Bayes classifier and a Regularized Regression classifier. I'll make use of these 2, as well as the excellent [tutorial](https://tutorials.quanteda.io/machine-learning/nb/) to work on this dataset for my second Kaggle competition.
+
+Let's get started!
+
+### Setting dependencies and importing data
+
+```{r, eval = TRUE}
+
+rm(list = ls())
+pacman::p_load(tidyverse, stringi,# tidy DS
+               skimr, 
+               doParallel,lubridate, 
+               quanteda, readtext, quanteda.textmodels, caret, glmnet,
+               quanteda.classifiers, keras, tensorflow, spacyr)
+load("disaster_tweets.RData")
+```
+
+I start by importing the training and testing data.
+
+```{r}
+df_train <- read_csv("train.csv")
+df_test <- read_csv("test.csv")
+glimpse(df_train)
+```
+
+Next, I will build a corpus for training and test data.
+
+```{r}
+corp_train <- corpus(df_train, text_field = "text")
+corp_test <- corpus(df_test, text_field = "text")
+head(docvars(corp_train))
+summary(corp_train, n = 5)
+
+```
+
+Then, I will tokenize the text, while at the same time, removing punctuation, symbols, numbers, URL, stopwords. I will also implement word stemming.
+
+```{r}
+tokens_train <-
+  tokens(corp_train,
+                       remove_punct = TRUE,
+                       remove_symbols = TRUE,
+                       remove_numbers = TRUE,
+                       remove_url = TRUE,
+                       remove_separators = TRUE) %>% 
+  tokens_select(pattern = stopwords("en"),
+                selection = "remove",
+                verbose = TRUE) %>% 
+  tokens_wordstem()
+
+tokens_test <-
+  tokens(corp_test,
+                       remove_punct = TRUE,
+                       remove_symbols = TRUE,
+                       remove_numbers = TRUE,
+                       remove_url = TRUE,
+                       remove_separators = TRUE) %>% 
+  tokens_select(pattern = stopwords("en"),
+                selection = "remove",
+                verbose = TRUE) %>% 
+  tokens_wordstem()
+```
+
+Let's create a document feature matrix.
+
+```{r}
+dfmat_train <-
+  dfm(tokens_train)
+dfmat_test <-
+  dfm(tokens_test)
+```
+
+### Training a Naive Bayes Model.
+
+Its quite easy so far. Now, let's train the Naive Bayes model.
+
+```{r}
+tmod_nb <-
+  textmodel_nb(x = dfmat_train,
+               y = dfmat_train$target)
+summary(tmod_nb)
+
+```
+
+Naive Bayes can only take features into consideration that occur both in the training set and the test set. I can use `dfm_match()` to make those features identical.
+
+```{r}
+dfmat_matched <- dfm_match(dfmat_test, features = featnames(dfmat_train))
+```
+
+Let's use the Naive Bayes model to make a prediction.
+
+```{r}
+predicted_class_nb <-
+  predict(tmod_nb, newdata = dfmat_matched) %>% 
+  as_tibble()
+
+submission_nb <-
+  cbind(df_test$id, predicted_class_nb) %>% 
+  rename(id = `df_test$id`,
+         target = value)
+
+write_csv(submission_nb, "submission_nb.csv")
+```
+
+The competition is "graded" on an f1 score, or more commonly known as `f_meas` in R. I obtained a score of 0.78792 in my first try, with a rank of 674.
+
+### Training a Lasso model
+
+Now, lets see if a Lasso model can do better. I will need to "search" for the best lambda using `cv.glmnet`, where the "best" lambda yields the smallest classification error. I will set alpha = 1 to specify the LASSO model, and use nfold = 100 (typically, this is chosen as 10, but this model works so FAST!)
+
+```{r}
+tmod_lasso <-
+  cv.glmnet(x = dfmat_train,
+            y = as.factor(dfmat_train$target == 1),
+            alpha = 1,
+            nfolds = 100,
+            parallel = TRUE,
+            family = "binomial")
+
+print(tmod_lasso)
+plot(tmod_lasso)
+coef(tmod_lasso, s="lambda.min")
+
+```
+
+lambda or the degree of penalization is `r tmod_lasso$lambda.min`. Let's use the LASSO model to make a prediction. I wonder how it will compare to the Naive Bayes model.
+
+```{r}
+predicted_class_lasso <-
+  predict(tmod_lasso, dfmat_matched,
+          type = "class",
+          s = tmod_lasso$lambda.min) %>% 
+  as_tibble() %>% 
+  mutate(target = ifelse(s1 == TRUE,1,0))
+
+submission_lasso <-
+  cbind(df_test$id, predicted_class_lasso$target) %>% 
+  as_tibble() %>% 
+  rename(id = V1,
+         target = V2)
+
+write_csv(submission_lasso, "submission_lasso.csv")
+```
+
+Well, the LASSO model performed slightly worse than the Naive Bayes model, with a score of 0.78547.
+
+### Improving Model Performance
+
+I have 3 more submissions to Kaggle available today. Let's stick to the Naive Bayes model for now, but "cook up" more text recipes. For the first recipe (rec1), let's keep punctuation, symbols and numbers.
+
+```{r}
+tokens_rec1_train <-
+  tokens(corp_train,
+                       remove_punct = FALSE,
+                       remove_symbols = FALSE,
+                       remove_numbers = FALSE,
+                       remove_url = TRUE,
+                       remove_separators = TRUE) %>% 
+  tokens_select(pattern = stopwords("en"),
+                selection = "remove",
+                verbose = TRUE) %>% 
+  tokens_wordstem()
+
+tokens_rec1_test <-
+  tokens(corp_test,
+                       remove_punct = FALSE,
+                       remove_symbols = FALSE,
+                       remove_numbers = FALSE,
+                       remove_url = TRUE,
+                       remove_separators = TRUE) %>% 
+  tokens_select(pattern = stopwords("en"),
+                selection = "remove",
+                verbose = TRUE) %>% 
+  tokens_wordstem()
+
+dfmat_rec1_train <-
+  dfm(tokens_rec1_train)
+dfmat_rec1_test <-
+  dfm(tokens_rec1_test)
+
+tmod_rec1_nb <-
+  textmodel_nb(x = dfmat_rec1_train,
+               y = dfmat_rec1_train$target)
+summary(tmod_rec1_nb)
+
+dfmat_rec1_matched <-
+  dfm_match(dfmat_rec1_test, features = featnames(dfmat_rec1_train))
+
+predicted_class_rec1_nb <-
+  predict(tmod_rec1_nb, newdata = dfmat_rec1_matched) %>% 
+  as_tibble()
+
+submission_rec1_nb <-
+  cbind(df_test$id, predicted_class_rec1_nb) %>% 
+  rename(id = `df_test$id`,
+         target = value)
+
+write_csv(submission_rec1_nb, "submission_rec1_nb.csv")
+
+
+```
+
+rec1 resulted in an improvement in f_meas to 0.78976. For recipe 2, rec2, lets generate bigrams and trigrams. I will also try skip-grams
+
+```{r}
+tokens_rec2_train <-
+  tokens_rec1_train %>% 
+  tokens_ngrams(n=2:3, skip = 1:2)
+
+tokens_rec2_test <-
+  tokens_rec1_test %>% 
+  tokens_ngrams(n=2:3, skip = 1:2)
+
+
+dfmat_rec2_train <-
+  dfm(tokens_rec2_train)
+dfmat_rec2_test <-
+  dfm(tokens_rec2_test)
+
+tmod_rec2_nb <-
+  textmodel_nb(x = dfmat_rec2_train,
+               y = dfmat_rec2_train$target)
+summary(tmod_rec2_nb)
+
+dfmat_rec2_matched <-
+  dfm_match(dfmat_rec2_test, features = featnames(dfmat_rec2_train))
+
+predicted_class_rec2_nb <-
+  predict(tmod_rec2_nb, newdata = dfmat_rec2_matched) %>% 
+  as_tibble()
+
+submission_rec2_nb <-
+  cbind(df_test$id, predicted_class_rec2_nb) %>% 
+  rename(id = `df_test$id`,
+         target = value)
+
+write_csv(submission_rec2_nb, "submission_rec2_nb.csv")
+
+```
+
+That resulted in a worse score of 0.74501. Let's go back to recipe1. For my last submission, lets create a document feature matrix based on tf-idf. I will call this recipe3, rec3.
+
+```{r}
+dfmat_rec3_train <-
+  dfm(tokens_rec1_train) %>% 
+  dfm_tfidf()
+dfmat_rec3_test <-
+  dfm(tokens_rec1_test) %>% 
+  dfm_tfidf()
+
+tmod_rec3_nb <-
+  textmodel_nb(x = dfmat_rec3_train,
+               y = dfmat_rec3_train$target)
+summary(tmod_rec3_nb)
+
+dfmat_rec3_matched <-
+  dfm_match(dfmat_rec3_test, features = featnames(dfmat_rec3_train))
+
+predicted_class_rec3_nb <-
+  predict(tmod_rec3_nb, newdata = dfmat_rec3_matched) %>% 
+  as_tibble()
+
+submission_rec3_nb <-
+  cbind(df_test$id, predicted_class_rec3_nb) %>% 
+  rename(id = `df_test$id`,
+         target = value)
+
+write_csv(submission_rec3_nb, "submission_rec3_nb.csv")
+```
+
+The submission based of rec 3, tf-idf, resulted in a score of 0.77413. So far, the best score is based on recipe 1. I have expended all 5 submissions for today. Tomorrow, I will try fitting recipe1 using a SVM model. Quanteda also has an "extension package" for 2 additional models, Multilevel perceptron network and Convolutional neural network + LSTM model fitted to word embeddings. I shall try those tomorrow.
+
+### Training a SVM model
+
+I shall train a SVM linear model, based on the `LiblineaR` package. I will try 2 versions: weights = "docfreq" and weights = "termfreq".
+
+```{r}
+
+tmod_rec1_svm_docfreq <-
+  textmodel_svm(x = dfmat_rec1_train,
+                y = dfmat_rec1_train$target,
+                weight = "docfreq")
+summary(tmod_rec1_svm_docfreq)
+
+tmod_rec1_svm_termfreq <-
+  textmodel_svm(x = dfmat_rec1_train,
+                y = dfmat_rec1_train$target,
+                weight = "termfreq")
+summary(tmod_rec1_svm_termfreq)
+
+predicted_class_rec1_svm_docfreq <-
+  predict(tmod_rec1_svm_docfreq, newdata = dfmat_rec1_matched) %>% 
+  as_tibble()
+
+predicted_class_rec1_svm_termfreq <-
+  predict(tmod_rec1_svm_termfreq, newdata = dfmat_rec1_matched) %>% 
+  as_tibble()
+
+submission_rec1_svm_docfreq <-
+  cbind(df_test$id, predicted_class_rec1_svm_docfreq) %>% 
+  rename(id = `df_test$id`,
+         target = value)
+
+write_csv(submission_rec1_svm_docfreq, "submission_rec1_svm_docfreq.csv")
+
+submission_rec1_svm_termfreq <-
+  cbind(df_test$id, predicted_class_rec1_svm_termfreq) %>% 
+  rename(id = `df_test$id`,
+         target = value)
+
+write_csv(submission_rec1_svm_termfreq, "submission_rec1_svm_termfreq.csv")
+
+
+```
+
+The SVM model, based on "docfreq" got a score of 0.77781, while the one based on "termfreq" did slightly poorer with a score of 0.77751.
+
+### Training a MPL and CNN+LSTM Model
+
+These 2 models can be found in the `quanteda.classifiers` package. As its not on CRAN, we need devtools to install it from Github.
+
+```{r}
+# devtools package required to install quanteda from Github 
+# devtools::install_github("quanteda/quanteda.classifiers") 
+# 
+# keras::install_keras(method = "conda")
+```
+
+Let's specify the model, based on recipe1.
+
+```{r}
+
+tmod_rec1_mlp <-
+  textmodel_mlp(x = dfmat_rec1_train,
+                y = dfmat_rec1_train$target,
+                epochs = 20,
+                metrics = "categorical_accuracy",
+                verbose = TRUE)
+
+predicted_class_rec1_mlp <-
+  predict(tmod_rec1_mlp,
+          dfmat_rec1_matched,
+          force = TRUE) %>% 
+  k_cast("int32")
+
+submission_rec1_mlp <-
+  cbind(df_test$id, predicted_class_rec1_mlp) %>% 
+  rename(id = `df_test$id`,
+         target = value)
+
+write_csv(submission_rec1_mlp, "submission_rec1_mlp.csv")
+```
+
+Unfortunately, I could not get this to work. This is the error message I get. Until its fixed, I don't think I can run the mlp.
+
+*Error in py_get_attr_impl(x, name, silent) : AttributeError: 'Sequential' object has no attribute 'predict_classes' Run `reticulate::py_last_error()` for details. In addition: Warning message: In predict_classes(object\$seqfitted, x = data) : `predict_classes()` is deprecated and and was removed from tensorflow in version 2.6.*
+
+*Please update your code:*
+
+*If your model does multi-class classification: (e.g. if it uses a `softmax` last-layer activation).*
+
+*model %>% predict(x) %>% k_argmax()*
+
+*if your model does binary classification (e.g. if it uses a `sigmoid` last-layer activation).*
+
+*model %\>% predict(x) %\>% `>`(0.5) %\>% k_cast("int32")*
+
+Let's give the CNN+LTSM model a try.
+
+```{r}
+tmod_rec1_cnn <-
+  textmodel_cnnlstmemb(x = tokens_rec1_train,
+                       y = dfmat_rec1_train$target,
+                       epochs = 20,
+                       verbose = TRUE,
+                       type = "probability")
+
+predicted_class_rec1_cnn <-
+  predict_classes(tmod_rec1_cnn,
+          tokens_rec1_test)
+
+```
+
+The model is able to fit, but I cant make predictions. Meanwhile, let's try out a recipe, rec4, where instead of parsing into toekns (ie: words), we shall try sentences.
+
+```{r}
+sent_train <-
+  corp_train %>% 
+  tokens(what = "sentence",
+                 remove_punct = FALSE,
+                 remove_symbols = FALSE,
+                 remove_numbers = FALSE,
+                 remove_url = TRUE,
+                 remove_separators = TRUE) %>% 
+  tokens_select(pattern = stopwords("en"),
+                selection = "remove",
+                verbose = TRUE) %>% 
+  tokens_wordstem()
+
+sent_test <-
+  corp_test %>% 
+  tokens(what = "sentence",
+                 remove_punct = FALSE,
+                 remove_symbols = FALSE,
+                 remove_numbers = FALSE,
+                 remove_url = TRUE,
+                 remove_separators = TRUE) %>% 
+  tokens_select(pattern = stopwords("en"),
+                selection = "remove",
+                verbose = TRUE) %>% 
+  tokens_wordstem()
+
+
+dfmat_sent_train <-
+  dfm(sent_train)
+dfmat_sent_test <-
+  dfm(sent_test)
+
+
+tmod_sent_rec1_nb <-
+  textmodel_nb(x = dfmat_sent_train,
+               y = dfmat_sent_train$target)
+summary(tmod_sent_rec1_nb)
+
+dfmat_sent_rec1_matched <-
+  dfm_match(dfmat_sent_test, features = featnames(dfmat_sent_train))
+
+predicted_class_sent_rec1_nb <-
+  predict(tmod_sent_rec1_nb, newdata = dfmat_sent_rec1_matched) %>% 
+  as_tibble()
+
+submission_sent_rec1_nb <-
+  cbind(df_test$id, predicted_class_sent_rec1_nb) %>% 
+  rename(id = `df_test$id`,
+         target = value)
+
+write_csv(submission_sent_rec1_nb, "submission_sent_rec1_nb.csv")
+```
+
+Ouch! 0.58688, Sentences is NOT the way to go. So, it would appear that greater granularity gives better prediction. Let's go back to recipe 1, where I kept punctuation, symbols and numbers. Instead of removing stopwords, then create wordstems, I will implement these after a dfm has been formed. Lets call this rec4.
+
+```{r}
+tokens_rec4_train <-
+  tokens(corp_train,
+         remove_punct = FALSE,
+         remove_symbols = FALSE,
+         remove_numbers = FALSE,
+         remove_url = TRUE,
+         remove_separators = TRUE)
+
+
+tokens_rec4_test <-
+  tokens(corp_test,
+         remove_punct = FALSE,
+         remove_symbols = FALSE,
+         remove_numbers = FALSE,
+         remove_url = TRUE,
+         remove_separators = TRUE)
+
+
+dfmat_rec4_train <-
+  dfm(tokens_rec4_train) %>% 
+  dfm_wordstem(language = "en") %>% 
+  dfm_select(pattern = stopwords("english"),
+             selection = "remove",
+             valuetype = "fixed",
+             case_insensitive = TRUE)
+  
+dfmat_rec4_test <-
+  dfm(tokens_rec4_test) %>%
+  dfm_wordstem(language = "en") %>% 
+  dfm_select(pattern = stopwords("english"),
+             selection = "remove",
+             valuetype = "fixed",
+             case_insensitive = TRUE)
+
+tmod_rec4_nb <-
+  textmodel_nb(x = dfmat_rec4_train,
+               y = dfmat_rec4_train$target)
+summary(tmod_rec4_nb)
+
+dfmat_rec4_matched <-
+  dfm_match(dfmat_rec4_test, features = featnames(dfmat_rec4_train))
+
+predicted_class_rec4_nb <-
+  predict(tmod_rec4_nb, newdata = dfmat_rec4_matched) %>% 
+  as_tibble()
+
+submission_rec4_nb <-
+  cbind(df_test$id, predicted_class_rec4_nb) %>% 
+  rename(id = `df_test$id`,
+         target = value)
+
+write_csv(submission_rec4_nb, "submission_rec4_nb.csv")
+```
+
+Nicely done! I achieved a score of 0.79221 and "ranked up" to #581. This post has gotten quite lengthy. What I will do next is to create part 2, where I will engineer additional features using sentiment analysis. Will that push my score above 0.8? Let's see...
+
+
+```{r}
+save.image("disaster_tweets.RData")
+```
