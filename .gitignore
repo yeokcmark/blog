@@ -29,7 +29,6 @@ clustering_obesity.RData
 .RDataTmp9
 .RDataTmp11
 disaster_tweets_sentiment.RData
-<<<<<<< HEAD
+*.csv
+.RDataTmp12
 logs.log
-=======
->>>>>>> 8154282934d26d0591571dc117790ce98e539c99
