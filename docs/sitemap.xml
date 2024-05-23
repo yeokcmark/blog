@@ -53,10 +53,13 @@
     <lastmod>2024-03-07T08:19:12+08:00</lastmod>
   </url>
   <url>
+<<<<<<< HEAD
     <loc>https://yeokcmark.netlify.app/ml/2024-05-23-time-series-forecasting-using-prophet-in-r/</loc>
     <lastmod>2024-05-23T12:41:43+08:00</lastmod>
   </url>
   <url>
+=======
+>>>>>>> 8154282934d26d0591571dc117790ce98e539c99
     <loc>https://yeokcmark.netlify.app/ml/2024-05-13-kaggle-competition-natural-language-processing-with-disaster-tweets-using-quanteda/</loc>
     <lastmod>2024-05-15T10:40:55+08:00</lastmod>
   </url>

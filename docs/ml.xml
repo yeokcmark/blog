@@ -7,6 +7,7 @@
     <description>my jouRney in R
 </description>
     <generator>Distill</generator>
+<<<<<<< HEAD
     <lastBuildDate>Thu, 23 May 2024 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Time Series forecasting using Prophet in R</title>
@@ -17,6 +18,9 @@
       <guid>https://yeokcmark.netlify.app/ml/2024-05-23-time-series-forecasting-using-prophet-in-r</guid>
       <pubDate>Thu, 23 May 2024 00:00:00 +0000</pubDate>
     </item>
+=======
+    <lastBuildDate>Mon, 13 May 2024 00:00:00 +0000</lastBuildDate>
+>>>>>>> 8154282934d26d0591571dc117790ce98e539c99
     <item>
       <title>Kaggle Competition: Natural Language Processing with Disaster Tweets using quanteda</title>
       <link>https://yeokcmark.netlify.app/ml/2024-05-13-kaggle-competition-natural-language-processing-with-disaster-tweets-using-quanteda</link>

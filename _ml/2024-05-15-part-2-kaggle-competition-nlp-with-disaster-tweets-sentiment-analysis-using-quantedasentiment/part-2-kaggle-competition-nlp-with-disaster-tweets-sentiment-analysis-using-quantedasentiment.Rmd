@@ -258,6 +258,7 @@ df_sentiment_train <-
         ) %>% 
   as_tibble()
 
+<<<<<<< HEAD
 df_sentiment_test <-
   cbind(dfmat_rec4_test %>% 
   textstat_valence(dictionary = data_dictionary_AFINN) %>%
@@ -283,6 +284,15 @@ df_rec5_train <-
   ) %>% 
   dplyr::select(-df_train$target)
 df_rec_5_test <- df_sentiment_test
+=======
+df_rec5_train <-
+  dfmat_rec4_train %>% 
+  convert(to = "data.frame") %>% 
+  as_tibble() %>% 
+  cbind(df_sentiment_train) %>% 
+  mutate(target = as.factor(target),
+         target = fct_relevel(target, "1"))
+>>>>>>> 8154282934d26d0591571dc117790ce98e539c99
 
 ```
 
@@ -311,7 +321,11 @@ param_xgb <-
   extract_parameter_set_dials() %>%
   finalize(df_rec5_train)
 
+<<<<<<< HEAD
 xgb_grid = grid_latin_hypercube(param_xgb, size = 50)
+=======
+xgb_grid = grid_latin_hypercube(param_xgb, size = 10)
+>>>>>>> 8154282934d26d0591571dc117790ce98e539c99
 
 
 wflow_xgb <-
@@ -357,6 +371,7 @@ wflow_xgb_finalized <-
 The above code was still "tuning" at the end of 36 hours. I stopped the process, but included the code since I already typed it up. 
 
 ```{r}
+<<<<<<< HEAD
 fit_xgb <-
   wflow_xgb_finalized %>% 
   fit(df_rec5_train)
@@ -377,6 +392,8 @@ write_csv(submission_rec5_xgb, "submission_rec5_xgb.csv")
 
 
 ```{r}
+=======
+>>>>>>> 8154282934d26d0591571dc117790ce98e539c99
 save.image("disaster_tweets_sentiment.RData")
 ```
 
